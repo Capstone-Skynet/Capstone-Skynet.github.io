@@ -1,0 +1,8 @@
+- text: 'About'
+  url: /
+- text: 'Posts'
+  url: /posts
+- text: 'Notes'
+  url: /notes
+- text: 'Contact'
+  url: /contact
