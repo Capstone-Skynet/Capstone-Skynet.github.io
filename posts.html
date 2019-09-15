@@ -1,0 +1,14 @@
+---
+layout: default
+title: Posts
+---
+
+{% for post in site.posts %}
+<div class="post-entry my-4">
+<h2>{{ post.title }}</h2>
+    <p>Published {{ post.date | date: "%Y-%m-%d" }}</p>
+    <p>{{ post.excerpt | strip_html }}</p>
+    <a class="btn btn-outline-dark btn-sm" href="{{ post.url }}">Read more &rarr;</a>
+</div>
+<hr>
+{% endfor %}
