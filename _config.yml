@@ -28,6 +28,7 @@ defaults:
       layout: post
       excerpt_separator: <!-- excerpt -->
       permalink: /posts/:year/:month/:day/:title
+      nav_active: /posts
   - scope: # notes folder (which contains the meeting notes)
       path: ""
       type: "notes"
@@ -35,6 +36,7 @@ defaults:
       layout: note
       excerpt_separator: <!-- excerpt -->
       permalink: "notes/:year/:month/:day/:title"
+      nav_active: /notes
 
 # Collections config
 collections:
