@@ -1,8 +1,12 @@
 - text: 'About'
   url: /
+  desc: "You are here"
 - text: 'Posts'
   url: /posts
+  desc: "Update blogs, progress, and milestones"
 - text: 'Notes'
   url: /notes
+  desc: "Meeting notes"
 - text: 'Contact'
   url: /contact
+  desc: "How to contact us"
