@@ -1,1 +1,42 @@
-theme: jekyll-theme-minimal
+url: https://capstone-skynet.github.io
+
+markdown: kramdown
+
+kramdown:
+  auto_ids: true
+  enable_coderay: false
+  hard_wrap: false
+  input: GFM
+
+sass:
+  style: compressed
+
+plugins:
+  - jemoji
+  - jekyll-sitemap
+
+# site defaults
+defaults:
+  - scope: # everything on the site
+      path: ""
+    values:
+      author: [Peter Deutsh, Muchen He, Arthur Hsueh, Wilson Wang, Ardell Wilson]
+  - scope: # _posts folder (which contains weekly updates)
+      path: ""
+      type: "posts"
+    values:
+      layout: post
+      excerpt_separator: <!-- excerpt -->
+      permalink: /posts/:year/:month/:day/:title
+  - scope: # notes folder (which contains the meeting notes)
+      path: ""
+      type: "notes"
+    values:
+      layout: notes
+      excerpt_separator: <!-- excerpt -->
+      permalink: "notes/:year/:month/:day/:title"
+
+# Collections config
+collections:
+  notes:
+    output: true
