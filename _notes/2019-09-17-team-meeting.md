@@ -11,6 +11,11 @@ date: 2019-09-17
 - Make sure everyone has notifications of Slack turned on
 - Slack channels 
 
+### 2. Capstone-Skynet.github.io
+
+- Repository for documents and files
+- “.github.io” is for GitHub pages so we can have it freely deployed.
+
 ### 3. Meeting with Client
 
 - Tuesday 11AM didn’t work well today so we need to setup a Skype meeting with the client at some point.
@@ -24,6 +29,8 @@ date: 2019-09-17
   - What kind of development is involved
   - Drone and drone testing (possible UAS license?)
   - Expected acceptance criteria
+- Preferred version tracking
+- NDA IP specifications
 
 ### 5. Administrative Extras
 
