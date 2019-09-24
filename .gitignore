@@ -1,0 +1,11 @@
+/docs/*/*.aux
+/docs/*/*.bbl
+/docs/*/*.blg
+/docs/*/*.fdb_latexmk
+/docs/*/*.fls
+/docs/*/*.lof
+/docs/*/*.log
+/docs/*/*.lot
+/docs/*/*.out
+/docs/*/*.synctex.gz
+/docs/*/*.toc
