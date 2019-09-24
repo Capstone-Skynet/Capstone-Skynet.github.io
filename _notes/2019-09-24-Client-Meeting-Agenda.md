@@ -9,7 +9,7 @@ date: 2019-09-24
 
 - Overview of the intent of the meeting
 
-  - We need to get information on high-level goals, and technical pre-requeisits. What do we need to know in order to progress in the project.  
+  - We need to get information on high-level goals, and technical pre-req. What do we need to know in order to progress in the project.  
 
 - Need to address the project scope
 
