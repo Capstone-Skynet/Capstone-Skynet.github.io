@@ -1,5 +1,5 @@
 ---
-title: Client Meeting Agenda
+title: Client Meeting
 date: 2019-09-24
 ---
 
@@ -9,7 +9,7 @@ date: 2019-09-24
 
 - Overview of the intent of the meeting
 
-  - We need to get information on high-level goals, and technical pre-req. What do we need to know in order to progress in the project.  
+  - We need to get information on high-level goals, and technical pre-req. What do we need to know in order to progress in the project. 
 
 - Need to address the project scope
 
@@ -69,5 +69,25 @@ date: 2019-09-24
 
 ---
 
-Team project and update will be on our team website: https://capstone-skynet.github.io/.
+Team project and update will be on our team website: <https://capstone-skynet.github.io/>.
+
+
+
+## Meeting Notes
+
+We are looking for feasibility. We need to see what kind of drone and FPGA we need. Getting video down to the FPGA level could be using SRAM. Getting ML to work on FPGA could work using HLS. We also need to deal with video transmission to a base station for processing. Lastly, we need to get the drone is the big part.
+
+For training data, ideally we want something a couple of stories high up.
+
+We have some FPGAs laying around which might not get high-resolution processing. Flight duration can be less prioritized for better tracking. We can also give up resolution for this proof of concept. The transmission and processing resolution can be different.
+
+Further investigation required to see if a drone will be available. 
+
+First thing we need to do is figure out what budget we need, which also depends on how big of an FPGA we need. 
+
+Take TensorFlow into *Daniel*‘s work to see if there’s feasibility. The classifier may takes more time, so we may have to decouple the frame rate of the video processed and the frame rate of the transmission as well. Latency is a problem: then just allocate more space.
+
+Transmission and receiver is part of our scope. A Wi-Fi module is recommended. Worst case, run a wire to the drone. All work is open source, but is not limited to MIT license.
+
+In the mean time, we will be working on the proposal document. When Mieszko gets back, we will get further updates. Client is free Tuesday or Thursdays 4PM.
 

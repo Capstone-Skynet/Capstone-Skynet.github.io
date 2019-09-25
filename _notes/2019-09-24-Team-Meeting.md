@@ -77,3 +77,5 @@ date: 2019-09-24
 - Technical debt paydown impact project timeline.
 - Delivered documentation not adequate for usage and upgrade.
 - Key hardware components not available
+- Not enough machine learning training data.
+
