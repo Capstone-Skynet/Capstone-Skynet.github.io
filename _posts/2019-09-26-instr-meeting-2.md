@@ -3,12 +3,11 @@ title: Weekly Status Report
 date: 2019-09-26
 ---
 
-
 ## Meeting with the Client
 
 - Established high level goals of the project
   - In alignment with our initial speculated requirements:
-    1. Working interface and transmission of video data from the camera to the hardware
+    1. Working interface and transmission of video data from the camera to the hardware <!-- excerpt -->
     2. Successful implementation of real-time object tracking acceleration in hardware
     3. Successful transmission of the output of the hardware from the drone to a ground station.
     4. (Priority lowered) Adequate integration of FPGA hardware, electronics, and drone.
