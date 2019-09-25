@@ -90,4 +90,3 @@ Take TensorFlow into *Daniel*‘s work to see if there’s feasibility. The clas
 Transmission and receiver is part of our scope. A Wi-Fi module is recommended. Worst case, run a wire to the drone. All work is open source, but is not limited to MIT license.
 
 In the mean time, we will be working on the proposal document. When Mieszko gets back, we will get further updates. Client is free Tuesday or Thursdays 4PM.
-
