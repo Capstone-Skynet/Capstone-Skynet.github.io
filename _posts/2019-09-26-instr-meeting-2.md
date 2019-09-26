@@ -47,10 +47,24 @@ From our team meeting notes: <https://capstone-skynet.github.io/notes/2019/09/24
 
 **Peter + Wilson**:
 
-- Any flying object need to be registered with Transport Canada.
-- Drone is piloted, so the pilots need license and training.
-- This project involves flying drones close (less than 30m radius) to people, and thus require additional licensing from Transport Canada.
-- Video transmission on certain frequencies require license.
+- Transport Canada outlines restrictions and regulations regarding drone usage.
+- There are two (relevant) drone categories outlined by Transport Canada for flying drones **over 250 grams**:
+ - **Basic Operations** - if you are flying in **uncontrolled airspace** and flying more than 30 meters horizontally from bystanders.
+  - Requires the operator to pass a basic examination and register the drone with Transport Canada.
+ - **Advanced Operations** - if you are flying in controlled airspace, over bystanders, or within 30 meters of bystanders.
+  - Requires the operator to pass an advanced examination, register the drone with Transport Canada, and pass an **in-person** flight review.
+  - Also requires that the drone has an RPAS safety certification, and an additional waiver if modifications are made.
+
+- As Vancouver/UBC are within restricted airspace envelopes, additional requirements are enforced by Nav Canada.
+ - To fly at UBC, we'd need written permission from UBC, provide 48 hours notice to Nav Canada, and restrict access to the ground below the drone.
+ - These requirements likely make it too onerous for us to fly at UBC. We might have to fly demo/capture flights in other geographical areas (ex. Abbotsford).
+
+- Peter will liason with the UBC Unmanned Aircraft Systems team for advice regarding navigating regulatory requirements.
+
+- On transmission outside of the 2.4/5GHz bands, an amateur radio certification is required.
+ - If we use off-the-shelf WiFi/Bluetooth components this will not be a problem, but a custom transmission solution might require it.
+ - During the transmitter's operation *at least one* licence holder must be present, so it's not necessary that the entire team goes through the process.
+ - The turn-around time for acquiring a license is low (a few days), so this is a low risk item.
 
 
 
