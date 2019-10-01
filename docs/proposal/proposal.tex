@@ -54,38 +54,69 @@
 \fancyfoot{}
 \fancyfoot[C]{\thepage}
 
+% No paragraph indent
 \parindent 0ex
 
 % Meta
 \author{
-	LastName1, FirstName1\\
-	\texttt{first1.last1@xxxxx.com}
+	Deutsch, Peter\\
+	\texttt{me@peterdeutsch.ca}
 	\and
-	LastName2, FirstName2\\
-	\texttt{first2.last2@xxxxx.com}
+	He, Muchen\\
+	\texttt{i@muchen.ca}
+	\and
+	Hsueh, Arthur\\
+	\texttt{ah11962@outlook.com}
+	\and
+	Wang, Meng\\
+	\texttt{wzfftxwd@gmail.com}
+	\and
+	Wilson, Ardell\\
+	\texttt{ardellw96@gmail.com}
 }
-\title{Sample Title}
+\title{Machine Learning on FPGA on a Drone - Project Proposal}
+\date{\today}
 
 % Begin Document
 \begin{document}
 
 % Title Page
+\makeatletter % This is needed to reference the above meta data
 \begin{titlepage}
 	\begin{center}
-		\vspace*{3in}
-		\line(1, 0){400}\\
-		\Huge{\textbf{Main Title}}\\[0.2cm]
-		\large{\textbf{Sub Title}}\\[1cm]
-		\Large{\textbf{Course ID}}\\
-		\textbf{University of British Columbia}\\
-		\line(1, 0){400}\\
-		\vfill
-		\Large{Authors}\\
-		UBC and Client branding image here\\
+		% Top spacing
+		\vspace*{1.25in}
 
-		\today\\
+		% Top line
+		\line(1, 0){400}\\
+
+		% Title
+		\Huge{\textbf{\@title}}\\[0.2cm]
+
+		% Subtitle
+		\large{\textbf{Capstone Team 109}}\\[1cm]
+
+		% Course number and university
+		\Large{\textbf{ELEC 491}}\\
+		\textbf{University of British Columbia}\\
+
+		% Bottom line
+		\line(1, 0){400}\\[1cm]
+
+		% Authors
+		\begin{tabular}[t]{c}
+			\@author
+		\end{tabular}\\[2cm]
+
+		% Vertical fill
+		\vfill
+
+		\texttt{TODO: UBC and Client branding image here}\\[2cm]
+
+		\@date\\
 	\end{center}
 \end{titlepage}
+\makeatother
 
 % Executive Summary (Not used here in proposal)
 % \include{executive_summary.tex}
@@ -112,6 +143,9 @@
 % TODO: fill out all the sections
 % if the sections gets too long, move them to a separte .tex document
 \section{About This Document}
+\subsection{Purpose}
+\subsection{Intended Audience}
+\subsection{Reading Guide}
 
 \section{Background}
 
