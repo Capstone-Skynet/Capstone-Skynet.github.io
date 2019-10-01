@@ -5,7 +5,6 @@
 \usepackage[english]{babel}
 \usepackage{breakurl}
 \usepackage[superscript]{cite}
-\usepackage{draftwatermark}
 \usepackage{fancyhdr}
 \usepackage{float}
 \usepackage[margin=1in]{geometry}
@@ -30,17 +29,18 @@
 \usepackage{kantlipsum}
 
 \usepackage{parskip} % Paragraph skip - adds extra lineskip spacing
-\setlength{\parskip}{1.0\baselineskip plus 2pt}
+\setlength{\parskip}{0.7\baselineskip plus 2pt}
+
+% Draft watermark (comment out to remove watermark)
+% \usepackage{draftwatermark}
+% \SetWatermarkText{\textsc{Draft}}
+% \SetWatermarkScale{1}
 
 % Custom commands
 \newcommand{\ts}{\textsubscript}	% Subscript command %
 
 % Use hyphans to break up urls
 \def\UrlBreaks{\do\/\do-}
-
-% Draft watermark (comment out to remove watermark)
-\SetWatermarkText{\textsc{Draft}}
-\SetWatermarkScale{1}
 
 % PDF and href setup
 % Hyper ref
@@ -172,33 +172,64 @@ throughout the duration the milestones of the project.
 How to read this document.
 
 \section{Background}
+\input{1_0_background}
 
 \subsection{Business Background}
+\input{1_1_business_background}
 
 \subsection{Project Context}
+\input{1_2_project_context}
 
 \section{Objectives, Constraints, \& Goals}
+\input{2_0_objectives_constraints_goals}
+
 \subsection{Objectives}
+\input{2_1_ocg_objectives}
+
 \subsection{Constraints}
+\input{2_2_ocg_constraints}
+
 \subsection{Goals}
+\input{2_3_ocg_goals}
 
 \section{Project Plan}
+\input{3_0_project_plan}
 
 \subsection{Major Milestones}
+\input{3_1_major_milestones}
+
 \subsection{Major Deliverables}
+\input{3_2_major_deliverables}
+
 \subsection{Major Responsibilities}
+\input{3_3_major_responsibilities}
+
 \subsection{High-Level Tasks}
+\input{3_4_high_level_tasks}
+
 \subsection{Schedule}
+\input{3_5_schedule}
+
 \subsection{Budget}
-The specifics of budget is not determined. But we do get \$650 for the entire capstone team to start.
+\input{3_6_budget}
 
 \subsection{Quality Goals}
+\input{3_7_quality_goals}
+
 \subsection{Risk Profile}
+\input{3_8_risk_profile}
 
 \section{Approval}
+\input{4_0_approval}
+
 \subsection{Acceptance Statement}
+\input{4_1_acceptance_statement}
+
 \subsection{Client Identification}
+\input{4_2_client_identification}
+
 \subsection{Capstone Team Identification}
+\input{4_3_team_identification}
 
 
 % Bibliography
