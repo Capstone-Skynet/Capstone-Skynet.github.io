@@ -30,7 +30,7 @@
 % Use hyphans to break up urls
 \def\UrlBreaks{\do\/\do-}
 
-% Draft watermark
+% Draft watermark (comment out to remove watermark)
 \SetWatermarkText{\textsc{Draft}}
 \SetWatermarkScale{1}
 
@@ -87,18 +87,19 @@
 	\end{center}
 \end{titlepage}
 
-% Executive Summary
-\section*{Summary}
-Summary / abstract here.
-\clearpage
+% Executive Summary (Not used here in proposal)
+% \include{executive_summary.tex}
+
+% Revision history
+\include{rev_history}
 
 % Table of contents
-\setcounter{secnumdepth}{3}
-\tableofcontents
-\thispagestyle{empty}
-\clearpage
+\include{toc}
 
-% Uncomment for list of tables and figures
+% Terms and Abbreviations
+\include{terms_and_abbreviations}
+
+% List of figures and tables
 \thispagestyle{empty}
 \listoffigures
 \listoftables
@@ -107,7 +108,38 @@ Summary / abstract here.
 % Set page and section counter
 \setcounter{page}{1}
 
-% \section{Introduction}\label{section:introduction}
+
+% TODO: fill out all the sections
+% if the sections gets too long, move them to a separte .tex document
+\section{About This Document}
+
+\section{Background}
+
+\subsection{Business Background}
+
+\subsection{Project Context}
+
+\section{Objectives, Constraints, \& Goals}
+\subsection{Objectives}
+\subsection{Constraints}
+\subsection{Goals}
+
+\section{Project Plan}
+
+\subsection{Major Milestones}
+\subsection{Major Deliverables}
+\subsection{Major Responsibilities}
+\subsection{High-Level Tasks}
+\subsection{Schedule}
+\subsection{Budget}
+\subsection{Quality Goals}
+\subsection{Risk Profile}
+
+\section{Approval}
+\subsection{Acceptance Statement}
+\subsection{Client Identification}
+\subsection{Capstone Team Identification}
+
 
 % Bibliography
 \clearpage
