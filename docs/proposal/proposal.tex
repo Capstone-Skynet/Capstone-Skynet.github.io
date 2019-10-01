@@ -36,6 +36,10 @@
 % \SetWatermarkText{\textsc{Draft}}
 % \SetWatermarkScale{1}
 
+% Custom definitions
+\newcommand{\doctitle}{Project Proposal}
+\newcommand{\docsubtitle}{Machine Learning on FPGA on a Drone}
+
 % Custom commands
 \newcommand{\ts}{\textsubscript}	% Subscript command %
 
@@ -50,15 +54,15 @@
 	linkcolor=black,
 	filecolor=black,
 	urlcolor=blue,
-	pdftitle={Sample Document Title},
+	pdftitle={\@title},
 	bookmarks=true
 }
 \urlstyle{same}
 
-% Page semantics
+% Page headings
 \pagestyle{fancy}
-\fancyhead[L]{\slshape\MakeUppercase{ELEC 491}}
-\fancyhead[R]{\slshape Team 109}
+\fancyhead[L]{\MakeUppercase{ELEC 491}}
+\fancyhead[R]{\textbf{Team 109}}
 \fancyfoot{}
 \fancyfoot[C]{\thepage}
 
@@ -82,7 +86,7 @@
 	Wilson, Ardell\\
 	\texttt{ardellw96@gmail.com}
 }
-\title{Machine Learning on FPGA on a Drone - Project Proposal}
+\title{\doctitle}
 \date{\today}
 
 % Begin Document
@@ -102,10 +106,10 @@
 		\Huge{\textbf{\@title}}\\[0.2cm]
 
 		% Subtitle
-		\large{\textbf{Capstone Team 109}}\\[1cm]
+		\large{\textbf{\docsubtitle}}\\[1cm]
 
 		% Course number and university
-		\Large{\textbf{ELEC 491}}\\
+		\Large{\textbf{ELEC 491 Capstone Team 109}}\\
 		\textbf{University of British Columbia}\\
 
 		% Bottom line
