@@ -1,26 +1,26 @@
-The objectives are:
+The main objectives have been separated into three categories.
 
+\textbf{Machine Learning Implementation on the FPGA}
+\begin{itemize}
+  \item The FPGA and its connected hardware receives usable video data.
+  \item Adequately implemented datapath and or processor to facilitate data-flow.
+  \item Adequately implemented machine learning model such as CNN, RNN, or YOLO in hardware.
+  \item Video can be processed in real time with help of reduced frame rates and or resolution.
+\end{itemize}
 
-Main objectives:
+\textbf{Integration of Electronics with the Drone}
+\begin{itemize}
+  \item The total package of the electronics and hardware (that is, equipment
+  used to gather, process, and transmit video data) is reasonably compact 
+  and deployable on a drone.
+  \item Total power draw is reasonable.
+  \item Total power output (heat) is reasonable.
+\end{itemize}
 
-- ML implementation on FPGA
-    - Video interception and processing on FPGA device
-    - Adequate datapath and or (hard/soft)core processor to aid
-      or facilitate fast and well-integrated data flow
-    - Adequate integration of a suited machine learning, specifically
-      computer vision, model on the FPGA such as CNN, RNN, or YOLO.
-    - Video can be processed in real time with help of reduced
-      frame rates and or resolution
-
-- Integration of hardware on drone
-    - The total package of the hardware impose viablility of such concept by
-      being compact and easily deployable
-    - Electronics power draw is not ridiculous
-    - Electronics power output (heat) is not ridiculous
-
-- Transmission of video to ground station
-    - A separate video signal is streamed to the ground station along with
-      the processed data, or, the video stream is being overlayed with
-      machine learning data and is both transmitted to the ground station
-    - Can receive video signal wirelessly
-    - Does not need to be on the FPGA
+\textbf{Video Transmission to Ground Station}
+\begin{itemize}
+  \item Video stream is able to be received from the ground station along 
+        with processed ML data.
+  \item Transmission in the chosen frequency bands is legal (2.4 or 5.2Ghz WiFi
+        do not need actions required).
+\end{itemize}
