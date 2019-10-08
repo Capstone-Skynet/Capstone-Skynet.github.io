@@ -1,0 +1,18 @@
+In pursuit of the objectives listed above, the main constraints relating 
+each main objective is as follows:
+
+FPGA ML:
+
+- The FPGA is a highly adaptive device that can deliver almost-ASIC level speed
+but a large number of logic elements are required to implement a large model 
+such as a machine learning - computer vision - model. The inherit constraints
+with FPGA RTL designs such as timing, area, and power constraints will ultimately
+limit the processing throughput of the video data. Bottleneck for limiting
+processing resolution and frequency (frame rate).
+
+- Common machine learning models for computer vision is designed for GPU to
+maximize parallel computing. The FPGA cannot match GPU data throughput, thus
+the limited amount of logic elements would also constrain our architecture
+design.
+
+- 
