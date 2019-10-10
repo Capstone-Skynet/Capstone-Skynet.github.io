@@ -1,28 +1,57 @@
-The project will conclude on \textbf{April 3rd, 2020}, at which point the following project  deliverables will be provided to the project stakeholders (the Client and Instructors):
+This project concludes on \textbf{April 3rd, 2020}, at which point the client
+and the instructors will receive the following project deliverables.
+
+\subsubsection{Hardware Artifacts}
 
 \begin{enumerate}
-\item The drone prototype, a (unified) device which:
-\begin{enumerate}
-\item Captures video using an on-board camera,
-\item utilizes FPGA-based neural network accelerators to processes the captured video using an FPGA (optionally with an embedded hard-processor) - computing the position of one or more (human) pedestrians in the captured video,
-\item transmits the captured video and the associated pedestrian-location metadata to an external base-station,
-\item and is mounted to a drone which is controlled remotely by a human and is capable of flying at least 5 minutes.
+
+\item \textbf{Drone Prototype}:
+A fully integrated FPGA computing platform mounted on a remote-controlled
+drone that can capture video using an on-board camera.
+The computing platform utilizes FPGA-based neural network accelerators to 
+process the video data and detect and track one or more designated objects.
+The computing platform may optionally be equipped with a co-processor.
+The platform transmits video data and associated machine learning metadata
+to a ground station.
+
+\item \textbf{Ground Station Prototype}:
+A system that receives wireless video data and machine learning metadata from
+the drone and display video and overlayed metadata in the form of 
+\textit{bounding-boxes}. The ground station system also log the received data 
+to files for further research and analysis purposes.
+
 \end{enumerate}
-\item The base-station prototype, a device which:
+
+\subsubsection{Document Artifacts}\label{document-artifacts}
+
 \begin{enumerate}
-\item Receives the wirelessly transmitted video and the associated pedestrian-location metadata,
-\item displays the video on a screen, overlaying the pedestrian metadata in the form of \textit{bounding boxes},
-\item and stores the video for further research/analysis
+
+\item\textbf{Requirement Specification}:
+A document outlining the functional and non-functional requirements
+of the prototypes.
+
+\item \textbf{Design Specification}:
+A document describing the high-level architecture and design of technical subsystems.
+
+\item \textbf{Validation Specification and Results}:
+A document describing system testbenches, validation techniques, and validation
+and testing results.
+
+\item \textbf{Operations, Maintenance, and Upgrades Specifcations}:
+A document, similar to a operation manual, outlining installation instructions,
+recommended maintenance, and common troubleshooting guides.
+
+\item \textbf{List of Deliverables}
+
 \end{enumerate}
-\item A technical dossier comprising of the following documents:
+
+\subsubsection{Other Artifacts}
+
 \begin{enumerate}
-\item \textit{Requirements Specification} - Outlining the functional/non-functional requirements of the product
-\item \textit{Design Specification} - Describing the high-level architecture and designs for technical subsystems
-\item \textit{Validation Specification and Results} - Describing system test architectures and results
-\item \textit{Operations, Maintenance, and Upgrades Specification} - Outlining FAQs, installation instructions, recommended maintenance, and troubleshooting steps
-\item \textit{List of Deliverables}
-\end{enumerate}
-\item A video describing and demonstrating the product
-\item A presentation and accompanying poster outlining the project
-\item All source code and generated netlists
+
+\item \textbf{Demonstrative Video}
+\item \textbf{Oral Presentation and Poster}
+\item \textbf{Project Repositories}: Repositories that include all source code,
+generated netlists, CAD designs, spreadsheets, and other documents.
+
 \end{enumerate}
