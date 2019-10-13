@@ -15,13 +15,7 @@ The wireless frequency and band chosen is compliant with local laws; no further 
 using off-the-shelf WiFi modules.
 
 \textbf{Machine Learning Implementation on the FPGA}:
-
-
-
-
-\begin{itemize}
-  \item The FPGA and its connected hardware receives usable video data.
-  \item Adequately implemented datapath and or processor to facilitate data-flow.
-  \item Adequately implemented machine learning model such as CNN, RNN, or YOLO in hardware.
-  \item Video can be processed in real time with help of reduced frame rates and or resolution.
-\end{itemize}
+The hardware-accelerated computing platform interfaces with attached peripherals such as the camera sensor, the data transmitter (DTX), and other hardware properly
+using well-defined communication protocol, such as serial bus or PCI-E, whichever one that is suitable for the data bandwidth requirements. 
+The FPGA should feature a starter ML model, such as but not limited to CNN, RNN, or YOLO, fully capable of basic computer vision.
+The netlist design for the ML models are adequately synthesized with efficient datapath.
