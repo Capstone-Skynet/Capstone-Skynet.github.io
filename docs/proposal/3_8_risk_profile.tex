@@ -1,18 +1,22 @@
 \subsubsection{Risk Management}
-Risks can have big influences on the whole project. It is important that we have an effective protocol to handle the potential risks.
+The Capstone team has generated a list of potential risks which threaten the viability of the project and have assigned a likelihood and impact value to each of them (Table \ref{riskprofile}). The \textit{risk index} for each risk is the product of these two values (likelihood and impact value). 
 
-The team has generated a list of potential risks\footnote{see section 4.7.2} and assign the likelihood and impact value to each of them according to the purpose and objective of the project. If the risk number, which is the product of likelihood and impact, of a risk is higher than 0.4, then it has a specific post-risk protocol. All the risks will be monitored and if there exits any signal of a risk, corresponding operations will be performed to prevent it from happening.
+\textit{To mitigate the outlined risks, the following risk management protocol is followed:}
 
-When a team member notices any signs of a risk, he will send a message to slack channel and add one card on Trello, the project management tool that the team is using, to alert the whole team. The card on Trello board will have a label showing the significance of the risk and the whole team will discuss about the operations that need to be performed.
 
-The risk profile will be updated whenever the situation is changed, i.e. new potential risks emerged. 
+If the risk index is \textbf{greater or equal to 0.4}, then the risk mitigation protocol \textit{must} be followed. This entails creating a card for the specific risk on Trello (the team's project management tool), discussing the status of the risk during the weekly group meeting, and providing immediate updates to the status of the risk on Slack as they occur.
+
+If the risk index is \textbf{less than 0.4}, then the above risk mitigation protocol \textit{may} be followed, if deemed necessary. Otherwise, the risk is simply monitored for updates.
+
+The risk profile is updated/reviewed weekly (during the team meeting) and as otherwise necessary. 
 
 
 \subsubsection{Risk Table}
 
-
 \begin{center}
+
 \begin{longtable}{|p{0.5\linewidth}|*3{>{\centering\arraybackslash}p{0.1\linewidth}|}}
+
 \caption{Risk profile}\\
 \hline
 \textbf{Risk description} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Risk} \\
@@ -68,5 +72,6 @@ Client is not available enough to provide significant help.&0.1&0.5&0.05\\ \hlin
 Competitive offerings affect project requirement&0.1&0.5&0.05\\ \hline
 Camera doesn’t work with FPGA&0.1&0.5&0.05\\ \hline
 FPGA doesn’t work with transmission systems&0.1&0.5&0.05\\ \hline
+\label{riskprofile}
 \end{longtable}
 \end{center}
