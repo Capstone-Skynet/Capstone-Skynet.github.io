@@ -9,3 +9,5 @@
 /docs/*/*.out
 /docs/*/*.synctex.gz
 /docs/*/*.toc
+
+/docs/proposal/proposal.pdf
