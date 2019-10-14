@@ -26,6 +26,7 @@
 \usepackage{svg}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{titling}
 \usepackage{url}
 \usepackage{kantlipsum}
 
@@ -72,64 +73,71 @@
 
 % Meta
 \author{
-	Deutsch, Peter\\
-	\texttt{me@peterdeutsch.ca}
-	\and
-	He, Muchen\\
-	\texttt{i@muchen.ca}
-	\and
-	Hsueh, Arthur\\
-	\texttt{ah11962@outlook.com}
-	\and
-	Wang, Meng\\
-	\texttt{wzfftxwd@gmail.com}
-	\and
-	Wilson, Ardell\\
-	\texttt{ardellw96@gmail.com}
+	Deutsch, Peter &
+	\textit{me@peterdeutsch.ca}
+	\\
+	He, Muchen &
+	\textit{i@muchen.ca}
+	\\
+	Hsueh, Arthur &
+	\textit{ah11962@outlook.com}
+	\\
+	Wang, Meng &
+	\textit{wzfftxwd@gmail.com}
+	\\
+	Wilson, Ardell &
+	\textit{ardellw96@gmail.com}
 }
 \title{\doctitle}
 \date{\today}
+
+\makeatletter
+\renewcommand{\maketitle}{
+	\bgroup
+	\setlength{\parindent}{0pt}
+	\begin{flushleft}
+		% Top spacing
+		\vspace*{1in}
+
+		% Title
+		\textbf{\Huge{\@title}}\\
+		\hrulefill
+
+		% Subtitle
+		\textbf{\huge{\docsubtitle}}
+		
+		\vspace*{0.5in}
+
+		% Course number and team
+		\textbf{\Large{CPEN/ELEC 491 Capstone Team 109}}\\
+		\hspace*{0.1cm}
+		\begin{tabular}[h]{|ll}
+			\@author
+		\end{tabular}
+
+		\vspace*{0.25in}
+
+		\textbf{Website}: https://capstone-skynet.github.io
+
+		\vfill
+
+		% Logo
+		\hspace*{-0.3cm}\includegraphics[scale=0.5]{ece_logo.pdf}
+
+		% Date
+		\large{\@date}
+	\end{flushleft}
+	\egroup
+}
+\makeatother
 
 % Begin Document
 \begin{document}
 
 % Title Page
-\makeatletter % This is needed to reference the above meta data
 \begin{titlepage}
-	\begin{center}
-		% Top spacing
-		\vspace*{1.25in}
-
-		% Top line
-		\line(1, 0){400}\\
-
-		% Title
-		\Huge{\textbf{\@title}}\\[0.2cm]
-
-		% Subtitle
-		\large{\textbf{\docsubtitle}}\\[1cm]
-
-		% Course number and university
-		\Large{\textbf{CPEN/ELEC 491 Capstone Team 109}}\\
-		\textbf{University of British Columbia}\\
-
-		% Bottom line
-		\line(1, 0){400}\\[1cm]
-
-		% Authors
-		\begin{tabular}[t]{c}
-			\@author
-		\end{tabular}\\[2cm]
-
-		% Vertical fill
-		\vfill
-
-		\includegraphics[scale=0.65]{ece_logo.pdf}
-
-		\@date\\
-	\end{center}
+	\maketitle
 \end{titlepage}
-\makeatother
 
 % Executive Summary (Not used here in proposal)
 % \include{executive_summary.tex}
@@ -152,13 +160,9 @@
 % Set page and section counter
 \setcounter{page}{1}
 
-
-% TODO: fill out all the sections
-% if the sections gets too long, move them to a separte .tex document
 \section{About This Document}\label{section:about}
 
 \subsection{Purpose}
-%FIXME (requires editing)
 
 This document serves to facilitate a high-level understanding between the client and the student team 
 regarding the goals and responsibilities of each party throughout the proposed Capstone project.
@@ -169,12 +173,7 @@ document details how the project will be managed, provides a tentative project t
 
 The client, Professor Mieszko Lis, is the primary consumer of this document. The proposal is intended to present the client with a high-level overview of the project's implementation, both technical and administrative, as envisioned by the student team --- providing the client an opportunity to offer corrective feedback if required.
 
-Secondary consumers of this document include the Capstone program's instructional team (serving as an update to the project's progress through Milestone \#1) and the authoring Capstone team itself (acting as a reference for for design decisions and project planning throughout the duration of the project).
-
-% \subsection{Reading Guide}
-% NOTE(I don't think we need this)
-
-% How to read this document.
+Secondary consumers of this document include the Capstone program's instructional team (serving as an update to the project's progress through Milestone I) and the authoring Capstone team itself (acting as a reference for for design decisions and project planning throughout the duration of the project).
 
 \section{Background}\label{section:background}
 \input{1_0_background}
@@ -210,17 +209,11 @@ Secondary consumers of this document include the Capstone program's instructiona
 \subsection{Major Responsibilities}
 \input{3_3_major_responsibilities}
 
-% \subsection{High-Level Tasks}
-% \input{3_4_high_level_tasks}
-
 \subsection{Schedule}
 \input{3_5_schedule}
 
 \subsection{Budget}\label{budget}
 \input{3_6_budget}
-
-% \subsection{Quality Goals}
-% \input{3_7_quality_goals}
 
 \subsection{Risk Profile}\label{risk}
 \input{3_8_risk_profile}
@@ -237,8 +230,7 @@ Secondary consumers of this document include the Capstone program's instructiona
 \subsection*{Capstone Team}
 \input{4_3_team_identification}
 
-
-% Bibliography
+% Bibliography and referneces
 \clearpage
 \addcontentsline{toc}{section}{References}
 \bibliographystyle{ieeetr}
