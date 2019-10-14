@@ -1,61 +1,64 @@
 \subsubsection{Major Schedule}
 
-\begin{figure}[!htb]
-\centering
-\newcommand{\ImageWidth}{12cm}
+\begin{figure}[H]
+       \centering
 
-\usetikzlibrary{decorations.pathreplacing,positioning, arrows.meta}
-\begin{tikzpicture}
+       \newcommand{\ImageWidth}{12cm}
+       \usetikzlibrary{decorations.pathreplacing,positioning, arrows.meta}
+       \begin{tikzpicture}
+              % draw horizontal line   
+              \draw[thick, -Triangle] (0,0) -- (\ImageWidth,0) node[font=\scriptsize,below left=3pt and -8pt]{months};
+              \node[font=\scriptsize, text height=1.75ex,text depth=.5ex] at (10.7,-0.8) {years};
 
-% draw horizontal line   
-\draw[thick, -Triangle] (0,0) -- (\ImageWidth,0) node[font=\scriptsize,below left=3pt and -8pt]{months};
-\node[font=\scriptsize, text height=1.75ex,text depth=.5ex] at (10.7,-0.8) {years};
+              % draw vertical lines
+              \foreach \x in {0,1,...,8}
+              \draw (1.25 * \x cm,3pt) -- (1.25 * \x cm,-3pt);
 
-% draw vertical lines
-\foreach \x in {0,1,...,8}
-\draw (1.25 * \x cm,3pt) -- (1.25 * \x cm,-3pt);
+              \foreach \x/\descr in {0/9, 1.25/10, 2.5/11, 3.75/12, 5/1, 6.25/2, 7.5/3, 8.75/4, 10/5}
+              \node[font=\scriptsize, text height=1.75ex, text depth=.5ex] at (\x,-.3) {\descr};
 
-\foreach \x/\descr in {0/9, 1.25/10, 2.5/11, 3.75/12, 5/1, 6.25/2, 7.5/3, 8.75/4, 10/5}
-\node[font=\scriptsize, text height=1.75ex,
-text depth=.5ex] at (\x,-.3) {$\descr$};
+              \node[font=\scriptsize, text height=1.75ex,text depth=.5ex] at (0,-0.8) {2019};
+              \node[font=\scriptsize, text height=1.75ex,text depth=.5ex] at (5,-0.8) {2020};
 
-\node[font=\scriptsize, text height=1.75ex,text depth=.5ex] at (0,-0.8) {2019};
-\node[font=\scriptsize, text height=1.75ex,text depth=.5ex] at (5,-0.8) {2020};
+              \newcommand\x{0.5}
 
-\newcommand\x{0.5}
+              \draw[green, line width=4pt] (0,\x) -- +(1.875,0);
+              \draw[blue, line width=4pt] (1.875,\x) -- +(1.6667,0);
+              \draw[red, line width=4pt] (3.541,\x) -- +(3.125,0);
+              \draw[-Triangle, dashed, red] (6.8,\x) --  +(3.2,0);
 
-\draw[green, line width=4pt] (0,\x) -- +(1.875,0);
-\draw[blue, line width=4pt] (1.875,\x) -- +(1.6667,0);
-\draw[red, line width=4pt] (3.541,\x) -- +(3.125,0);
-\draw[-Triangle, dashed, red] (6.8,\x) --  +(3.2,0);
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (0,\x+.2)  -- +(1.86,0) 
+                     node [black,midway,above=4pt, font=\scriptsize] {Milestone I};
+                     
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (1.875,\x+.2)  -- +(1.65,0) 
+              node [black,midway,above=4pt, font=\scriptsize] {Milestone II};
 
-\draw [thick ,decorate,decoration={brace,amplitude=5pt}] (0,\x+.2)  -- +(1.86,0) 
-       node [black,midway,above=4pt, font=\scriptsize] {Milestone I};
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (3.541,\x+.2)  -- +(3.05,0) 
+              node [black,midway,above=4pt, font=\scriptsize] {Milestone III};
+
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (3.541,\x+.2)  -- +(3.05,0) 
+              node [black,midway,above=4pt, font=\scriptsize] {Milestone III};
+
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (6.8,\x+.2)  -- +(3.15,0) 
+              node [black,midway,above=4pt, font=\scriptsize] {Final Prototype};
+
+              \draw[yellow, line width=4pt] (1.625,-1) -- +(1,0);
+              \draw[yellow, line width=4pt] (1.625,-2) -- +(1.5,0);
+              \draw[yellow, line width=4pt] (3.125,-3) -- +(1.25,0);
+
+              \draw[yellow, line width=4pt] (1.625,-1) -- +(1,0);
+              \draw[yellow, line width=4pt] (1.625,-2) -- +(1.5,0);
+              \draw[yellow, line width=4pt] (3.125,-3) -- +(1.25,0);
+
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (2.625,-1.2)  -- +(-1,0) 
+                     node [black,midway,below=4pt, font=\scriptsize] {Domestic Purchasing};
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (3.125,-2.2)  -- +(-1.5,0) 
+                     node [black,midway,below=4pt, font=\scriptsize] {International Purchasing};
+              \draw [thick ,decorate,decoration={brace,amplitude=5pt}] (4.375,-3.2)  -- +(-1.2,0) 
+                     node [black,midway,below=4pt, font=\scriptsize] {Drone Licensing and Certification};
        
-\draw [thick ,decorate,decoration={brace,amplitude=5pt}] (1.875,\x+.2)  -- +(1.65,0) 
-node [black,midway,above=4pt, font=\scriptsize] {Milestone II};
-
-\draw [thick ,decorate,decoration={brace,amplitude=5pt}] (3.541,\x+.2)  -- +(3.05,0) 
-node [black,midway,above=4pt, font=\scriptsize] {Milestone III};
-
-\draw [thick ,decorate,decoration={brace,amplitude=5pt}] (6.8,\x+.2)  -- +(3.15,0) 
-node [black,midway,above=4pt, font=\scriptsize] {Final Prototype};
-
-
-
-\draw[yellow, line width=4pt] (1.625,-1) -- +(1,0);
-\draw[yellow, line width=4pt] (1.625,-2) -- +(1.5,0);
-\draw[yellow, line width=4pt] (3.125,-3) -- +(1.25,0);
-
-\draw [thick ,decorate,decoration={brace,amplitude=5pt}] (2.625,-1.2)  -- +(-1,0) 
-       node [black,midway,below=4pt, font=\scriptsize] {Domestic Purchasing};
-\draw [thick ,decorate,decoration={brace,amplitude=5pt}] (3.125,-2.2)  -- +(-1.5,0) 
-       node [black,midway,below=4pt, font=\scriptsize] {International Purchasing};
-\draw [thick ,decorate,decoration={brace,amplitude=5pt}] (4.375,-3.2)  -- +(-1.2,0) 
-       node [black,midway,below=4pt, font=\scriptsize] {Drone Licensing and Certification};
-       
-\end{tikzpicture}
-\caption{Project Timeline}\label{fig:timeline}
+       \end{tikzpicture}
+       \caption{Project Timeline}\label{fig:timeline}
 \end{figure}
 
 The tentative timeline of the project is detailed in Figure \ref{fig:timeline}. Specific deliverables and goals for each milestone are detailed in sections \ref{final_milestone} and \ref{intermediate_milestone}.

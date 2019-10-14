@@ -6,6 +6,24 @@ here is considered very large in scope. The limited 8-months period is extremely
 limiting and thus will affect design decisions. The budget is a significant
 constraint which will affect the components and parts the student team chooses.
 
+The physical properties of the payload (FPGA, electronics, camera, and  DTX) is an important constraint. Since the purpose of the project
+is to validate the viability of mobile ML designs, the payload should be light and compact such
+that it can be carried on a drone for a reasonable flight time in order to carry out ML applications.
+The weight of the payload affects total flight duration, maximum altitude, airspeed, and maneuverability. 
+There is a maximum cutoff for weight such that adding more battery capacity would actually negatively affect flight duration.
+
+The power consumption of the onboard electronics also affects drone performance.
+The computation tasks done on the FPGA are relatively intense, drawing significant energy from the drone's battery. 
+The power emission is also a constraint, excess heat from the processing
+hardware need to be dissipated; however this constraint is not expected to be overly limiting.
+
+The bandwidth of video transmission is limited by transmission frequency, transmitter (DTX), and
+the implementation to interface with the transmitter. A transmitter with slightly longer range would
+significantly increase the power consumption due to inverse-square law \cite{wiki-inverse-square}.
+Moreover, the data throughput depends heavily on a successful implementation of the communciation
+protocols the student team decides to choose. Clever compression or encoding techniques may be
+employed to enhance the throughput and achieve a reasonable result.
+
 The FPGA is a highly adaptive device that can deliver almost-ASIC level speed
 but a large number of logic elements are required to implement a large model 
 such as a machine learning - computer vision - model. The inherit constraints
@@ -17,13 +35,3 @@ Common machine learning models for computer vision is designed for GPU to
 maximize parallel computing. The FPGA cannot match GPU data throughput, thus
 the limited amount of logic elements would also constrain our architecture
 design.
-
-The physical form factor of the payload (FPGA, electronics, camera, and 
-transmitter) is an important constraint. Since the purpose of the project
-is to validate the viability, the payload should be light and compact such
-that it can be carried on a drone for a reasonable flight time to carry
-out applications.
-
-The bandwidth of video transmission is also limited by transmission frequency.
-The range of transmission is constrained by transmission power which is 
-limited by power draw and heat.
