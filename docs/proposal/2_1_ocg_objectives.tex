@@ -1,26 +1,21 @@
-The main objectives have been separated into three categories.
+The main objectives are sorted by the client's priority in descending order.
 
-\textbf{Machine Learning Implementation on the FPGA}
-\begin{itemize}
-  \item The FPGA and its connected hardware receives usable video data.
-  \item Adequately implemented datapath and or processor to facilitate data-flow.
-  \item Adequately implemented machine learning model such as CNN, RNN, or YOLO in hardware.
-  \item Video can be processed in real time with help of reduced frame rates and or resolution.
-\end{itemize}
+\textbf{Integration of Electronics with the Drone}:
+Since the ultimate deliverable consists of a highly mobile computing platform,
+our utmost objective is a successful integration of computation and processing hardware with the drone.
+The equipment for capturing video data, performing processing, and transmitting digital data should be reasonably compact and easily deployable.
+The thermal characteristics and total power consumption of the device should be reasonable such that they affect minimally
+on the flight characteristics of the drone.
 
-\textbf{Integration of Electronics with the Drone}
-\begin{itemize}
-  \item The total package of the electronics and hardware (that is, equipment
-  used to gather, process, and transmit video data) is reasonably compact 
-  and deployable on a drone.
-  \item Total power draw is reasonable.
-  \item Total power output (heat) is reasonable.
-\end{itemize}
+\textbf{Air-to-Ground Data Transmission}:
+Critical to research and analytics, we need to ensure the drone payload is able to transmit video sensor data, as well as the processed data
+from the onboard hardware accelerator (FPGA). There is a ground station, consisting of a receiver and a display device (such as a mobile phone or 
+computer) receives and decodes the transmission for display, providing the user with a real-time video stream overlaid with machine learning intents.
+The wireless frequency and band chosen is compliant with local laws; no further actions are required if we utilize the WiFi protocol (802.11n/ac in 2.4GHz or 5.2GHz)
+using off-the-shelf WiFi modules.
 
-\textbf{Video Transmission to Ground Station}
-\begin{itemize}
-  \item Video stream is able to be received from the ground station along 
-        with processed ML data.
-  \item Transmission in the chosen frequency bands is legal (no further actions
-        required if 2.4GHz or 5.2GHz is used).
-\end{itemize}
+\textbf{Machine Learning Implementation on the FPGA}:
+The hardware-accelerated computing platform correctly interfaces with attached peripherals such as the camera sensor, the data transmitter (DTX), and other necessary hardware
+through use of well-defined communication protocols, such as serial or PCI-E (whichever is suitable given bandwidth requirements). 
+The FPGA should feature a starter ML model, such as (but not limited to) CNN, RNN, or YOLO, fully capable of basic computer vision.
+The netlist design for the ML models are adequately synthesized, resulting in an efficient datapath.
