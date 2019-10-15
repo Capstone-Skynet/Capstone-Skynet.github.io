@@ -1,8 +1,8 @@
 The most pressing constraints are of an administrative nature. The project described
 herein is very large in scope --- the constrained 8-month development period 
 will likely affect the team's maneuverability and ability to comprehensively mitigate risks. 
-In addition, navigating regulatory hurdles regarding drone piloting and radio data transmission (set out by 
-Transport Canada and Industry Canada, respectively) will incur additional time and resource constraints.
+In addition, navigating regulatory hurdles regarding drone piloting\cite{trans-canada} and radio data transmission\cite{indus-canada} (set out by 
+Transport Canada and Industry Canada, respectively) will incur additional time and resource constraints. Particular focus will need to be placed on the fact that UBC is within controlled airspace\cite{map} which prohibits the use of drones without special permits --- potentially limiting the team's ability to test the drone on-site.
 
 As this device is intended to be used as a development platform in the future, it is important that it is future-proofed for further modifications. As detailed in Section \ref{section:businessbackground}, FPGAs are
 inherently constrained with regards to on-chip resources. An appropriately-sized FPGA will need to be selected, capable of
@@ -12,7 +12,7 @@ This constraint is tightly coupled with the high level of legacy risk inherent i
 
 The physical properties of the payload (FPGA, electronics, camera, and  DTX) is an additional constraint. Since the purpose of the project
 is to validate the viability of mobile ML designs, the payload should be light, compact, and power efficient, such
-that it can be carried on a drone for a reasonable flight time in order to carry out useful ML applications.
+that it can be carried on a drone for a reasonable flight time (10--15 minutes) in order to carry out useful ML applications.
 The weight of the payload (and its required batteries) affects total flight duration, maximum altitude, airspeed, and maneuverability. 
 
 As the bandwidth of video transmission is limited by transmission frequency and the transmitter (DTX) itself, 
