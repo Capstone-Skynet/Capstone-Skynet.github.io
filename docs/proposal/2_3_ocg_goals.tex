@@ -1,17 +1,7 @@
-The main goal is by the end of the project, have a working implementation
-of a ML computer vision model, capable of object detection and spacial
-object tracking implemented on a commercial FPGA. The number of logic elements 
-required to implement video processing, video transmission, and other
-data tasks are within the hardware limit allowed by the budget.
-The implementation is capable of being mounted on a drone and perform ML
-tasks continuously and autonomously. Both the unprocessed (raw) and processed
-data are to be transmitted wirelessly using 2.4GHz WiFi to a ground station, 
-which could be a laptop computer, or a mobile phone. The transmitted video
-data should have reasonable quality of at least 640x480 resolution and at 
-a reasonable frame rate -- at least 10 fps. The total take-off weight of the
-drone along with the processing hardware should not exceed 25 kilograms
-(as specified by Transport Canada, a pilot with \textit{Basic Operations}
-certificate or \textit{Advanced Operations} certificate cannot operate a 
-drone heavier than 25kg). Lastly, the flight time of the drone is at least 
-1 minute and can fly to an altitude of at least +10m to prove the viability
-of the concept explored in this project.
+The ultimate goal of this project is to develop a mobile computing platform which utilizes an FPGA to perform hardware-accelerated machine learning tasks and deploy it on an unmanned multirotor aerial system (drone). 
+
+The drone should be piloted manually within the line-of-sight (LOS) of the pilot, using a ground-to-air transmitter (TX) in the form of an off-the-shelf radio controller and receiver combination. The drone should feature a flight controller capable of self-stabilization using well-tuned PIDs and,
+with the payload attached, the drone's flight duration should be at least 50\% of that without the payload (typically 10--15 minutes).
+The total takeoff mass of the integrated system should not exceed 25 kilograms --- as specified by Transport Canada, as a pilot with a \textit{Basic} or \textit{Advanced Operations} certificate cannot operate a drone heavier than 25kg\cite{trans-canada}.
+
+The machine learning model should analyze the video stream from the onboard camera and detect pedestrians within the frame with near-humanlike accuracy. The model should exploit the FPGA's inherent parallelism to accelerate key ML tasks such as matrix multiplication and convolution. The model should output the screen-space location of the detected pedestrians, with this prediction having a tolerable update latency of one second or less. In addition, the base station should display \textit{bounding boxes} surrounding the model's pedestrian predictions, overlaying a video of reasonable quality (at least 640x480, 10fps).

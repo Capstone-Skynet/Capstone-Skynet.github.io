@@ -1,3 +1,5 @@
+.vscode/
+
 /docs/*/*.aux
 /docs/*/*.bbl
 /docs/*/*.blg
@@ -9,3 +11,11 @@
 /docs/*/*.out
 /docs/*/*.synctex.gz
 /docs/*/*.toc
+
+# Ignore all the pdf documents
+docs/design/design_document.pdf
+docs/design/design_document.pdf
+docs/ops_spec/operations_specification.pdf
+docs/proposal/proposal.pdf
+docs/validation/validation_specification.pdf
+docs/reqs/reqs.pdf

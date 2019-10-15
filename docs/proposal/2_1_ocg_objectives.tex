@@ -1,26 +1,15 @@
-The main objectives have been separated into three categories.
+The main objectives are sorted by the client's priority in descending order.
 
-\textbf{Machine Learning Implementation on the FPGA}
-\begin{itemize}
-  \item The FPGA and its connected hardware receives usable video data.
-  \item Adequately implemented datapath and or processor to facilitate data-flow.
-  \item Adequately implemented machine learning model such as CNN, RNN, or YOLO in hardware.
-  \item Video can be processed in real time with help of reduced frame rates and or resolution.
-\end{itemize}
+\textbf{Integration of FPGA/Computer Vision Hardware with a Drone}:
+As the ultimate deliverable consists of a highly mobile computing platform,
+the student team's utmost objective is the successful integration of computation hardware with a drone.
+The equipment for capturing video data, performing processing, and transmitting digital data must be reasonably compact and easily deployable.
 
-\textbf{Integration of Electronics with the Drone}
-\begin{itemize}
-  \item The total package of the electronics and hardware (that is, equipment
-  used to gather, process, and transmit video data) is reasonably compact 
-  and deployable on a drone.
-  \item Total power draw is reasonable.
-  \item Total power output (heat) is reasonable.
-\end{itemize}
+\textbf{Air-to-Ground Data Transmission}:
+Critical to research and analytics, the drone payload must be able to transmit video sensor data in addition to processed data
+from the onboard hardware accelerator (FPGA). There must be a ground station, consisting of a receiver and a display device (such as a mobile phone or 
+computer) which receives and decodes the transmission for display, providing the user with a real-time video stream overlaid with machine learning intents.
 
-\textbf{Video Transmission to Ground Station}
-\begin{itemize}
-  \item Video stream is able to be received from the ground station along 
-        with processed ML data.
-  \item Transmission in the chosen frequency bands is legal (no further actions
-        required if 2.4GHz or 5.2GHz is used).
-\end{itemize}
+
+\textbf{Machine Learning Implementation on the FPGA}:
+The hardware-accelerated computing platform must correctly interface with attached peripherals (such as the camera sensor, the data transmitter (DTX), and other necessary hardware) through the use of well-defined communication protocols, such as serial or PCI-E. The hardware accelerator must feature a starter ML model, implementing existing ML structures/frameworks such as (but not limited to) CNNs, RNNs, or YOLO \cite{yolo}, ultimately being capable of basic computer vision tasks.

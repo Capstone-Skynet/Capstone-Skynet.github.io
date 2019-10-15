@@ -1,62 +1,84 @@
+\subsubsection{Risk Management}
+The student team has generated a list of potential risks which threaten the viability of the project and have assigned a likelihood and impact value to each of them (Table \ref{riskprofile}). The \textit{risk index} for each risk is the product of these two values: \textit{likelihood} and \textit{impact}.
+
+\textit{To mitigate the outlined risks, the following risk management strategy is followed:}
+
+
+If the risk index is \textbf{greater or equal to 0.4}, then the risk mitigation protocol \textit{must} be followed. This entails creating a card for the specific risk on Trello (the team's project management tool), discussing the status of the risk during the weekly group meeting, and providing immediate updates to the status of the risk on Slack as they occur.
+
+If the risk index is \textbf{less than 0.4}, then the above risk mitigation protocol \textit{may} be followed, if deemed necessary by any team member. Otherwise, the risk is simply monitored for updates.
+
+The risk profile is updated/reviewed weekly (during the team meeting) and as otherwise necessary. 
+
+
+\subsubsection{Potential Risks}
+
 \begin{center}
-\begin{longtable}{|p{0.5\linewidth}|*3{>{\centering\arraybackslash}p{0.1\linewidth}|}}
-\caption{Risk profile}\\
+
+% Make the table more stretched out
+\renewcommand{\arraystretch}{1.3} % Default value: 1
+
+\begin{longtable}{p{0.6\linewidth} *{3}{r}}
+
+\caption{Risk Profile}\\
 \hline
-\textbf{Risk description} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Risk} \\
+\textbf{Risk description} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Risk ($\downarrow$)} \\
 \hline
 \endfirsthead
+
 \multicolumn{4}{c}%
 {\tablename\ \thetable\ -- \textit{Continued from previous page}} \\
 \hline
-\textbf{Risk description} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Risk} \\
+\textbf{Risk description} & \textbf{Likelihood} & \textbf{Impact} & \textbf{Risk ($\downarrow$)} \\
 \hline
 \endhead
+
 \hline \multicolumn{4}{r}{\textit{Continued on next page}} \\
 \endfoot
+
 \hline
 \endlastfoot
-FPGA logic capacity is not enough to implement our solution.&0.5&0.5&0.5\\ \hline
-Electronics and battery are too heavy for the drone to take off.&0.5&0.5&0.5\\ \hline
-Drone cannot take off at all due to drone hardware failure.&0.5&0.5&0.5\\ \hline
-Accidents that damage to drone and FPGA that leads to extra budget that we may not have.&0.7&0.7&0.7\\ \hline
-Forced to buy cheaper components which leads to lower performance.&0.8&0.8&0.8\\ \hline
-Deliveries is not meeting client’s expectations&0.2&0.2&0.2\\ \hline
-Knowledge and skill (Machine Learning and Computer vision) required for project is not sufficient.&0.5&0.5&0.5\\ \hline
-Our scrum method is not efficient&0.5&0.5&0.5\\ \hline
-Scope of the project is underestimated which leads to burn outs&0.5&0.5&0.5\\ \hline
-Not have enough money.&0.5&0.5&0.5\\ \hline
-Not enough time commitment from team member due to other courses.&0.5&0.5&0.5\\ \hline
-Team is indecisive which leads to delay - management is not good enough to make a timely decision.&0.4&0.4&0.4\\ \hline
-Team has lack of communication and make assumptions which leads to incompatibility&0.4&0.4&0.4\\ \hline
-Documentation is not specific / complete.&0.7&0.7&0.7\\ \hline
-Not enough time to work on documentation.&0.7&0.7&0.7\\ \hline
-Peter become hostile&0.5&0.5&0.5\\ \hline
-Scope of the project is overestimated which leads to diversification of vision of the project.&0.5&0.5&0.5\\ \hline
-Not enough machine learning training data.&0.5&0.5&0.5\\ \hline
-Arthur becomes hostile&0.5&0.5&0.5\\ \hline
-Wilson becomes hostile&0.5&0.5&0.5\\ \hline
-Illegal to fly drone.&0.3&0.3&0.3\\ \hline
-New technology or research that changes the scope significantly&0.3&0.3&0.3\\ \hline
-Technical debt paydown impact project timeline.&0.4&0.4&0.4\\ \hline
-Software license does not allow our application to be delivered.&0.3&0.3&0.3\\ \hline
-Key hardware components not available&0.2&0.2&0.2\\ \hline
-Machine learning resources lack documentation&0.3&0.3&0.3\\ \hline
-Camera lack documentation&0.3&0.3&0.3\\ \hline
-FPGA lack documentation&0.3&0.3&0.3\\ \hline
-Delivered documentation not adequate for usage and upgrade.&0.5&0.5&0.5\\ \hline
-Selected software methodology creates issues with team member that decreases productivity&0.2&0.2&0.2\\ \hline
-Legal changes significantly affect project - drones in particular&0.2&0.2&0.2\\ \hline
-The final product cannot be maintained or extended.&0.7&0.7&0.7\\ \hline
-Client becoming hostile&0.2&0.2&0.2\\ \hline
-Client wants to modify scope and requirements that leads to delays or cut features.&0.2&0.2&0.2\\ \hline
-Development environment is inadequate.&0.2&0.2&0.2\\ \hline
-Sabotage&0.1&0.1&0.1\\ \hline
-Loss of client&0.1&0.1&0.1\\ \hline
-Loss of team member&0.1&0.1&0.1\\ \hline
-Equipment shipment is delayed or lost.&0.1&0.1&0.1\\ \hline
-Client is not available enough to provide significant help.&0.1&0.1&0.1\\ \hline
-Competitive offerings affect project requirement&0.1&0.1&0.1\\ \hline
-Camera doesn’t work with FPGA&0.1&0.1&0.1\\ \hline
-FPGA doesn’t work with transmission systems&0.1&0.1&0.1\\ \hline
+
+Drone flight hardware (flight controllers, radio, motors) cannot function due to crashes and/or damage. & 0.9 & 1.0 & 0.90 \\ \hline
+Payload is too heavy which significantly increases drone motor requirements and significant reduction in flight duration. & 0.8 & 0.8 & 0.64 \\ \hline
+Accidents that damage the drone and computation equipment that require extra budget that we may not have. & 0.6 & 0.9 & 0.54\\ \hline
+Total loss of drone hardware and payload during flight. & 0.5 & 1.0 & 0.50 \\\hline
+Not enough time commitment from team members. & 0.7 & 0.7 & 0.49\\ \hline
+Access to tools and shops for modifying and repairing drone hardware is inadequate or non-existent. & 0.6 & 0.8 & 0.48\\ \hline
+Underestimation of project scope or work required, leading to insufficient time management and burn-outs. & 0.5 & 0.9 & 0.45\\ \hline
+Payload is too heavy which exceeds total take-off weight. & 0.4 & 1.0 & 0.40 \\ \hline
+Legacy documents for the project are insufficient, resulting in poor maintainability/extensibility for the client. & 0.7 & 0.5 & 0.35\\ \hline
+Financial inefficiencies leading to budget overruns or lack of capital. & 0.4 & 0.8 & 0.32\\ \hline
+Constrained to purchase lower-quality components due to budget, resulting in lower performance. & 0.6 & 0.5 & 0.30 \\ \hline
+Team is indecisive or cannot make a timely decision --- resulting in delay. & 0.4 & 0.6 & 0.30\\ \hline
+Development and management technique/methodology is not effective, leading to productivity losses. & 0.4 & 0.7 & 0.28\\ \hline
+Not enough time to work on documentation. & 0.7 & 0.4 & 0.28\\ \hline
+Not enough machine learning training data. & 0.5 & 0.5 & 0.25\\ \hline
+Not enough FPGA logic elements to implement a desired ML model. & 0.5 & 0.5 & 0.25\\ \hline
+Failure to acquire regulatory compliance resulting in inability fly drone legally. & 0.3 & 0.7 & 0.21\\ \hline
+The software, tools or development environment for the project is inadequate. & 0.4 & 0.5 & 0.20\\ \hline
+Knowledge and skill regarding ML is insufficient. & 0.5 & 0.4 & 0.20 \\ \hline
+Technical debt paydown impacts project timeline. & 0.4 & 0.5 & 0.20\\ \hline
+Deliverables fail to meet client’s expectations. & 0.2 & 0.9 & 0.18 \\ \hline
+Client demands modification to the scope and requirements of the project that leads to delays or feature cuts. & 0.3 & 0.6 & 0.18\\ \hline
+Team lacks ineffective communication skills which lead to overlapping work, missed work, and/or incompatible work. & 0.4 & 0.4 & 0.16\\ \hline
+Internal documentation or documentation for libraries and parts are not sufficient for development. & 0.4 & 0.4 & 0.16\\ \hline
+Camera module lacking in documentation. & 0.2 & 0.8 & 0.16\\ \hline
+New technology or research emerges, changing the scope significantly. & 0.2 & 0.5 & 0.10\\ \hline
+Sabotage of the project. & 0.1 & 1 & 0.10\\ \hline
+Sudden loss of client. & $\leq$0.1 & 1 & 0.10\\ \hline
+Sudden loss of team member. & $\leq$0.1 & 0.9 & 0.09\\ \hline
+FPGA board lacks documentation. & $\leq$0.1 & 0.8 & 0.08\\ \hline
+Client is not cooperative or does not provide necessary information. & $\leq$0.1 & 0.8 & 0.08\\ \hline
+Key components are not available. & 0.1 & 0.7 & 0.07\\ \hline
+Purchased orders of equipment or tools delayed or lost. & 0.1 & 0.5 & 0.05\\ \hline
+Client is not available enough to provide significant help. & $\leq$0.1 & 0.5 & 0.05\\ \hline
+Lack of resources to acquire machine learning knowledge. & $\leq$0.1 & 0.5 & 0.05\\ \hline
+Camera module fails to interface with FPGA. & $\leq$0.1 & 0.5 & 0.05\\ \hline
+Data transmitter fails to interface with FPGA. & $\leq$0.1 & 0.5 & 0.05\\ \hline
+Market competition significantly affects project requirements and scope. & $\leq$0.1 & 0.4 & 0.04\\ \hline
+Software license does not allow our application to be delivered. & 0.1 & 0.3 & 0.03\\ \hline
+Laws regarding drone operation and piloting change significantly. & 0.1 & 0.2 & 0.02
+\label{riskprofile}
 \end{longtable}
 \end{center}
