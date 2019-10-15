@@ -6,8 +6,8 @@ Transport Canada and Industry Canada, respectively) will incur additional time a
 
 As this device is intended to be used as a development platform in the future, it is important that it is future-proofed for further modifications. As detailed in Section \ref{section:businessbackground}, FPGAs are
 inherently constrained with regards to on-chip resources. An appropriately-sized FPGA will need to be selected, capable of
-implementing the base-level ``glue-logic" required for the platform to operate (for example, the camera interface and data transmission logic), while still
-leaving enough available resources on the FPGA for Dr. Lis to implement his own ML models after the project's delivery. 
+implementing the base-level ``glue-logic'' required for the platform to operate (for example, the camera interface and data transmission logic), while still
+leaving enough available resources on the FPGA for the client to implement their own ML models after the project's delivery. 
 This constraint is tightly coupled with the high level of legacy risk inherent in this project, as outlined in Section \ref{risk}.
 
 The physical properties of the payload (FPGA, electronics, camera, and  DTX) is an additional constraint. Since the purpose of the project
@@ -17,7 +17,7 @@ The weight of the payload (and its required batteries) affects total flight dura
 
 As the bandwidth of video transmission is limited by transmission frequency and the transmitter (DTX) itself, 
 critical communication-related design decisions must be made early in the project.
-A transmitter with slightly longer range would significantly increase the power consumption due to inverse-square law \cite{wiki-inverse-square}.
+A transmitter with slightly longer range would significantly increase the power consumption due to inverse-square law.
 Moreover, the data throughput depends heavily on a successful implementation of the communication
 protocols the student team decides to choose. Clever compression or encoding techniques might need to be
 employed to enhance the throughput and achieve a reasonable result.
