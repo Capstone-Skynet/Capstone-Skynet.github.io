@@ -34,7 +34,7 @@
 \setlength{\parskip}{0.7\baselineskip plus 2pt}
 
 % Custom definitions
-\newcommand{\doctitle}{Requirements Document}
+\newcommand{\doctitle}{Requirements Specification}
 \newcommand{\docsubtitle}{Multirotor Computing Platform with FPGA Hardware Acceleration for Machine Learning}
 
 % Custom commands
@@ -134,9 +134,6 @@
 	\maketitle
 \end{titlepage}
 
-% Executive Summary (Not used here in proposal)
-% \include{executive_summary.tex}
-
 % Revision history
 \include{rev_history}
 
@@ -154,6 +151,69 @@
 
 % Set page and section counter
 \setcounter{page}{1}
+
+% Begin content
+\section{About This Document}\label{section:about}
+\subsection{Purpose}\label{section:about:purpose}
+\subsection{Intended Audience}\label{section:about:audience}
+\section{Context}\label{section:context}
+\section{Domain}\label{section:domain}
+
+\section{Goal}\label{section:goal}
+The ultimate goal of this project is to develop a mobile computing platform which utilizes an FPGA to perform hardware-accelerated machine learning tasks and deploy it on an unmanned multirotor aerial system (drone). 
+
+The drone should be piloted manually within the line-of-sight (LOS) of the pilot, using a ground-to-air transmitter (TX) in the form of an off-the-shelf radio controller and receiver combination. The drone should feature a flight controller capable of self-stabilization using well-tuned PIDs and,
+with the payload attached, the drone's flight duration should be at least 50\% of that without the payload (typically 10--15 minutes).
+The total takeoff mass of the integrated system should not exceed 25 kilograms --- as specified by Transport Canada, as a pilot with a \textit{Basic} or \textit{Advanced Operations} certificate cannot operate a drone heavier than 25kg.
+
+The machine learning model should analyze the video stream from the onboard camera and detect pedestrians within the frame with near-humanlike accuracy. The model should exploit the FPGA's inherent parallelism to accelerate key ML tasks such as matrix multiplication and convolution. The model should output screen-space location of the detected pedestrians, with this prediction having a tolerable update latency of one second or less. In addition, the base station should display \textit{bounding boxes} surrounding the model's pedestrians predictions, overlaying a video of reasonable quality (at least 640x480, 10fps).
+
+
+\section{Functional Specifications}\label{section:func-spec}
+The main objectives are sorted by the client's priority in descending order.
+
+\textbf{Integration of FPGA/Computer Vision Hardware with a Drone}:
+As the ultimate deliverable consists of a highly mobile computing platform,
+the student team's utmost objective is the successful integration of computation hardware with the drone.
+The equipment for capturing video data, performing processing, and transmitting digital data must be reasonably compact and easily deployable.
+
+\textbf{Air-to-Ground Data Transmission}:
+Critical to research and analytics, the drone payload must be able to transmit video sensor data, in addition to processed data
+from the onboard hardware accelerator (FPGA). There must be a ground station, consisting of a receiver and a display device (such as a mobile phone or 
+computer) which receives and decodes the transmission for display, providing the user with a real-time video stream overlaid with machine learning intents.
+
+
+\textbf{Machine Learning Implementation on the FPGA}:
+The hardware-accelerated computing platform must correctly interface with attached peripherals (such as the camera sensor, the data transmitter (DTX), and other necessary hardware) through the use of well-defined communication protocols, such as serial or PCI-E (whichever is suitable given bandwidth requirements). The hardware accelerator must feature a starter ML model, implementing existing ML structures/frameworks such as (but not limited to) CNNs, RNNs, or YOLO \cite{yolo}, being fully capable of basic computer vision tasks.
+
+\section{Non-Functional Specifications}\label{section:non-func-spec}
+
+\section{Constraints}\label{section:const}
+The most pressing constraints are of an administrative nature. The project described
+herein is very large in scope --- the constrained 8-month development period 
+will likely affect the team's maneuverability and ability to comprehensively mitigate risks. 
+In addition, navigating regulatory hurdles regarding drone piloting and radio data transmission (set out by 
+Transport Canada and Industry Canada, respectively) will incur additional time and resource constraints.
+
+As this device is intended to be used as a development platform in the future, it is important that it is future-proofed for further modifications. As detailed in Section \ref{section:businessbackground}, FPGAs are
+inherently constrained with regards to on-chip resources. An appropriately-sized FPGA will need to be selected, capable of
+implementing the base-level ``glue-logic'' required for the platform to operate (for example, the camera interface and data transmission logic), while still
+leaving enough available resources on the FPGA for the client to implement their own ML models after the project's delivery. 
+This constraint is tightly coupled with the high level of legacy risk inherent in this project, as outlined in Section \ref{risk}.
+
+The physical properties of the payload (FPGA, electronics, camera, and  DTX) is an additional constraint. Since the purpose of the project
+is to validate the viability of mobile ML designs, the payload should be light, compact, and power efficient, such
+that it can be carried on a drone for a reasonable flight time in order to carry out useful ML applications.
+The weight of the payload (and its required batteries) affects total flight duration, maximum altitude, airspeed, and maneuverability. 
+
+As the bandwidth of video transmission is limited by transmission frequency and the transmitter (DTX) itself, 
+critical communication-related design decisions must be made early in the project.
+A transmitter with slightly longer range would significantly increase the power consumption due to inverse-square law.
+Moreover, the data throughput depends heavily on a successful implementation of the communication
+protocols the student team decides to choose. Clever compression or encoding techniques might need to be
+employed to enhance the throughput and achieve a reasonable result.
+
+
 
 % Bibliography
 \clearpage
