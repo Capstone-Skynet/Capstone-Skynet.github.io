@@ -34,7 +34,7 @@
 \setlength{\parskip}{0.7\baselineskip plus 2pt}
 
 % Custom definitions
-\newcommand{\doctitle}{Design Document}
+\newcommand{\doctitle}{- Insert Document Title Here -}
 \newcommand{\docsubtitle}{Multirotor Computing Platform with FPGA Hardware Acceleration for Machine Learning}
 
 % Custom commands
@@ -138,13 +138,13 @@
 % \include{executive_summary.tex}
 
 % Revision history
-\include{rev_history}
+% \include{rev_history}
 
 % Table of contents
-\include{toc}
+% \include{toc}
 
 % Terms and Abbreviations
-\include{terms_and_abbreviations}
+% \include{terms_and_abbreviations}
 
 % List of figures and tables
 \thispagestyle{empty}
@@ -155,28 +155,13 @@
 % Set page and section counter
 \setcounter{page}{1}
 
-% TODO: fill out all the sections
-% if the sections gets too long, move them to a separte .tex document
-\section{About This Document}
+% Sections here
 
-\subsection{Purpose}
-
-\subsection{Intended Audience}
-
-\subsection{Reading Guide}
-
-\section{High Level Design}
-
-\section{Technical Subsystems Design}
-\subsection{Machine Learning Design}
-\subsection{Drone Design}
-\subsection{Video Transmission Design}
-\subsection{Base Station Design}
-% Bibliography
-\clearpage
-\addcontentsline{toc}{section}{References}
-\bibliographystyle{ieeetr}
-\bibliography{references}
+% Bibliography and referneces
+% \clearpage
+% \addcontentsline{toc}{section}{References}
+% \bibliographystyle{ieeetr}
+% \bibliography{references}
 
 % Appendix (uncomment to enable appendix)
 % \clearpage

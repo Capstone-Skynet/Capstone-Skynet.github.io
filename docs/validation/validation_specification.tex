@@ -26,20 +26,16 @@
 \usepackage{svg}
 \usepackage{subcaption}
 \usepackage{tikz}
+\usepackage{titling}
 \usepackage{url}
 \usepackage{kantlipsum}
 
 \usepackage{parskip} % Paragraph skip - adds extra lineskip spacing
 \setlength{\parskip}{0.7\baselineskip plus 2pt}
 
-% Draft watermark (comment out to remove watermark)
-% \usepackage{draftwatermark}
-% \SetWatermarkText{\textsc{Draft}}
-% \SetWatermarkScale{1}
-
 % Custom definitions
 \newcommand{\doctitle}{Validation Specification}
-\newcommand{\docsubtitle}{FPGA-Based Machine Learning on a Drone}
+\newcommand{\docsubtitle}{Multirotor Computing Platform with FPGA Hardware Acceleration for Machine Learning}
 
 % Custom commands
 \newcommand{\ts}{\textsubscript}	% Subscript command %
@@ -72,64 +68,71 @@
 
 % Meta
 \author{
-	Deutsch, Peter\\
-	\texttt{me@peterdeutsch.ca}
-	\and
-	He, Muchen\\
-	\texttt{i@muchen.ca}
-	\and
-	Hsueh, Arthur\\
-	\texttt{ah11962@outlook.com}
-	\and
-	Wang, Meng\\
-	\texttt{wzfftxwd@gmail.com}
-	\and
-	Wilson, Ardell\\
-	\texttt{ardellw96@gmail.com}
+	Deutsch, Peter &
+	\textit{me@peterdeutsch.ca}
+	\\
+	He, Muchen &
+	\textit{i@muchen.ca}
+	\\
+	Hsueh, Arthur &
+	\textit{ah11962@outlook.com}
+	\\
+	Wang, Meng &
+	\textit{wzfftxwd@gmail.com}
+	\\
+	Wilson, Ardell &
+	\textit{ardellw96@gmail.com}
 }
 \title{\doctitle}
 \date{\today}
+
+\makeatletter
+\renewcommand{\maketitle}{
+	\bgroup
+	\setlength{\parindent}{0pt}
+	\begin{flushleft}
+		% Top spacing
+		\vspace*{1in}
+
+		% Title
+		\textbf{\Huge{\@title}}\\
+		\hrulefill
+
+		% Subtitle
+		\textbf{\huge{\docsubtitle}}
+		
+		\vspace*{0.5in}
+
+		% Course number and team
+		\textbf{\Large{CPEN/ELEC 491 Capstone Team 109}}\\
+		\hspace*{0.1cm}
+		\begin{tabular}[h]{|ll}
+			\@author
+		\end{tabular}
+
+		\vspace*{0.25in}
+
+		\textbf{Website}: https://capstone-skynet.github.io
+
+		\vfill
+
+		% Logo
+		\hspace*{-0.3cm}\includegraphics[scale=0.5]{../assets/ece_logo.pdf}
+
+		% Date
+		\large{\@date}
+	\end{flushleft}
+	\egroup
+}
+\makeatother
 
 % Begin Document
 \begin{document}
 
 % Title Page
-\makeatletter % This is needed to reference the above meta data
 \begin{titlepage}
-	\begin{center}
-		% Top spacing
-		\vspace*{1.25in}
-
-		% Top line
-		\line(1, 0){400}\\
-
-		% Title
-		\Huge{\textbf{\@title}}\\[0.2cm]
-
-		% Subtitle
-		\large{\textbf{\docsubtitle}}\\[1cm]
-
-		% Course number and university
-		\Large{\textbf{CPEN/ELEC 491 Capstone Team 109}}\\
-		\textbf{University of British Columbia}\\
-
-		% Bottom line
-		\line(1, 0){400}\\[1cm]
-
-		% Authors
-		\begin{tabular}[t]{c}
-			\@author
-		\end{tabular}\\[2cm]
-
-		% Vertical fill
-		\vfill
-
-		\includegraphics[scale=0.65]{ece_logo.pdf}
-
-		\@date\\
-	\end{center}
+	\maketitle
 \end{titlepage}
-\makeatother
 
 % Executive Summary (Not used here in proposal)
 % \include{executive_summary.tex}
