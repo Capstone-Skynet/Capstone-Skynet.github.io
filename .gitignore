@@ -12,4 +12,10 @@
 /docs/*/*.synctex.gz
 /docs/*/*.toc
 
-/docs/proposal/proposal.pdf
+# Ignore all the pdf documents
+docs/design/design_document.pdf
+docs/design/design_document.pdf
+docs/ops_spec/operations_specification.pdf
+docs/proposal/proposal.pdf
+docs/validation/validation_specification.pdf
+docs/reqs/reqs.pdf
