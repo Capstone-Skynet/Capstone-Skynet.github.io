@@ -1,5 +1,5 @@
 ---
-title: Solution Path/'Our Plan'
+title: 'Solution Path / Our Plan'
 author: Peter Deutsch
 ---
 
