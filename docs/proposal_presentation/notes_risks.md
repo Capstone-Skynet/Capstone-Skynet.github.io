@@ -50,4 +50,19 @@ What if the radio or the transmitter doesn't work
 What if X doesn't work?
 What if Y breaks?
 
+We will mitigate by actively updating the specification documents, operation manual, etc.
+
+We will **not** leave these document as a last-minute consideration. These documents are to be updated in parallel as we continue with our development.
+
+# Software Risks
+
+Lowest risk in terms of severity to the project. Because 
+
+1. The software / netlist is not the top priority in terms of requirement for the client
+2. Software has workarounds that is much easier than hardware or other risks
+3. Software is cheap
+
+
+
+
 
