@@ -27,6 +27,8 @@ For each of the aforementioned categories of risks, there are their own risk mit
 
 We ranked risks involving drones as highest priority because the hardware is very fragile. A single crash of the drone could result in total loss --- with little chance of receiving extra budget.
 
+**Management:**
+
 We are actively trying to mitigate these risks by:
 
 Safety protocol such as only attaching the propellers to the drone as the last task when the drone absolutely ready for take off is an example that must be followed every time.
@@ -36,6 +38,8 @@ Safety protocol such as only attaching the propellers to the drone as the last t
 Management risks include non-technical risks such as team management, time management, and development methodology risks.
 
 The top most risk is not enough time contributed by teammates, with uniform work contributed.
+
+**Management:**
 
 Clear and effective communication and management strategies such as weekly standups, WSRs, and scrum boards are used to manage these risks
 
@@ -50,6 +54,8 @@ What if the radio or the transmitter doesn't work
 What if X doesn't work?
 What if Y breaks?
 
+**Management:**
+
 We will mitigate by actively updating the specification documents, operation manual, etc.
 
 We will **not** leave these document as a last-minute consideration. These documents are to be updated in parallel as we continue with our development.
@@ -61,6 +67,12 @@ Lowest risk in terms of severity to the project. Because
 1. The software / netlist is not the top priority in terms of requirement for the client
 2. Software has workarounds that is much easier than hardware or other risks
 3. Software is cheap
+
+**Management:**
+
+Use version tracking and code review.
+
+Consult client, experts, or the internet
 
 
 
