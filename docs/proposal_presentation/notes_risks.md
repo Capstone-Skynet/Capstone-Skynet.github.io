@@ -9,7 +9,7 @@ author: Muchen He
 
 ## What are the risks
 
-Due to limited time and budget, we are carefully considering all risks of the project. The top risks is in 3 categories: **management risks**, **hardware risks**, **software risks**, and **legacy risks**.
+We are carefully considering all risks of the project. The top risks is in 4 categories: **management risks**, **hardware risks**, **software risks**, and **legacy risks**.
 
 ### Hardware Risks
 
@@ -23,7 +23,7 @@ The top most risk is not enough time contributed by teammates, with uniform work
 
 ### Legacy Risks
 
-Because the proejc tis to be used for the long term by the client for research and development. We want to make sure the the project deliverable has acceptable longevity.
+Because the project is to be used for the long term by the client for research and development. We want to make sure the the project deliverable has acceptable longevity.
 
 What if certain part on the drone require maintenance or replacement?
 
@@ -34,11 +34,15 @@ What if Y breaks?
 
 ### Software Risks
 
+Technical debt due to poorly implemented features. Insufficient document from libraries.
+
 Lowest risk in terms of severity to the project. Because 
 
 1. The software / netlist is not the top priority in terms of requirement for the client
 2. Software has workarounds that is much easier than hardware or other risks
 3. Software is cheap
+
+
 
 ## How we manage risks
 
