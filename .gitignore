@@ -19,3 +19,7 @@ docs/ops_spec/operations_specification.pdf
 docs/proposal/proposal.pdf
 docs/validation/validation_specification.pdf
 docs/reqs/reqs.pdf
+
+# Ignore statically generated files
+_site/*
+.jekyll-cache
