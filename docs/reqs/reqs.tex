@@ -29,6 +29,7 @@
 \usepackage{titling}
 \usepackage{url}
 \usepackage{kantlipsum}
+\usepackage{enumerate}
 
 \usepackage{parskip} % Paragraph skip - adds extra lineskip spacing
 \setlength{\parskip}{0.7\baselineskip plus 2pt}
@@ -154,33 +155,97 @@
 
 % Begin content
 \section{About This Document}\label{section:about}
-This document will outline the project's requirements --- laying out the basis of a successful implementation.
 \subsection{Purpose}\label{section:about:purpose}
+This document outlines the project's requirements, laying out a basis of what is required for the project to be deemed \textit{successful}. In particular, this document outlines expected metrics related to performance, quality/longevity, environmental impact, cost, legality, and safety.
+
 \subsection{Intended Audiences}\label{section:about:audience}
+This document is intended for \textit{all project stakeholders}, including (but not limited to):
+\begin{itemize}
+\item Project Designers and Quality Controllers (the Capstone team)
+\item Client (and their representatives)
+\item External Project Sponsors
+\item Legal Personnel (The Department of Electrical and Computer Engineering, Industry Canada, Transport Canada)
+\end{itemize}
+
+\subsection{Reading Guide}\label{section:about:readingguide}
+This document describes both a high-level description of the project, in addition to detailed functional/non-functional requirements. Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the Design Specification). 
 
 \section{Functional Requirements}\label{section:goal}
-\textit{This is a first draft, and is not yet a comprehensive list of requirements.}
-\begin{itemize}
-    \item Drone has machine learning computing platform and camera attached as the payload.
-    \item Drone is self-stabilizing using its onboard flight controller.
-    \item Drone is capable of being controlled by a pilot within line-of-sight.
-    \item Total takeoff mass of the drone with payload is less than 25kg.
-    \item Onboard FPGA is capable of performing parallel matrix computation to speedup machine learning.
-    \item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames captured using the camera.
-    \item Computation platform transmits video data and ML model data to ground station.
+
+\subsection{High-Level Functional Requirements}\label{section:about:highlevel}
+
+TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the design doc) would be great here.
+
+\subsection{Detailed Functional Requirements}\label{section:about:highlevel}
+
+\subsubsection{Drone Assembly}
+\begin{enumerate}[{F.DR}.1:]
+	\item Total takeoff mass of the drone with payload is less than 25kg
+	\item Drone is self-stabilizing using its onboard flight controller.
+	\item Drone is capable of being controlled by a pilot within line-of-sight.
+
+\end{enumerate}
+
+\subsubsection{Communications}
+\begin{enumerate}[{F.CM}.1:]
+	\item Computation platform transmits video data and ML model data to ground station.
+\end{enumerate}
+
+\subsubsection{Computing Platform}
+\begin{enumerate}[{F.CP}.1:]
+	\item Captures video at a minimum resolution of $640\times 480$, 10 FPS.
+	\item Onboard FPGA is capable of performing parallel matrix computation to speedup machine learning.
+\end{enumerate}
+
+\subsubsection{Machine Learning Implementation}
+\begin{enumerate}[{F.ML}.1:]
+\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
+\item The machine learning model's processing latency is one second or less.
+
+\end{enumerate}
+
+\subsubsection{Base Station}
+\begin{enumerate}[{F.BS}.1:]
     \item Ground station displays the video data overlaid with the ML model data.
-    \item ML model data is presented in the form of bounding boxes.
-\end{itemize}
+	\item ML model data is presented in the form of bounding boxes.
+\end{enumerate}
 
 \section{Non-Functional Requirements}\label{section:non-func-spec}
-\textit{This is a first draft, and is not yet a comprehensive list of requirements.}
-\begin{itemize}
-	\item Drone has at least 50\% flight duration of that without the payload --- 10 minutes minimum.
-	\item The drone must be able to fly in fair conditions (no rain, heavy winds, etc.)
-	\item The machine learning model's processing latency is one second or less.
-	\item The video displayed on the base station should have a resolution of at least 640x480 at 10FPS.
-	\item Significant on-chip area (>50\%) should be dedicated for future client use.
-\end{itemize}
+
+\subsection{Detailed Non-Functional Requirements}
+
+TODO: We might have to split non-functional requirements into nf-reqs and constraints (the capstone docs say they're separate, but PC's don't).
+
+\subsubsection{Flight Quality}
+\begin{enumerate}[{NF.FQ}.1:]
+    \item Drone has at least 50\% flight duration of that without the payload --- 10 minutes minimum.
+    \item The drone must be able to fly in fair conditions (no rain, heavy winds, etc.).
+\end{enumerate}
+
+\subsubsection{System Reliability and Durability}
+\begin{enumerate}[{NF.SR}.1:]
+    \item 
+\end{enumerate}
+
+\subsubsection{Cost}
+\begin{enumerate}[{NF.CT}.1:]
+    \item Significant on-chip area (>50\%) should be dedicated for future client use.
+\end{enumerate}
+
+\subsubsection{Platform Extensibility}
+\begin{enumerate}[{NF.PE}.1:]
+    \item Significant on-chip area (>50\%) should be dedicated for future client use.
+\end{enumerate}
+
+\subsubsection{Legal Compliance}
+\begin{enumerate}[{NF.LG}.1:]
+    \item 
+\end{enumerate}
+
+\subsubsection{Environmental Considerations}
+\begin{enumerate}[{NF.EN}.1:]
+    \item 
+\end{enumerate}
 
 
 % Bibliography
