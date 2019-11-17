@@ -174,13 +174,29 @@ This document is intended for \textit{all project stakeholders}, including (but 
 \subsection{Reading Guide}\label{section:about:readingguide}
 This document describes both a high-level description of the project, in addition to detailed functional/non-functional requirements. Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the Design Specification). 
 
-\section{Functional Requirements}\label{section:goal}
+\section{Background}
 
-\subsection{High-Level Functional Requirements}\label{section:about:highlevel}
+% 
+% Describes the importance of a flying FPGA ML thing to the client (Mieszko).
+% 
+
+
+
+\section{Domain}
+
+The project is classified as consumer electronics integrated with components used in research and industry such as FPGA hardware accelerators. 
+
+\section{Goal}
+
+This project is different than other products on the market as we offer programmable hardware that could be taylored to a wide range of applications that require hardware acceleration, prodominately machine learning models. Popular products on the market are mostly aimed at the consumers and ``prosumers'' or content-producers with a main focus in aerial photography. While our project also features aerial photography, the emphasis is in performing real-time analytics using the captured video as well as custom features and modifications taylored to our client.
+
+\section{Functional Requirements}\label{section:funcreq}
+
+\subsection{High-Level Functional Requirements}\label{section:hlfuncreq}
 
 TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the design doc) would be great here.
 
-\subsection{Detailed Functional Requirements}\label{section:about:highlevel}
+\subsection{Detailed Functional Requirements}\label{section:dfuncreq}
 
 \subsubsection{Drone Assembly}
 \begin{enumerate}[{F.DR}.1:]
@@ -197,7 +213,7 @@ TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the 
 
 \subsubsection{Computing Platform}
 \begin{enumerate}[{F.CP}.1:]
-	\item Captures video at a minimum resolution of $640\times 480$, 10 FPS.
+	\item Captures video at a minimum resolution of 640x480 at 10fps.
 	\item Onboard FPGA is capable of performing parallel matrix computation to speedup machine learning.
 \end{enumerate}
 
@@ -214,43 +230,57 @@ TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the 
 	\item ML model data is presented in the form of bounding boxes.
 \end{enumerate}
 
-\section{Non-Functional Requirements}\label{section:non-func-spec}
+\section{Non-Functional Requirements}\label{section:nonfuncrec}
 
 \subsection{Detailed Non-Functional Requirements}
 
 TODO: We might have to split non-functional requirements into nf-reqs and constraints (the capstone docs say they're separate, but PC's don't).
 
-\subsubsection{Flight Quality}
-\begin{enumerate}[{NF.FQ}.1:]
+\subsubsection{Flight Performance}
+\begin{enumerate}[{NF.FP}.1:]
     \item Drone has at least 50\% flight duration of that without the payload --- 10 minutes minimum.
-    \item The drone must be able to fly in fair conditions (no rain, heavy winds, etc.).
+    \item The drone must be able to fly in fair conditions (assuming no rain, heavy winds, etc.).
+    \item The drone should be capable of auto-leveling, drift-correction, and perform emergency landing.
+    \item The drone should have systems for low-battery alarm and emergency protocol for low-battery and loss of control radio.
 \end{enumerate}
 
 \subsubsection{System Reliability and Durability}
 \begin{enumerate}[{NF.SR}.1:]
-    \item 
+    \item Brushless DC Motors used on the drone should have a life span of 10,000 flight-hours.
+    \item Non-computation-platform electronics are expected to have a life span of 20,000 flight hours if the procedures are followed correctly
+    \item The lithium polymer battery for the drone is expected to retain 75\% of its charge after 200 charge/discharge cycles. (TODO: make citation \url{http://learningrc.com/lipo-battery/}) 
 \end{enumerate}
 
-\subsubsection{Cost}
-\begin{enumerate}[{NF.CT}.1:]
+\section{Contraints}
+
+Constraints are not part of functional or non-function specifications.
+
+\subsection{Cost}
+\begin{enumerate}[{C.CT}.1:]
+    \item Total cost of the project should be below C\$1,000, with C\$650 provided by the Capstone course as a backup.
+    \item Operating cost of the integrated drone system upon completion should be practically free (non-including electricity cost, cost of time and labour, opportunity cost of the client, and cost for transportation).
+\end{enumerate}
+
+\subsection{Platform Extensibility}
+\begin{enumerate}[{C.PE}.1:]
     \item Significant on-chip area (>50\%) should be dedicated for future client use.
 \end{enumerate}
 
-\subsubsection{Platform Extensibility}
-\begin{enumerate}[{NF.PE}.1:]
-    \item Significant on-chip area (>50\%) should be dedicated for future client use.
+\subsection{Legal Compliance}
+\begin{enumerate}[{C.LG}.1:]
+    \item Drone is in compliance with Transport Canada's new laws (TC 15263) with regards to small remote-piloted-aerial-systems (RPAS); effective as of June 1st, 2019.
+    \item Provided drone documentation is in compliance with Transport Canada's regulations regarding drone manufacturers; documentation include safety, pre-flight, radio, operation, post-flight, and emergency procedures for the drone.
+    \item Drone is not over 25kg and will not fly over bystanders (anyone that is not actively participating in the flight operation) or within 30m of them.
+    \item Drone will not fly within 3 nautical miles of any aerodrome.
+    \item Drone will not fly over 400ft; and not fly in controlled airspaces: class A, class B, class C, class D, class E, and class F.
+    \item Drone will only fly in fair weather conditions with adequate visibility for line-of-sight operations.
+    \item Drone will not carry weapons and cannot be used or modified for weaponization.
 \end{enumerate}
 
-\subsubsection{Legal Compliance}
-\begin{enumerate}[{NF.LG}.1:]
+\subsection{Environmental Considerations}
+\begin{enumerate}[{C.EN}.1:]
     \item 
 \end{enumerate}
-
-\subsubsection{Environmental Considerations}
-\begin{enumerate}[{NF.EN}.1:]
-    \item 
-\end{enumerate}
-
 
 % Bibliography
 \clearpage
