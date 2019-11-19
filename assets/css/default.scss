@@ -4,14 +4,8 @@
 
 html { font-size: 16px; }
 body { cursor: default; line-height: 1.5; color: black; }
-h1 { font-size: 3em; line-height: 1.05; }
-h1.display { font-weight: 300; line-height: 1.2; }
-h2 { font-size: 2em; line-height: 1.2; margin-top: 1em; }
-h3 { font-size: 1.5em; line-height: 1.3; }
-h4 { font-size: 1.25em; }
-h5 { font-size: 1.15em; }
+h2 { margin-top: 1em; }
 li.nav-item.active a { border-bottom: 2px solid black; }
-li.nav-item { color: black; }
 .navbar-light .navbar-nav .nav-link { color: black; }
 .navbar-brand { font-weight: bold; padding: 0; }
 .dl-horizontal > dt { text-align: right; }
@@ -61,7 +55,6 @@ dfn:hover::after { opacity: 1; top: 1.8em; }
 iframe { display: block; margin-left: auto; margin-right: auto; margin-bottom: 1em; box-shadow: 0 .5rem 1rem rgba(0,0,0,.15); max-width: 100%; }
 ::selection { background: #4488ff44; }
 .navbar-toggler { padding: 0; border: none; }
-nav.navbar.sticky-top { box-shadow: 0px 4px 6px 0 #00000033; }
 .numeric { font-variant-numeric: tabular-nums; }
 
 #c-content p { margin: 1em 0; }
@@ -119,11 +112,3 @@ nav.navbar.sticky-top { box-shadow: 0px 4px 6px 0 #00000033; }
 #c-content div.footnotes::before { content: "References"; font-weight: bold; }
 #c-content a.footnote { background-color: #f0f0f0; padding: 1px 3px; border-radius: 3px; margin: 0 1px; }
 #c-content li .MJXc-display { display: inline; margin: inherit; }
-
-@media print {
-	#c-content { font-size: 20px !important; }
-	#c-content #markdown-toc { display: none; }
-	.jumbotron { background-color: transparent !important; }
-	.jumbotron .text-light { color: black !important; }
-	footer { display: none; }
-}
