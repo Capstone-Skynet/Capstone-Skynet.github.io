@@ -192,13 +192,13 @@ This project is different than other products on the market as we offer programm
 
 \section{Functional Requirements}\label{section:funcreq}
 
-\subsection{High-Level Functional Requirements}\label{section:hlfuncreq}
+Functional requirements describes what the project do. It embodies the essential requirements that must be completed in order for the project to be deemed deliverable or successful. The functional requirements include the scope of business rules, legal or regulartory requirements, certification requirements, and external interfacing requirements for the project.
 
 TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the design doc) would be great here.
 
-\subsection{Detailed Functional Requirements}\label{section:dfuncreq}
+This section outlines the functional requirements of the integreated system.
 
-\subsubsection{Drone Assembly}
+\subsection{Multirotor RPAS}
 \begin{enumerate}[{F.DR}.1:]
 	\item Total takeoff mass of the drone with payload is less than 25kg
 	\item Drone is self-stabilizing using its onboard flight controller.
@@ -206,18 +206,18 @@ TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the 
 
 \end{enumerate}
 
-\subsubsection{Communications}
+\subsection{Non-RPAS Air-Ground I/O}
 \begin{enumerate}[{F.CM}.1:]
 	\item Computation platform transmits video data and ML model data to ground station.
 \end{enumerate}
 
-\subsubsection{Computing Platform}
+\subsection{Computing Platform}
 \begin{enumerate}[{F.CP}.1:]
 	\item Captures video at a minimum resolution of 640x480 at 10fps.
 	\item Onboard FPGA is capable of performing parallel matrix computation to speedup machine learning.
 \end{enumerate}
 
-\subsubsection{Machine Learning Implementation}
+\subsection{Machine Learning Implementation}
 \begin{enumerate}[{F.ML}.1:]
 \item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
 \item The machine learning model's processing latency is one second or less.
@@ -232,11 +232,9 @@ TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the 
 
 \section{Non-Functional Requirements}\label{section:nonfuncrec}
 
-\subsection{Detailed Non-Functional Requirements}
-
 TODO: We might have to split non-functional requirements into nf-reqs and constraints (the capstone docs say they're separate, but PC's don't).
 
-\subsubsection{Flight Performance}
+\subsection{Multirotor RPAS}
 \begin{enumerate}[{NF.FP}.1:]
     \item Drone has at least 50\% flight duration of that without the payload --- 10 minutes minimum.
     \item The drone must be able to fly in fair conditions (assuming no rain, heavy winds, etc.).
@@ -244,7 +242,7 @@ TODO: We might have to split non-functional requirements into nf-reqs and constr
     \item The drone should have systems for low-battery alarm and emergency protocol for low-battery and loss of control radio.
 \end{enumerate}
 
-\subsubsection{System Reliability and Durability}
+\subsection{System Reliability and Durability}
 \begin{enumerate}[{NF.SR}.1:]
     \item Brushless DC Motors used on the drone should have a life span of 10,000 flight-hours.
     \item Non-computation-platform electronics are expected to have a life span of 20,000 flight hours if the procedures are followed correctly
