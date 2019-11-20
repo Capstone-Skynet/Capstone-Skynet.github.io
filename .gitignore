@@ -11,8 +11,10 @@
 /docs/*/*.out
 /docs/*/*.synctex.gz
 /docs/*/*.toc
+/docs/*/*.dvi
 
 # Ignore all the pdf documents
+docs/*/*.pdf
 docs/design/design_document.pdf
 docs/design/design_document.pdf
 docs/ops_spec/operations_specification.pdf
