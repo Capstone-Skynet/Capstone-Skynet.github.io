@@ -215,11 +215,16 @@ Functional requirements describes what the project do. It embodies the essential
 	\item Onboard FPGA is capable of performing parallel matrix computation to speedup machine learning.
 \end{enumerate}
 
+\subsection{Camera}
+\begin{enumerate}[{F.CAM}.1]
+	\item The camera must capture video for the machine learning implementation to process
+\end{enumerate}
+
 \subsection{Machine Learning Implementation}
 \begin{enumerate}[{F.ML}.1:]
-\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
-\item The machine learning model's processing latency is one second or less.
-
+	\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
+	\item The machine learning model must be supported by FPGA-based hardware acceleration.
+	\item Any Intellectual Property (IP) cores used by the hardware for machine learning must be compatible with the MIT license.
 \end{enumerate}
 
 \subsubsection{Base Station}
@@ -234,67 +239,22 @@ TODO: We might have to split non-functional requirements into nf-reqs and constr
 
 % Sectioning is done by list on the image on slack
 % Camera and ML points
-\susbsection{Performance}
-\begin{enumerate}[{NF.Perf}.1]
-	\item The machine learning model shall be supported by FPGA-based hardware acceleration.
-	\item The machine learning model shall be implemented for novel video processing applications.
-	\item The machine learning model shall have a throughput of at least 2 frames per second.
-	\item The machine learning model shall process in real time, with a latency of one second or less.
-	\item The machine learning model shall process both live inputs (from the camera) and test inputs (from a pre-recorded source). 
-	\item The machine learning model shall output metrics based on objects within a given video frame
-	\item The camera shall be capable of focusing on objects at variable distances, between 1 and 30 meters.
-	\item The camera shall resolve individual objects from a minimum height of 10 meters to a precision of 10cm across.
-	\item The camera shall support video capture at a minimum rate of 10 frames per second.
-	\item The camera shall support a minimum resolution of 640x480.
+\subsection{Camera}
+\begin{enumerate}[{NF.CAM}.1]
+	\item The cameral must use a standard interface, for future replacability
+	\item The camera must be capable of focusing on objects at variable distances, between 1 and 30 meters.
+	\item The camera must resolve individual objects from a minimum height of 10 meters to a precision of 10cm across.
+	\item The camera must support video capture at a minimum rate of 10 frames per second.
+	\item The camera must support a minimum resolution of 640x480.
 \end{enumerate}
 
-\susbsection{Scalability}
-\begin{enumerate}[{NF.Scal}.1]
-	\item The cameral shall use a standard interface, for future replacability
-\end{enumerate}
-
-\subsection{Capacity}
-\begin{enumerate}[{NF.Capa}.1]
-	\item .
-\end{enumerate}
-
-\subsection{Availability}
-\begin{enumerate}[{NF.Avai}.1]
-	\item .
-\end{enumerate}
-
-\subsection{Reliability}
-\begin{enumerate}[{NF.Reli}.1]
-	\item .
-\end{enumerate}
-
-\subsection{Recoverability}
-\begin{enumerate}[{NF.Reco}.1]
-	\item .
-\end{enumerate}
-\subsection{Serviceability}
-\begin{enumerate}[{NF.Serv}.1]
-	\item .
-\end{enumerate}
-
-\subsection{Regulatory}
-\begin{enumerate}[{NF.Regu}.1]
-	\item Any Intellectual Property (IP) cores used by the hardware for machine learning must be compatible with the MIT license.
-\end{enumerate}
-
-\subsection{Manageability}
-\begin{enumerate}[{NF.Mana}.1]
-	\item .
-\end{enumerate}
-
-\subsection{Environmental}
-\begin{enumerate}[{NF.Envi}.1]
-	\item .
-\end{enumerate}
-
-\subsection{Usability}
-\begin{enumerate}[{NF.Usab}.1]
-	\item .
+\susbsection{Machine Learning Implementation}
+\begin{enumerate}[{NF.ML}.1]
+	\item The machine learning model must be implemented for novel video processing applications.
+	\item The machine learning model must have a throughput of at least 2 frames per second.
+	\item The machine learning model must process in real time, with a latency of one second or less.
+	\item The machine learning model must process both live inputs (from the camera) and test inputs (from a pre-recorded source). 
+	\item The machine learning model must output metrics based on objects within a given video frame
 \end{enumerate}
 
 \subsection{Multirotor RPAS}
