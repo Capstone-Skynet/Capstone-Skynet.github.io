@@ -294,9 +294,37 @@ Constraints are not part of functional or non-function specifications.
     \item Drone will not carry weapons and cannot be used or modified for weaponization.
 \end{enumerate}
 
+\subsection{Power Requirements}
+\begin{enumerate}[{C.EN}.1:]
+    \item The power supply must be able to output both 5V and 12V
+    \item The power supply must be able to output at least 2A to the 5V system and 1A to the 12V system
+    \item The power supply system should have overvoltage, undervoltage, surge and reverse polarity protection
+    \item The power supply must be capable of supporting at least 10 minutes of continuous operation
+
+\end{enumerate}
+
 \subsection{Environmental Considerations}
 \begin{enumerate}[{C.EN}.1:]
-    \item 
+    \item Include a recycling plan for environmentally impactful components (i.e. LiPo batteries)
+    \item Components must be RoHS compliant
+    \item Drone must not be flown into areas from which it could not be recovered in the even of a failure (i.e. over deep water)
+
+\end{enumerate}
+
+\subsection{Manegeability}
+\begin{enumerate}[{C.EN}.1:]
+    \item The battery must easily disconnect from the drone in order to enable easy charging
+    \item The ground station must be able to easily connect to the drone
+    \item It must be possible to connect to the FPGA and to synthesize hardware without removing it from the drone
+
+
+\end{enumerate}
+
+\subsection{Documents}
+\begin{enumerate}[{C.EN}.1:]
+    \item  The system must be accompanied by an operations manual describing procedures relating to; Safety, Operations and Maintenance
+
+
 \end{enumerate}
 
 % Bibliography
