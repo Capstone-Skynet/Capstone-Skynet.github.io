@@ -160,7 +160,7 @@
 % Begin content
 \section{About This Document}\label{section:about}
 \subsection{Purpose}\label{section:about:purpose}
-This document outlines the project's requirements, laying out a basis of what is required for the project to be deemed \textit{successful}. In particular, this document outlines expected metrics related to performance, quality/longevity, environmental impact, cost, legality, and safety.
+This document outlines the project's requirements, laying out a basis of what is required for the project to be deemed \textit{successful}. In particular, this document outlines expected metrics related to performance, quality, longevity, environmental impact, cost, legality, and safety.
 
 \subsection{Intended Audiences}\label{section:about:audience}
 This document is intended for \textit{all project stakeholders}, including (but not limited to):
@@ -172,7 +172,7 @@ This document is intended for \textit{all project stakeholders}, including (but 
 \end{itemize}
 
 \subsection{Reading Guide}\label{section:about:readingguide}
-This document describes both a high-level description of the project, in addition to detailed functional/non-functional requirements. Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the Design Specification). 
+This document describes both a high-level description of the project, in addition to detailed functional requirements, non-functional requirements, and constraints. Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the Design Specification). 
 
 \section{Background}
 
@@ -184,17 +184,24 @@ TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the 
 
 \section{Domain}
 
-The project is classified as consumer electronics integrated with components used in research and industry such as FPGA hardware accelerators. 
+The project is classified as an integration of consumer electronics with components intended to be used in research and industry. In particular, specific sub-domains of this project include FPGA design, hardware acceleration, machine learning, and video acquisition/transmission. 
 
 \section{Goal}
 
-This project is different than other products on the market as we offer programmable hardware that could be taylored to a wide range of applications that require hardware acceleration, prodominately machine learning models. Popular products on the market are mostly aimed at the consumers and ``prosumers'' or content-producers with a main focus in aerial photography. While our project also features aerial photography, the emphasis is in performing real-time analytics using the captured video as well as custom features and modifications taylored to our client.
+This project aims to offer am aerial/drone platform which provides both video acquisition and supplemental programmable hardware processing capabilities on-board -- customizable to a wide range of video applications that require hardware acceleration. Current products on the market are primarily aimed at the consumers and ``prosumers'' -- content-producers whose main focus in aerial photography/videography. While our project also features aerial photography, its emphasis is in performing real-time analytics using the captured video, in addition to supplying custom features and modifications tailored to our client.
 
 \section{Functional Requirements}\label{section:funcreq}
 
-This section outlines the functional requirements of the integreated system.
+This section outlines the functional requirements of the integrated system.
 
-Functional requirements describes what the project do. It embodies the essential requirements that must be completed in order for the project to be deemed deliverable or successful. The functional requirements include the scope of business rules, legal or regulartory requirements, certification requirements, and external interfacing requirements for the project.
+Functional requirements describes what the project do. It embodies the essential requirements that must be completed in order for the project to be deemed deliverable or successful. The functional requirements include the scope of business rules, legal or regulatory requirements, certification requirements, and external interfacing requirements for the project.
+
+\subsection{High-Level Requirements}
+\begin{enumerate}[{NF.HL}.1:]
+    \item Computing Platform must perform hardware-accelerated machine-learning.
+    \item Computing Platform must be mounted on a drone capable of sustained flight.
+    \item Machine Learning Implementation must implement a novel video processing use-case, such as object detection.
+\end{enumerate}
 
 \subsection{Multirotor RPAS}
 \begin{enumerate}[{F.DR}.1:]
@@ -211,8 +218,9 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Computing Platform}
 \begin{enumerate}[{F.CP}.1:]
-	\item Captures video at a minimum resolution of 640x480 at 10fps.
-	\item Onboard FPGA is capable of performing parallel matrix computation to speedup machine learning.
+	\item Computing Platform must contain at least 1MB of non-volatile memory to store machine learning weights.
+	\item Interface with the FPGA must be capable of bitrates sufficient for video streaming (>1.5Mbps)
+	\item Computing Platform must have a physical method (ex. button) to signal a safe power-off sequence for onboard components.
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
@@ -232,12 +240,22 @@ Functional requirements describes what the project do. It embodies the essential
 
 TODO: We might have to split non-functional requirements into nf-reqs and constraints (the capstone docs say they're separate, but PC's don't).
 
+
+
+
+
 \subsection{Multirotor RPAS}
 \begin{enumerate}[{NF.FP}.1:]
     \item Drone has at least 50\% flight duration of that without the payload --- 10 minutes minimum.
     \item The drone must be able to fly in fair conditions (assuming no rain, heavy winds, etc.).
     \item The drone should be capable of auto-leveling, drift-correction, and perform emergency landing.
     \item The drone should have systems for low-battery alarm and emergency protocol for low-battery and loss of control radio.
+\end{enumerate}
+
+\subsection{Computing Platform}
+\begin{enumerate}[{NF.CP}.1:]
+	\item Computing Platform must be capable of performing a power-on self-test (POST) to ensure communications and video links are established
+	\item Computing Platform must keep its configuration across flight sessions, including if the battery has been detached
 \end{enumerate}
 
 \subsection{System Reliability and Durability}
@@ -259,7 +277,10 @@ Constraints are not part of functional or non-function specifications.
 
 \subsection{Platform Extensibility}
 \begin{enumerate}[{C.PE}.1:]
-    \item Significant on-chip area (>50\%) should be dedicated for future client use.
+    \item FPGA must contain at least 60,000 logic elements to provide sufficient on-chip capacity for initial and future machine learning implementations.
+    \item No more than 10,000 logic elements may be reserved for glue logic.
+    \item I/O ports utilized on the Computing Platform must not be proprietary, to facilitate future board replacement.
+    \item Development software used to synthesize the Computing Platform's hardware and software must be licensed and/or free-to-use, in perpetuity.
 \end{enumerate}
 
 \subsection{Legal Compliance}
