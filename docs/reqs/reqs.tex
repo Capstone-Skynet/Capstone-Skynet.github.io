@@ -209,7 +209,9 @@ Functional requirements describes what the project do. It embodies the essential
 	\item The multirotor RPAS shall perform an autonomous controlled emergency landing in the case of loss of contact with pilot's TX.
 	\item The multirotor RPAS shall be in manufacturer compliance with Transport Canada's definition of RPAS\cite{tp15263}.
 	\item The multirotor RPAS shall be registered under Transport Canada drone registry.\cite{tcdronereg}.
-	\item The drone must be able to fly in fair conditions (assuming no rain, heavy winds, etc.).
+	\item The multirotor RPAS shall be operable under norminal weather conditions.
+	\item The multirotor RPAS shall be constructed and reparable using standard, non-propriatary components, fasteners, and connectors.
+	\item The multirotor RPAS shall have landing legs or landing pads to protect the onboard equipment and dampen the impact upon landing/touch-down, emergency landing, and crash-landing.
 \end{enumerate}
 
 \subsection{Non-RPAS Air-Ground I/O}
@@ -239,10 +241,27 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Multirotor RPAS}
 \begin{enumerate}[label=NF.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item Drone has at least 50\% flight duration of that without the payload --- 10 minutes minimum.
-	\item Brushless DC Motors used on the drone should have a life span of 10,000 flight-hours.
-    \item Non-computation-platform electronics are expected to have a life span of 20,000 flight hours if the procedures are followed correctly
-    \item The lithium polymer battery for the drone is expected to retain 75\% of its charge after 200 charge/discharge cycles. (TODO: make citation \url{http://learningrc.com/lipo-battery/}) 
+	\item The multirotor RPAS shall be able to carry a maximum payload mass of 2.0 kg or 4.4 lb and achieve flight.
+	\item The multirotor RPAS maximum take off mass including the payload shall be less than 25.0 kg in compliance with Transport Canada TC-15263.\cite{tp15263}
+	\item The multirotor RPAS shall withstand 5 nautical miles (knots) of crosswind during operation.
+	\item The multirotor RPAS shall receive pilot TX signals via 2.4 GHz radio from 300 m or 1000 ft away.
+	\item The multirotor RPAS orientation LEDs shall be clearly visible from 300 m or 1000 ft away.
+	\item The multirotor RPAS flight controllers systems shall respond to pilot controls with less than 100ms of latency.
+	\item The multirotor RPAS shall have a hovering flight duration of 30 minutes with 1.0 kg of payload.
+	\item The brushless DC (BLDC) motors shall have a kV constant between 800 and 1200.
+	\item The BLDC motors and propellers shall output at least 8,000 N of thrust at maximum throttle.
+	\item The BLDC motors and propellers shall have an optimal efficiency of at least 50 N/W.
+	\item The BLDC motors and propellers shall have a combined mass of less than 100g.
+	\item The electronic speed controller (ESC) for controlling BLDC motor speeds shall have maximum current output of 30 A.
+	\item The ESC shall not exceed operating temperature of 60 degrees Celsius at maximum load operation.
+	\item The ESC shall operate at maximum load --- at 90\% of the maximum current draw --- for 60 seconds.
+	\item The multirotor RPAS battery shall be a high-power-output Lithium Polymer (LiPo) battery with 5000 mAh to 6000 mAh capacity and discharge rating of at least 30 C to 40 C.
+	\item The multirotor RPAS battery capacity shall not exceed 6700 mAh.
+	\item The LiPo batteries shall retain 75\% of its initial maximum capacity after 200 charge-discharge cycles.\cite{lipobattery}
+	\item The low-battery warning system shall trigger the flight controller to enter an emergency landing protocol when battery is at or below 5\% of the total charge capacity.
+	\item The flight controller shall automatically enter emergency landing protocol when pilot radio control feed has been cut for more than 1.0 seconds with a maximum descend rate of 0.5 m/s.
+	\item The multirotor RPAS airframe mass shall not exceed 400 g.
+	\item The multirotor RPAS airframe opposite motor-to-motor distance shall be 450 mm for 4-engine multirotor or 650mm for 6-engine motor.
 \end{enumerate}
 
 \section{Contraints}
@@ -269,6 +288,7 @@ Functional requirements describes what the project do. It embodies the essential
     \item Drone will not fly over 400ft; and not fly in controlled airspaces: class A, class B, class C, class D, class E, and class F.
     \item Drone will only fly in fair weather conditions with adequate visibility for line-of-sight operations.
     \item Drone will not carry weapons and cannot be used or modified for weaponization.
+    \item Lithium batteries cannot be larger than 100Wh for it to be carried onto a commerial airplane. For a 4S cell battery (14.8 nomial voltage), this capacity is 6700 mAh.
 \end{enumerate}
 
 \subsection{Power Requirements}
