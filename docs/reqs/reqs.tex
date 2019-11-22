@@ -224,7 +224,9 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Non-RPAS Air-Ground I/O}
 \begin{enumerate}[label=F.CM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item Computation platform transmits video data and ML model data to ground station.
+	\item The Air-Ground communication shall be bi-directional and have a transmission distance of at least 30 meters.
+	\item The Air-Ground communication shall be estabilished under IEEE 802.11n protocol.
+	\item The Air-Ground communication shall be established automatically.
 \end{enumerate}
 
 \subsection{Computing Platform}
@@ -242,8 +244,13 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsubsection{Base Station}
 \begin{enumerate}[label=F.BS.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item Ground station displays the video data overlaid with the ML model data.
-	\item ML model data is presented in the form of bounding boxes.
+    \item Base station shall display the video data overlaid with the ML model data.
+	\item Base station shall display the ML model data in the form of bounding boxes.
+	\item Base station shall support bi-directional data transfer with computing platform.
+	\item Base station shall have a user interface for sending control commands to the computing platform.
+    \item Base station shall be capable of storing metadata received from the drone for further analysis.
+    \item Base station shall be in the form of a mobile, battery powered device.
+    \item Base station shall prominently display system faults/warnings to the user.
 \end{enumerate}
 
 \section{Non-Functional Requirements}\label{section:nonfuncrec}
