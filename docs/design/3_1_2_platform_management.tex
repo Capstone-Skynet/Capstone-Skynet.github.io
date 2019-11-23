@@ -15,7 +15,7 @@ The selected device to implement the platform management system is the Raspberry
 \item is relatively inexpensive (CAN\$45 in November 2019),
 \item has a large support community and a wealth of driver/library support,
 \item supports a wide range of high throughput I/O standards (USB/WiFi/Ethernet/Serial, \textbf{F.CP.3}),
-\item provides an industry-standard camera interface (\textbf{F.CAM.2}),
+\item provides an industry-standard camera interface (\textbf{F.CAM.2}), and
 \item supports extensible non-volatile storage (\textbf{F.CP.2})\\
 \end{itemize} 
 
@@ -44,8 +44,8 @@ An additional consideration in selecting the two-board design regards platform e
 To interface with the programmable logic board, data packets are sent via a bi-directional TCP/IP-managed Ethernet connection. TCP/IP over Ethernet was selected in lieu of serial solutions (such as I2C) as it:
 \begin{itemize}
 \item is equally as ubiquitous on modern programmable logic boards,
-\item has a considerably higher maximum throughput (1 Gbps vs 400Kbps) (\textbf{F.CP.3}),
-\item has more resilient error correction capabilities (\textbf{F.CP.1})
+\item Ethernet has higher maximum throughput (1 Gbps on Ethernet vs. 400 Kbps on serial) (\textbf{F.CP.3}), and
+\item Ethernet has more resilient error correction capabilities. (\textbf{F.CP.1})
 \end{itemize} 
 
-The selection of Ethernet over serial precludes the use of the \textit{Zero W} variant of the Raspberry Pi, as the Zero W does not provide Ethernet support. While the Raspberry Pi 4 is considerably heavier (46g vs 9g), this difference is marginal when considering the total weight of the multirotor.
+The selection of Ethernet over serial precludes the use of the \textit{Zero W} variant of the Raspberry Pi, as the Zero W does not provide Ethernet support. While the Raspberry Pi 4 is considerably heavier (46 g for Raspberry Pi 4 vs. 9 g for Raspberry Pi Zero W), this difference is marginal when considering the total weight of the multirotor.
