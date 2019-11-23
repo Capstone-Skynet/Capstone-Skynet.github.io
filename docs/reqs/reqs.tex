@@ -228,28 +228,24 @@ Functional requirements describes what the project do. It embodies the essential
 
 % Camera and ML points
 \subsection{Camera}
-\begin{enumerate}[{F.CAM}.1]
+\begin{enumerate}[label=F.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The camera must capture video for the machine learning implementation to process
 	\item The cameral must use a standard interface, for future replacability
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
 <<<<<<< HEAD
-\begin{enumerate}[{F.ML}.1:]
+
+\begin{enumerate}[label=F.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
 	\item The machine learning model must be supported by FPGA-based hardware acceleration.
 	\item The machine learning model must be implemented for novel video processing applications.
 	\item Any Intellectual Property (IP) cores used by the hardware for machine learning must be compatible with the MIT license.
-	\item The machine learning model must have a throughput of at least 2 frames per second.
 	\item The machine learning model must process in real time, with a latency of one second or less.
 	\item The machine learning model must process both live inputs (from the camera) and test inputs (from a pre-recorded source). 
-	\item The machine learning model must output metrics based on objects within a given video frame
-=======
-\begin{enumerate}[label=F.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
-	\item The machine learning model's processing latency is one second or less.
->>>>>>> master
+	\item The machine learning model must output metrics based on objects within a given video frame.
 \end{enumerate}
+
 
 \subsubsection{Base Station}
 \begin{enumerate}[label=F.BS.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
@@ -264,7 +260,7 @@ TODO: We might have to split non-functional requirements into nf-reqs and constr
 
 % Camera and ML points
 \subsection{Camera}
-\begin{enumerate}[{NF.CAM}.1]
+\begin{enumerate}[label=NF.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The camera must be capable of focusing on objects at variable distances, between 1 and 30 meters.
 	\item The camera must resolve individual objects from a minimum height of 10 meters to a precision of 10cm across.
 	\item The camera must support video capture at a minimum rate of 10 frames per second.
@@ -272,8 +268,8 @@ TODO: We might have to split non-functional requirements into nf-reqs and constr
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
-\begin{enumerate}[{NF.ML}.1]
-	\item .
+\begin{enumerate}[label=NF.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The machine learning model must have a throughput of at least 2 frames per second.
 \end{enumerate}
 
 =======
