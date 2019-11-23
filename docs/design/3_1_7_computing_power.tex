@@ -1,1 +1,10 @@
 TODO: Describe power requirements of \textit{computing platform} here. What voltages do we need? What transformers do we need? How much power does each board consume? What kind of batteries have we considered? What kind of safety mechanisms do we need for LiPos to make sure they don't over discharge?
+
+There are two boards that need to be powered on the drone, the Raspberry Pi and the Zedboard. The Raspberry Pi requires
+5V, has a maximum current draw of 1A and a typical current draw of 400mA. The Zedboard requires 12V, has a maximum current draw of
+4A and a typical current draw of 1A. In addition to being able to meet these curent and voltage requirements, the power system also
+needs to be light enough not to significantly impact the operation of the drone and provide continous power for at least 10 minutes.
+
+In order to facilitate this with a margin for effor the system will powered by a 1 Ah battery with a voltage of either 7.4V or 11.1V.
+In order to supply the required voltage the battery will connect to a buck converter that will supply the 5V for the pi and a boost or
+buck-boost that will supply the 12V for the Zedboard.
