@@ -237,7 +237,6 @@ Functional requirements describes what the project do. It embodies the essential
 \end{enumerate}
 
 % Camera and ML points
-<<<<<<< HEAD
 \subsection{Camera}
 \begin{enumerate}[label=F.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The camera must capture video for the machine learning implementation to process
@@ -245,8 +244,6 @@ Functional requirements describes what the project do. It embodies the essential
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
-<<<<<<< HEAD
-
 \begin{enumerate}[label=F.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
 	\item The machine learning model must be supported by FPGA-based hardware acceleration.
@@ -256,12 +253,10 @@ Functional requirements describes what the project do. It embodies the essential
 	\item The machine learning model must process both live inputs (from the camera) and test inputs (from a pre-recorded source). 
 	\item The machine learning model must output metrics based on objects within a given video frame.
 \end{enumerate}
-=======
-
->>>>>>> master
 
 
-\subsubsection{Base Station}
+
+\subsection{Base Station}
 \begin{enumerate}[label=F.BS.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
     \item Base station shall display the video data overlaid with the ML model data.
 	\item Base station shall display the ML model data in the form of bounding boxes.
@@ -274,36 +269,14 @@ Functional requirements describes what the project do. It embodies the essential
 
 \section{Non-Functional Requirements}\label{section:nonfuncrec}
 
-<<<<<<< HEAD
 \subsection{Computing Platform}
 \begin{enumerate}[label=NF.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item Computing Platform must be capable of performing a power-on self-test (POST) to ensure communications and video links are established
 	\item Computing Platform must have persistent configuration using non-volatile memory, even in the case of power cut
 \end{enumerate}
 
-=======
-<<<<<<< HEAD
-TODO: We might have to split non-functional requirements into nf-reqs and constraints (the capstone docs say they're separate, but PC's don't).
+%TODO: We might have to split non-functional requirements into nf-reqs and constraints (the capstone docs say they're separate, but PC's don't).
 
-% Camera and ML points
-<<<<<<< HEAD
-\subsection{Camera}
-\begin{enumerate}[label=NF.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The camera must be capable of focusing on objects at variable distances, between 1 and 30 meters.
-	\item The camera must resolve individual objects from a minimum height of 10 meters to a precision of 10cm across.
-	\item The camera must support video capture at a minimum rate of 10 frames per second.
-	\item The camera must support a minimum resolution of 640x480.
-\end{enumerate}
-
-\subsection{Machine Learning Implementation}
-\begin{enumerate}[label=NF.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The machine learning model must have a throughput of at least 2 frames per second.
-\end{enumerate}
-=======
-
-=======
->>>>>>> master
->>>>>>> 7beb5f756917184ac34a78d482cfa6919ccd713a
 \subsection{Multirotor RPAS}
 \begin{enumerate}[label=NF.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The multirotor RPAS must be able to carry a maximum payload mass of 2.0 kg and achieve flight.
@@ -327,6 +300,20 @@ TODO: We might have to split non-functional requirements into nf-reqs and constr
 	\item The flight controller must automatically enter emergency landing protocol when pilot radio control feed has been cut for more than 1.0 seconds with a maximum descend rate of 0.5 m/s.
 	\item The multirotor RPAS airframe mass must not exceed 400 g.
 	\item The multirotor RPAS airframe opposite motor-to-motor distance must be 450 mm for 4-engine multirotor or 650mm for 6-engine multimotor.
+\end{enumerate}
+
+% Camera and ML points
+\subsection{Camera}
+\begin{enumerate}[label=NF.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The camera must be capable of focusing on objects at variable distances, between 1 and 30 meters.
+	\item The camera must resolve individual objects from a minimum height of 10 meters to a precision of 10cm across.
+	\item The camera must support video capture at a minimum rate of 10 frames per second.
+	\item The camera must support a minimum resolution of 640x480.
+\end{enumerate}
+
+\subsection{Machine Learning Implementation}
+\begin{enumerate}[label=NF.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The machine learning model must have a throughput of at least 2 frames per second.
 \end{enumerate}
 
 \section{Contraints}
