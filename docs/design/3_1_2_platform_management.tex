@@ -1,4 +1,4 @@
-The platform management board manages all \textit{computing} I/O required by the multirotor: interfacing with the camera, programmable logic board (hosting the machine learning implementation), and the base-station. It is \textit{not} for use for flight control of the multirotor -- such systems are described in \ref{avionics}.
+The platform management board manages all \textit{computing} I/O required by the multirotor: interfacing with the camera, programmable logic board (hosting the machine learning implementation), and the base-station. A separate system is used for the multirotor's flight control.
 
 A decomposition of the system is seen in Figure XX
 
@@ -12,7 +12,7 @@ A decomposition of the system is seen in Figure XX
 
 The selected device to implement the platform management system is the Raspberry Pi 4 (Model B). As seen in Figure \ref{rpi}, the Raspberry Pi 4 is a small single-board computer which hosts an ARM Cortex A72 CPU, a CSI camera interface, 40 serial pins, WiFi/Bluetooth, and a (1 gigabit) ethernet port. The Raspberry Pi 4 was selected over other single-computer platforms (such as Arduino/Beagleboard) as it:
 \begin{itemize}
-\item is relatively inexpensive (\$45 in November 2019),
+\item is relatively inexpensive (CAN\$45 in November 2019),
 \item has a large support community and a wealth of driver/library support,
 \item supports a wide range of high throughput I/O standards (USB/WiFi/Ethernet/Serial, \textbf{F.CP.3}),
 \item provides an industry-standard camera interface (\textbf{F.CAM.2}),
@@ -31,9 +31,11 @@ The overall data flow managed by the Raspberry Pi is as follows:
 \item (Optional) Results and video are stored locally on non-volatile storage for post-flight analysis
 \end{enumerate}
 
+All operations are managed by the ARM Cortex A72 chip running a headless version of the Raspbian operating system. 
+
 \textbf{Single-Board vs Two-Board Solution}
 
-The presence of on-board WiFi/Camera interfaces is the primary driving factor towards a two-board (Platform Management and Programmable) solution. While a single-board solution is possible, the development effort and cost of the computing platform would be considerably higher. Most programmable logic boards (including our chosen board, the Zedboard) require external expansion devices to interface with peripherals such as WiFi/cameras. These expansion devices, which connect to the programmable logic board via a serial connection, have poorly documented drivers and are of considerable expense -- ranging from \$25 USD for a basic WiFi module to \$200 USD for a compatible camera interface card. External expansion devices also require considerable glue logic resources on the programmable logic board, potentially risking non-compliance with constraint \textbf{C.EX.2}.
+The presence of on-board WiFi/Camera interfaces is the primary driving factor towards a two-board (Platform Management and Programmable) solution. While a single-board solution is possible, the development effort and cost of the computing platform would be considerably higher. Most programmable logic boards (including our chosen board, the Zedboard) require external expansion devices to interface with peripherals such as WiFi/cameras. These expansion devices, which connect to the programmable logic board via a serial connection, have poorly documented drivers and are of considerable expense -- ranging from US\$25 for a basic WiFi module to US\$200 for a compatible camera interface card. External expansion devices also require considerable glue logic resources on the programmable logic board, potentially risking non-compliance with constraint \textbf{C.EX.2}.
 
 An additional consideration in selecting the two-board design regards platform extensibility -- the client may desire to increase the Programmable Logic capabilities of the Computing Platform in the future, requiring a board swap. If a single-board solution is implemented, the client would be required to migrate \textit{all} hardware/software to the larger board, requiring them to devote considerable effort to debug driver issues. Additionally, as the external expansion devices are not necessarily compatible with all programmable logic boards -- adding constraints to the client's board selection or requiring the purchase of new interface cards. By offloading the interfacing work to a distinct \textit{platform management} board, the client can easily replace the PL board without considerable redevelopment (fulfilling constraint \textbf{C.EX.3}).
 
@@ -47,6 +49,3 @@ To interface with the programmable logic board, data packets are sent via a bi-d
 \end{itemize} 
 
 The selection of Ethernet over serial precludes the use of the \textit{Zero W} variant of the Raspberry Pi, as the Zero W does not provide Ethernet support. While the Raspberry Pi 4 is considerably heavier (46g vs 9g), this difference is marginal when considering the total weight of the multirotor.
-
-
-
