@@ -231,8 +231,9 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Computing Platform}
 \begin{enumerate}[label=F.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item Computing Platform must use noise-tolerant communications protocols to avoid drone interference.
 	\item Computing Platform must contain at least 1MB of non-volatile memory to store machine learning weights.
-	\item Interface with the FPGA must be capable of bitrates sufficient for video streaming (>1.5Mbps)
+	\item Interface with the FPGA must be capable of bitrates sufficient for video streaming (>1.5 Mbps).
 	\item Computing Platform must have a physical method (ex. button) to signal a safe power-off sequence for onboard components.
 \end{enumerate}
 
@@ -240,7 +241,7 @@ Functional requirements describes what the project do. It embodies the essential
 \subsection{Camera}
 \begin{enumerate}[label=F.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The camera must capture video for the machine learning implementation to process
-	\item The cameral must use a standard interface, for future replacability
+	\item The camera must use a standard interface, for future replacability.
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
@@ -248,7 +249,6 @@ Functional requirements describes what the project do. It embodies the essential
 	\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
 	\item The machine learning model must be supported by FPGA-based hardware acceleration.
 	\item The machine learning model must be implemented for novel video processing applications.
-	\item Any Intellectual Property (IP) cores used by the hardware for machine learning must be compatible with the MIT license.
 	\item The machine learning model must process in real time, with a latency of one second or less.
 	\item The machine learning model must process both live inputs (from the camera) and test inputs (from a pre-recorded source). 
 	\item The machine learning model must output metrics based on objects within a given video frame.
@@ -328,8 +328,15 @@ Functional requirements describes what the project do. It embodies the essential
     \item FPGA must contain at least 60,000 logic elements to provide sufficient on-chip capacity for initial and future machine learning implementations.
     \item Glue logic must not reserve more than 10,000 logic elements.
     \item I/O ports utilized on the Computing Platform must not be proprietary, to facilitate future board replacement.
-    \item Development software used to synthesize the Computing Platform's hardware and software must be licensed and/or free-to-use, in perpetuity.
 \end{enumerate}
+
+\subsection{Licensing}
+\begin{enumerate}[label=C.EX.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+    \item The project must be released under the MIT license.
+    \item Any third-party Intellectual Property (IP) used by the hardware or software must be compatible with the MIT license.
+    \item Development software used to synthesize the Computing Platform's hardware and software must be free-to-use, in perpetuity.
+\end{enumerate}
+
 
 \subsection{Legal Compliance}
 \begin{enumerate}[label=C.LC.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
