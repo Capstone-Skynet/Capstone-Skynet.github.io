@@ -3,7 +3,7 @@
 % 
 
 
-While machine learning is the topic that provides the context of the project, this project is not focused on creating a machine learning model. Rather, the intention is to create a mobile computing platform that will \_allow\_ the client to perform research regarding hardware-accelerated machine-learning models.
+While machine learning is the topic that provides the context of the project, this project is not focused on creating a machine learning model. Rather, the intention is to create a mobile computing platform that will \textit{allow} the client to perform research regarding hardware-accelerated machine-learning models.
 
 A mobile computing platform means we are able to perform processing in unaccessilble locations. A user can program the logic to perform one application, allow the system to perform that function autonomously and remotely, and then program the logic for a completely differnent application, without having switch its processing hardware.
 
@@ -23,9 +23,11 @@ A mobile computing platform means we are able to perform processing in unaccessi
 \subsubsection{Project Implementation}
 The machine learning implementation is not the focus of this project but it is required to demonstrate the capabilities of the mobile computing platform. 
 
-The hardware accelerators used for machine learning can be applied in CPUs, GPUs, FPGAs and ASICs. The client would like to use FPGAs to prototype their machine learning hardware designs, and thus our implementation will be on an FPGA. Justifications for the choice of the FPGA have been discussed previously in section~\ref{sec:Programmable Logic Board}.
+The hardware accelerators used for machine learning can be applied in CPUs, GPUs, FPGAs and ASICs. The client would like to use FPGAs to prototype their machine learning hardware designs, and thus our implementation will be on an FPGA.
 
-Our solution would be a simple hardware accelerated machine learning algorithm capable of processing live and test video and outputting metadata that can be analyzed. This will be in the form of simple object detection. The deep learning approach for this application is the use of Convolutional Neural Networks (CNN), which is the most common class of deep nerual networks (DNN) used in analyzing visual imagery.
+Our solution would be a simple hardware accelerated machine learning algorithm capable of processing live and test video and outputting metadata that can be analyzed. This will be in the form of simple object detection. The logic capacity of the FPGA will define the complexity of the machine learning algorithm and how much hardware it can occupy. Justifications for the choice of the FPGA as well as the choice of the hardware acceleration implementation have been discussed previously in section~\ref{programmable_logic}.
+
+The deep learning approach for this application is the use of Convolutional Neural Networks (CNN), which is the most common class of deep nerual networks (DNN) used in analyzing visual imagery. 
 
 Because this is a mobile platform, the computing platform serves to take in physical data from the external world, process it, and output data that can be analyzed. Examples of real-world situations that fit into this category include disaster response, wildlife management, pedestraian detection and demographic studies.
 
