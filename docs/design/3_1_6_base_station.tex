@@ -6,27 +6,19 @@ The base station is a mobile device that connects to the computing platform on t
     \item controlling the computing platform (ex. starting object detection).
 \end{itemize}
 
-\textbf{Options for the Base Station}
+\textbf{Base Station Device Options}
 
-First option is a laptop. A laptop is a portable personal computer which has the following features:
-\begin{itemize}
-    \item It has a screen.
-    \item It has a Wi-Fi transceiver. (\textbf{F.CM.3})
-    \item It has a flash storage of at least 128GB.
-    \item It is running Windows or macOS or Linux operating system, all of them are capable of running most video processing programs.
-    \item It has an adequate processor for video processing.
-    \item It is portable and has at least 3-hour battery life. (\textbf{F.BS.3})
-\end{itemize}
+We have two options of devices that can be used as a base station, a laptop or mobile devices such as cellphone or tablet. The common features of these two options are: they both equipped with a screen which can be used to display the video and ML results; they both have a Wi-Fi transceiver (\textbf{F.BS.3}); they both have a flash storage that can be used to store the testing data (\textbf{F.BS.6}).
 
-The second option is a tablet. Nowadays tablets are very similar to laptops in many ways. It has all the features listed above except it is running Android or iOS operating system. These mobile operating systems do not have support for running video processing programs. So it can not be used to have further analysis on the video data.
+One functionality that mobile devices lack is the support for the machine learning platform (i.e. TensorFlow). The client may want to redo the ML process on the base station for further analysis and that can only be done on a computer/laptop.
 
 \textbf{Base Station Setup}
 
-We chose the laptop as the primary base station. The primary base station is capable of doing all tasks of the base station. There could also be multiple secondary base stations. They can be either laptop or tablet. These secondary base stations may only be used to monitoring the status of the system and send control commands to the computing platform. The client can choose to use either of these base stations while testing but any further analysis on the data need to be done on the primary base station.
+We chose the laptop as the primary base station. This primary base station is capable of doing all tasks of the base station. We will add secondary base stations with limited functionalities to the system if time permits. These secondary base stations can be either laptop or tablet. They can only be used to view the ML results and monitoring the status of the system. The client can choose to use either of these base stations while testing but any further analysis on the data need to be done on the primary base station.
 
 \textbf{Display the Result}
 
-The main task of the base station is to verify the ML result. On the base station, the ML result will be displayed as a bounding box around the detected object in the frame. The ML result that the base station receives consists of two parts: coordinates of the upper-left vertex of the bounding box in the frame and values of height and width of the bounding box. The operations that the base station performs after receiving the data are:
+The main task of the base station is to verify the ML results. Different machine learning applications could have results in different forms. For object detection, the ML results will be displayed as a bounding box around the detected object in the frame. The ML result that the base station receives consists of two parts: coordinates of the upper-left vertex of the bounding box in the frame and values of height and width of the bounding box. The operations that the base station performs after receiving the data are:
 \begin{enumerate}
     \item Calculates which pixels in the current frame form the desired bounding box and thus need to be re-programmed to a dedicated colour.
     \item Modify these pixels in the frame.
