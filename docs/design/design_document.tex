@@ -162,47 +162,61 @@
 % TODO: fill out all the sections
 % if the sections gets too long, move them to a separte .tex document
 \section{About This Document}
-This document will contain a concise description of the design decisions made during the project.
-
 \subsection{Purpose}
+This document serves to provide a concise description of the primary design decisions made throughout the Multirotor Computing Platform project. In addition to providing a high-level overview of the system architecture, this design specification provides specific rationale for the design of each of the project's various subsystems.
 
 \subsection{Intended Audience}
+This document is intended for the:
+\begin{itemize}
+\item Project Designers and Quality Controllers (the Capstone team),
+\item Client (and their representatives),
+\item External Project Sponsors,
+\item and Legal Personnel (The Department of Electrical and Computer Engineering, Industry Canada, Transport Canada)
+\end{itemize}
 
 \subsection{Reading Guide}
+
+This document begins in Section \ref{high_level_design} with a high-level decomposition of the product into its two major components: the \textit{Computing Platform} and the \textit{Multirotor}. The document then conveys the technical decisions made for the subsystems of each component, and provides rationale as to why they are the best solution given the project's requirements and constraints (as detailed in the \textit{Requirements Document}). 
+
+The \textit{Computing Platform} subsections are ordered by their stage in the device's data flow -- video capture is discussed first, then processing, and finally data conveyance to the user.
 
 \section{High Level Design}\label{high_level_design}
 \input{2_0_high_level_design}
 
-\section{Technical Subsystems Design}\label{technical_design}
+\section{Computing Platform Technical Design}\label{computing_platform}
 
-\subsection{Computing Platform}\label{computing_platform}
+\begin{figure}\label{pcdiag}
+\centering
+\includegraphics[width=16.5cm]{img/pc_diagram.pdf}
+\caption{Computing Platform Block Diagram}
+\end{figure}
 
-\subsubsection{Video Capture}\label{video_capture}
+\subsection{Video Capture}\label{video_capture}
 \input{3_1_1_video_capture}
 
-\subsubsection{Platform Management Board}\label{platform_management}
+\subsection{Platform Management Board}\label{platform_management}
 \input{3_1_2_platform_management}
 
-\subsubsection{Programmable Logic Board}\label{programmable_logic}
+\subsection{Programmable Logic Board}\label{programmable_logic}
 \input{3_1_3_programmable_logic}
 
-\subsubsection{Machine Learning}\label{machine_learning}
+\subsection{Machine Learning}\label{machine_learning}
 \input{3_1_4_machine_learning}
 
-\subsubsection{Communications}\label{communications}
+\subsection{Communications}\label{communications}
 \input{3_1_5_communications}
 
-\subsubsection{Base Station}\label{base_station}
+\subsection{Base Station}\label{base_station}
 \input{3_1_6_base_station}
 
-\subsubsection{Computing Power}\label{computing_power}
+\subsection{Computing Power}\label{computing_power}
 \input{3_1_7_computing_power}
 
-\subsection{Multirotor}\label{multirotor}
-\subsubsection{Avionics}\label{avionics}
+\section{Multirotor Technical Design}\label{multirotor}
+\subsection{Avionics}\label{avionics}
 \input{3_2_1_avionics}
 
-\subsubsection{Drone Power}\label{drone_power}
+\subsection{Drone Power}\label{drone_power}
 \input{3_2_2_drone_power}
 
 % Bibliography
