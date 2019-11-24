@@ -15,6 +15,7 @@
 \usepackage{multicol}
 \usepackage{nth}
 \usepackage{longtable}
+\usepackage{float}
 
 % Use Helvetica
 \usepackage[scaled]{helvet}
@@ -163,20 +164,80 @@
 % TODO: fill out all the sections
 % if the sections gets too long, move them to a separte .tex document
 \section{About This Document}
-This document will outline the project's quality measurements and test strategies.
 
 \subsection{Purpose}
+This document serves to outline the methods, tests, and scenarios which are used to validate the project, and the status of these validation steps. 
 
 \subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+\item \textbf{Quality Controllers (the Capstone team)}: to assess the validation methodology and results,
+\item \textbf{Designers (the Capstone team)}: to assess the current degree of completion of the project,
+\item \textbf{Client (and their representatives)}: to assess the final state of the project (when complete),
+\item \textbf{and Legal Personnel:} to review the validation scheme if necessary. Such personnel may include personnel from the Department of Electrical and Computer Engineering, Industry Canada, and Transport Canada
+\end{itemize}
 
 \subsection{Reading Guide}
+This document organizes tests based on their component sub-systems, and whether the tests are automated or not (see Section \ref{auto} for a detailed description). Each section has a table which details the test, including a unique identifier, the requirement which it is testing, the test's status, and the last time the test was executed.
 
-\section{Validation Approach \& Results}
-\subsection{Quality Measurement}
-\subsection{Automated Support}
-\subsection{Test Plan}
-\subsection{Test Cases}
-\subsection{Test Results}
+\section{Validation Overview}
+
+\subsection{Automated and Manual Tests}\label{auto}
+The validation tests employed (and this document) are split into two categories, \textit{automated tests} and \textit{manual tests}:
+
+\textbf{Automated tests} are tests focused on tasks which are performed automatically and regularly by the device and \textit{can be monitored by the device itself}. Examples of such scenarios include self-testing systems on boot, monitoring communication status, machine learning accuracy logging, et cetera.
+
+\textbf{Manual tests} are tests which \textit{cannot be performed by the device itself} and must therefore be manually performed by a quality controller. These tests are performed less frequently -- some may be executed prior to every flight, while others may only be performed once. 
+
+\subsection{Test Notation}
+The following notations and conventions are used throughout test tables in this document:
+
+\textbf{Verification Requirement (VR)}: The unique identifier of a specific test. These identifiers always start with \textbf{T}.
+
+\textbf{Design Requirement (DR)}: Denotes the design requirement which the test is exercising, as listed in the project's \textit{Requirements Specification}. Requirement identifiers are encoded by their first characters, as follows:
+\begin{itemize}
+	\item \textbf{F}: Functional Requirement,
+	\item \textbf{NF}: Non-Functional Requirement, and
+	\item \textbf{C}: Constraint
+\end{itemize}
+
+\textbf{Status}: The status of a specific test:
+\begin{itemize}
+	\item \textbf{PEND} if the specific test has never been performed,
+	\item \textbf{FAIL} if the specific test is failing, or
+	\item \textbf{PASS} if the specific test is passing
+\end{itemize}
+
+\textbf{Effective Date}: Denotes the date at which the test was last performed (and thus, when the status was last updated). This field is not applicable for pending tests.
+
+\textbf{It is important to note that a one-to-one mapping of VRs to DRs \textit{does not necessarily exist}}. Some requirements (particularly those which are high-level or functional) will have no tests, while some requirements will have multiple tests. It is also possible for one test to exercise multiple requirements at once.
+
+\section{Automated Test Cases}
+
+\subsection{Computing Platform Tests}
+
+\subsection{Multirotor Tests}
+
+\section{Manual Test Cases}
+
+\subsection{Computing Platform Tests}
+\subsubsection{General Tests}
+
+\subsubsection{Camera Tests}
+\subsubsection{Machine Learning Tests}
+\subsubsection{Base Station Tests}
+\subsubsection{Power Tests}
+
+\subsection{Multirotor Tests}
+\begin{table}[H]
+\begin{tabular}{ |p{1.1cm}|p{1.3cm}|p{9cm}|p{1.1cm}|p{1.7cm}|}
+\hline
+\textbf{VR}     & \textbf{DR}      & \textbf{Test Description}  	& \textbf{Status} & \textbf{Eff. Date} \\ \hline
+T.DR.1 & NF.DR.1 & Attach a 2.0 kg mass to the multirotor RPAS (without payload) and verify that flight can be achieved. & PEND   & \\ \hline
+T.DR.1 & NF.DR.2 & Weigh the multirotor RPAS (with payload) and verify that it is less than 25.0 kg. & PEND   & \\ \hline
+\end{tabular}
+\end{table}
+
 % Bibliography
 \clearpage
 \addcontentsline{toc}{section}{References}
