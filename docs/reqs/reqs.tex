@@ -1,38 +1,5 @@
 \documentclass[10pt,letterpaper]{article}
-\usepackage{amsmath}
-\usepackage{amsfonts}
-\usepackage{amssymb}
-\usepackage[english]{babel}
-\usepackage{breakurl}
-\usepackage[superscript]{cite}
-\usepackage{fancyhdr}
-\usepackage{float}
-\usepackage[margin=1in]{geometry}
-\usepackage{graphicx}
-\usepackage{hyperref}
-\usepackage[utf8]{inputenc}
-\usepackage{makeidx}
-\usepackage{multicol}
-\usepackage{nth}
-\usepackage{longtable}
-
-% Use Helvetica
-\usepackage[scaled]{helvet}
-\renewcommand\familydefault{\sfdefault} 
-\usepackage[T1]{fontenc}
-
-\usepackage{setspace}
-\usepackage{siunitx}
-\usepackage{svg}
-\usepackage{subcaption}
-\usepackage{tikz}
-\usepackage{titling}
-\usepackage{url}
-\usepackage{kantlipsum}
-\usepackage{enumitem}
-
-\usepackage{parskip} % Paragraph skip - adds extra lineskip spacing
-\setlength{\parskip}{0.7\baselineskip plus 2pt}
+\input{../common/include}
 
 % Custom definitions
 \newcommand{\doctitle}{Requirements Specification}
@@ -281,13 +248,13 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Multirotor RPAS}
 \begin{enumerate}[label=NF.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The multirotor RPAS must be able to carry a maximum payload mass of 2.0 kg and achieve flight.
+	\item The multirotor RPAS must be able to carry a maximum total mass of 2.0 kg and achieve flight.
 	\item The multirotor RPAS maximum take off mass including the payload must be less than 25.0 kg in compliance with Transport Canada TC-15263.\cite{tp15263}
 	\item The multirotor RPAS must withstand at least 5 nautical miles (knots) of crosswind during operation.
 	\item The multirotor RPAS must receive pilot TX control signals via 2.4 GHz radio from 300 m away.
 	\item The multirotor RPAS onboard LEDs must be clearly visible from 300 m away and must clearly indicate the orientation of the RPAS.
 	\item The multirotor RPAS flight controllers systems must respond to pilot controls with less than 100ms of latency.
-	\item The multirotor RPAS must have a hovering flight duration of 30 minutes with 1.0 kg of payload.
+	\item The multirotor RPAS must have a hovering flight duration of 20 minutes with 500 g of payload.
 	\item The brushless DC (BLDC) motors must have a kV constant between 800 and 1200.
 	\item The BLDC motors and propellers must output at least 8,000 N of thrust at maximum throttle.
 	\item The BLDC motors and propellers must have an optimal efficiency of at least 50 N/W when the RPAS is hovering, a typical mode of operation.
@@ -366,7 +333,7 @@ Functional requirements describes what the project do. It embodies the essential
 \begin{enumerate}[label=C.EX.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
     \item The FPGA must contain at least 60,000 logic elements to provide sufficient on-chip capacity for initial and future machine learning implementations.
     \item The glue logic must not reserve more than 10,000 logic elements on the FPGA.
-    \item The I/O ports utilized on the Computing Platform must not be proprietary (to facilitate future board replacement).
+    \item The I/O ports utilized on the computing platform must not be proprietary (to facilitate future board replacement).
     \item ML hardware accelerator(s) must be disjoint from other computing modules such that it (they) can be easily be replaced by the client.
     \item The camera must use a standard interface such that the client can replace it in the future, if desired.
 \end{enumerate}
@@ -389,7 +356,6 @@ Functional requirements describes what the project do. It embodies the essential
     \item Drone will not carry weapons and cannot be used or modified for weaponization.
     \item Lithium batteries cannot be larger than 100Wh for it to be carried onto a commerial airplane. For a 4S cell battery (14.8 nomial voltage), this capacity is 6700 mAh.
 \end{enumerate}
-
 
 \subsection{Environmental Considerations}
 \begin{enumerate}[label=C.EN.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
