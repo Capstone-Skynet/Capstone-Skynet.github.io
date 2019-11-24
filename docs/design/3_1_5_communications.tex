@@ -2,7 +2,7 @@ The Air-Ground communication between the Raspberry Pi and the Base Station trans
 
 There are two options for establishing this communication - single channel and dual channel. The first option is using the existing communication channel, the one used for drone controlling, to transmit data. The advantages are it doesn't require additional hardware and save power. The disadvantage is that the drone control is using an off-the-shelf module, in order to extend its functionality to support transmit more data through it, we need to make modifications to a highly integrated system. The second option is having a separate Air-Ground communication channel. This channel can be established under commonly used wireless communication methods(i.e. Wi-Fi or Bluetooth). It requires a dedicated pair of transceivers. The advantage of this option is that most development boards are equipped with wireless transceivers and the communication is easily configured.
 
-We chose the second option as it is more suitable for product development.
+We choose the latter option because it is more suitable for product development
 
 \textbf{Bandwidth Requirement}
 
