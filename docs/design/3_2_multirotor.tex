@@ -4,19 +4,85 @@ The bare-minimum multirotor remote-piloted aerial system (RPAS) consists of a pr
 
 A multirotor RPAS (MRPAS) has several common configurations, a tricopter, a quadcopter, and a hexacopter.
 
-[insert image of configurations]
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_yconfig}
+        \caption{Tricopter Y-Configuration}
+        \label{fig:tricopter-y}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_xconfig}
+        \caption{Quadcopter X-Configuration}
+        \label{fig:quadcopter-x}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_hexconfig}
+        \caption{Hexcopter X-Configuration}
+        \label{fig:hexcopter-x}
+    \end{subfigure}
+    
+    \caption{Multirotor RPAS configurations}
+    \label{fig:rpas_configs}
+\end{figure}
 
-\textbf{Tricopter: }The benefit of a tricopter comes from its fewer required motors and speed controllers, 
+\textbf{Tricopter: }The benefit of a tricopter, as represented in figure \ref{fig:tricopter-y} comes from its fewer required motors and speed controllers,
 which means less power draw required to sustain flight. Each arm that is supporting each motor is also wider, at 120 
 degrees. This makes the motors and arms of the MRPAS less visible from the mounted camera's point of view. 
-However, the downside of a tricopter is that there exists asymmetry of motor torque (see diagram) since 
+However, the downside of a tricopter is that there exists asymmetry of motor torque (figure \ref{fig:tricopter-y-t}) since 
 there is an odd number of motors. An additional servo motor is required to control the tail motor which 
 complicates the control algorithms for self-stabilizing flight.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{img/drone_yconfigt}
+    \caption{Tricopter Y-configuration has non-zero resultant motor torque}
+    \label{fig:tricopter-y-t}
+\end{figure}
+
 \textbf{Quadcopter X: }
-The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (TODO: see diagram). Two of the motors spins  
+The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (Figure \ref{fig:quadcopter-x-t}). Two of the motors spins  
 clockwise and the other two spins counter-clockwise, effectively cancel each other’s undesired torque. 
-Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom movements by changing a combination of differential thrust to each motor (TODO: see diagram).
+Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by changing a combination of differential thrust to each motor (Figure \ref{fig:rpas_6dof}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{img/drone_xconfigt}
+    \caption{Quadcopter X-configuration has zero resultant motor torque}
+    \label{fig:quadcopter-x-t}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_x_pitch}
+        \caption{Pitch forward}
+        \label{fig:x-pitch}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_x_roll}
+        \caption{Roll left}
+        \label{fig:x-roll}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_x_yaw}
+        \caption{Yaw left}
+        \label{fig:x-yaw}
+    \end{subfigure}
+    
+    \caption{Using differential thrust to obtain 6-DOF movement. }
+    \label{fig:rpas_6dof}
+\end{figure}
 
 \textbf{Hexacopter X: }
 The hexacopter has all the stability benefits of a copter. In addition, the hexacopter configuration also 
@@ -26,7 +92,8 @@ payload than quadcopters. The downside is that hexacopter configuration builds a
 operate, and maintain. Upon a crash, due to hexacopter MRPASs extended size and weight cause more injuries 
 or collateral damage to nearby equipment.
 
-We choose to pursue with a quadcopter configuration. The payload is not too heavy, our target maximum payload weight is less than 500 g (insert requirement code). The quadcopter configuration is also the most balanced in terms of trade-off between cost and reliability. 
+We choose to pursue with a quadcopter configuration. 
+The payload is not too heavy, our target maximum payload weight is less than 500 g (\textbf{NF.DR.1}). The quadcopter configuration is also the most balanced in terms of trade-off between cost and reliability. 
 
 \subsubsection{Air Frame}
 
@@ -37,7 +104,29 @@ propeller size. On the other hand, the largest quadcopter configuration has an M
 for extremely large payload capacity. However, these are more commonly used for industrial or military 
 applications.
 
-[insert quad image]
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/djiphantom4}
+        \caption{DJI Phantom 4 (350 mm)}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/f450frame}
+        \caption{Generic DIY frame kit (450 mm)}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/djis1000}
+        \caption{DJI Spreadwings S1000 (1000 mm)}
+    \end{subfigure}
+    
+    \caption{Various air frame sizing options. }
+    \label{fig:}
+\end{figure}
 
 We choose a frame size of 450 mm MMDS that has a good balance between portability and capability. The frame 
 can accommodate larger propellers (see in later section XX in propeller size). Furthermore 450 mm are the 
@@ -98,7 +187,30 @@ lift increases non-linearly to the force output. As seen in the test data obtain
 datasheet below, using the same propellers we see an increased thrust output from increased voltage (and 
 thus current). However, the efficiency, typically measured in g/W decreases. 
 
-[insert SunnySky X2216 motor test data]
+Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0\si{\degree} and 10.0 inch 4.7\si{\degree} propellers obtained from vendor website \cite{sunnysky-2216}. 
+
+\begin{table}[H]
+    \centering
+    \caption{Sample motor test data demonstrates decrease in g/W efficiency as thrust output increases.}
+    \label{table:sunnyskyx2216-table}
+
+    \begin{tabular}{lrrrrr}
+
+    \hline
+    \textbf{Propeller} & \textbf{Voltage} & \textbf{Current} & \textbf{Pull}  & \textbf{Power Consumption} & \textbf{Efficiency}\\
+    & [V] & [A] & [g] & [W] & [g/W] \\
+    \hline
+     & 10.0 & 16.4 & 940 & 164 & 5.73 \\
+    9050 & 11.0 & 19.5 & 1050 & 215 & 4.89 \\
+     & 12.0 & 21.5 & 1250 & 258 & 4.84 \\
+    \hline
+     & 10.0 & 23.5 & 1200 & 235 & 5.10 \\
+    1047 & 11.0 & 26.5 & 1350 & 372 & 3.63 \\
+     & 12.0 & 30.2 & 1520 & 363 & 4.19 \\
+    \hline
+
+    \end{tabular} 
+\end{table}
 
 Therefore, it makes sense that we choose larger motors with relatively lower kV constants. Slower motors 
 are also safer since there is less angular momentum of the blades. Motors with 800 kV to 1300 kV are 
