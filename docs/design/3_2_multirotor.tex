@@ -1,4 +1,4 @@
-The bare-minimum multirotor remote-piloted aerial system (RPAS) consists of a propulsion system, a flight controller, and speed controllers, battery/fuel, and sensor systems.
+The bare-minimum multirotor remote-piloted aerial system (RPAS) consists of a propulsion system, flight controller, speed controllers, battery/fuel, and sensor systems.
 
 \subsubsection{Multirotor Configuration}
 
@@ -7,14 +7,14 @@ A multirotor RPAS (MRPAS) has several common configurations, a tricopter, a quad
 [insert image of configurations]
 
 \textbf{Tricopter: }The benefit of a tricopter comes from its fewer required motors and speed controllers, 
-which means less power draw to sustain flight. Each arm that is supporting each motor is also wider, at 120 
+which means less power draw required to sustain flight. Each arm that is supporting each motor is also wider, at 120 
 degrees. This makes the motors and arms of the MRPAS less visible from the mounted camera's point of view. 
 However, the downside of a tricopter is that there exists asymmetry of motor torque (see diagram) since 
-there are odd-number of motors. An additional servo motor is required to control the tail motor which 
+there is an odd number of motors. An additional servo motor is required to control the tail motor which 
 complicates the control algorithms for self-stabilizing flight.
 
 \textbf{Quadcopter X: }
-The quadcopter is the most common configuration in consumer products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (TODO: see diagram). Two of the motors spins  
+The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (TODO: see diagram). Two of the motors spins  
 clockwise and the other two spins counter-clockwise, effectively cancel each other’s undesired torque. 
 Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom movements by changing a combination of differential thrust to each motor (TODO: see diagram).
 
@@ -199,7 +199,7 @@ Below is a list of mid-tier FCs:
     \item DJI Naza M Lite.
 \end{itemize}
 
-For the applications we need, we choose ArduPilot APM 2.8 as it is the most flexible option with advanced features at a reasonable price of CA\$75.00. Additionally due to of the low-cost of low-tier FCs, we will also purchase one of Naze32 or CC3D FC for back-up.
+For the applications we need, we choose ArduPilot APM 2.8 as it is the most flexible option with advanced features at a reasonable price of CA\$75.00. Additionally due to of the low-cost of low-tier FCs, we will also purchase one of Naze32 or CC3D FC as a back-up.
 
 \subsubsection{Radio Systems}
 
@@ -217,11 +217,11 @@ capacity to weight ratio), and thus perfect for high-power, low-weight applicati
 
 Li-Po batteries have mainly three design parameters: configuration, capacity, and discharge rating. 
 Configuration is how the Li-Po batteries are wired up: a single-cell Li-Po battery can provide a 
-nomial voltage of 3.7 V due to its electrochemistry. Multiple cells can be put in seriesa and the 
+nomial voltage of 3.7 V due to its electrochemistry. Multiple cells can be put in series and the 
 voltage adds up: 2S (2 cells in series) batteries have 7.4 V output, 3S batteries have 11.1 V output,
  and 4S batteries have 14.8 V output.
 
-Battery capacity is measured in watt-hours (Wh) or mili-amp-hours (mAh) which is power multiplied by time. A 20 Wh battery can output 20 W for 1 hour. Multiple cells of batteries can be put in parallel and the capacity adds up. 4S2P batteries have 14.8 V ouput but has double the capacity than 4S batteries.
+Battery capacity is measured in watt-hours (Wh) or milli-amp-hours (mAh) which is power multiplied by time. A 20 Wh battery can output 20 W for 1 hour. Multiple cells of batteries can be put in parallel and the capacity adds up. 4S2P batteries have 14.8 V ouput but has double the capacity than 4S batteries.
 
 Lastly, the discharge rating is denoted by “C” and indicates the maximum discharge current. A 1,000 
 mAh battery with a discharge rating of 20C can discharge a maximum of 1.0 A * 20C = 20 A.
