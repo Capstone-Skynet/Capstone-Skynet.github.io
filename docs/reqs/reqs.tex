@@ -198,9 +198,10 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{High-Level Requirements}
 \begin{enumerate}[label=F.HL.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item Computing Platform must perform hardware-accelerated machine-learning.
-    \item Computing Platform must be mounted on a drone capable of sustained flight.
-    \item Machine learning implementation must implement a novel video processing use-case, such as object detection.
+    \item The computing platform must be mounted on a drone capable of sustained flight.
+    \item The computing platform must perform hardware-accelerated machine-learning using an FPGA.
+    \item A novel video processing use-case, such as object detection, must be implemented using machine learning.
+    \item Results from the machine learning implementation must be displayed to the end-user on a mobile device (a "base station").
 \end{enumerate}
 
 \subsection{Multirotor RPAS}
@@ -213,70 +214,70 @@ Functional requirements describes what the project do. It embodies the essential
 	\item The multirotor RPAS must output adequate lift thrust to carry the computing platform.
 	\item The multirotor RPAS must be equipped with LEDs to indicate the orientation of the RPAS.
 	\item The multirotor RPAS must be equipped with easy-to-remove propeller fasteners.
-	\item The multirotor RPAS must be equipped low-battery warning system.
+	\item The multirotor RPAS must be equipped with a low-battery warning system.
 	\item The multirotor RPAS must perform an autonomous controlled emergency landing in the case of loss of contact with pilot's TX.
 	\item The multirotor RPAS must be in manufacturer compliance with Transport Canada's definition of RPAS\cite{tp15263}.
 	\item The multirotor RPAS must be registered under Transport Canada drone registry.\cite{tcdronereg}.
-	\item The multirotor RPAS must be operable under norminal weather conditions.
+	\item The multirotor RPAS must be operable under nominal weather conditions.
 	\item The multirotor RPAS must be constructed and reparable using standard, non-propriatary components, fasteners, and connectors.
 	\item The multirotor RPAS must have landing legs or landing pads to protect the onboard equipment and dampen the impact upon landing/touch-down, emergency landing, and crash-landing.
 \end{enumerate}
 
-\subsection{Non-RPAS Air-Ground I/O}
-\begin{enumerate}[label=F.CM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The Air-Ground communication shall be bi-directional and have a transmission distance of at least 30 meters.
-	\item The Air-Ground communication shall be commonly used and supported by chosen development board.
-	\item The Air-Ground communication shall be established automatically.
-\end{enumerate}
-
 \subsection{Computing Platform}
 \begin{enumerate}[label=F.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item Computing Platform must use noise-tolerant communications protocols to avoid drone interference.
-	\item Computing Platform must contain at least 1MB of non-volatile memory to store machine learning weights.
-	\item Interface with the FPGA must be capable of bitrates sufficient for video streaming (>1.5 Mbps).
-	\item Computing Platform must have a physical method (ex. button) to signal a safe power-off sequence for onboard components.
+	\item The computing platform must have a physical method (ex. button) to signal a safe power-on/off sequence for onboard components.
+	\item The computing platform must boot into an operational state when power-on signal is applied, without any additional user input.
+	\item The computing platform must indicate system status via one or more indicator lights.
+	\item The computing platform must store log files (detailing historical system state) onto non-volatile memory.
 \end{enumerate}
+
+\subsection{Non-RPAS Air-Ground I/O}
+\begin{enumerate}[label=F.CM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The air-ground communication scheme must be bi-directional
+	\item The air-ground communication scheme must establish automatically on system boot.
+	\item The air-ground communication scheme must attempt to re-establish the connection if the connection is lost.
+	\item The air-ground communication scheme must not rely on any networks which are fixed to a specific geographical region (such as campus WiFi).
+
+\end{enumerate}
+
 
 % Camera and ML points
 \subsection{Camera}
 \begin{enumerate}[label=F.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The camera must capture video for the machine learning implementation to process
-	\item The camera must use a standard interface, for future replacability.
+	\item The camera subsystem must capture video for the machine learning implementation to process.
+	\item The camera subsystem must store captured video for future research/analysis.
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
 \begin{enumerate}[label=F.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item A machine learning model, implemented on the FPGA, is capable of detecting pedestrians from image frames. captured using the camera.
 	\item The machine learning model must be supported by FPGA-based hardware acceleration.
-	\item The machine learning model must be implemented for novel video processing applications.
-	\item The machine learning model must process in real time, with a latency of one second or less.
-	\item The machine learning model must process both live inputs (from the camera) and test inputs (from a pre-recorded source). 
-	\item The machine learning model must output metrics based on objects within a given video frame.
-	\item The machine learning model must have a throughput of at least 2 frames per second.
+	\item The machine learning model must implement a novel video processing application.
+	\item The machine learning model must output results in real-time.
+	\item The machine learning model must process both live inputs (from the camera) and test inputs (from a pre-recorded file). 
 \end{enumerate}
-
-
 
 \subsection{Base Station}
 \begin{enumerate}[label=F.BS.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item Base station shall display the video data overlaid with the ML model data.
-	\item Base station shall display the ML model data in the form of bounding boxes.
-	\item Base station shall support bi-directional data transfer with computing platform.
-	\item Base station shall have a user interface for sending control commands to the computing platform.
-    \item Base station shall be capable of storing metadata received from the drone for further analysis.
-    \item Base station shall be in the form of a mobile, battery powered device.
-    \item Base station shall prominently display system faults/warnings to the user.
+    \item The base station must display live video overlaid with ML model data from the multirotor.
+    \item The base station must be in the form of a mobile, battery powered device.
+	\item The base station must support bi-directional data transfer with the computing platform.
+	\item The base station must have a user interface for sending control commands to the computing platform.
+	\item The base station must prominently display system status, warnings, and faults to the user.
+    \item The base station must be capable of storing metadata received from the drone for further analysis.
 \end{enumerate}
+
+\subsection{Power Requirements}
+\begin{enumerate}[label=F.PR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The power supply system must provide sufficient power to the computing platform and multirotor to enable normal/sustained operations.
+	\item The power supply system must draw energy from a battery/batteries mounted on the drone.
+    \item The power supply system must reject noise which might interfere with the proper operation of the computing system or multirotor.
+    \item The power supply system must have overvoltage and undervoltage protection.
+    \item The power supply system must have surge protection.
+    \item The power supply system must have reverse polarity. protection.
+\end{enumerate}
+
 
 \section{Non-Functional Requirements}\label{section:nonfuncrec}
-
-\subsection{Computing Platform}
-\begin{enumerate}[label=NF.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item Computing Platform must be capable of performing a power-on self-test (POST) to ensure communications and video links are established
-	\item Computing Platform must have persistent configuration using non-volatile memory, even in the case of power cut
-\end{enumerate}
-
-%TODO: We might have to split non-functional requirements into nf-reqs and constraints (the capstone docs say they're separate, but PC's don't).
 
 \subsection{Multirotor RPAS}
 \begin{enumerate}[label=NF.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
@@ -303,14 +304,52 @@ Functional requirements describes what the project do. It embodies the essential
 	\item The multirotor RPAS airframe opposite motor-to-motor distance must be 450 mm for 4-engine multirotor or 650mm for 6-engine multimotor.
 \end{enumerate}
 
+\subsection{Computing Platform}
+\begin{enumerate}[label=NF.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The computing platform must perform a power-on self-test (POST) to ensure communications and video links are successfully established.
+	\item The computing platform must boot in a reasonable amount of time (<2 minutes).
+	\item The computing platform's operations must not be affected by electrical noise emitted by the multirotor.	
+	\item The computing platform's construction must not be susceptible to mechanical vibrations emitted by the multirotor.	
+\end{enumerate}
+
+\subsection{Non-RPAS Air-Ground I/O}
+\begin{enumerate}[label=NF.CM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The air-ground communication scheme must have a transmit/receive distance of at least 30 meters (each).
+	\item The air-ground communication scheme must be capable of sustained continuous video and ML data transmission with no consistent frame drops/stuttering.
+\end{enumerate}
+
 % Camera and ML points
 \subsection{Camera}
 \begin{enumerate}[label=NF.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The camera must be capable of focusing on objects at variable distances, between 1 and 30 meters.
 	\item The camera must resolve individual objects from a minimum height of 10 meters to a precision of 10cm across.
 	\item The camera must support video capture at a minimum rate of 10 frames per second.
-	\item The camera must support a minimum resolution of 640x480.
+	\item The camera must support a minimum resolution of 640x480 pixels.
+	\item The camera shall only support day/artificial light conditions.
+	\item The camera subsystem must support storing up to two hours of footage.
 \end{enumerate}
+
+\subsection{Base Station}
+\begin{enumerate}[label=NF.BS.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The base station interface must not require the user to have previous knowledge of the system to operate.
+	\item The base station interface must always be resposive to user input.
+	\item The base station must have a battery life equal or greater than that of the computing platform/multirotor.
+\end{enumerate}
+
+\subsection{Machine Learning Implementation}
+\begin{enumerate}[label=NF.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The machine learning model must process in real time, with a latency of one second or less.
+	\item The machine learning model must have a throughput of at least 2 frames per second.
+\end{enumerate}
+
+\subsection{Power Requirements}
+\begin{enumerate}[label=NF.PR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+
+\item TODO: Muchen, move power stats here.
+
+\end{enumerate}
+
+
 
 
 \section{Contraints}
@@ -319,24 +358,25 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Cost}
 \begin{enumerate}[label=C.CT.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item Total cost of the project should be below C\$1,000, with C\$650 provided by the Capstone course as a backup.
-    \item Operating cost of the integrated drone system upon completion should be practically free (non-including electricity cost, cost of time and labour, opportunity cost of the client, and cost for transportation).
+    \item The total cost of the project should be below C\$1,000, with C\$650 provided by the Capstone course as a backup.
+    \item The operating cost of the integrated drone system upon completion should be practically free (non-including electricity cost, cost of time and labour, opportunity cost of the client, and cost for transportation).
 \end{enumerate}
 
 \subsection{Platform Extensibility}
 \begin{enumerate}[label=C.EX.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item FPGA must contain at least 60,000 logic elements to provide sufficient on-chip capacity for initial and future machine learning implementations.
-    \item Glue logic must not reserve more than 10,000 logic elements.
-    \item I/O ports utilized on the Computing Platform must not be proprietary, to facilitate future board replacement.
+    \item The FPGA must contain at least 60,000 logic elements to provide sufficient on-chip capacity for initial and future machine learning implementations.
+    \item The glue logic must not reserve more than 10,000 logic elements on the FPGA.
+    \item The I/O ports utilized on the Computing Platform must not be proprietary (to facilitate future board replacement).
+    \item ML hardware accelerator(s) must be disjoint from other computing modules such that it (they) can be easily be replaced by the client.
+    \item The camera must use a standard interface such that the client can replace it in the future, if desired.
 \end{enumerate}
 
 \subsection{Licensing}
 \begin{enumerate}[label=C.EX.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
     \item The project must be released under the MIT license.
     \item Any third-party Intellectual Property (IP) used by the hardware or software must be compatible with the MIT license.
-    \item Development software used to synthesize the Computing Platform's hardware and software must be free-to-use, in perpetuity.
+    \item The development software used to synthesize the Computing Platform's hardware and software must be free-to-use, in perpetuity.
 \end{enumerate}
-
 
 \subsection{Legal Compliance}
 \begin{enumerate}[label=C.LC.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
@@ -350,31 +390,23 @@ Functional requirements describes what the project do. It embodies the essential
     \item Lithium batteries cannot be larger than 100Wh for it to be carried onto a commerial airplane. For a 4S cell battery (14.8 nomial voltage), this capacity is 6700 mAh.
 \end{enumerate}
 
-\subsection{Power Requirements}
-\begin{enumerate}[label=C.PR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item The power supply must be able to output both 5V and 12V
-    \item The power supply must be able to output at least 2A to the 5V system and 1A to the 12V system
-    \item The power supply system should have overvoltage, undervoltage, surge and reverse polarity protection
-    \item The power supply must be capable of supporting at least 10 minutes of continuous operation
-\end{enumerate}
 
 \subsection{Environmental Considerations}
 \begin{enumerate}[label=C.EN.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item Include a recycling plan for environmentally impactful components (i.e. LiPo batteries)
-    \item Components must be RoHS compliant
-    \item Drone must not be flown into areas from which it could not be recovered in the even of a failure (i.e. over deep water)
+    \item A recycling plan must be included for environmentally impactful components (i.e. LiPo batteries).
+    \item All components must be RoHS compliant.
+    \item The multirotor must not be flown into areas from which it could not be recovered in the even of a failure (i.e. over deep water).
 \end{enumerate}
 
 \subsection{Manageability}
 \begin{enumerate}[label=C.MG.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item The battery must easily disconnect from the drone in order to enable easy charging
-    \item The ground station must be able to easily connect to the drone
-    \item It must be possible to connect to the FPGA and to synthesize hardware without removing it from the drone
+    \item The battery must be dismountable from the drone in order to facilitate charging and replacement.
+    \item The FPGA's I/O ports must remain accessible in order to implement/upload new designs without disassembling the multirotor.
 \end{enumerate}
 
 \subsection{Documents}
 \begin{enumerate}[label=C.DD.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item  The system must be accompanied by an operations manual describing procedures relating to; Safety, Operations and Maintenance
+    \item  The system must be accompanied by an operations manual describing procedures relating to; Safety, Operations and Maintenance.
 \end{enumerate}
 
 % Bibliography
