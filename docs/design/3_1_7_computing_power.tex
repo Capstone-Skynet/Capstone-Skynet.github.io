@@ -1,19 +1,33 @@
-TODO: Describe power requirements of \textit{computing platform} here. What voltages do we need? What transformers do we need? How much power does each board consume? What kind of batteries have we considered? What kind of safety mechanisms do we need for LiPos to make sure they don't over discharge?
+\textbf{Requirements of the power system}
 
 There are two boards that need to be powered on the drone, the Raspberry Pi and the Zedboard. The Raspberry Pi requires
 5V, has a maximum current draw of 1A and a typical current draw of 400mA. The Zedboard requires 12V, has a maximum current draw of
 4A and a typical current draw of 1A. In addition to being able to meet these curent and voltage requirements, the power system also
 needs to be light enough not to significantly impact the operation of the drone and provide continous power for at least 10 minutes.
 
-The most likely solution will be to use a Lithium-Ion or Lithium-polymer batter along with a battery management system. In order to
-power the computing system for 10 minutes the battery will need to have a capacity of at least 233mAh, however as that is a non-standard size and also to allow for a margin of error a larger battery will be used, most likely between 450mAh and 2200mAh depening on weight and cost restrictions. These should provide 19 minutes and 94 minutes of operation respectively.
+\textbf{The battery}
+
+The solution will be to use a Lithium-Ion or Lithium-polymer battery along with a battery management system. In order to
+power the computing system for 10 minutes the battery will need to have a capacity of 233mAh, however as that is a non-standard size and also to allow for a margin of error an 11.1V battery with a 1000mAh capacity will be used. This should provide 43 minutes of operation.
+
+\textbf{The battery management system}
 
 The battery management system will need to provide a number of key functions. These are:
-  -Provide constant 12V and 5V outputs even as the battery voltage degrades
-  -Withstand 1A of continous current in the 5V output and 4A continous current in the 12V output
-  -Have a safety cutoff or warning if the battery voltage drops too low
-  -Have overcurrent protection
-  -Have overvoltage protection
-  -Have reverse polarity protection
+  
+  \begin{itemize}
+\item Provide constant 12V and 5V outputs even as the battery voltage degrades
+\item Withstand 1A of continous current in the 5V output and 4A continous current in the 12V output
+\item Have a safety cutoff or warning if the battery voltage drops too low
+\item Have overcurrent protection
+\item Have overvoltage protection
+\item Have reverse polarity protection
+\end{itemize}
  
- The battery management system should also ideally do all of the above at the highest efficiency and lowest weight and cost possible. With all of the above in mind the battery management system will be some combination of DC-DC converters, a battery protection board, and a fuse. The DC-DC converters will be a buck converter for the 5V output and either a boost converter or a buck-boost converter for the 12V output depending on what what the voltage of our battery is. 7.4V will only require a boost converter while 11.1V or 14.4V will require a buck-boost converter. The battery proctection board will most likely be an off the shelf lipo battery moniter. This will provide proctection against the battery voltage dropping too low and damaging the battery. Overcurrent protection can be provided by a fuse. Overvoltage proctection can be provided by a Zener diode and reverse polarity protection can be provided by using connectors that do not allow the battery to be connected backwards.
+The battery management system should also ideally do all of the above at the highest efficiency and lowest weight and cost possible. With all of the above in mind the battery management system will consist of two DC-DC converters, a battery protection board and a battery monitor. The DC-DC converters will be a buck converter for the 5V output and a buck-boost converter for the 12V output. The battery protection board will consist of a Zener diode to provide overcurrent protection, a fuse to provide overcurrent protection, and a simple circuit to provide reverse polarity protection. Reverse polarity protection will also be provided by using connectors that cannot be connected backwards. A battery monitor will be plugged into the lipo that will alert us to the battery voltage being too low.
+
+Lastly a seperate charger will be needed to charge the battery.
+
+\begin{figure}\label{Overview}
+\centering
+\includegraphics[width=10cm]{img/Power_Diagram.png}
+\end{figure}
