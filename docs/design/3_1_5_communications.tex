@@ -1,1 +1,35 @@
-TODO: Why WiFi? Do we need an external router? Throughput/bandwidth considerations? Why not combine it with drone control?
+The Air-Ground communication between the Raspberry Pi and the Base Station transmits video, ML results and control commands (to the computing platform). It is a bi-directional, high bandwidth communication channel that requires stable connection range for up to 30 meters as per \textbf{F.CM.1}.
+
+There are two options for establishing this communication - single channel and dual channel. The first option is using the existing communication channel, the one used for drone controlling, to transmit data. The advantages are it doesn't require additional hardware and save power. The disadvantage is that the drone control is using an off-the-shelf module, in order to extend its functionality to support transmit more data through it, we need to make modifications to a highly integrated system. The second option is having a separate Air-Ground communication channel. This channel can be established under commonly used wireless communication methods(i.e. Wi-Fi or Bluetooth). It requires a dedicated pair of transceivers. The advantage of this option is that most development boards are equipped with wireless transceivers and the communication is easily configured.
+
+We choose the latter option because it is more suitable for product development
+
+\textbf{Bandwidth Requirement}
+
+The majority of the bandwidth will be reserved for video transmission as it's the most intensive transmission task among all the tasks. The total number of bits per second of video that need to be transmitted can be calculated using the following formula:
+
+\[ \#\:of\:bits/second = \dfrac{\#\:of\:bits}{1\:pixel} * \dfrac{\#\:of\:pixels}{1\:frame} * \dfrac{\#\:of\:frames}{1\:second} \]
+
+The video that will be transmitted, assuming uncompressed, has a resolution of 640x480 pixels and is 30 frames per second. The colour depth is 24-bit for a RGB colour set. That is, each pixel is 8 bits. Then:
+
+\[ \#\:of\:bits/second = \dfrac{8}{1} * \dfrac{640*480}{1} * \dfrac{30}{1} = 73.728\:Mbit/s \]
+
+The other data that need to be transmitted includes the metadata of the video, the results from ML model, the control commands, and required field for the protocol. The overall bandwidth required is about 75 Mbit/s.
+
+\textbf{Communication Method}
+
+The communication method we chose for the project is Wi-Fi. Wi-Fi is commonly used for local area networking of devices and Internet access. It is based on the IEEE 802.11 family of standards. The specific standard we chose is IEEE 802.11n (Wi-Fi 4) as it has enough throughput and almost all devices equipped with Wi-Fi support this standard. (\textbf{F.CM.2})
+
+The advantages of Wi-Fi over other communication methods (such as Bluetooth) are as follows:
+\begin{itemize}
+    \item Long transmission range. IEEE 802.11n Wi-Fi has a transmission range of up to 53 m. (\textbf{F.CM.1})
+    \item High transmission rate. IEEE 802.11n Wi-Fi has a transmission rate up to 600 Mbit/s.
+    \item No additional transceiver required. Both the Base Station and the Raspberry Pi from the on-board computing platform already equipped with a Wi-Fi transceiver.
+    \item No license required. Wi-Fi is free to use at anywhere with no regulations.
+    \item Can use public Wi-Fi, which extends the usability of the product.
+    \item After the connection is configured, connection will be automatically established. (\textbf{F.CM.3})
+\end{itemize}
+
+\textbf{Design}
+
+The main components of the communication system consist of the Raspberry Pi, the base station, and an external Wi-Fi router that both the Raspberry Pi and the base station connect to. The communication is established through the router. The Raspberry Pi hosts a web server using the WebSocket protocol. The base station connects to the server as a client. There could have multiple clients connect to the server.
