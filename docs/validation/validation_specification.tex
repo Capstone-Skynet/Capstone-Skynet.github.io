@@ -228,6 +228,15 @@ The following notations and conventions are used throughout test tables in this 
 \subsubsection{Base Station Tests}
 \subsubsection{Power Tests}
 
+\textbf{Power usage test}
+We will test the power usage of the Zedboard and Raspberry Pi by power them from the lab power supply and recording the current draw. This will help us confirm that our battery is appropirately sized and that our battery management system has a high enough current rating.
+
+\textbf{Low power alarm test}
+We will connect our battery monitor to the battery, connect voltage probes to the battery and then load our battery with an appropriately sized resistor in order to simulate normal operation. We will monitor the voltage of the battery and record at what voltage the low battery alarm goes off. This will ensure that our battery monitor is working correctly.
+
+\textbf{Overvoltage and reverse polarity test}
+We will connect our battery protection circuit to a lab power supply and load it with an approprately sized resistor in order to simulate normal operating conditions. We will then raise the supply voltage and probe the output voltage in order to verify that our overvoltage protection works correctly. We will then connect the supply voltage in backwards in order to verify that the reverse polarity protection works correctly.
+
 \subsection{Multirotor Tests}
 \begin{table}[H]
 \begin{tabular}{ |p{1.1cm}|p{1.3cm}|p{9cm}|p{1.1cm}|p{1.7cm}|}
