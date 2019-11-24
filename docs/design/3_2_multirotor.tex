@@ -14,12 +14,9 @@ there are odd-number of motors. An additional servo motor is required to control
 complicates the control algorithms for self-stabilizing flight.
 
 \textbf{Quadcopter X: }
-The quadcopter is the most common configuration in consumer products. This is because of its relative fewer 
-number of parts: 4 motors and speed controllers. Although this is still more costly than the tricopter. The 
-quadcopter is more stable than a tricopter because its four motors (see diagram), two spins spinning 
-clockwise and the other two spins counter-clockwise cancel each other’s torque out. Therefore, applying the 
-same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom movements 
-by changing a combination of differential thrust to each motor (see diagram).
+The quadcopter is the most common configuration in consumer products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (TODO: see diagram). Two of the motors spins  
+clockwise and the other two spins counter-clockwise, effectively cancel each other’s undesired torque. 
+Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom movements by changing a combination of differential thrust to each motor (TODO: see diagram).
 
 \textbf{Hexacopter X: }
 The hexacopter has all the stability benefits of a copter. In addition, the hexacopter configuration also 
@@ -210,6 +207,8 @@ The minimum number of channels required to fly a drone is 4. One for each contro
 pitch, and roll. For that reason, we opt for the cheapest radio transmitter (TX) and receiver  (RX) 
 combo we find from online vendors. The weakest TX/RX combination has power emission rating of 25 mW. 
 From testing, 25 mW is more than enough to satisfy the radio requirement of 300 m.
+
+TODO: get this \url{https://www.banggood.com/FlySky-FS-i6-2_4G-6CH-AFHDS-RC-Radion-Transmitter-With-FS-iA6B-Receiver-for-RC-FPV-Drone-p-983537.html?rmmds=category&ID=42482&cur_warehouse=USA}
 
 \subsubsection{Battery}
 
