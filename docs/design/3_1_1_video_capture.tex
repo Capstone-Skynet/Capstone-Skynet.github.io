@@ -6,24 +6,27 @@ The video capture subsystem of the computing platform consists of a camera, its 
 The camera used to capture video is the Raspberry Pi Camera Module. It supports 1080p, 720p and 640x480p video. It has a fixed focus lens. The camera will capture live video and send the video data to the Raspberry Pi, which will feed the data in different forms to both the machine learning model and the base station.
 
 % camera Choice
-The decision of the camera was influenced by the requirement of future replaceability. The project's goal is to create a system which provides both video acquisition and supplemental programmable hardware processing capabilities. The Raspberry Pi device contains different ports that will support different cameras with different performance.
+The decision of the camera was influenced by the requirement of future replaceability. The project's goal is to create a system which provides both video acquisition and supplemental programmable hardware processing capabilities. The Raspberry Pi device contains different ports which support different cameras with varying characteristics and performance.
 
-One of the limitations on the resolution and framerate of the camera is the latency of the machine learning implementation on the FPGA. The machine learning implementation is not the focus of this project and will not be optimized for performance and thus it will not be necessary to use a camera with high resolution and framerate.
+One major consideration regarding selecting a camera is the latency and throughput of the machine learning implementation on the FPGA. As the machine learning implementation will be heavily constrained by the FPGA's limited resources, it is will not be necessary to use a camera with and especially resolution and framerate.
 
 % {MIPI interface}
 \subsubsection{MIPI Interface}
 The MIPI camera serial interface (CSI) is a high-speed protocol primarily intended for point-to-point image and video transmission between cameras and host devices. 
 
-In the Requirements Specification, the camera is required to use a standard interface to allow for future replaceability. The MIPI protocol is a widely adopted protocol for image and video transmission. A hardware based MIPI core will be programmed into the programmable logic and will handle receiving of camera footage.
+%requirement got removed ...
+The MIPI protocol is a widely adopted protocol for image and video transmission, fullfilling requirement (xx). A hardware based MIPI core will be programmed into the programmable logic and will handle receiving of camera footage.
 
 % {Camera libraries or getting the video to a 'viewable' state}
 \subsubsection{Camera Libraries}
-Live video feed is a requirement for the base station. This is achieved by implementing a Python script on the Raspberry Pi for streaming the video to a webpage on the base station via Wi-FI. Justification for using Wi-FI is discussed in Section 3.1.5 - Communications. The script used to achieve this uses the Python package 'picamera,' which is a Python interface to the Raspberry Pi Camera. 
+Live video feed is a requirement for the base station. This is achieved by implementing a Python script on the Raspberry Pi for streaming the video to a webpage on the base station via Wi-FI. Justification for using Wi-FI is discussed in section~\ref{sec:Communications}. The script used to achieve this uses the Python package 'picamera,' which is a Python interface to the Raspberry Pi Camera. The 'picamera' package is a widely supported open-source resource fullfilling requirement (xx). It is also well documented, so the client will be able to easily adjust interfacing of the camera to their needs.
 
 % {Explored Alternatives}
 \subsubsection{Explored Alternatives}
 There were many alternatives explored for each component of the Video Capture subsystem.
 
-For the choice of the camera, one of the explored possibilites was a drone package with an integrated camera. The potential difficulties of having to disassemble and reconfigure/tap-into a hard-wired system would create an unmaintainable product. It would also go against the requirement of a replaceable camera.
+One of the possibilites for the camera was purhcasing a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- not allowing for user replacement of the camera for future research improvements (violating constraint XX). %again the requirement got removed
+
+Another possible choice for the camera was purchasing a USB webcam and connecting it to the USB port to the Raspberry Pi device. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously mentioned, made the Rasberry Pi Camera a better solution suited to the client's needs.
 
 For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods. Again, detailed justification for using Wi-FI and not these is discussed in a later section but the decision came down to a few factors. The original options required additional hardware (higher costs and system weight) and would require more complexity for the user to handle.
