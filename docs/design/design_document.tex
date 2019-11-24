@@ -29,9 +29,18 @@
 \usepackage{titling}
 \usepackage{url}
 \usepackage{kantlipsum}
+\usepackage{enumitem}
 
 \usepackage{parskip} % Paragraph skip - adds extra lineskip spacing
 \setlength{\parskip}{0.7\baselineskip plus 2pt}
+
+% Subsubsubsection
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Custom definitions
 \newcommand{\doctitle}{Design Document}
@@ -212,12 +221,8 @@ The \textit{Computing Platform} subsections are ordered by their stage in the de
 \subsection{Computing Power}\label{computing_power}
 \input{3_1_7_computing_power}
 
-\section{Multirotor Technical Design}\label{multirotor}
-\subsection{Avionics}\label{avionics}
-\input{3_2_1_avionics}
-
-\subsection{Drone Power}\label{drone_power}
-\input{3_2_2_drone_power}
+\subsection{Multirotor RPAS}\label{multirotor}
+\input{3_2_multirotor}
 
 % Bibliography
 \clearpage
