@@ -1,1 +1,40 @@
-TODO: How many base stations? What will base station look like? How are machine learning results displayed?
+The base station in the system is a mobile device that connects to the on-board computing platform, it is used for:
+\begin{itemize}
+    \item monitoring the status of the system.
+    \item verifying the ML result.
+    \item storing the log data and video for further analysis.
+    \item control the computing platform, i.e. start object detection.
+\end{itemize}
+
+\textbf{Options for the Base Station}
+
+First option is laptop. Laptop is a portable personal computer which has the following features:
+\begin{itemize}
+    \item It has a screen.
+    \item It has a Wi-Fi transceiver. (\textbf{F.CM.3})
+    \item It has a flash storage of at least 128GB.
+    \item It is running Windows or macOS or Linux operating system, all of them are capable of running most video processing programs.
+    \item It has an adequate processor for video processing.
+    \item It is portable and has at least 3-hour battery life. (\textbf{F.BS.3})
+\end{itemize}
+
+The second option is tablet. Nowadays tablet is very similar to laptop in many ways. It has all the features listed above except it is running Android or iOS operating system. These mobile operating systems do not have support for running video processing programs. So it can not be used to have further analysis on the video data.
+
+\textbf{Base Station Setup}
+
+We choose laptop to be the primary base station. The primary base station is capable of doing all tasks of the base station. There could also have multiple secondary base stations. They can be either laptop or tablet. These secondary base stations may only be used to monitoring the status of the system and send control commands to the computing platform. Client can choose to use either of these base stations while testing but any further analysis on the data need to be done on the primary base station.
+
+\textbf{Display the Result}
+
+The main task of the base station is to verify the ML result. On the base station, the ML result will be displayed as a bounding box around the detected object in the frame. The ML result that the base station receives consists of two parts: coordinates of the upper-left vertex of the bounding box in the frame and values of height and width of the bounding box. The operations that the base station performs after receiving the data are:
+\begin{enumerate}
+    \item Calculates which pixels in the current frame form the desired bounding box and thus need to be re-programmed to a dedicated colour.
+    \item Modify these pixels in the frame.
+    \item Display the frame.
+\end{enumerate}
+
+The program that is running on the base station is stored on the server - Raspberry Pi. When the base station connects to the server it automatically downloads the program and runs it. (\textbf{F.BS.1})
+
+\textbf{System Fault}
+
+Another role of the base station is to alert client about any system faults occurred. All the system faults, either detected by the base station itself or received fault message from the Raspberry Pi, is displayed on the base station's screen. In case of a fault that has a automatic fixing protocol, e.g. reconnect to the same Wi-Fi if lost connection, the base station will perform the corresponding operations and the warning message will be updated accordingly.
