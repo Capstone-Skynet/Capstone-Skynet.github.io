@@ -3,7 +3,7 @@ The Programmable Logic board manages the hardware-accelerated ML application, pe
 
 A decomposition of the system is seen on the right in Figure \ref{pcdiag}.
 
-Of note is the distinction between the two portions on the Programmable Logic board: the Hard Processor System (HPS) and the FPGA. The Hard Processor System is a non-customizable CPU and is used for generic tasks (such as managing I/O via the Ethernet port and processing non-acceleratable ML tasks). The FPGA provides the system's \textit{programmable circuity} -- performing the requisite hardware acceleration needed for ML tasks. The two systems co-reside on the same chip, and are interfaced via an internal bus.
+Of note is the distinction between the two portions on the PLB: the Hard Processor System (HPS) and the FPGA. The Hard Processor System is a non-customizable CPU and is used for generic tasks (such as managing I/O via the Ethernet port and processing non-acceleratable ML tasks). The FPGA provides the system's \textit{programmable circuity} --- performing the requisite hardware acceleration needed for ML tasks. The two systems co-reside on the same chip, and are interfaced via an internal bus.
 
 \subsubsection{Device Selection}
 The selected Programmable Logic board is the \textit{ZedBoard SoC Development board} (pictured in Figure \ref{zedboard}), manufactured by Digilent. 
