@@ -41,10 +41,10 @@ An additional consideration in selecting the two-board design regards platform e
 
 \textbf{Interface with Programmable Logic Board}
 
-To interface with the programmable logic board, data packets are sent via a bi-directional TCP/IP-managed Ethernet connection. TCP/IP over Ethernet was selected in lieu of serial solutions (such as I2C) as it:
+To interface with the programmable logic board, data packets are sent via a bi-directional TCP/IP-managed Ethernet connection. TCP/IP over Ethernet was selected in lieu of serial solutions (such as I2C) as:
 \begin{itemize}
-\item is equally as ubiquitous on modern programmable logic boards,
-\item Ethernet has higher maximum throughput (1 Gbps on Ethernet vs. 400 Kbps on serial) (\textbf{F.CP.3}), and
+\item Ethernet is equally as ubiquitous on modern programmable logic boards,
+\item Ethernet has higher maximum throughput (1 Gbps on Ethernet vs. 400 Kbps on serial) (\textbf{F.CP.3}),
 \item Ethernet has more resilient error correction capabilities. (\textbf{F.CP.1})
 \end{itemize} 
 
