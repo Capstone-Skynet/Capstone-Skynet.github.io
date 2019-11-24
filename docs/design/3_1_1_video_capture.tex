@@ -2,6 +2,7 @@
 
 The video capture subsystem of the computing platform consists of a camera, its video transmission protocol to the processing core and video transmission to the base station. For this subsystem, the hardware used includes a CMOS camera, a Rasberry Pi device, and MIPI Camera Serial Interface protocol. Design description of the Rasberry Pi device is described in the next section.
 
+\subsubsection{Camera Choice}
 The camera used to capture video is the Rasberry Pi Camera Module. It supports 1080p, 720p and 640x480p video. It has a fixed focus lens. The camera will capture live video and send the video data to the Rasberry Pi, which will feed the data in different forms to both the machine learning model and the base station.
 
 % camera Choice
@@ -10,14 +11,17 @@ The decision of the camera was influenced by the requirement of future replacabi
 One of the limitations on the resolution and framerate of the camera is the latency of the machine learning implementation on the FPGA. The machine learning implementation is not the focus of this project and will not be optimized for performance and thus it will not be necessary to use a camera with high resoltuion and framerate.
 
 % {MIPI interface}
+\subsubsection{MIPI Interface}
 The MIPI camera serial interface (CSI) is a high-speed protocol primarily intended for point-to-point image and video transmission between cameras and host devices. 
 
 In the Requirements Specification, the camera is required to use a standard interface to allow for future replaceability. The MIPI protocol is a widely adopted protocol for image and video transmission. A hardware based MIPI core will be programmed into the programmable logic and will handle receiving of camera footage.
 
 % {Camera libraries or getting the video to a 'viewable' state}
+\subsubsection{Camera Libraries}
 Live video feed is a requirement for the base station. This is achieved by implementing a Python script on the Rasberry Pi for streaming the video to a webpage on the base station via WiFi. Justification for using WiFi is discussed in Section 3.1.5 - Communications. The script used to achieve this uses the Python package 'picamera,' which is a Python interface to the Rasberry Pi Camera. 
 
 % {Explored Alternatives}
+\subsubsection{Explored Alternatives}
 There were many alternatives explored for each component of the Video Capture subsystem.
 
 For the choice of the camera, one of the explored possibilites was a drone package with an integrated camera. The potential difficulties of having to disassemble and reconfigure/tap-into a hard-wired system would create an unmaintainable product. It would also go against the requirement of a replaceable camera.
