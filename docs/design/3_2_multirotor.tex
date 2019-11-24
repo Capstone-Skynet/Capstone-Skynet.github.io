@@ -1,1 +1,52 @@
-TODO: Outline physical description of drone, justify sizing, etc. 
+The bare-minimum multirotor remote-piloted aerial system (RPAS) consists of a propulsion system, a flight controller, and speed controllers, battery/fuel, and sensor systems.
+
+\subsubsection{Multirotor Configuration}
+
+A multirotor RPAS (MRPAS) has several common configurations, a tricopter, a quadcopter, and a hexacopter.
+
+[insert image of configurations]
+
+\textbf{Tricopter: }The benefit of a tricopter comes from its fewer required motors and speed controllers, 
+which means less power draw to sustain flight. Each arm that is supporting each motor is also wider, at 120 
+degrees. This makes the motors and arms of the MRPAS less visible from the mounted camera's point of view. 
+However, the downside of a tricopter is that there exists asymmetry of motor torque (see diagram) since 
+there are odd-number of motors. An additional servo motor is required to control the tail motor which 
+complicates the control algorithms for self-stabilizing flight.
+
+\textbf{Quadcopter X: }
+The quadcopter is the most common configuration in consumer products. This is because of its relative fewer 
+number of parts: 4 motors and speed controllers. Although this is still more costly than the tricopter. The 
+quadcopter is more stable than a tricopter because its four motors (see diagram), two spins spinning 
+clockwise and the other two spins counter-clockwise cancel each other’s torque out. Therefore, applying the 
+same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom movements 
+by changing a combination of differential thrust to each motor (see diagram).
+
+\textbf{Hexacopter X}
+The hexacopter has all the stability benefits of a copter. In addition, the hexacopter configuration also 
+offers redundancy. Up to 2 motors can fail and the MRPAS could still land safely. Due to the added 
+propulsion systems (50\% more than the quadcopter configuration), hexacopter can generally lift more 
+payload than quadcopters. The downside is that hexacopter configuration builds are more expensive to build, 
+operate, and maintain. Upon a crash, due to hexacopter MRPASs extended size and weight cause more injuries 
+or collateral damage to nearby equipment.
+
+We choose to pursue with a quadcopter configuration. The payload is not too heavy, our target maximum payload weight is less than 500 g (insert requirement code). The quadcopter configuration is also the most balanced in terms of trade-off between cost and reliability. 
+
+\subsubsection{Air Frame}
+
+The most common frames available for sale comes in 450 mm motor to motor diagonal span (MMDS). However, 
+350mm is also common amongst consumer products such as DJI Phantom. The problem with 350 mm is that it will 
+constrain our ability to mount larger hardware such as the computing platform. The 350 mm also limits 
+propeller size. On the other hand, the largest quadcopter configuration has an MMDS of 650 mm or 1000 mm 
+for extremely large payload capacity. However, these are more commonly used for industrial or military 
+applications.
+
+[insert quad image]
+
+We choose a frame size of 450 mm MMDS that has a good balance between portability and capability. The frame can accommodate larger propellers (see in later section XX in propeller size). Furthermore 450 mm are the most abundant size on the market for frames because of their varsitility and therefore is also less costly and easy to repair/replace.
+
+Currently, the \textit{Upgrade F450} for CA\$30.00 and \textit{Diatone Q450} for CA\$20.00 from Banggood are appealing options. They weigh between 300 g to 410 g which is acceptable.
+
+\subsubsection{Propulsion System}
+
+Propulsion system covers the majority of the RPAS parts list and will determine the flight performance of the RPAS. 
+
