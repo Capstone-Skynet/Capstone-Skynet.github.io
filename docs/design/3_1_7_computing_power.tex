@@ -20,7 +20,7 @@ The battery management system will need to provide a number of key functions. Th
 \item Has a safety cutoff or warning if the battery voltage is too low.
 \item Has overcurrent protection.
 \item Has overvoltage protection.
-\item Have reverse polarity protection
+\item Has reverse polarity protection.
 \end{itemize}
  
 The battery management system should also ideally do all of the above at the highest efficiency and lowest weight and cost possible. With all of the above in mind the battery management system will consist of two DC-DC converters, a battery protection board and a battery monitor. The DC-DC converters will be a buck converter for the 5V output and a buck-boost converter for the 12V output. The battery protection board will consist of a Zener diode to provide overcurrent protection, a fuse to provide overcurrent protection, and a simple circuit to provide reverse polarity protection. Reverse polarity protection will also be provided by using connectors that cannot be connected backwards. A battery monitor will be plugged into the lipo that will alert us to the battery voltage being too low.
