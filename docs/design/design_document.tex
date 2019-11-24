@@ -29,9 +29,18 @@
 \usepackage{titling}
 \usepackage{url}
 \usepackage{kantlipsum}
+\usepackage{enumitem}
 
 \usepackage{parskip} % Paragraph skip - adds extra lineskip spacing
 \setlength{\parskip}{0.7\baselineskip plus 2pt}
+
+% Subsubsubsection
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
+\titleformat{\paragraph}
+{\normalfont\normalsize\bfseries}{\theparagraph}{1em}{}
+\titlespacing*{\paragraph}
+{0pt}{3.25ex plus 1ex minus .2ex}{1.5ex plus .2ex}
 
 % Custom definitions
 \newcommand{\doctitle}{Design Document}
