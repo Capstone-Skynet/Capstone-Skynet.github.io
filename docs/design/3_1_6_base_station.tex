@@ -1,32 +1,22 @@
-The base station is a mobile device that connects to the computing platform on the multirotor. In particular, its applications are to:
+\subsubsection{Subsystem Overview}
+
+The base station is a mobile device that connects to the computing platform on the multirotor. In particular, it performs the following tasks:
 \begin{itemize}
-    \item monitor the status of the system,
-    \item display the ML results in real-time (by overlaying the data over live video),
-    \item storing the log data and video for further analysis, and
-    \item controlling the computing platform (ex. starting object detection).
+    \item Displays the status of the system
+    \item Displays the ML results in real-time (by overlaying the data over live video)
+    \item Stores the log data and video for further analysis
+    \item Remotely configures the computing platform (ex. starting object detection)
 \end{itemize}
 
-\textbf{Base Station Device Options}
+\subsubsection{Device Alternatives}
+We considered two classes of devices which could be used as a base station: laptops and smart mobile devices (such as cellphones or tablets). The common features of these two options are: they are both equipped with a screen which can be used to display the video and ML results, they both have a Wi-Fi transceiver (\textbf{F.BS.3}), and they both have flash storage which can be used to store results (\textbf{F.BS.6}).
 
-We have two options of devices that can be used as a base station, a laptop or mobile devices such as cellphone or tablet. The common features of these two options are: they both equipped with a screen which can be used to display the video and ML results; they both have a Wi-Fi transceiver (\textbf{F.BS.3}); they both have a flash storage that can be used to store the testing data (\textbf{F.BS.6}).
+One functionality that mobile devices lack is the support for common machine learning platforms (ex. TensorFlow). As the client may want to perform additional ML processing on the base station for further analysis, laptops were ultimately selected as the base station's platform. Support for smart devices (to facilitate multiple viewers) may be added if time permits.
 
-One functionality that mobile devices lack is the support for the machine learning platform (i.e. TensorFlow). The client may want to redo the ML process on the base station for further analysis and that can only be done on a computer/laptop.
+\subsubsection{Display}
 
-\textbf{Base Station Setup}
+If an object detection scheme is implemented, the ML results will be displayed as a bounding box around the detected object in the frame. In particular, the ML results will consist of two parts: the coordinates of the upper-left vertex of the bounding box and the height/width of the bounding box. 
 
-We chose the laptop as the primary base station. This primary base station is capable of doing all tasks of the base station. We will add secondary base stations with limited functionalities to the system if time permits. These secondary base stations can be either laptop or tablet. They can only be used to view the ML results and monitoring the status of the system. The client can choose to use either of these base stations while testing but any further analysis on the data need to be done on the primary base station.
+The base station retrieves this information by querying a TCP/IP server hosted by the platform management board and displays the results via a web-application (\textbf{F.BS.1}).
 
-\textbf{Display the Result}
-
-The main task of the base station is to verify the ML results. Different machine learning applications could have results in different forms. For object detection, the ML results will be displayed as a bounding box around the detected object in the frame. The ML result that the base station receives consists of two parts: coordinates of the upper-left vertex of the bounding box in the frame and values of height and width of the bounding box. The operations that the base station performs after receiving the data are:
-\begin{enumerate}
-    \item Calculates which pixels in the current frame form the desired bounding box and thus need to be re-programmed to a dedicated colour.
-    \item Modify these pixels in the frame.
-    \item Display the frame.
-\end{enumerate}
-
-The base station retrieves this information by querying a TCP/IP server hosted by the computing platform (Raspberry Pi) and displays the results via a web-application (\textbf{F.BS.1}).
-
-\textbf{System Fault}
-
-Another role of the base station is to alert the end-user to any system warnings or errors. All such faults, either detected by the the computing platform or the base station itself, is displayed on the base station's screen. All faults will also be logged locally on the device to facilitate further debugging if necessary.
+Another role of the base station is to alert the end-user to any system warnings or errors. All such faults, either detected by the the computing platform or the base station itself, are displayed on the base station's screen. All faults will also be logged locally on the device to facilitate further debugging, if necessary.

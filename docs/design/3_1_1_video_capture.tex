@@ -1,32 +1,29 @@
 % TODO: Talk about camera choice, MIPI interface, camera libraries. Also, talk about alternatives we explored (i.e. analog video transmission/acquisition.
 
-The video capture subsystem of the computing platform consists of a camera, its video transmission protocol to the processing core and video transmission to the base station. For this subsystem, the hardware used includes a CMOS camera, a Raspberry Pi device, and MIPI Camera Serial Interface protocol. Design description of the Raspberry Pi device is described in the next section.
+\subsubsection{Subsystem Overview}
+The video capture subsystem of the computing platform consists of a camera, its video transmission protocol to the processing core, and video transmission to the base station. For this subsystem, the hardware utilized includes a CMOS camera, a Raspberry Pi device, and MIPI Camera Serial Interface. 
 
 \subsubsection{Camera Choice}
-The camera used to capture video is the Raspberry Pi Camera Module. It supports 1080p, 720p and 640x480p video. It has a fixed focus lens. The camera will capture live video and send the video data to the Raspberry Pi, which will feed the data in different forms to both the machine learning model and the base station.
+The camera used to capture video is the \textit{Raspberry Pi Camera Module}. This module supports 1080p, 720p and 480p video, captured using a fixed focus lens. The camera captures live video and sends it to the Raspberry Pi, which feeds the data to both the machine learning model and the base station.
 
-% camera Choice
-The decision of the camera was influenced by the requirement of future replaceability. The project's goal is to create a system which provides both video acquisition and supplemental programmable hardware processing capabilities. The Raspberry Pi device contains different ports which support different cameras with varying characteristics and performance.
-
-One major consideration regarding selecting a camera is the latency and throughput of the machine learning implementation on the FPGA. As the machine learning implementation will be heavily constrained by the FPGA's limited resources, it is will not be necessary to use a camera with and especially resolution and framerate.
+A major consideration regarding camera selection was the latency and throughput of the machine learning implementation on the FPGA. As the machine learning implementation will be heavily constrained by the FPGA's limited resources, it is not necessary to use a camera with a high resolution and framerate.
 
 % {MIPI interface}
 \subsubsection{MIPI Interface}
 The MIPI camera serial interface (CSI) is a high-speed protocol primarily intended for point-to-point image and video transmission between cameras and host devices. 
 
-%requirement got removed ...
-The MIPI protocol is a widely adopted protocol for image and video transmission, fullfilling requirement (xx). A hardware based MIPI core will be programmed into the programmable logic and will handle receiving of camera footage.
+The MIPI protocol is a widely adopted protocol for image and video transmission, and as such the camera can easily be replaced by the client in the future, if desired (fulfilling constraint \textbf{C.EX.5}).
 
 % {Camera libraries or getting the video to a 'viewable' state}
 \subsubsection{Camera Libraries}
-Live video feed is a requirement for the base station. This is achieved by implementing a Python script on the Raspberry Pi for streaming the video to a webpage on the base station via Wi-FI. Justification for using Wi-FI is discussed in section~\ref{communications}. The script used to achieve this uses the Python package 'picamera,' which is a Python interface to the Raspberry Pi Camera. The 'picamera' package is a widely supported open-source resource fullfilling requirement (xx). It is also well documented, so the client will be able to easily adjust interfacing of the camera to their needs.
+The live video streaming between the base station and the computing platform is achieved through the implementation of a Python script to stream video to a webpage. The underlying justification for using Wi-Fi is discussed in section~\ref{communications}. The script used to achieve this communication utilizes the Python package 'picamera,' which provides a modular Python interface to the Raspberry Pi Camera.
 
 % {Explored Alternatives}
 \subsubsection{Explored Alternatives}
 There were many alternatives explored for each component of the Video Capture subsystem.
 
-One of the possibilites for the camera was purhcasing a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- not allowing for user replacement of the camera for future research improvements (violating constraint XX). %again the requirement got removed
+One of the possibilities explored for the camera subsystem was the purchase of a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- making user replacement of the camera for future research improvements difficult (violating constraint \textbf{C.EX.5}).
 
-Another possible choice for the camera was purchasing a USB webcam and connecting it to the USB port to the Raspberry Pi device. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously mentioned, made the Rasberry Pi Camera a better solution suited to the client's needs.
+Another consideration for the subsystem involved utilizing a USB webcam -- connecting it via the Raspberry Pi's USB port. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously mentioned, made the Rasberry Pi Camera a better solution suited to the client's needs.
 
-For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods. Again, detailed justification for using Wi-FI and not these is discussed in a later section but the decision came down to a few factors. The original options required additional hardware (higher costs and system weight) and would require more complexity for the user to handle.
+For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods.  Ultimately these options required additional hardware (contributing to higher costs and system weight) and would introduce more points of failure and complexity into the finalized system.
