@@ -1,0 +1,66 @@
+\paragraph{T.CM.1: Camera Test}
+
+This test verifies the attributes of the video that captured by the camera.
+
+\textbf{Addresses}: NF.CAM.3, NF.CAM.4
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item The Raspberry Pi stores a 10-second video sample.
+    \item Verify the video attributes on the Raspberry Pi.
+\end{enumerate}
+
+\textbf{Verification}: 
+Compare the resolution and frame rate of the stored video with the setting.
+
+%
+
+\paragraph{T.CM.2: Camera Focusing Test}
+
+This test verifies the camera's auto focus functionality.
+
+\textbf{Addresses}: NF.CAM.1, NF.CAM.2
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Place a testing object 10 meters away from the camera.
+    \item Clear objects that is between the camera and the testing object.
+    \item Take a picture using the camera with default setting.
+\end{enumerate}
+
+\textbf{Verification}: 
+The focus should be on the testing object, that is, the testing object should be easily identified in the image.
+
+%
+
+\paragraph{T.CM.3: Video Recording Test}
+
+This test verifies the video captured by camera can be stored into a video file.
+
+\textbf{Addresses}: F.CAM.2, NF.CAM.6
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Turn on the camera.
+    \item Start recording for two hours.
+\end{enumerate}
+
+\textbf{Verification}: 
+Verify that the recorded video file can be played back.
+
+%
+
+\paragraph{T.CM.4: Various Light Condition Camera Test}
+
+This test verifies the automatic exposure functionality of the camera.
+
+\textbf{Addresses}: NF.CAM.5
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Select 5 different time in a day with different light conditions.
+    \item Recording a 1-minute video at each of the selecting time at the same place.
+\end{enumerate}
+
+\textbf{Verification}: 
+Verify that the objects in the recorded video can be easily identified.
