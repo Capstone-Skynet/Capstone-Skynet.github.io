@@ -1,34 +1,54 @@
-\paragraph{T.G.1: Video Format Verification}
+\paragraph{T.G.1: System Boot Test}
 
-This test verifies the attributes of the video.
-
-\textbf{Addresses}: F.CM.1
-
-\textbf{Procedure}:
-\begin{enumerate}[noitemsep]
-    \item The Raspberry Pi stores a 10-second video sample.
-    \item Verify the video attributes on the Raspberry Pi.
-\end{enumerate}
-
-\textbf{Verification}: 
-Compare the resolution and frame rate of the stored video with the setting.
-
-%
-
-\paragraph{T.G.2: Parallel Computing Test}
-
-This test verifies the structure of the computing platform.
+This test verifies the system can boot to an operational ready stage.
 
 \textbf{Addresses}: F.CP.2
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
-    \item Gather the required information of the computing platform. This includes: clock frequency, function unit count, function unit latency, and the latency of the data transmission.
-    \item Calculate the theoretical processing time required to process a 1-minute video sample.
-    \item Prepare the video sample.
-    \item Feed the video sample to the machine learning model.
-    \item Record the actual processing time used.
+    \item Setup all prerequisites the system requires, i.e. power cable is connected.
+    \item Boot up the system.
+    \item Connect the base station to the server.
+    \item Wait for the status message showed up on the base station.
 \end{enumerate}
 
 \textbf{Verification}: 
-If the difference between the theoretical value and actual value is less than 10\%, the test is passed. 
+If a warning/error message or no message is received on the base station after 5 minus, that's an indication of a failed test. Otherwise, the test is passed.
+
+%
+
+\paragraph{T.G.2: System Logging Test}
+
+This test triggers a system fault and verifies the error message is correctly displayed and the log data is correctly recorded.
+
+\textbf{Addresses}: F.CP.4, F.BS.5
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Turn off the Wi-Fi router that the Raspberry Pi is trying to connect to.
+    \item Boot the system.
+    \item Let the system run 5 minutes.
+    \item Verify the system displayed message and the log file the Raspberry Pi creates.
+\end{enumerate}
+
+\textbf{Verification}: 
+There should have an error message display on the base station. The log file should clearly indicate that the system couldn't connect to the router and tried to reconnect. If the error message is correctly displayed and the file is correctly generated, this test is passed.
+
+%
+
+\paragraph{T.G.3: Wireless Connection Test}
+
+This test verifies the effective range of the wireless connection between the Raspberry Pi.
+
+\textbf{Addresses}: F.BS.3, NF.CM.1, NF.CM.2
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Place the Raspberry Pi, the base station, and the Wi-Fi router at vertices of an equilateral triangle with side length of 30 meters.
+    \item Write a video streaming application.
+    \item Streaming the video on the Raspberry Pi.
+    \item Check the streaming quality on the base station.
+\end{enumerate}
+
+\textbf{Verification}: 
+A stable connection refers to no obvious lost of frames can be noticed on the base station.

@@ -1,0 +1,35 @@
+\paragraph{T.P.1: Power Usage Test}
+
+This test checks actual power usage of the system.
+
+\textbf{Addresses}: NF.PR.1
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Setup the system in the lab.
+    \item Power the Raspberry Pi and the FPGA board using two power supplies.
+    \item Boot the system and start the machine learning program.
+    \item Record the power reading.
+\end{enumerate}
+
+\textbf{Verification}: 
+Compare the peak power with the maximum power listed in the user manual. If the recorded peak power do not exceed theoretical maximum power, the test is passed. 
+
+%
+
+\paragraph{T.P.2: Battery Safety Test}
+
+This test verifies the functionality of the battery protection circuit.
+
+\textbf{Addresses}: F.PR.4, F.PR.5, F.PR.6
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Connect the battery protection circuit to a lab power supply.
+    \item Load it with an appropriately sized resistor in order to simulate normal operating conditions.
+    \item Raise the supply voltage and probe the output voltage in order to verify that our overvoltage protection works correctly.
+    \item Connect the supply voltage in backwards in order to verify that the reverse polarity protection works correctly.
+\end{enumerate}
+
+\textbf{Verification}: 
+If sparking or overheating occurred during the test, then the battery protection circuit has passed the test.
