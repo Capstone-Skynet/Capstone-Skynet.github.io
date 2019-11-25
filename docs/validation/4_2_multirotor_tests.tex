@@ -1,0 +1,20 @@
+\paragraph{T.DR.1: RPAS Maximum Takeoff Weight Test}
+
+This test obtains the maximum thrust output, minimum thrust-to-weight ratio, and maximum power output of the RPAS prototype.
+
+\textbf{Addresses}:  NF.DR.1, NF.DR.12, NF.DR.13
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Attach the RPAS prototype to a scale or force sensor and ensure that the RPAS cannot separate scale or force sensor.
+    \item Attach multimeter to the RPAS power circuitry.
+    \item Fix or constrain the RPAS to the ground by using a heavy weight, tape, or fasteners.
+    \item Tare the scale or force-sensor such that the measure is reference to the initial conditions.
+    \item Power on the drone and arm the motors.
+    \item Apply maximum throttle from the radio transmitter.
+    \item Obtain voltage and current measurements from the multimeter.
+    \item Obtain force measurements from the scale or force sensor.
+\end{enumerate}
+
+\textbf{Verification}: 
+To ensure that the RPAS has minimum manuverability, at maximum take-off weight, we should be using 80\% throttle. For this test to pass, the RPAS must achieve a maximum pull of 125\% (2.5 kg) of maximum takeoff weight. Since this is a maximum load test case, we verify the measured current and voltage to ensure NF.DR.12 and NF.DR.13 are checked.
