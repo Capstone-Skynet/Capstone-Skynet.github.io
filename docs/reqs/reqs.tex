@@ -18,47 +18,54 @@
 % Begin content
 \section{About This Document}\label{section:about}
 \subsection{Purpose}\label{section:about:purpose}
-This document outlines expected metrics related to performance, quality, longevity, environmental impact, cost, legality, and safety of the Multirotor Computing Platform project.
+This document outlines expected metrics related to the performance, quality, longevity, environmental impact, cost, legality, and safety of the Multirotor Computing Platform project. It is intended to convey \textit{what the product does} and \textit{how well it performs}, rather than describing the actual project implementation (described in the \textit{Design Document}).
 
 \subsection{Intended Audiences}\label{section:about:audience}
 This document is intended for \textit{all project stakeholders}, including (but not limited to):
 \begin{itemize}
-\item Project Designers and Quality Controllers (the Capstone team)
-\item Client (and their representatives)
-\item External Project Sponsors
-\item Legal Personnel (The Department of Electrical and Computer Engineering, Industry Canada, Transport Canada)
+\item Project Designers and Quality Controllers (the Capstone team), 
+\item Client (and their representatives), 
+\item External Project Sponsors, and
+\item Legal Personnel (The Department of Electrical and Computer Engineering, Industry Canada, and Transport Canada)
 \end{itemize}
 
-\subsection{Reading Guide}\label{section:about:readingguide}
-This document describes both a high-level description of the project, in addition to detailed functional requirements, non-functional requirements, and constraints. Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the Design Specification). 
+This document is particularly relevant to those who need to understand the project's scope, validate the product, and/or assess the product against academic or organizational objectives.
 
+\subsection{Reading Guide}\label{section:about:readingguide}
+This document contains both a high-level description of the project, in addition to detailed requirements broken down as follows:
+
+\begin{itemize}
+\item \textbf{Functional Requirements}; which describe the services, capabilities, and functions delivered by the product, 
+\item \textbf{Non-Functional Requirements}; which describe the quality attributes the product needs to exhibit, and  
+\item \textbf{Constraints}; which describe restrictions regarding how the product may be implemented.
+\end{itemize}
+
+Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the Design Specification and Validation Specification). 
+
+For specific details regarding the project's implementation, refer to the \textit{Design Document}.
+
+For a description of how these requirements are tested, refer to the \textit{Validation Specification}.
+
+\newpage
 \section{Background}
 
-% 
-% Describes the importance of a flying FPGA ML thing to the client (Mieszko).
-% 
+This project aims to offer an aerial/drone platform which provides both video acquisition and supplemental programmable hardware processing capabilities on-board -- customizable to a wide range of video applications which require hardware acceleration. The project's client, Dr. Mieszko Lis, intends to utilize this device as a platform to showcase his ongoing hardware-accelerated machine learning research projects. Potential applications of this research may include pedestrian detection, wildlife management, and other object-detection tasks.
 
-TODO: A nice high-level pictogram (\textit{not} a block diagram, that's for the design doc) would be great here.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=\linewidth]{intpic.png}
+\caption{High-Level System Integration with RPAS}
+\label{hlpic}
+\end{figure}
 
-\section{Domain}
+The final system will consist of a \textit{multirotor-mounted computing platform}; which collects, processes, and analyzes aerial video; and a \textit{mobile base station}; which displays the live video feed from the multirotor, overlaid with the results of the computing platform's analysis. The video analysis process is performed in-part through FPGA-based hardware acceleration.
+
+Current products on the market are primarily aimed at consumers and ``prosumers'' -- content-producers whose main focus is aerial photography/videography. While our project also features aerial photography, its emphasis is in performing real-time analytics using the captured video, in addition to supplying custom features and modifications tailored to our client.
 
 The project is classified as an integration of consumer electronics with components intended to be used in research and industry. In particular, specific sub-domains of this project include FPGA design, hardware acceleration, machine learning, and video acquisition/transmission. 
 
-\section{Goal}
-
-This project aims to offer am aerial/drone platform which provides both video acquisition and supplemental programmable hardware processing capabilities on-board --- customizable to a wide range of video applications that require hardware acceleration. Current products on the market are primarily aimed at the consumers and ``prosumers'' --- content-producers whose main focus in aerial photography/videography. While our project also features aerial photography, its emphasis is in performing real-time analytics using the captured video, in addition to supplying custom features and modifications tailored to our client.
-
-\begin{figure}[H]\label{hlpic}
-    \centering
-    \includegraphics[width=\linewidth]{img/intpic}
-\caption{High-Level System Integration with RPAS}
-\end{figure}
-
+\newpage
 \section{Functional Requirements}\label{section:funcreq}
-
-This section outlines the functional requirements of the integrated system.
-
-Functional requirements describes what the project do. It embodies the essential requirements that must be completed in order for the project to be deemed deliverable or successful. The functional requirements include the scope of business rules, legal or regulatory requirements, certification requirements, and external interfacing requirements for the project.
 
 \subsection{High-Level Requirements}
 \begin{enumerate}[label=F.HL.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
@@ -76,40 +83,38 @@ Functional requirements describes what the project do. It embodies the essential
 	\item The multirotor RPAS must be controlled by a pilot within the visual line-of-sight (VLOS).
 	\item The multirotor RPAS must ascend, descend, pitch, roll, and yaw upon pilot's commands via the TX to the RPAS receiver (RX).
 	\item The multirotor RPAS must output adequate lift thrust to carry the computing platform.
-	\item The multirotor RPAS must be equipped with LEDs to indicate the orientation of the RPAS.
+	\item The multirotor RPAS must be equipped with lights to indicate the orientation of the RPAS.
 	\item The multirotor RPAS must be equipped with easy-to-remove propeller fasteners.
 	\item The multirotor RPAS must be equipped with a low-battery warning system.
-	\item The multirotor RPAS must perform an autonomous controlled emergency landing in the case of loss of contact with pilot's TX.
+	\item The multirotor RPAS must perform an autonomous emergency landing in the case of loss of contact with pilot's TX.
 	\item The multirotor RPAS must be in manufacturer compliance with Transport Canada's definition of RPAS\cite{tp15263}.
-	\item The multirotor RPAS must be registered under Transport Canada drone registry.\cite{tcdronereg}.
+	\item The multirotor RPAS must be registered under the Transport Canada drone registry.\cite{tcdronereg}.
 	\item The multirotor RPAS must be operable under nominal weather conditions.
-	\item The multirotor RPAS must be constructed and reparable using standard, non-propriatary components, fasteners, and connectors.
+	\item The multirotor RPAS must be constructed and reparable using standard, non-proprietary components, fasteners, and connectors.
 	\item The multirotor RPAS must have landing legs or landing pads to protect the onboard equipment and dampen the impact upon landing/touch-down, emergency landing, and crash-landing.
 \end{enumerate}
 
 \subsection{Computing Platform}
 \begin{enumerate}[label=F.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The computing platform must have a physical method (ex. button) to signal a safe power-on/off sequence for onboard components.
-	\item The computing platform must boot into an operational state when power-on signal is applied, without any additional user input.
+	\item The computing platform must boot into an operational state when the power-on signal is applied, without any additional user input.
 	\item The computing platform must indicate system status via one or more indicator lights.
 	\item The computing platform must store log files (detailing historical system state) onto non-volatile memory.
 \end{enumerate}
 
 \subsection{Non-RPAS Air-Ground I/O}
 \begin{enumerate}[label=F.CM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The air-ground communication scheme must be bi-directional
+	\item The air-ground communication scheme must be bi-directional.
 	\item The air-ground communication scheme must establish automatically on system boot.
 	\item The air-ground communication scheme must attempt to re-establish the connection if the connection is lost.
 	\item The air-ground communication scheme must not rely on any networks which are fixed to a specific geographical region (such as campus WiFi).
-
 \end{enumerate}
-
 
 % Camera and ML points
 \subsection{Camera}
 \begin{enumerate}[label=F.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The camera subsystem must capture video for the machine learning implementation to process.
-	\item The camera subsystem must store captured video for future research/analysis.
+	\item The camera subsystem must store video for future research/analysis.
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
@@ -125,7 +130,7 @@ Functional requirements describes what the project do. It embodies the essential
     \item The base station must display live video overlaid with ML model data from the multirotor.
     \item The base station must be in the form of a mobile, battery powered device.
 	\item The base station must support bi-directional data transfer with the computing platform.
-	\item The base station must have a user interface for sending control commands to the computing platform.
+	\item The base station must have a user interface to send rudimentary control commands to the computing platform.
 	\item The base station must prominently display system status, warnings, and faults to the user.
     \item The base station must be capable of storing metadata received from the drone for further analysis.
 \end{enumerate}
@@ -137,20 +142,18 @@ Functional requirements describes what the project do. It embodies the essential
     \item The power supply system must reject noise which might interfere with the proper operation of the computing system or multirotor.
     \item The power supply system must have overvoltage and undervoltage protection.
     \item The power supply system must have surge protection.
-    \item The power supply system must have reverse polarity. protection.
+    \item The power supply system must have reverse polarity protection.
 \end{enumerate}
 
-
 \section{Non-Functional Requirements}\label{section:nonfuncrec}
-
 \subsection{Multirotor RPAS}
 \begin{enumerate}[label=NF.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The multirotor RPAS must be able to carry a maximum total mass of 2.0 kg and achieve flight.
 	\item The multirotor RPAS maximum take off mass including the payload must be less than 25.0 kg in compliance with Transport Canada TC-15263.\cite{tp15263}
 	\item The multirotor RPAS must withstand at least 5 nautical miles (knots) of crosswind during operation.
-	\item The multirotor RPAS must receive pilot TX control signals via 2.4 GHz radio from 300 m away.
-	\item The multirotor RPAS onboard LEDs must be clearly visible from 300 m away and must clearly indicate the orientation of the RPAS.
-	\item The multirotor RPAS flight controllers systems must respond to pilot controls with less than 100ms of latency.
+	\item The multirotor RPAS must receive pilot TX control signals from 300 m away.
+	\item The multirotor RPAS onboard lights must be clearly visible from 300 m away and must clearly indicate the orientation of the RPAS.
+	\item The multirotor RPAS flight controller systems must respond to pilot controls with less than 100ms of latency.
 	\item The multirotor RPAS must have a hovering flight duration of 20 minutes with 500 g of payload.
 	\item The brushless DC (BLDC) motors must have a kV constant between 800 and 1200.
 	\item The BLDC motors and propellers must output at least 8,000 N of thrust at maximum throttle.
@@ -159,18 +162,15 @@ Functional requirements describes what the project do. It embodies the essential
 	\item The electronic speed controller (ESC) for controlling BLDC motor speeds must have maximum current output of 30 A.
 	\item The ESC must not exceed operating temperature of 60 degrees Celsius at maximum load operation.
 	\item The ESC must operate at maximum load --- at 90\% of the maximum current draw --- for 60 seconds.
-	\item The multirotor RPAS battery must be a high-power-output Lithium Polymer (LiPo) battery with 5000 mAh to 6000 mAh capacity and discharge rating of at least 30 C to 40 C.
-	\item The multirotor RPAS battery capacity must not exceed 6700 mAh.
-	\item The LiPo batteries must retain 75\% of its initial maximum capacity after 200 charge-discharge cycles.\cite{lipobattery}
-	\item The low-battery warning system must trigger the flight controller to enter an emergency landing protocol when battery is at or below 5\% of the total charge capacity.
-	\item The flight controller must automatically enter emergency landing protocol when pilot radio control feed has been cut for more than 1.0 seconds with a maximum descend rate of 0.5 m/s.
+	\item The flight controller must automatically enter emergency landing protocol when the pilot radio control feed has been cut for more than 1.0 seconds with a maximum descend rate of 0.5 m/s.
+	\item The low-battery warning system must trigger the flight controller to enter an emergency landing protocol when the battery is at or below 5\% of the total charge capacity.
 	\item The multirotor RPAS airframe mass must not exceed 400 g.
 	\item The multirotor RPAS airframe opposite motor-to-motor distance must be 450 mm for 4-engine multirotor or 650mm for 6-engine multimotor.
 \end{enumerate}
 
 \subsection{Computing Platform}
 \begin{enumerate}[label=NF.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The computing platform must perform a power-on self-test (POST) to ensure communications and video links are successfully established.
+	\item The computing platform must perform a power-on self-test (POST) to ensure communications and video links are successfully established on boot.
 	\item The computing platform must boot in a reasonable amount of time (<2 minutes).
 	\item The computing platform's operations must not be affected by electrical noise emitted by the multirotor.	
 	\item The computing platform's construction must not be susceptible to mechanical vibrations emitted by the multirotor.	
@@ -178,7 +178,7 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Non-RPAS Air-Ground I/O}
 \begin{enumerate}[label=NF.CM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The air-ground communication scheme must have a transmit/receive distance of at least 30 meters (each).
+	\item The air-ground communication scheme must have a transmit/receive distance of at least 30 meters.
 	\item The air-ground communication scheme must be capable of sustained continuous video and ML data transmission with no consistent frame drops/stuttering.
 \end{enumerate}
 
@@ -202,19 +202,17 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Machine Learning Implementation}
 \begin{enumerate}[label=NF.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The machine learning model must process in real time, with a latency of one second or less.
+	\item The machine learning model must process video in real time, with a latency of one second or less.
 	\item The machine learning model must have a throughput of at least 2 frames per second.
 \end{enumerate}
 
 \subsection{Power Requirements}
 \begin{enumerate}[label=NF.PR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-
-\item TODO: Muchen, move power stats here.
-
+	\item The power supply subsystem must have a 5000 mAh to 6000 mAh capacity 
+	\item The power supply subsystem must have a discharge rating of at least 30 C to 40 C.
+	\item The power supply subsystem capacity must not exceed 6700 mAh.
+	\item The power supply subsystem's batteries must retain 75\% of their initial maximum capacity after 200 charge-discharge cycles.
 \end{enumerate}
-
-
-
 
 \section{Contraints}
 
@@ -231,12 +229,12 @@ Functional requirements describes what the project do. It embodies the essential
     \item The FPGA must contain at least 60,000 logic elements to provide sufficient on-chip capacity for initial and future machine learning implementations.
     \item The glue logic must not reserve more than 10,000 logic elements on the FPGA.
     \item The I/O ports utilized on the computing platform must not be proprietary (to facilitate future board replacement).
-    \item ML hardware accelerator(s) must be disjoint from other computing modules such that it (they) can be easily be replaced by the client.
+    \item The ML hardware accelerator(s) must be disjoint from other computing modules such that it (they) can be easily be replaced by the client.
     \item The camera must use a standard interface such that the client can replace it in the future, if desired.
 \end{enumerate}
 
 \subsection{Licensing}
-\begin{enumerate}[label=C.EX.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+\begin{enumerate}[label=C.LI.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
     \item The project must be released under the MIT license.
     \item Any third-party Intellectual Property (IP) used by the hardware or software must be compatible with the MIT license.
     \item The development software used to synthesize the Computing Platform's hardware and software must be free-to-use, in perpetuity.
@@ -244,21 +242,20 @@ Functional requirements describes what the project do. It embodies the essential
 
 \subsection{Legal Compliance}
 \begin{enumerate}[label=C.LC.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item Drone is in compliance with Transport Canada's new laws (TC 15263) with regards to small remote-piloted-aerial-systems (RPAS); effective as of June 1st, 2019.
-    \item Provided drone documentation is in compliance with Transport Canada's regulations regarding drone manufacturers; documentation include safety, pre-flight, radio, operation, post-flight, and emergency procedures for the drone.
-    \item Drone is not over 25kg and will not fly over bystanders (anyone that is not actively participating in the flight operation) or within 30m of them.
-    \item Drone will not fly within 3 nautical miles of any aerodrome.
-    \item Drone will not fly over 400ft; and not fly in controlled airspaces: class A, class B, class C, class D, class E, and class F.
-    \item Drone will only fly in fair weather conditions with adequate visibility for line-of-sight operations.
-    \item Drone will not carry weapons and cannot be used or modified for weaponization.
-    \item Lithium batteries cannot be larger than 100Wh for it to be carried onto a commerial airplane. For a 4S cell battery (14.8 nomial voltage), this capacity is 6700 mAh.
+    \item The drone must be in compliance with Transport Canada's new laws (TC 15263) with regards to small remote-piloted-aerial-systems (RPAS); effective June 1st, 2019.
+    \item The provided drone documentation must be in compliance with Transport Canada's regulations regarding drone manufacturers; documentation includes safety, pre-flight, radio, operation, post-flight, and emergency procedures for the drone.
+    \item The drone must not be over 25kg and must not fly over bystanders (anyone that is not actively participating in the flight operation) or within 30m of them.
+    \item The drone must not fly within 3 nautical miles of any aerodrome.
+    \item The drone must not fly over 400ft; and not fly in controlled airspaces: class A, class B, class C, class D, class E, and class F.
+    \item The drone must only fly in fair weather conditions with adequate visibility for line-of-sight operations.
+    \item The drone must not carry weapons and must not be used or modified for weaponization.
 \end{enumerate}
 
 \subsection{Environmental Considerations}
 \begin{enumerate}[label=C.EN.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item A recycling plan must be included for environmentally impactful components (such as Li-Po batteries).
+    \item A recycling plan must be included for environmentally impactful components.
     \item All components must be RoHS compliant.
-    \item The multirotor must not be flown into areas from which it could not be recovered in the even of a failure (i.e. over deep water).
+    \item The multirotor must not be flown into areas from which it could not be recovered in the event of a failure (i.e. over deep water).
 \end{enumerate}
 
 \subsection{Manageability}
