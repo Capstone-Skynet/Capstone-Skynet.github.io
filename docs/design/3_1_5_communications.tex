@@ -8,11 +8,15 @@ We choose the latter option because it is more suitable for product development
 
 The majority of the bandwidth will be reserved for video transmission as it's the most intensive transmission task among all the tasks. The total number of bits per second of video that need to be transmitted can be calculated using the following formula:
 
-\[ \#\:of\:bits/second = \dfrac{\#\:of\:bits}{1\:pixel} * \dfrac{\#\:of\:pixels}{1\:frame} * \dfrac{\#\:of\:frames}{1\:second} \]
+$$
+\text{\# of bits/second} = \frac{\text{\# of bits}}{\text{1 pixel}} \times \frac{\text{\# of pixels}}{\text{1 frame}} \times \frac{\text{\# of frames}}{\text{1 second}}
+$$
 
 The video that will be transmitted, assuming uncompressed, has a resolution of 640x480 pixels and is 30 frames per second. The colour depth is 24-bit for a RGB colour set. That is, each pixel is 8 bits. Then:
 
-\[ \#\:of\:bits/second = \dfrac{8}{1} * \dfrac{640*480}{1} * \dfrac{30}{1} = 73.728\:Mbit/s \]
+$$
+\text{\# of bits/second} = \frac{8}{\text{1 pixel}} \times \frac{640\times 480}{\text{1 frame}} \times \frac{30}{\text{1 second}} = 73.738~\text{Mbits/s}
+$$
 
 The other data that need to be transmitted includes the metadata of the video, the results from ML model, the control commands, and required field for the protocol. The overall bandwidth required is about 75 Mbit/s.
 
