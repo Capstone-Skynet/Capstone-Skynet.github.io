@@ -9,11 +9,14 @@
 % Table of contents
 \include{toc}
 
+% Roman numeral page numbers
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{page}{1}
+
 % Terms and Abbreviations
 \include{terms_and_abbreviations}
 
 % List of figures and tables
-\thispagestyle{empty}
 \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
 \addcontentsline{toc}{section}{\listtablename}
@@ -21,4 +24,5 @@
 \newpage
 
 % Set page and section counter
+\renewcommand{\thepage}{\arabic{page}}
 \setcounter{page}{1}
