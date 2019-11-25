@@ -1,0 +1,28 @@
+% Title Page
+\begin{titlepage}
+	\maketitle
+\end{titlepage}
+
+% Revision history
+\include{rev_history}
+
+% Table of contents
+\include{toc}
+
+% Roman numeral page numbers
+\renewcommand{\thepage}{\roman{page}}
+\setcounter{page}{1}
+
+% Terms and Abbreviations
+\include{terms_and_abbreviations}
+
+% List of figures and tables
+\addcontentsline{toc}{section}{\listfigurename}
+\listoffigures
+\addcontentsline{toc}{section}{\listtablename}
+\listoftables
+\newpage
+
+% Set page and section counter
+\renewcommand{\thepage}{\arabic{page}}
+\setcounter{page}{1}

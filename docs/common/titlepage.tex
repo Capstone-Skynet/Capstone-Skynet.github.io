@@ -1,0 +1,49 @@
+\makeatletter
+\renewcommand{\maketitle}{
+	\bgroup
+	\setlength{\parindent}{0pt}
+	\begin{flushleft}
+		% Top spacing
+		\vspace*{0.5in}
+
+		% Team logo
+		\includegraphics[scale=0.4]{../assets/capstonelogo1.png}
+		\vspace*{0.25in}
+
+		% Title
+		\textbf{\Huge{\@title}}\\
+		\hrulefill
+
+		% Subtitle
+		\textbf{\huge{\docsubtitle}}
+		
+		\vspace*{0.5in}
+
+		% Course number and team
+		\textbf{\Large{CPEN/ELEC 491 Capstone Team 109}}\\
+		\hspace*{0.1cm}
+		\begin{tabular}[h]{|ll}
+			\@author
+		\end{tabular}
+
+		\vspace*{0.25in}
+
+		\textbf{\Large{Mieszko Lis, PhD}}\\
+		\hspace*{0.1cm}
+		\begin{tabular}[h]{|ll}
+			Electrical and Computer Engineering, The University of British Columbia
+		\end{tabular}
+
+		\vfill
+		
+		% Date
+		\large{\@date}
+		\vspace*{0.5in}
+
+		% Logo
+		\hspace*{-0.3cm}\includegraphics[scale=0.5]{../assets/ece_logo.pdf}
+
+	\end{flushleft}
+	\egroup
+}
+\makeatother

@@ -5,127 +5,14 @@
 \newcommand{\doctitle}{Design Document}
 \newcommand{\docsubtitle}{\input{../common/title}}
 
-% Custom commands
-\newcommand{\ts}{\textsubscript}	% Subscript command %
-
-% Use hyphans to break up urls
-\def\UrlBreaks{\do\/\do-}
-
-% PDF and href setup
-% Hyper ref
-\hypersetup{
-	colorlinks=true,
-	citecolor=black,
-	linkcolor=black,
-	filecolor=black,
-	urlcolor=blue,
-	pdftitle={\@title},
-	bookmarks=true
-}
-\urlstyle{same}
-
-% Page headings
-\pagestyle{fancy}
-\fancyhead[L]{\MakeUppercase{CPEN/ELEC 491}}
-\fancyhead[R]{\textbf{Team 109}}
-\fancyfoot{}
-\fancyfoot[C]{\thepage}
-
-% No paragraph indent
-\parindent 0ex
-
-% Meta
-\author{
-	Deutsch, Peter &
-	\textit{me@peterdeutsch.ca}
-	\\
-	He, Muchen &
-	\textit{i@muchen.ca}
-	\\
-	Hsueh, Arthur &
-	\textit{ah11962@outlook.com}
-	\\
-	Wang, Meng &
-	\textit{wzfftxwd@gmail.com}
-	\\
-	Wilson, Ardell &
-	\textit{ardellw96@gmail.com}
-}
-\title{\doctitle}
-\date{\today}
-
-\makeatletter
-\renewcommand{\maketitle}{
-	\bgroup
-	\setlength{\parindent}{0pt}
-	\begin{flushleft}
-		% Top spacing
-		\vspace*{0.75in}
-
-		% Team logo
-		\includegraphics[scale=0.5]{../assets/capstonelogo1.png}
-		\vspace*{0.25in}
-
-		% Title
-		\textbf{\Huge{\@title}}\\
-		\hrulefill
-
-		% Subtitle
-		\textbf{\huge{\docsubtitle}}
-		
-		\vspace*{0.5in}
-
-		% Course number and team
-		\textbf{\Large{CPEN/ELEC 491 Capstone Team 109}}\\
-		\hspace*{0.1cm}
-		\begin{tabular}[h]{|ll}
-			\@author
-		\end{tabular}
-
-		\vspace*{0.25in}
-
-		\textbf{Website}: https://capstone-skynet.github.io
-
-		\vfill
-
-		% Logo
-		\hspace*{-0.3cm}\includegraphics[scale=0.5]{../assets/ece_logo.pdf}
-
-		% Date
-		\large{\@date}
-	\end{flushleft}
-	\egroup
-}
-\makeatother
+\input{../common/aliases}
+\input{../common/urlsetup}
+\input{../common/pagesetup}
+\input{../common/titlepage}
 
 % Begin Document
 \begin{document}
-
-% Title Page
-\begin{titlepage}
-	\maketitle
-\end{titlepage}
-
-% Executive Summary (Not used here in proposal)
-% \include{executive_summary.tex}
-
-% Revision history
-\include{rev_history}
-
-% Table of contents
-\include{toc}
-
-% Terms and Abbreviations
-\include{terms_and_abbreviations}
-
-% List of figures and tables
-\thispagestyle{empty}
-\listoffigures
-\listoftables
-\newpage
-
-% Set page and section counter
-\setcounter{page}{1}
+\input{../common/presections}
 
 % TODO: fill out all the sections
 % if the sections gets too long, move them to a separte .tex document
