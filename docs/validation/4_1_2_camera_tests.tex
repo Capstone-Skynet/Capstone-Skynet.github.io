@@ -1,0 +1,60 @@
+\paragraph{T.CAM.1: Video Capture for ML Process}
+
+This test verifies the ability of the camera to capture video to send to the machine learning implementation on the FPGA.
+
+\textbf{Addresses}:  F.CAM.1
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Attach the camera to the Raspberry Pi.
+    \item Connect the Raspberry Pi to the ML implementation on the FPGA.
+    \item Initiate camera, Raspberry Pi and FPGA functionality.
+    \item Obtain video data in the FPGA.
+\end{enumerate}
+
+\textbf{Verification}: 
+For this test to pass, the video data created by the camera should be have successfully been sent to the Raspberry Pi and then to the FPGA. We can verify this by comparing programming the FPGA to output the video data obtained.
+
+%
+
+\paragraph{T.CAM.2: Video Storage for Playback}
+
+This test verifies the ability of the camera subsystem to record footage for future playback by the client.
+
+\textbf{Addresses}:  F.CAM.2, NF.CAM.6
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Attach the camera to the Raspberry pi.
+    \item Ensure data transmission connection between the Raspberry Pi and the Base station is live.
+    \item Initiate camera, Raspberry Pi and Base station functionality
+    \item Perform recording of footage for 2 hours.
+\end{enumerate}
+
+\textbf{Verification}: 
+For this test to pass, the video data created by the camera should be have successfully been sent to the Raspberry Pi and then to the base station, where the full 2 hour length recording should be stored. 
+
+%
+
+\paragraph{T.CAM.3: Camera Object Resolution Ability}
+
+This test verifies the ability of the camera to focus and resolve objects to the level described by the requirements. It should also verify the minimum display resolution of the camera.
+
+\textbf{Addresses}:  NF.CAM.1, NF.CAM.2, NF.CAM.4
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Write a script that will only pass images above 640x480 pixels from the Raspberry PI to the base station.
+    \item Attach the camera to the Raspberry Pi.
+    \item Ensure data transmission connection between the Raspberry Pi and the Base station is live.
+    \item Set up a controlled environment at least 30 meters long.
+    \item Place an object 10 meters tall and 10 centimeters wide at a minimum 1 meter away from the camera.
+    \item Take a photo of the object within the environment.
+    \item Move the object 5 meters away from the camera.
+    \item Repeat the previous 2 steps until the object has reach a minimum distance of 30 meters away from the camera
+\end{enumerate}
+
+\textbf{Verification}: 
+For this test to pass, each of the photos taken by the camera should produce images at the base station that clearly show the object. The images produced must have a resolution of at least 640x480 pixels to fulfill requirement .
+
+%

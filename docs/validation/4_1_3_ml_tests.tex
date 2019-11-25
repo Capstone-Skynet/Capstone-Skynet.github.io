@@ -1,0 +1,38 @@
+\paragraph{T.ML.1: Machine Learning Algorithm Latency and Throughput}
+
+This test verifies the latency and throughput of the hardware accelerated machine learning impelemntation on the FPGA.
+
+\textbf{Addresses}:  F.ML.1, F.ML.2, F.ML.3, NF.ML.1, NF.ML.2
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Program the FPGA with the machine learning implementation and monitoring of its latency and throughput.
+    \item Set up computing platform and base station for live video capture and processing.
+    \item Execute the system for 5 minutes while logging the produced data.
+\end{enumerate}
+
+\textbf{Verification}: 
+For this test to pass, the logged data should show a consistent latency of one second or less to fulfill requirement NF.ML.1 and also show a consistent throughput of at least 2 frames per second to fulfill requirement NF.ML2.
+
+%
+
+\paragraph{T.ML.4: Real-time and Pre-recorded Video Processing}
+
+This test verifies the ability of the machine learning implemntation to process both live inputs from the camera dn test inputs from a pre-recorded file.
+
+\textbf{Addresses}:  F.ML.1, F.ML.2, F.ML.4
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Program the FPGA with the machine learning implementation.
+    \item Set up computing platform and base station for live video capture and processing.
+    \item Execute the system for 5 minutes while logging the produced data.
+    \item Reconfigue the computing platform and base station for processing of any pre-recorded video.
+    \item Load the pre-recorded video into the computing platform.
+    \item Execute the system for 5 minutes while logging the produced data.
+\end{enumerate}
+
+\textbf{Verification}: 
+For this test to pass, the metadata produced by the machine learning implementation for both the live video feed and the pre-recorded video should be similiar in its qualitative properties. For object detection this would mean a consistent accuracy and quality of the produced metadata.
+
+%
