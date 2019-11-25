@@ -1,0 +1,44 @@
+\paragraph{T.DR.1: RPAS Maximum Takeoff Weight Test}
+
+This test obtains the maximum thrust output, minimum thrust-to-weight ratio, and maximum power output of the RPAS prototype.
+
+\textbf{Addresses}:  NF.DR.1, NF.DR.12, NF.DR.13
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Attach the RPAS prototype to a scale or force sensor and ensure that the RPAS cannot separate scale or force sensor.
+    \item Attach multimeter to the RPAS power circuitry.
+    \item Fix or constrain the RPAS to the ground by using a heavy weight, tape, or fasteners.
+    \item Tare the scale or force-sensor such that the measure is reference to the initial conditions.
+    \item Power on the drone and arm the motors.
+    \item Apply maximum throttle from the radio transmitter.
+    \item Obtain voltage and current measurements from the multimeter.
+    \item Obtain force measurements from the scale or force sensor.
+\end{enumerate}
+
+\textbf{Verification}: 
+To ensure that the RPAS has minimum manuverability, at maximum take-off weight, we should be using 80\% throttle. For this test to pass, the RPAS must achieve a maximum pull of 125\% (2.5 kg) of maximum takeoff weight. Since this is a maximum load test case, we verify the measured current and voltage to ensure NF.DR.12 and NF.DR.13 are checked.
+
+% 
+
+\paragraph{T.DR.2: RPAS Typical Takeoff Weight Test}
+
+The typical takeoff weight test quantifies the flight-time of the RPAS during a typical operation with significantly less massive payload.
+
+\textbf{Addresses}: NF.DR.7, NF.DR.10
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Attach voltage and current monitor to the RPAS power circuitry.
+    \item Set up RPAS for test-flight in open area or large room.
+    \item Power on the drone and arm the motors.
+    \item Start timer.
+    \item Apply reasonable throttle from the radio transmitter such that the RPAS is hovering 3.0 m above ground.
+    \item Record the \%-throttle applied for hovering.
+    \item Keep hovering until the RPAS battery reaches 10\% capacity.
+    \item Stop timer when the RPAS lands; calculate flight time in minutes.
+    \item Measure the total mass of the RPAS and payload, and compute the average power consumption using the data acquired from the voltage and current monitors. Calculate efficiency in g/W.
+\end{enumerate}
+
+\textbf{Verification}:
+The measured flight time should be greater than 20 minutes with a payload mass of 500 g in order to satisfy the requirement NF.DR.7. The calculated efficiency must be greater than 5.0 g/W to satisfy the requirement NF.DR.10.
