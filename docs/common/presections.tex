@@ -17,10 +17,15 @@
 \include{terms_and_abbreviations}
 
 % List of figures and tables
+\iftotalfigures
 \addcontentsline{toc}{section}{\listfigurename}
 \listoffigures
+\fi
+\iftotaltables
 \addcontentsline{toc}{section}{\listtablename}
 \listoftables
+\fi
+
 \newpage
 
 % Set page and section counter

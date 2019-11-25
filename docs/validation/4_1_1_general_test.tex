@@ -1,54 +1,53 @@
-\paragraph{T.G.1: System Boot Test}
+\paragraph{\underline{T.G.1: System Boot Test}}
 
-This test verifies the system can boot to an operational ready stage.
+This test verifies the system can boot to an operational/ready stage.
 
 \textbf{Addresses}: F.CP.2
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
-    \item Setup all prerequisites the system requires, i.e. power cable is connected.
-    \item Boot up the system.
+    \item Ensure power is applied to the system.
+    \item Press the power button.
     \item Connect the base station to the server.
-    \item Wait for the status message showed up on the base station.
+    \item Wait for the confirmation to show up on the base station.
 \end{enumerate}
 
 \textbf{Verification}: 
-If a warning/error message or no message is received on the base station after 5 minus, that's an indication of a failed test. Otherwise, the test is passed.
+If a warning/error message is displayed, or no message is received on the base station after 5 minutes, the test has failed. Otherwise, the test passes.
 
 %
 
-\paragraph{T.G.2: System Logging Test}
+\paragraph{\underline{T.G.2: System Logging Test}}
 
-This test triggers a system fault and verifies the error message is correctly displayed and the log data is correctly recorded.
+This test triggers a system fault, verifying an appropriate error message is displayed and the event is appropriately logged.
 
 \textbf{Addresses}: F.CP.4, F.BS.5
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
-    \item Turn off the Wi-Fi router that the Raspberry Pi is trying to connect to.
+    \item Turn off the Wi-Fi router that the platform management board is configured to connect to.
     \item Boot the system.
-    \item Let the system run 5 minutes.
-    \item Verify the system displayed message and the log file the Raspberry Pi creates.
+    \item Let the system run for 5 minutes.
+    \item Verify that the failed connection attempts are logged at both the base station and the PMB.
 \end{enumerate}
 
 \textbf{Verification}: 
-There should have an error message display on the base station. The log file should clearly indicate that the system couldn't connect to the router and tried to reconnect. If the error message is correctly displayed and the file is correctly generated, this test is passed.
+An error message must appear at the base station. The log files on both the PMB and base station should clearly indicate that the system couldn't connect to the router and attempted to reconnect. If the error message is correctly displayed and the logs is correctly generated, this test passes.
 
 %
 
-\paragraph{T.G.3: Wireless Connection Test}
+\paragraph{\underline{T.G.3: Wireless Connection Test}}
 
-This test verifies the effective range of the wireless connection between the Raspberry Pi.
+This test verifies the effective range of the wireless connection between the PMB and the base station.
 
 \textbf{Addresses}: F.BS.3, NF.CM.1, NF.CM.2
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
-    \item Place the Raspberry Pi, the base station, and the Wi-Fi router at vertices of an equilateral triangle with side length of 30 meters.
-    \item Write a video streaming application.
-    \item Streaming the video on the Raspberry Pi.
+    \item Place the PMB, base station, and Wi-Fi router at vertices of an equilateral triangle with side length of 30 meters.
+    \item Establish a streaming video connection.
     \item Check the streaming quality on the base station.
 \end{enumerate}
 
 \textbf{Verification}: 
-A stable connection refers to no obvious lost of frames can be noticed on the base station.
+To pass, the connection must be stable (no obvious lost frames may be noticed at the base station).

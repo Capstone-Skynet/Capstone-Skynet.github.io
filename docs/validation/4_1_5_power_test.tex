@@ -1,4 +1,4 @@
-\paragraph{T.P.1: Power Usage Test}
+\paragraph{\underline{T.P.1: Power Usage Test}}
 
 This test checks actual power usage of the system.
 
@@ -8,16 +8,16 @@ This test checks actual power usage of the system.
 \begin{enumerate}[noitemsep]
     \item Setup the system in the lab.
     \item Power the Raspberry Pi and the FPGA board using two power supplies.
-    \item Boot the system and start the machine learning program.
-    \item Record the power reading.
+    \item Boot the system and start the machine learning implementation.
+    \item Record the power reading (voltage and current).
 \end{enumerate}
 
 \textbf{Verification}: 
-Compare the peak power with the maximum power listed in the user manual. If the recorded peak power do not exceed theoretical maximum power, the test is passed. 
+Compare the peak power with the maximum power listed in the user manual. If the recorded peak power does not exceed the theoretical maximum power, the test passes. 
 
 %
 
-\paragraph{T.P.2: Battery Safety Test}
+\paragraph{\underline{T.P.2: Battery Safety Test}}
 
 This test verifies the functionality of the battery protection circuit.
 
@@ -32,4 +32,4 @@ This test verifies the functionality of the battery protection circuit.
 \end{enumerate}
 
 \textbf{Verification}: 
-If sparking or overheating occurred during the test, then the battery protection circuit has passed the test.
+If sparking or overheating occurs during the test, then the test has failed.

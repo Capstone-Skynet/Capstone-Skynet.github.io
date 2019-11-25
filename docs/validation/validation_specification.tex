@@ -31,9 +31,6 @@
 \include{terms_and_abbreviations}
 
 % List of figures and tables
-\thispagestyle{empty}
-\listoffigures
-\listoftables
 \newpage
 
 % Set page and section counter
@@ -45,7 +42,7 @@
 \section{About This Document}
 
 \subsection{Purpose}
-This document serves to outline the methods, tests, and scenarios which are used to validate the project, and the status of these validation steps. 
+This document serves to outline the methods, tests, and scenarios which are used to validate the project, and the status of these validation steps. In addition, this document outlines the validation methodology, which describes how the validation steps themselves are written and performed.
 
 \subsection{Intended Audience}
 This document is intended for:
@@ -53,23 +50,27 @@ This document is intended for:
 \item \textbf{Quality Controllers (the Capstone team)}: to assess the validation methodology and results,
 \item \textbf{Designers (the Capstone team)}: to assess the current degree of completion of the project,
 \item \textbf{Client (and their representatives)}: to assess the final state of the project (when complete),
-\item \textbf{and Legal Personnel:} to review the validation scheme if necessary. Such personnel may include personnel from the Department of Electrical and Computer Engineering, Industry Canada, and Transport Canada
+\item \textbf{and Legal Personnel:} to review the validation scheme if necessary. Such personnel may include individuals from the Department of Electrical and Computer Engineering, Industry Canada, and Transport Canada.
 \end{itemize}
 
+This document is particularly relevant to those who wish to assess the current state of the project, in addition to those who will assess the validation methodology against academic, organizational, or legal criteria.
+
 \subsection{Reading Guide}
-This document organizes tests based on their component sub-systems, and whether the tests are automated or not (see Section \ref{auto} for a detailed description). Each section has a table which details the test, including a unique identifier, the requirement which it is testing, the test's status, and the last time the test was executed.
+This document begins with a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested and the steps taken to execute the test. Finally, the current status of each test is summarized in Section \ref{results}.
+
+The requirements referenced in this document can be found in the \textit{Requirements Specification}.
 
 \section{Validation Overview}
 
-\subsection{Automated and Manual Tests}\label{auto}
-The validation tests employed (and this document) are split into two categories, \textit{automated tests} and \textit{manual tests}:
+\subsection{Test Organization}\label{auto}
+The validation tests employed are split into two categories: \textit{automated tests} and \textit{manual tests}:
 
-\textbf{Automated tests} are tests focused on tasks which are performed automatically and regularly by the device and \textit{can be monitored by the device itself}. Examples of such scenarios include self-testing systems on boot, monitoring communication status, machine learning accuracy logging, et cetera.
+\textbf{Automated tests} are tests focused on tasks which are performed regularly by the device and \textit{can be monitored by the device itself}. Examples of such tests include self-tests on boot, self-monitoring of communication status, machine learning accuracy logging, et cetera.
 
 \textbf{Manual tests} are tests which \textit{cannot be performed by the device itself} and must be manually performed by a quality controller. These tests are performed less frequently --- some may be executed before every flight, while others may only be performed once. 
 
 \subsection{Test Notation}
-The following notations and conventions are used throughout test tables in this document:
+The following notations and conventions are used throughout this document:
 
 \textbf{Verification Requirement (VR)}: The unique identifier of a specific test. These identifiers always start with \textbf{T}.
 
@@ -83,15 +84,15 @@ The following notations and conventions are used throughout test tables in this 
 \textbf{Status}: The status of a specific test:
 \begin{itemize}
 	\item \textbf{PEND} if the specific test has never been performed,
-	\item \textbf{FAIL} if the specific test is failing, or
-	\item \textbf{PASS} if the specific test is passing
+	\item \textbf{FAIL} if the specific test is currently failing, or
+	\item \textbf{PASS} if the specific test is currently passing
 \end{itemize}
 
 \textbf{Effective Date}: Denotes the date at which the test was last performed (and thus, when the status was last updated). This field is not applicable for pending tests.
 
 \textbf{It is important to note that a one-to-one mapping of VRs to DRs \textit{does not necessarily exist}}. Some requirements (particularly those which are high-level or functional) will have no tests, while some requirements will have multiple tests. It is also possible for one test to exercise multiple requirements at once.
 
-\section{Automated Test Cases}
+\section{Automated Test Cases} \label{begintest}
 
 %\subsection{Computing Platform Tests}
 \input{3_1_automated_computing_platformtest.tex}
@@ -120,7 +121,7 @@ The following notations and conventions are used throughout test tables in this 
 \subsection{Multirotor Tests}
 \input{4_2_multirotor_tests.tex}
 
-\section{Verification Results}
+\section{Verification Results} \label{results}
 
 \subsection{Automated Verification Results}
 \begin{table}[H]
