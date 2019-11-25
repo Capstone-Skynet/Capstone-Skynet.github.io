@@ -4,19 +4,85 @@ The bare-minimum multirotor remote-piloted aerial system (RPAS) consists of a pr
 
 A multirotor RPAS (MRPAS) has several common configurations, a tricopter, a quadcopter, and a hexacopter.
 
-[insert image of configurations]
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_yconfig}
+        \caption{Tricopter Y-Configuration}
+        \label{fig:tricopter-y}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_xconfig}
+        \caption{Quadcopter X-Configuration}
+        \label{fig:quadcopter-x}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_hexconfig}
+        \caption{Hexcopter X-Configuration}
+        \label{fig:hexcopter-x}
+    \end{subfigure}
+    
+    \caption{Multirotor RPAS configurations}
+    \label{fig:rpas_configs}
+\end{figure}
 
-\textbf{Tricopter: }The benefit of a tricopter comes from its fewer required motors and speed controllers, 
+\textbf{Tricopter: }The benefit of a tricopter, as represented in figure \ref{fig:tricopter-y} comes from its fewer required motors and speed controllers,
 which means less power draw required to sustain flight. Each arm that is supporting each motor is also wider, at 120 
 degrees. This makes the motors and arms of the MRPAS less visible from the mounted camera's point of view. 
-However, the downside of a tricopter is that there exists asymmetry of motor torque (see diagram) since 
+However, the downside of a tricopter is that there exists asymmetry of motor torque (Figure \ref{fig:tricopter-y-t}) since 
 there is an odd number of motors. An additional servo motor is required to control the tail motor which 
 complicates the control algorithms for self-stabilizing flight.
 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{img/drone_yconfigt}
+    \caption{Tricopter Y-configuration has non-zero resultant motor torque}
+    \label{fig:tricopter-y-t}
+\end{figure}
+
 \textbf{Quadcopter X: }
-The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (TODO: see diagram). Two of the motors spins  
+The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (Figure \ref{fig:quadcopter-x-t}). Two of the motors spins  
 clockwise and the other two spins counter-clockwise, effectively cancel each other’s undesired torque. 
-Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom movements by changing a combination of differential thrust to each motor (TODO: see diagram).
+Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by changing a combination of differential thrust to each motor (Figure \ref{fig:rpas_6dof}).
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.4]{img/drone_xconfigt}
+    \caption{Quadcopter X-configuration has zero resultant motor torque}
+    \label{fig:quadcopter-x-t}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_x_pitch}
+        \caption{Pitch forward}
+        \label{fig:x-pitch}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_x_roll}
+        \caption{Roll left}
+        \label{fig:x-roll}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[scale=0.4]{img/drone_x_yaw}
+        \caption{Yaw left}
+        \label{fig:x-yaw}
+    \end{subfigure}
+    
+    \caption{Using differential thrust to obtain 6-DOF movement. }
+    \label{fig:rpas_6dof}
+\end{figure}
 
 \textbf{Hexacopter X: }
 The hexacopter has all the stability benefits of a copter. In addition, the hexacopter configuration also 
@@ -26,9 +92,10 @@ payload than quadcopters. The downside is that hexacopter configuration builds a
 operate, and maintain. Upon a crash, due to hexacopter MRPASs extended size and weight cause more injuries 
 or collateral damage to nearby equipment.
 
-We choose to pursue with a quadcopter configuration. The payload is not too heavy, our target maximum payload weight is less than 500 g (insert requirement code). The quadcopter configuration is also the most balanced in terms of trade-off between cost and reliability. 
+We choose to pursue with a quadcopter configuration. 
+The payload is not too heavy, our target maximum payload weight is less than 500 g (\textbf{NF.DR.1}). The quadcopter configuration is also the most balanced in terms of trade-off between cost and reliability. 
 
-\subsubsection{Air Frame}
+\subsubsection{Air Frame}\label{section:air-frame}
 
 The most common frames available for sale comes in 450 mm motor to motor diagonal span (MMDS). However, 
 350mm is also common amongst consumer products such as DJI Phantom. The problem with 350 mm is that it will 
@@ -37,7 +104,28 @@ propeller size. On the other hand, the largest quadcopter configuration has an M
 for extremely large payload capacity. However, these are more commonly used for industrial or military 
 applications.
 
-[insert quad image]
+\begin{figure}[H]
+    \centering
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/djiphantom4}
+        \caption{DJI Phantom 4 (350 mm)}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/f450frame}
+        \caption{Generic DIY frame kit (450 mm)}
+    \end{subfigure}
+    ~
+    \begin{subfigure}[b]{0.33\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{img/djis1000}
+        \caption{DJI Spreadwings S1000 (1000 mm)}
+    \end{subfigure}
+    
+    \caption{Various air frame sizing options. }
+\end{figure}
 
 We choose a frame size of 450 mm MMDS that has a good balance between portability and capability. The frame 
 can accommodate larger propellers (see in later section XX in propeller size). Furthermore 450 mm are the 
@@ -72,7 +160,7 @@ rotor. Of course, this means that the out-runner has a slower spin-up time than 
 multirotor RPAS typically operating in stabilized flight and hover, the agility of an in-runner is not 
 practical.
 
-\paragraph{Motor Size and Speed}
+\paragraph{Motor Size and Speed}\label{section:motor-speed}
 
 All BLDC out-runner motors have the same height, and on product pages they are often given the code 22XX to denote their stator size. The design parameter is the radius (XX on the product code). Typically, the larger the stator (radius), the slower it spins given the same voltage. This is a linear relationship described by the motor parameter kV:
 
@@ -98,7 +186,30 @@ lift increases non-linearly to the force output. As seen in the test data obtain
 datasheet below, using the same propellers we see an increased thrust output from increased voltage (and 
 thus current). However, the efficiency, typically measured in g/W decreases. 
 
-[insert SunnySky X2216 motor test data]
+Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0\si{\degree} pitch and 10.0 inch 4.7\si{\degree} pitch propellers obtained from vendor website \cite{sunnysky-2216}. 
+
+\begin{table}[H]
+    \centering
+    \caption{Sample motor test data demonstrates decrease in g/W efficiency as thrust output increases.}
+    \label{table:sunnyskyx2216-table}
+
+    \begin{tabular}{lrrrrr}
+
+    \hline
+    \textbf{Propeller} & \textbf{Voltage} & \textbf{Current} & \textbf{Pull}  & \textbf{Power Consumption} & \textbf{Efficiency}\\
+    & [V] & [A] & [g] & [W] & [g/W] \\
+    \hline
+     & 10.0 & 16.4 & 940 & 164 & 5.73 \\
+    9050 & 11.0 & 19.5 & 1050 & 215 & 4.89 \\
+     & 12.0 & 21.5 & 1250 & 258 & 4.84 \\
+    \hline
+     & 10.0 & 23.5 & 1200 & 235 & 5.10 \\
+    1047 & 11.0 & 26.5 & 1350 & 372 & 3.63 \\
+     & 12.0 & 30.2 & 1520 & 363 & 4.19 \\
+    \hline
+
+    \end{tabular} 
+\end{table}
 
 Therefore, it makes sense that we choose larger motors with relatively lower kV constants. Slower motors 
 are also safer since there is less angular momentum of the blades. Motors with 800 kV to 1300 kV are 
@@ -110,7 +221,7 @@ and 2216 stator sizes are suitable in this range of kV.
 Common RPAS propellers are constructed in either plastic or carbon composite. Plastic is cheap, abundant, 
 and relatively flexible. But due to their cheapness, their manufacturing is not as precise which leads to 
 aerodynamic inefficiencies. Plastic propellers often require balancing where tape is applied to one of the 
-blades such that the weight is balanced – minimizing vibrations. Carbon composite propellers, such as 
+blades such that the weight is balanced---minimizing vibrations. Carbon composite propellers, such as 
 carbon fibre blades, are extremely light and subsequently much more expensive. But the carbon composite 
 propellers have micro-meter precision manufacturing which provides top efficiency. Carbon composite 
 propellers are not flexible and extremely tough. It is more dangerous for persons to be near spinning 
@@ -120,19 +231,29 @@ Due to budget constraint and safety concerns, we choose plastic propellers.
 
 \paragraph{Propeller Size and Pitch}
 
-\textbf{Notation: } Propeller size and pitch is commonly denoted by RRYY where RR is the propeller diameter in inches, and YY is the propeller pitch in degrees. (9050 denotes a propeller with 9 inch diameter, and 5.0 degrees of pitch; 1045 denotes a propeller with 10 in diameter, and 4.5 degrees of pitch).
+\textbf{Notation: } Propeller size and pitch is commonly denoted by RRYY where RR is the propeller diameter in inches, and YY is the propeller pitch in degrees. (9050 denotes a propeller with 9 inch diameter, and 5.0 degrees of pitch; 1045 denotes a propeller with 10 inch diameter, and 4.5 degrees of pitch).
 
-[insert diameter and pitch picutre]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{img/proppitch}
+    \caption{Diameter and pitch parameters of a propeller}
+    \label{fig:propeller}
+\end{figure}
 
-To obtain maximum thrust with low speed (low speed is more desirable, as mentioned in section XX), we want to choose the biggest possible propeller diameter.
+To obtain maximum thrust with low speed (low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we want to choose the biggest possible propeller diameter.
 
-[insert frame pic]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{img/framepropsize}
+    \caption{Maximum propeller size is determined by the size of the frame.}
+    \label{fig:framepropsize}
+\end{figure}
 
-As mentioned in section XX (frame size), we choose the 450 mm frames, which means that the motor to motor 
+As mentioned in Section \ref{section:air-frame}, we choose the 450 mm frames, which means that the motor to motor 
 adjacent span (MMAS) is about 12.5 inches. It is safe to provide 1 inch of clearance between propellers, 
 therefore the ideal size of propellers we choose is 10 or 11 inches.
 
-Mentioned in section XX (motor speed), we choose low-speed motors for their efficiencies. And recall that 
+Mentioned in  Section \ref{section:motor-speed}, we choose low-speed motors for their efficiencies. And recall that 
 given the same power: a slow-speed motor provides inversely proportional high-torque, we choose propellers 
 with relatively high pitch (between 3 to 5 degrees) to take advantage of the high-torque output and 
 maximize thrust output.
@@ -144,7 +265,7 @@ Here is a list of desirable propeller size and pitches: 1030, 1045, 1130, 1145.
 The electronic speed controller (ESC) controls the voltage and current supplied to a BLDC motor. All ESCs 
 function identically and the design parameters are size/weight, rating, efficiency, and cost.
 
-As shown in table XX (test data for SunnySky 2212) the typical maximum current draw is about 30 A. For a 
+As shown in Table \label{table:sunnyskyx2216-table} the typical maximum current draw is about 30 A. For a 
 safety margin of 10 A, we decided to select ESCs with maximum rating of 40 A. All of below are appealing 
 options:
 
@@ -179,7 +300,7 @@ open-source but nonetheless user-friendly and easily-programmable. Below is a li
 under this tier:
 
 \begin{itemize}[noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item F1, F3, F4, F7 FC (TODO: cite \url{https://oscarliang.com/f1-f3-f4-flight-controller#what-to-get}) are minimal in weight and footprint; they are ideal for light-weight operations.
+    \item F1, F3, F4, F7 FC are minimal in weight and footprint; they are ideal for light-weight operations.\cite{f1fc}
     \item KK 2.15 FC features a built-in display on the board, allowing quick access to flight settings without the need to connect to a computer for reprogramming.
     \item Naze32 FC is reliable with auto-tuning PIDs.
     \item CC3D FC is reliable with auto-tuning PIDs.
@@ -205,10 +326,9 @@ For the applications we need, we choose ArduPilot APM 2.8 as it is the most flex
 
 The minimum number of channels required to fly a drone is 4. One for each control: throttle, yaw, 
 pitch, and roll. For that reason, we opt for the cheapest radio transmitter (TX) and receiver  (RX) 
-combo we find from online vendors. The weakest TX/RX combination has power emission rating of 25 mW. 
-From testing, 25 mW is more than enough to satisfy the radio requirement of 300 m.
-
-TODO: get this \url{https://www.banggood.com/FlySky-FS-i6-2_4G-6CH-AFHDS-RC-Radion-Transmitter-With-FS-iA6B-Receiver-for-RC-FPV-Drone-p-983537.html?rmmds=category&ID=42482&cur_warehouse=USA}
+combo we find from online vendors. 
+The FlySky-FS i6 2.4GHz 6-Channel TX and RX bundle is ideal for our application for its lowcost.
+According to FlySky-FS i6 datasheet\cite{flyskyi6} , the radio frequency (RF) peak power is below 20 dBm and still achieves maximum control range of 500 m, and thus satisfies the requirement \textbf{NF.DR.5}.
 
 \subsubsection{Battery}
 
@@ -224,6 +344,6 @@ voltage adds up: 2S (2 cells in series) batteries have 7.4 V output, 3S batterie
 Battery capacity is measured in watt-hours (Wh) or milli-amp-hours (mAh) which is power multiplied by time. A 20 Wh battery can output 20 W for 1 hour. Multiple cells of batteries can be put in parallel and the capacity adds up. 4S2P batteries have 14.8 V ouput but has double the capacity than 4S batteries.
 
 Lastly, the discharge rating is denoted by “C” and indicates the maximum discharge current. A 1,000 
-mAh battery with a discharge rating of 20C can discharge a maximum of 1.0 A * 20C = 20 A.
+mAh battery with a discharge rating of 20 C can discharge a maximum of 1.0 A $\times$ 20 C = 20 A.
 
 We choose the design parameters for the battery after we have consolidated on rest of the parts for the RPAS since batteries comes in many sizes and configurations, and allows more flexibility.
