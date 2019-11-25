@@ -1,6 +1,7 @@
 \subsubsection{Subsystem Overview}
-The Air-Ground communication scheme between the platform management board and the base station is responsible for transmitting video, ML results, and control commands. It is a bi-directional, high bandwidth communication channel that requires a stable connection range up to 30 meters away \textbf{NF.CM.1}.
+The Air-Ground communication scheme between the platform management board and the base station is responsible for transmitting video, ML results, and control commands. It is a bi-directional, high bandwidth communication channel that requires a stable connection range up to 30 meters away (\textbf{NF.CM.1}).
 
+\subsubsection{Single-Link versus Dual-Link Solution}
 There are two options for establishing this communication link - single channel or dual channel. 
 
 The first option is to use the existing communication channel to the multirotor (used for drone control), to transmit data. This would be advantageous as it doesn't require additional hardware and saves power. The disadvantage is that the drone control is using an off-the-shelf module, and in order to extend its functionality we would need to make modifications to a highly integrated system. 

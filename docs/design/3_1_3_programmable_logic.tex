@@ -28,7 +28,7 @@ The system specifications are as follows\cite{zedboard}:
 
 The selection of this particular programmable logic board was mainly motivated by cost. The client was able to provide several ZedBoard units free-of-charge, stemming from donations through the Xilinx University Program. While this board has a fairly small number of logical cells (85,000 LCs) compared to other programmable logic boards on the market, especially those which target video applications, the project's budget does not allow for the purchase of more performant boards without significant sacrifices to the multirotor assembly. The number of logical cells on the ZedBoard is sufficient to comply with the minimum LC constraint (\textbf{C.EX.1}).
 
-Examples of other boards examined for this project include the Nexys Artix 7 FPGA (200,000 LCs, US\$479)\cite{nexys} and the Microsemi PolarFire Video/Imaging FPGA (300,000 LCs, CAN\$1500)\cite{microsemi}. Use of the Terasic DE1-SoC (another board available free-of-charge from the client, 85,000 LCs) was also considered, but was ultimately not selected due to its poorer I/O selection (no FSC/HDMI connections, which could be used by the client to expand the system) and more complicated development toolchain.
+Examples of other boards examined for this project include the Nexys Artix 7 FPGA (200,000 LCs, US\$479)\cite{nexys} and the Microsemi PolarFire Video/Imaging FPGA (300,000 LCs, CAN\$1500)\cite{microsemi}. Use of the Terasic DE1-SoC (another board available free-of-charge from the client, 85,000 LCs) was also considered, but was ultimately not selected due to its poorer I/O selection and more complicated development toolchain.
 
 \subsubsection{Data Flow}
 The overall data flow managed by the PLB is as follows:

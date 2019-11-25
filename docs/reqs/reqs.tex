@@ -18,7 +18,7 @@
 % Begin content
 \section{About This Document}\label{section:about}
 \subsection{Purpose}\label{section:about:purpose}
-This document outlines expected metrics related to the performance, quality, longevity, environmental impact, cost, legality, and safety of the Multirotor Computing Platform project. It is intended to convey \textit{what the product does} and \textit{how well it performs}, rather than describing the actual project implementation (described in the \textit{Design Document}).
+This document outlines expected metrics related to the performance, quality, longevity, environmental impact, cost, legality, and safety of the Multirotor Computing Platform project. It is intended to convey \textit{what the product does} and \textit{how well it performs}, rather than describing the actual project implementation (as described in the \textit{Design Document}).
 
 \subsection{Intended Audiences}\label{section:about:audience}
 This document is intended for \textit{all project stakeholders}, including (but not limited to):
@@ -40,7 +40,7 @@ This document contains both a high-level description of the project, in addition
 \item \textbf{Constraints}; which describe restrictions regarding how the product may be implemented.
 \end{itemize}
 
-Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the Design Specification and Validation Specification). 
+Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the \textit{Design Document} and \textit{Validation Specification}). 
 
 For specific details regarding the project's implementation, refer to the \textit{Design Document}.
 
@@ -193,17 +193,17 @@ The project is classified as an integration of consumer electronics with compone
 	\item The camera subsystem must support storing up to two hours of footage.
 \end{enumerate}
 
-\subsection{Base Station}
-\begin{enumerate}[label=NF.BS.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The base station interface must not require the user to have previous knowledge of the system to operate.
-	\item The base station interface must always be resposive to user input.
-	\item The base station must have a battery life equal or greater than that of the computing platform/multirotor.
-\end{enumerate}
-
 \subsection{Machine Learning Implementation}
 \begin{enumerate}[label=NF.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The machine learning model must process video in real time, with a latency of one second or less.
 	\item The machine learning model must have a throughput of at least 2 frames per second.
+\end{enumerate}
+
+\subsection{Base Station}
+\begin{enumerate}[label=NF.BS.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
+	\item The base station interface must not require the user to have previous knowledge of the system to operate.
+	\item The base station interface must always be responsive to user input.
+	\item The base station must have a battery life equal or greater than that of the computing platform/multirotor.
 \end{enumerate}
 
 \subsection{Power Requirements}

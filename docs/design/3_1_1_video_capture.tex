@@ -1,22 +1,21 @@
 % TODO: Talk about camera choice, MIPI interface, camera libraries. Also, talk about alternatives we explored (i.e. analog video transmission/acquisition.
 
 \subsubsection{Subsystem Overview}
-The video capture subsystem of the computing platform consists of a camera, its video transmission protocol to the processing core, and video transmission to the base station. For this subsystem, the hardware utilized includes a CMOS camera, a Raspberry Pi device, and MIPI Camera Serial Interface. 
+The video capture subsystem of the computing platform consists of a camera, its video transmission protocol to the processing core, and video transmission to the base station. For this subsystem, the hardware utilized includes a CMOS camera, a Raspberry Pi device, and a MIPI Camera Serial interface. 
 
 \subsubsection{Camera Choice}
-The camera used to capture video is the \textit{Raspberry Pi Camera Module}. This module supports 1080p, 720p and 480p video, captured using a fixed focus lens. The camera captures live video and sends it to the Raspberry Pi, which feeds the data to both the machine learning model and the base station.
+The camera used to capture video is the \textit{Raspberry Pi Camera Module}. This module supports 1080p, 720p and 480p video, captured using a fixed focus lens. The camera captures live video and sends it to the PMB, which feeds the data to both the machine learning model and the base station.
 
 A major consideration regarding camera selection was the latency and throughput of the machine learning implementation on the FPGA. As the machine learning implementation will be heavily constrained by the FPGA's limited resources, it is not necessary to use a camera with a high resolution and framerate.
 
 % {MIPI interface}
-\subsubsection{MIPI Interface}
+\subsubsection{MIPI Interface and Libraries}
 The MIPI camera serial interface (CSI) is a high-speed protocol primarily intended for point-to-point image and video transmission between cameras and host devices. 
 
 The MIPI protocol is a widely adopted protocol for image and video transmission, and as such the camera can easily be replaced by the client in the future, if desired (fulfilling constraint \textbf{C.EX.5}).
 
 % {Camera libraries or getting the video to a 'viewable' state}
-\subsubsection{Camera Libraries}
-The live video streaming between the base station and the computing platform is achieved through the implementation of a Python script to stream video to a webpage. The underlying justification for using Wi-Fi is discussed in section~\ref{communications}. The script used to achieve this communication utilizes the Python package 'picamera,' which provides a modular Python interface to the Raspberry Pi Camera.
+The live video streaming between the base station and the computing platform is achieved through the implementation of a Python script to stream video to a webpage. The script used to achieve this communication utilizes the Python package 'picamera,' which provides a modular Python interface to the Raspberry Pi Camera.
 
 % {Explored Alternatives}
 \subsubsection{Explored Alternatives}
@@ -24,6 +23,6 @@ There were many alternatives explored for each component of the Video Capture su
 
 One of the possibilities explored for the camera subsystem was the purchase of a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- making user replacement of the camera for future research improvements difficult (violating constraint \textbf{C.EX.5}).
 
-Another consideration for the subsystem involved utilizing a USB webcam -- connecting it via the Raspberry Pi's USB port. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously mentioned, made the Rasberry Pi Camera a better solution suited to the client's needs.
+Another consideration for the subsystem involved utilizing a USB webcam -- connecting it via the Raspberry Pi's USB port. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously noted, made the Rasberry Pi Camera a better solution suited to the client's needs.
 
-For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods.  Ultimately these options required additional hardware (contributing to higher costs and system weight) and would introduce more points of failure and complexity into the finalized system.
+For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods.  Ultimately these options required additional hardware (contributing to higher costs and system weight) and would introduce more points of failure and complexity into the finalized system, thus they were not pursued.

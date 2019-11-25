@@ -13,28 +13,8 @@
 % Begin Document
 \begin{document}
 
-% Title Page
-\begin{titlepage}
-	\maketitle
-\end{titlepage}
+\input{../common/presections}
 
-% Executive Summary (Not used here in proposal)
-% \include{executive_summary.tex}
-
-% Revision history
-\include{rev_history}
-
-% Table of contents
-\include{toc}
-
-% Terms and Abbreviations
-\include{terms_and_abbreviations}
-
-% List of figures and tables
-\newpage
-
-% Set page and section counter
-\setcounter{page}{1}
 
 
 % TODO: fill out all the sections
@@ -56,7 +36,7 @@ This document is intended for:
 This document is particularly relevant to those who wish to assess the current state of the project, in addition to those who will assess the validation methodology against academic, organizational, or legal criteria.
 
 \subsection{Reading Guide}
-This document begins with a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested and the steps taken to execute the test. Finally, the current status of each test is summarized in Section \ref{results}.
+This document begins with a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested, the steps taken to execute the test, and the test's success parameters. Finally, the current status of each test is summarized in Section \ref{results}.
 
 The requirements referenced in this document can be found in the \textit{Requirements Specification}.
 
@@ -90,7 +70,7 @@ The following notations and conventions are used throughout this document:
 
 \textbf{Effective Date}: Denotes the date at which the test was last performed (and thus, when the status was last updated). This field is not applicable for pending tests.
 
-\textbf{It is important to note that a one-to-one mapping of VRs to DRs \textit{does not necessarily exist}}. Some requirements (particularly those which are high-level or functional) will have no tests, while some requirements will have multiple tests. It is also possible for one test to exercise multiple requirements at once.
+\textbf{It is important to note that a one-to-one mapping of VRs to DRs \textit{does not necessarily exist}}. Some requirements (particularly those which are high-level or functional) will have no tests, while some requirements will have multiple tests. It is also possible for one test to exercise multiple design requirements at once.
 
 \section{Automated Test Cases} \label{begintest}
 

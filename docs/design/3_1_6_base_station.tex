@@ -9,13 +9,13 @@ The base station is a mobile device that connects to the computing platform on t
 \end{itemize}
 
 \subsubsection{Device Alternatives}
-We considered two classes of devices which could be used as a base station: laptops and smart mobile devices (such as cellphones or tablets). The common features of these two options are: they are both equipped with a screen which can be used to display the video and ML results, they both have a Wi-Fi transceiver (\textbf{F.BS.3}), and they both have flash storage which can be used to store results (\textbf{F.BS.6}).
+We considered two classes of devices which could be used as a base station: laptops and smart mobile devices (such as cellphones or tablets). The common features of these two options are: they are both equipped with a screen which can be used to display the video and ML results, they both have a Wi-Fi transceiver (\textbf{F.BS.3}), and they both have non-volatile storage which can be used to store results (\textbf{F.BS.6}).
 
-One functionality that mobile devices lack is the support for common machine learning platforms (ex. TensorFlow). As the client may want to perform additional ML processing on the base station for further analysis, laptops were ultimately selected as the base station's platform. Support for smart devices (to facilitate multiple viewers) may be added if time permits.
+One functionality that mobile devices lack is the support for common machine learning platforms (ex. TensorFlow). As the client may want to perform additional ML processing on the base station for further analysis in the future, laptops were ultimately selected as the base station's platform. Support for smart devices (to facilitate multiple viewers) may be added if time permits.
 
 \subsubsection{Display}
 
-If an object detection scheme is implemented, the ML results will be displayed as a bounding box around the detected object in the frame. In particular, the ML results will consist of two parts: the coordinates of the upper-left vertex of the bounding box and the height/width of the bounding box. 
+If an object detection scheme is implemented, the ML results will be displayed as a bounding box around the detected object(s) in the frame. In particular, the ML results will consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es). 
 
 The base station retrieves this information by querying a TCP/IP server hosted by the platform management board and displays the results via a web-application (\textbf{F.BS.1}).
 
