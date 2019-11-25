@@ -15,18 +15,18 @@ One major consideration regarding selecting a camera is the latency and throughp
 The MIPI camera serial interface (CSI) is a high-speed protocol primarily intended for point-to-point image and video transmission between cameras and host devices. 
 
 %requirement got removed ...
-The MIPI protocol is a widely adopted protocol for image and video transmission, fullfilling requirement (xx). A hardware based MIPI core will be programmed into the programmable logic and will handle receiving of camera footage.
+The MIPI protocol is a widely adopted protocol for image and video transmission, fullfilling requirement . A hardware based MIPI core will be programmed into the programmable logic and will handle receiving of camera footage.
 
 % {Camera libraries or getting the video to a 'viewable' state}
 \subsubsection{Camera Libraries}
-Live video feed is a requirement for the base station. This is achieved by implementing a Python script on the Raspberry Pi for streaming the video to a webpage on the base station via Wi-FI. Justification for using Wi-FI is discussed in section~\ref{communications}. The script used to achieve this uses the Python package 'picamera,' which is a Python interface to the Raspberry Pi Camera. The 'picamera' package is a widely supported open-source resource fullfilling requirement (xx). It is also well documented, so the client will be able to easily adjust interfacing of the camera to their needs.
+Live video feed is a requirement for the base station. This is achieved by implementing a Python script on the Raspberry Pi for streaming the video to a webpage on the base station via Wi-FI. Justification for using Wi-FI is discussed in section~\ref{communications}. The script used to achieve this uses the Python package 'picamera,' which is a Python interface to the Raspberry Pi Camera. The 'picamera' package is a widely supported open-source resource fullfilling requirement \textbf{NF.CAM.7}. It is also well documented, so the client will be able to easily adjust interfacing of the camera to their needs.
 
 % {Explored Alternatives}
 \subsubsection{Explored Alternatives}
 There were many alternatives explored for each component of the Video Capture subsystem.
 
-One of the possibilites for the camera was purhcasing a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- not allowing for user replacement of the camera for future research improvements (violating constraint XX). %again the requirement got removed
+One of the possibilites for the camera was purhcasing a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- not allowing for user replacement of the camera for future research improvements (violating requirement \textbf{NF.CAM.7}). %again the requirement got removed
 
 Another possible choice for the camera was purchasing a USB webcam and connecting it to the USB port to the Raspberry Pi device. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously mentioned, made the Rasberry Pi Camera a better solution suited to the client's needs.
 
-For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods. Again, detailed justification for using Wi-FI and not these is discussed in a later section but the decision came down to a few factors. The original options required additional hardware (higher costs and system weight) and would require more complexity for the user to handle.
+For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods. Again, detailed justification for using Wi-FI and not these options is discussed in a later section but the decision came down to a few factors. The original options required additional hardware (higher costs and system weight) and would require more complexity for the user to handle.

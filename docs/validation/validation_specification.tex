@@ -103,7 +103,28 @@ The following notations and conventions are used throughout test tables in this 
 \subsubsection{General Tests}
 
 \subsubsection{Camera Tests}
+\begin{table}[H]
+	\begin{tabular}{ |p{1.2cm}|p{1.4cm}|p{9cm}|p{1.1cm}|p{1.7cm}|}
+		\hline
+		\textbf{VR}     & \textbf{DR}      & \textbf{Test Description}  	& \textbf{Status} & \textbf{Eff. Date} \\ \hline
+		T.CAM.1 & F.CAM.1 	& Turn the camera (connected to the FPGA) is on verify that the FPGA is receiving the correct encoded video. & PEND & \\ \hline
+		T.CAM.2 & F.CAM.2 NF.CAM.6 	& Allow the camera to operate for 2 hours and verify that the recorded video can be played back. & PEND & \\ \hline
+		T.CAM.3 & NF.CAM.1 NF.CAM.2	& Set up a controlled environment at least 30 meters long, take images of an object 10 meters tall and 10 centimeters at a wide range of distances away from the camera and visually asses the images for resolvable objects. & PEND & \\ \hline
+		T.CAM.5 & NF.CAM.4	& Write a script that will allow resolution processing above 640x480 pixels and have it process a picture taken by the camera to verify the camera can support the resolution. & PEND & \\ \hline
+	\end{tabular}
+\end{table}
 \subsubsection{Machine Learning Tests}
+\begin{table}[H]
+	\begin{tabular}{ |p{1.1cm}|p{1.3cm}|p{9cm}|p{1.1cm}|p{1.7cm}|}
+		\hline
+		\textbf{VR}     & \textbf{DR}      & \textbf{Test Description}  	& \textbf{Status} & \textbf{Eff. Date} \\ \hline
+		T.ML.1 & F.ML.1		& Ensure the machine learning model is implemented on the programmable logic of the FPGA. & PEND & \\ \hline % removable
+		T.ML.2 & F.ML.2		& Ensure the machine learning model can process video. & PEND & \\ \hline % removable
+		T.ML.3 & F.ML.3 NF.ML.1 NF.ML.2	& Feed live encoded video to the machine learning algorithm on the FPGA and verify that results are outputted in real time and expected, the execution time (video input to metadata output) is one second or less and at least 2 frames are computed each second. & PEND & \\ \hline
+		T.ML.4 & F.ML.4		& Feed live encoded video and any pre-recorded video separately into the machine learning algorithm on the FPGA and verify that the machine learning algorithm can output the correct result for each case. & PEND & \\ \hline
+	\end{tabular}
+\end{table}
+
 \subsubsection{Base Station Tests}
 \subsubsection{Power Tests}
 
