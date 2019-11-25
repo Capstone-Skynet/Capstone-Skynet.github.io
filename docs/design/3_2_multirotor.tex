@@ -95,7 +95,7 @@ or collateral damage to nearby equipment.
 We choose to pursue with a quadcopter configuration. 
 The payload is not too heavy, our target maximum payload weight is less than 500 g (\textbf{NF.DR.1}). The quadcopter configuration is also the most balanced in terms of trade-off between cost and reliability. 
 
-\subsubsection{Air Frame}
+\subsubsection{Air Frame}\label{section:air-frame}
 
 The most common frames available for sale comes in 450 mm motor to motor diagonal span (MMDS). However, 
 350mm is also common amongst consumer products such as DJI Phantom. The problem with 350 mm is that it will 
@@ -161,7 +161,7 @@ rotor. Of course, this means that the out-runner has a slower spin-up time than 
 multirotor RPAS typically operating in stabilized flight and hover, the agility of an in-runner is not 
 practical.
 
-\paragraph{Motor Size and Speed}
+\paragraph{Motor Size and Speed}\label{section:motor-speed}
 
 All BLDC out-runner motors have the same height, and on product pages they are often given the code 22XX to denote their stator size. The design parameter is the radius (XX on the product code). Typically, the larger the stator (radius), the slower it spins given the same voltage. This is a linear relationship described by the motor parameter kV:
 
@@ -187,7 +187,7 @@ lift increases non-linearly to the force output. As seen in the test data obtain
 datasheet below, using the same propellers we see an increased thrust output from increased voltage (and 
 thus current). However, the efficiency, typically measured in g/W decreases. 
 
-Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0\si{\degree} and 10.0 inch 4.7\si{\degree} propellers obtained from vendor website \cite{sunnysky-2216}. 
+Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0\si{\degree} pitch and 10.0 inch 4.7\si{\degree} pitch propellers obtained from vendor website \cite{sunnysky-2216}. 
 
 \begin{table}[H]
     \centering
@@ -222,7 +222,7 @@ and 2216 stator sizes are suitable in this range of kV.
 Common RPAS propellers are constructed in either plastic or carbon composite. Plastic is cheap, abundant, 
 and relatively flexible. But due to their cheapness, their manufacturing is not as precise which leads to 
 aerodynamic inefficiencies. Plastic propellers often require balancing where tape is applied to one of the 
-blades such that the weight is balanced – minimizing vibrations. Carbon composite propellers, such as 
+blades such that the weight is balanced---minimizing vibrations. Carbon composite propellers, such as 
 carbon fibre blades, are extremely light and subsequently much more expensive. But the carbon composite 
 propellers have micro-meter precision manufacturing which provides top efficiency. Carbon composite 
 propellers are not flexible and extremely tough. It is more dangerous for persons to be near spinning 
@@ -232,19 +232,29 @@ Due to budget constraint and safety concerns, we choose plastic propellers.
 
 \paragraph{Propeller Size and Pitch}
 
-\textbf{Notation: } Propeller size and pitch is commonly denoted by RRYY where RR is the propeller diameter in inches, and YY is the propeller pitch in degrees. (9050 denotes a propeller with 9 inch diameter, and 5.0 degrees of pitch; 1045 denotes a propeller with 10 in diameter, and 4.5 degrees of pitch).
+\textbf{Notation: } Propeller size and pitch is commonly denoted by RRYY where RR is the propeller diameter in inches, and YY is the propeller pitch in degrees. (9050 denotes a propeller with 9 inch diameter, and 5.0 degrees of pitch; 1045 denotes a propeller with 10 inch diameter, and 4.5 degrees of pitch).
 
-[insert diameter and pitch picutre]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{img/proppitch}
+    \caption{Diameter and pitch parameters of a propeller}
+    \label{fig:propeller}
+\end{figure}
 
-To obtain maximum thrust with low speed (low speed is more desirable, as mentioned in section XX), we want to choose the biggest possible propeller diameter.
+To obtain maximum thrust with low speed (low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we want to choose the biggest possible propeller diameter.
 
-[insert frame pic]
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{img/framepropsize}
+    \caption{Maximum propeller size is determined by the size of the frame.}
+    \label{fig:framepropsize}
+\end{figure}
 
-As mentioned in section XX (frame size), we choose the 450 mm frames, which means that the motor to motor 
+As mentioned in Section \ref{section:air-frame}, we choose the 450 mm frames, which means that the motor to motor 
 adjacent span (MMAS) is about 12.5 inches. It is safe to provide 1 inch of clearance between propellers, 
 therefore the ideal size of propellers we choose is 10 or 11 inches.
 
-Mentioned in section XX (motor speed), we choose low-speed motors for their efficiencies. And recall that 
+Mentioned in  Section \ref{section:motor-speed}, we choose low-speed motors for their efficiencies. And recall that 
 given the same power: a slow-speed motor provides inversely proportional high-torque, we choose propellers 
 with relatively high pitch (between 3 to 5 degrees) to take advantage of the high-torque output and 
 maximize thrust output.
@@ -256,7 +266,7 @@ Here is a list of desirable propeller size and pitches: 1030, 1045, 1130, 1145.
 The electronic speed controller (ESC) controls the voltage and current supplied to a BLDC motor. All ESCs 
 function identically and the design parameters are size/weight, rating, efficiency, and cost.
 
-As shown in table XX (test data for SunnySky 2212) the typical maximum current draw is about 30 A. For a 
+As shown in Table \label{table:sunnyskyx2216-table} the typical maximum current draw is about 30 A. For a 
 safety margin of 10 A, we decided to select ESCs with maximum rating of 40 A. All of below are appealing 
 options:
 
@@ -291,7 +301,7 @@ open-source but nonetheless user-friendly and easily-programmable. Below is a li
 under this tier:
 
 \begin{itemize}[noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item F1, F3, F4, F7 FC (TODO: cite \url{https://oscarliang.com/f1-f3-f4-flight-controller#what-to-get}) are minimal in weight and footprint; they are ideal for light-weight operations.
+    \item F1, F3, F4, F7 FC are minimal in weight and footprint; they are ideal for light-weight operations.\cite{f1fc}
     \item KK 2.15 FC features a built-in display on the board, allowing quick access to flight settings without the need to connect to a computer for reprogramming.
     \item Naze32 FC is reliable with auto-tuning PIDs.
     \item CC3D FC is reliable with auto-tuning PIDs.
@@ -317,10 +327,9 @@ For the applications we need, we choose ArduPilot APM 2.8 as it is the most flex
 
 The minimum number of channels required to fly a drone is 4. One for each control: throttle, yaw, 
 pitch, and roll. For that reason, we opt for the cheapest radio transmitter (TX) and receiver  (RX) 
-combo we find from online vendors. The weakest TX/RX combination has power emission rating of 25 mW. 
-From testing, 25 mW is more than enough to satisfy the radio requirement of 300 m.
-
-TODO: get this \url{https://www.banggood.com/FlySky-FS-i6-2_4G-6CH-AFHDS-RC-Radion-Transmitter-With-FS-iA6B-Receiver-for-RC-FPV-Drone-p-983537.html?rmmds=category&ID=42482&cur_warehouse=USA}
+combo we find from online vendors. 
+The FlySky-FS i6 2.4GHz 6-Channel TX and RX bundle is ideal for our application for its lowcost.
+According to FlySky-FS i6 datasheet\cite{flyskyi6} , the radio frequency (RF) peak power is below 20 dBm and still achieves maximum control range of 500 m, and thus satisfies the requirement \textbf{NF.DR.5}.
 
 \subsubsection{Battery}
 
@@ -336,6 +345,6 @@ voltage adds up: 2S (2 cells in series) batteries have 7.4 V output, 3S batterie
 Battery capacity is measured in watt-hours (Wh) or milli-amp-hours (mAh) which is power multiplied by time. A 20 Wh battery can output 20 W for 1 hour. Multiple cells of batteries can be put in parallel and the capacity adds up. 4S2P batteries have 14.8 V ouput but has double the capacity than 4S batteries.
 
 Lastly, the discharge rating is denoted by “C” and indicates the maximum discharge current. A 1,000 
-mAh battery with a discharge rating of 20C can discharge a maximum of 1.0 A * 20C = 20 A.
+mAh battery with a discharge rating of 20 C can discharge a maximum of 1.0 A $\times$ 20 C = 20 A.
 
 We choose the design parameters for the battery after we have consolidated on rest of the parts for the RPAS since batteries comes in many sizes and configurations, and allows more flexibility.
