@@ -1,0 +1,32 @@
+\paragraph{T.ML.1: ML Results Test}
+
+This test verifies the correctness of the ML results.
+
+\textbf{Addresses}: F.ML.1
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Prepare a set of testing frames with prelabelled results.
+    \item Feed the testing set to the machine learning model.
+    \item Record the results from the machine learning model.
+\end{enumerate}
+
+\textbf{Verification}: 
+Verify the ML results with prelabelled results. If the overall correctness of the ML results is higher than 80\%, this test is passed.
+
+%
+
+\paragraph{T.ML.2: ML Latency Test}
+
+This test checks if the latency of the machine learning model is acceptable.
+
+\textbf{Addresses}: F.ML.2
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Write a program to record the timestamp for each processed frame received on the Raspberry Pi.
+    \item Calculate the gaps between all consecutive frames.
+\end{enumerate}
+
+\textbf{Verification}: 
+If all the calculated gaps are less or equal to one second, this test is passed.

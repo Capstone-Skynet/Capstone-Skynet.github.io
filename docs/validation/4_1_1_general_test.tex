@@ -1,0 +1,34 @@
+\paragraph{T.G.1: Video Format Verification}
+
+This test verifies the attributes of the video.
+
+\textbf{Addresses}: F.CM.1
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item The Raspberry Pi stores a 10-second video sample.
+    \item Verify the video attributes on the Raspberry Pi.
+\end{enumerate}
+
+\textbf{Verification}: 
+Compare the resolution and frame rate of the stored video with the setting.
+
+%
+
+\paragraph{T.G.2: Parallel Computing Test}
+
+This test verifies the structure of the computing platform.
+
+\textbf{Addresses}: F.CP.2
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Gather the required information of the computing platform. This includes: clock frequency, function unit count, function unit latency, and the latency of the data transmission.
+    \item Calculate the theoretical processing time required to process a 1-minute video sample.
+    \item Prepare the video sample.
+    \item Feed the video sample to the machine learning model.
+    \item Record the actual processing time used.
+\end{enumerate}
+
+\textbf{Verification}: 
+If the difference between the theoretical value and actual value is less than 10\%, the test is passed. 

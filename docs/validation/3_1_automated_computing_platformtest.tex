@@ -1,0 +1,15 @@
+\paragraph{T.ACP.1: Wireless Connection Checking}
+
+This test is performed automatically after the system has booted to check the wireless connection between the Raspberry Pi and the ground station.
+
+\textbf{Addresses}: F.CM.1
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item The Raspberry Pi sends a testing string to the base station.
+    \item The base station echos back the string.
+    \item The Raspberry Pi verifies the result.
+\end{enumerate}
+
+\textbf{Verification}: 
+Upon successful completion, the base station displays a message to indicate successful connection and live video streaming will be displayed on the screen.

@@ -94,21 +94,31 @@ The following notations and conventions are used throughout test tables in this 
 \section{Automated Test Cases}
 
 \subsection{Computing Platform Tests}
+\input{3_1_automated_computing_platformtest.tex}
 
 \subsection{Multirotor Tests}
+\input{3_2_automated_multirotor_test.tex}
 
 \section{Manual Test Cases}
 
 \subsection{Computing Platform Tests}
 \subsubsection{General Tests}
+\input{4_1_1_general_test.tex}
 
 \subsubsection{Camera Tests}
+\input{4_1_2_camera_test.tex}
+
 \subsubsection{Machine Learning Tests}
+\input{4_1_3_machine_learning_test.tex}
+
 \subsubsection{Base Station Tests}
+\input{4_1_4_base_station_tests.tex}
+
 \subsubsection{Power Tests}
+\input{4_1_5_power_test.tex}
 
 \subsection{Multirotor Tests}
-\input{4_2_multirotor_tests}
+\input{4_2_multirotor_tests.tex}
 
 \section{Verification Results}
 \subsection{Multirotor Verification Results}
@@ -120,6 +130,12 @@ The following notations and conventions are used throughout test tables in this 
 	\hline
 	T.DR.1 & NF.DR.1, NF.DR.12, NF.DR.13  & PEND   & \\
 	T.DR.2 & NF.DR.7, NF.DR.10 & PEND   & \\
+	T.ACP.1 & F.CM.1 & PEND   & \\
+	T.G.1 & F.CM.1 & PEND   & \\
+	T.G.2 & F.CP.2 & PEND   & \\
+	T.ML.1 & F.ML.1 & PEND   & \\
+    T.ML.2 & F.ML.2 & PEND   & \\
+    T.BS.1 & F.CM.1, F.CP.1 & PEND   & \\
 	\hline
 	\end{tabular}
 \end{table}
