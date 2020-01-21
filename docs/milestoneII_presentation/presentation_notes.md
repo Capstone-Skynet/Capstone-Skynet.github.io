@@ -64,7 +64,7 @@ Remark: Include the intpic.png we used in the docs
     * Automated - Can be monitored by the device itself.
         * ex. wireless connection checking
 * Status of the performed tests will be adjusted and recorded in the validation doc as they are performed
-    * FEND, FAIL, PASS
+    * PEND, FAIL, PASS
 
 ## Current stage and moving forward
 
