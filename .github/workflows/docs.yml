@@ -1,0 +1,16 @@
+name: Build Documents
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Github Action for LaTeX
+      uses: xu-cheng/latex-action@1.2.1
+      with: 
+        root_file: design_document.tex
+        working_directory: docs/
