@@ -1,3 +1,5 @@
+![Build Documents](https://github.com/Capstone-Skynet/Capstone-Skynet.github.io/workflows/Build%20Documents/badge.svg)
+
 # Capstone-Skynet.github.io
 This repository contains the documents and notes
 
