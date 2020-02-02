@@ -5,6 +5,18 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
+    
+    - name: Build Deliverables Document
+      uses: xu-cheng/latex-action@1.2.1
+      with: 
+        root_file: deliverables.tex
+        working_directory: docs/deliverables
+    - name: Upload Deliverables PDF
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Deliverables
+        path: docs/deliverables/deliverables.pdf  
+      
     - name: Build Design Document
       uses: xu-cheng/latex-action@1.2.1
       with: 
@@ -14,4 +26,37 @@ jobs:
       uses: actions/upload-artifact@v1.0.0
       with:
         name: Design Document
-        path: docs/design/design_document.pdf
+        path: docs/design/design_document.pdf  
+        
+    - name: Build Operation Man/Spec
+      uses: xu-cheng/latex-action@1.2.1
+      with: 
+        root_file: operations_specification.tex
+        working_directory: docs/ops_spec
+    - name: Upload Operation Man/Spec PDF
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Operations Document
+        path: docs/ops_spec/operations_specification.pdf
+  
+    - name: Build Req
+      uses: xu-cheng/latex-action@1.2.1
+      with: 
+        root_file: reqs.tex
+        working_directory: docs/reqs
+    - name: Upload Requirements PDF
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Requirements Document
+        path: docs/reqs/reqs.pdf
+        
+    - name: Build Validation
+      uses: xu-cheng/latex-action@1.2.1
+      with: 
+        root_file: validation_specification.tex
+        working_directory: docs/validation
+    - name: Upload Validations PDF
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Validations Document
+        path: docs/validation/validation_specification.pdf  
