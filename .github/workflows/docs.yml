@@ -9,8 +9,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Github Action for LaTeX
+    - name: Build Design Document
       uses: xu-cheng/latex-action@1.2.1
       with: 
-        root_file: design_document.tex
+        root_file: design/design_document.tex
         working_directory: docs/
