@@ -1,16 +1,17 @@
 name: Build Documents
-
 on: [push, pull_request]
-
 jobs:
   build:
-
     runs-on: ubuntu-latest
-
     steps:
-    - uses: actions/checkout@v2
+#     - uses: actions/checkout@v2
     - name: Build Design Document
       uses: xu-cheng/latex-action@1.2.1
       with: 
         root_file: design_document.tex
         working_directory: docs/design
+    - name: Upload Design Document PDF
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: Design Document
+        path: docs/design/design_document.pdf
