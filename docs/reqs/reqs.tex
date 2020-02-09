@@ -54,44 +54,43 @@ This project aims to offer an aerial/drone platform which provides both video ac
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{intpic.png}
-\caption{High-Level System Integration with RPAS}
+\caption{High-Level System Integration with remote-piloted-aerial-system (RPAS)}
 \label{hlpic}
 \end{figure}
 
-The final system will consist of a \textit{multirotor-mounted computing platform}; which collects, processes, and analyzes aerial video; and a \textit{mobile base station}; which displays the live video feed from the multirotor, overlaid with the results of the computing platform's analysis. The video analysis process is performed in-part through FPGA-based hardware acceleration.
+The final product consists of a \textit{multirotor-mounted computing platform} and a \textit{mobile base station or ground station}. The former component collects, processes, and analyzes aerial video; and the latter displays the live video feed from the multirotor. The base station overlays the computing platform's analysis results over the live video feed. The FPGA performs hardware acceleration as part of the video analysis.
 
-Current products on the market are primarily aimed at consumers and ``prosumers'' -- content-producers whose main focus is aerial photography/videography. While our project also features aerial photography, its emphasis is in performing real-time analytics using the captured video, in addition to supplying custom features and modifications tailored to our client.
+Current products on the market are primarily aimed at consumers and ``prosumers'' --- content-producers whose main focus is aerial photography. While our project also features aerial photography, we emphasize providing real-time analytics using the captured video, in addition to supplying custom features and modifications tailored to our client.
 
-The project is classified as an integration of consumer electronics with components intended to be used in research and industry. In particular, specific sub-domains of this project include FPGA design, hardware acceleration, machine learning, and video acquisition/transmission. 
+The project is classified as an integration of consumer electronics with components intended to be used in research and industry. In particular,  sub-domains of this project consist of FPGA design, hardware acceleration, machine learning (ML), video acquisition, data transmission, power systems, and electric propulsion systems. 
 
 \newpage
-\section{Functional Requirements}\label{section:funcreq}
+\section{Functional Requirements}\label{section:funcreq} 
 
 \subsection{High-Level Requirements}
 \begin{enumerate}[label=F.HL.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item The computing platform must be mounted on a drone capable of sustained flight.
+    \item The multirotor RPAS must sustain flight with the computing platform mounted on-board.
     \item The computing platform must perform hardware-accelerated machine-learning using an FPGA.
-    \item A novel video processing use-case, such as object detection, must be implemented using machine learning.
-    \item Results from the machine learning implementation must be displayed to the end-user on a mobile device (a "base station").
+    \item The ML implemenation must realize a novel video processing use-case (such as object detection).
+    \item The mobile base station must display ML processed results.
 \end{enumerate}
 
 \subsection{Multirotor RPAS}
 \begin{enumerate}[label=F.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The multirotor RPAS must lift-off from the ground on its own power without a wired connection.
-	\item The multirotor RPAS must remain in a self-stabilizing hover using its onboard flight controller and PID systems without human intervention.
-	\item The multirotor RPAS must be paired with a radio transmitter (TX) for pilot control.
-	\item The multirotor RPAS must be controlled by a pilot within the visual line-of-sight (VLOS).
+	\item The multirotor RPAS must remain in a self-stabilizing hover using its onboard flight controller and PID systems without any external intervention.
+	\item The multirotor RPAS must be controllable by a pilot within the visual line-of-sight (VLOS) using a paired radio transmitter (TX).
 	\item The multirotor RPAS must ascend, descend, pitch, roll, and yaw upon pilot's commands via the TX to the RPAS receiver (RX).
 	\item The multirotor RPAS must output adequate lift thrust to carry the computing platform.
-	\item The multirotor RPAS must be equipped with lights to indicate the orientation of the RPAS.
-	\item The multirotor RPAS must be equipped with easy-to-remove propeller fasteners.
-	\item The multirotor RPAS must be equipped with a low-battery warning system.
+	\item The multirotor RPAS must feature lights to indicate the orientation of the RPAS and comply with safety protocols.
+	\item The multirotor RPAS must feature easy-to-remove propellers.
+	\item The multirotor RPAS must feature a low-battery warning system.
 	\item The multirotor RPAS must perform an autonomous emergency landing in the case of loss of contact with pilot's TX.
 	\item The multirotor RPAS must be in manufacturer compliance with Transport Canada's definition of RPAS\cite{tp15263}.
 	\item The multirotor RPAS must be registered under the Transport Canada drone registry.\cite{tcdronereg}.
 	\item The multirotor RPAS must be operable under nominal weather conditions.
-	\item The multirotor RPAS must be constructed and reparable using standard, non-proprietary components, fasteners, and connectors.
-	\item The multirotor RPAS must have landing legs or landing pads to protect the onboard equipment and dampen the impact upon landing/touch-down, emergency landing, and crash-landing.
+	\item The multirotor RPAS must be maintainable using non-proprietary components, fasteners, and connectors.
+	\item The multirotor RPAS must feature landing legs or landing pads to protect the onboard equipment and dampen the impact upon landing/touch-down, emergency landing, and crash-landing.
 \end{enumerate}
 
 \subsection{Computing Platform}
