@@ -25,3 +25,7 @@ docs/reqs/reqs.pdf
 # Ignore statically generated files
 _site/*
 .jekyll-cache
+
+# Ignore mac files
+assets/.DS_Store
+.DS_Store
