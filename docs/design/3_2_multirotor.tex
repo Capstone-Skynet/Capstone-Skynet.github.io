@@ -89,6 +89,8 @@ The payload is not too heavy -- our target maximum payload weight is less than 5
 
 \subsubsection{Air Frame}\label{section:air-frame}
 
+==TODO==
+
 The most common frame available for sale comes in 450 mm motor to motor diagonal span (MMDS) variants. However, 
 350mm is also common amongst consumer products, such as DJI Phantom. The problem with 350 mm is that it will 
 constrain our ability to mount larger hardware such as the computing platform. The 350 mm also limits 
@@ -127,6 +129,8 @@ and easy to repair/replace.
 Currently, the \textit{Upgrade F450} for CA\$30.00 and \textit{Diatone Q450} for CA\$20.00 from \textit{Banggood} are appealing options. They weigh between 300 g to 410 g, which are both acceptable.
 
 \subsubsection{Propulsion System}
+
+==TODO==
 
 The propulsion system covers the majority of the RPAS parts list and determines the flight performance of the RPAS. 
 
@@ -254,8 +258,7 @@ Here is a list of desirable propeller size and pitches: 1030, 1045, 1130, 1145.
 
 \paragraph{Speed Controllers}
 
-The electronic speed controller (ESC) controls the voltage and current supplied to a BLDC motor. All ESCs 
-function identically and the design parameters are size/weight, rating, efficiency, and cost.
+The electronic speed controller (ESC) controls the voltage, current, and phase supplied to a BLDC motor. Since BLDC motors function by rotating magnetic field using electric commutation, the ESCs need to precisely control the timing and phase of the input to the three phase lines. All ESCs function similarly and the design parameters are size/weight, power rating, power efficiency, and cost.
 
 As shown in Table 2, the typical maximum current draw is approximately 30 A. For a 
 safety margin of 10 A, we decided to select ESCs with maximum rating of 40 A. All of the following options are appealing:
@@ -280,15 +283,11 @@ safety margin of 10 A, we decided to select ESCs with maximum rating of 40 A. Al
     \end{tabular} 
 \end{table}
 
-\subsubsection{Flight Controller}
+\subsubsection{Flight Controller Units}
 
-Flight controllers (FC) come in different tiers differentiated by their price and features. 
+Flight controllers units (FCU) or sometimes short as FC come in different tiers differentiated by their price and target application/market. 
 
-The cheapest FC typically only has the bare-minimum features for flight (such as accelerometers and 
-self-hover functions). These flight controllers are typically designed for acrobatic or basic VLOS 
-flying and typically cost CA\$20 to CA\$50. The firmware that runs on these FCs are typically 
-open-source but nonetheless user-friendly and easily-programmable. Below is a list of FCs which falls 
-under this tier:
+The cheapest FCU typically only has the bare-minimum features for flight (such as accelerometers and self-hover functions). These flight controllers are typically designed for acrobatic or basic VLOS flying and typically cost CA\$20 to CA\$50. The firmware that runs on these FCUs are typically open-source but nonetheless user-friendly and easily-programmable. Below is a list of FCs which falls under this tier:
 
 \begin{itemize}[noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
     \item F1, F3, F4, F7 FC are minimal in weight and footprint; they are ideal for light-weight operations.\cite{f1fc}
@@ -297,9 +296,7 @@ under this tier:
     \item CC3D FC is reliable with auto-tuning PIDs.
 \end{itemize}
 
-The next tier of FCs have more advanced features such as GPS-hold, autonomous flight, anto-land, 
-telemetry, etc. They are designed for more advanced operation. These FCs are more expensive, costing 
-CA\$50 to CA\$200, however these FCs have excellent after-sale support for their respective 
+The next tier of FCs have more advanced features such as GPS-hold, autonomous flight, anto-land, telemetry, etc. They are designed for more advanced operation. These FCs are more expensive, costing CA\$50 to CA\$200, however these FCs have excellent after-sale support for their respective 
 manufacturers and their documentation is better. Along 
 with frequent manufacturer firmware updates, the mid-tier FCs are more reliable. The downside is that 
 they are typically heavier and take up a much larger footprint. 
@@ -311,7 +308,7 @@ Below is a list of mid-tier FCs:
     \item DJI Naza M Lite.
 \end{itemize}
 
-For the applications we require, we chose the ArduPilot APM 2.8 as it is the most flexible option with advanced features at a reasonable price of CA\$75.00. Additionally, due to of the low-cost of low-tier FCs, we will also purchase one of the Naze32 or CC3D FC modules as a back-up.
+For the applications we require, we chose the ArduPilot APM 2.8 or the Pixhawk PX 4 as it is the most flexible option with advanced features at a reasonable price of CA\$75.00. Additionally, due to of the low-cost of low-tier FCs, we will also purchase one of the Naze32 or CC3D FC modules as a back-up.
 
 \subsubsection{Radio Systems}
 
