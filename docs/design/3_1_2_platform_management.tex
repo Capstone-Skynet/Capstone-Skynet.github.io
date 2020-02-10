@@ -11,14 +11,16 @@ A decomposition of the system is seen in Figure \ref{pcdiag}.
 \end{figure}
 
 \subsubsection{Device Selection}
-The selected device to implement the platform management system is the Raspberry Pi 4. As seen in Figure \ref{rpi}, the Raspberry Pi 4 is a small single-board computer which hosts an ARM Cortex A72 CPU, a CSI camera interface, 40 serial pins, WiFi/Bluetooth, and a gigabit Ethernet port. The Raspberry Pi 4 was selected over other single-computer platforms (such as Arduino/Beagleboard) as it:
+The selected device to implement the platform management system is the Raspberry Pi 4. As seen in Figure \ref{rpi}, the Raspberry Pi 4 is a small single-board computer which hosts a quad-core ARM Cortex A72 CPU, a CSI camera interface, 40 serial pins, WiFi/Bluetooth, and a gigabit Ethernet port. The Raspberry Pi 4 was selected over other single-computer platforms (including Arduino/Beagleboard/Orange Pi) as it:
 \begin{itemize}
 \item is relatively inexpensive (CAN\$45 in November 2019),
 \item has a large support community and a wealth of driver/library support,
 \item supports a wide range of high throughput I/O standards (USB/WiFi/Ethernet/Serial, \textbf{C.EX.3}),
-\item provides an industry-standard camera interface (\textbf{C.EX.5}), and
-\item supports extensible non-volatile storage (\textbf{F.CP.4}).
-\item is regularly succeeded with cross-compatible revisions (such as a Raspberry Pi 5), future-proofing the PMB segment
+\item provides an industry-standard camera interface (\textbf{C.EX.5}),
+\item supports extensible non-volatile storage (\textbf{F.CP.4}),
+\item has been regularly succeeded with cross-compatible revisions (presumably, including the upcoming Raspberry Pi 5) -- future-proofing the PMB segment,
+\item has an established community for technical support, and
+\item provides a continued development of operating systems and applications.
 \end{itemize} 
 
 \subsubsection{Data Flow}
