@@ -36,7 +36,7 @@ This document is intended for:
 This document is particularly relevant to those who wish to assess the current state of the project, in addition to those who will assess the validation methodology against academic, organizational, or legal criteria.
 
 \subsection{Reading Guide}
-This document begins with a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested, the steps taken to execute the test, and the test's success parameters. Finally, the current status of each test is summarized in Section \ref{results}.
+This document begins with a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested, the steps taken to execute the test, and the test's success parameters. Finally, the current status of each test is summarized in Section \ref{results}. Any pertinent test results are additionally included as appendices, as appropriate.
 
 The requirements referenced in this document can be found in the \textit{Requirements Specification}.
 
@@ -109,11 +109,12 @@ The following notations and conventions are used throughout this document:
 \subsection{Automated Verification Results}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{llll}
+	\begin{tabular}{lllll}
 	\hline
-	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} \\
+	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} & \textbf{Note}\\
 	\hline
 	T.ACP.1 & F.CM.1, F.CM.2, F.BS.3, F.BS.5 & PEND   & \\
+	T.ACP.2 & NF.CP.1, F.ML.1, F.ML.2, F.ML.4 & PEND   & \\
 	\hline
 	\end{tabular}
 \end{table}
@@ -122,27 +123,28 @@ The following notations and conventions are used throughout this document:
 \subsubsection{Computing Platform Verification Results}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{llll}
+	\begin{tabular}{lllll}
 	\hline
-	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} \\
+	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} & \textbf{Note}\\
 	\hline
 	T.G.1 & F.CP.2 & PEND   & \\
 	T.G.2 & F.CP.4, F.BS.5 & PEND   & \\
-	T.G.3 & F.BS.3, NF.CM.1, NF.CM.2 & FAIL   & 2019-01-24\\
-	
+	T.G.3 & F.BS.3, NF.CM.1, NF.CM.2 & FAIL   & 24-JAN-20 & Wi-Fi range is \textasciitilde 10m, need to add a Wi-Fi antenna. \\
+	\hline
 	T.CM.1 & NF.CAM.3, NF.CAM.4   & PEND   & \\
 	T.CM.2 & NF.CAM.1, NF.CAM.2   & PEND   & \\
 	T.CM.3 & F.CAM.2, NF.CAM.6   & PEND   & \\
 	T.CM.4 & NF.CAM.5   & PEND   & \\
-	
-	T.ML.1 & F.HL.2, F.ML.1 & PEND   & \\
-    T.ML.2 & F.ML.3 & PEND   & \\
-    
+	\hline
+	T.ML.1 & F.ML.1, F.ML.4 & PASS & 3-FEB-20 & See Appendix \ref{appendix:T.ML.1}.\\
+	T.ML.2 & F.HL.2, F.ML.1, F.ML.4 & FAIL  & 5-FEB-20 & FPS is currently \textasciitilde 0.33, need to optimize data flow. \\
+    T.ML.3 & F.ML.3 & PEND   & \\
+    \hline
     T.BS.1 & F.CM.1, F.CP.1 & PEND   & \\
-    
-    T.P.1 & NF.PR.1 & PEND   & \\
+    \hline
+    T.P.1 & NF.PR.1 & PASS   & 1-FEB-20 & See Appendix \ref{appendix:T.P.1}.\\
     T.P.2 & F.PR.4, F.PR.5, F.PR.6 & PEND   & \\
-	T.P.3 & F.PR.1, F.PR.4 & PASS   & 2019-01-30 \\
+    T.P.3 & F.PR.1, F.PR.4 & PASS   & 30-JAN-20 & See Appendix \ref{appendix:T.P.3}. \\
 	\hline
 	\end{tabular}
 \end{table}
@@ -150,9 +152,9 @@ The following notations and conventions are used throughout this document:
 \subsubsection{Multirotor Verification Results}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{llll}
+	\begin{tabular}{lllll}
 	\hline
-	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} \\
+	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} & \textbf{Note}\\
 	\hline
     T.DR.1 & NF.DR.1, NF.DR.12, NF.DR.13  & PEND   & \\
 	T.DR.2 & NF.DR.7, NF.DR.10 & PEND   & \\
@@ -163,9 +165,9 @@ The following notations and conventions are used throughout this document:
 \subsubsection{Full System Verification Results}
 \begin{table}[H]
 	\centering
-	\begin{tabular}{llll}
+	\begin{tabular}{lllll}
 	\hline
-	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} \\
+	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} & \textbf{Note}\\
 	\hline
     T.FS.1 & F.HL.1  & PEND   & \\
 	T.FS.2 & F.HL.2, F.HL.3, F.HL.4 & PEND   & \\
@@ -182,9 +184,15 @@ The following notations and conventions are used throughout this document:
 \bibliography{references}
 
 % Appendix (uncomment to enable appendix)
-% \clearpage
-% \appendix
-% \section{Appendix name}\label{appendix:sample-appendix}
+ \clearpage
+ \appendix
+ \section*{Appendices}
+ \section{Sample Image Test (\textit{T.ML.1}) Results}\label{appendix:T.ML.1}
+ \section{Power Usage Test (\textit{T.P.1}) Results}\label{appendix:T.P.1}
+ \input{validation/appendix_T.P.1}
+ \section{Battery Test (\textit{T.P.3}) Results}\label{appendix:T.P.3}
+ \input{validation/appendix_T.P.3}
+
 % Content here
 
 \end{document}
