@@ -36,7 +36,9 @@ DC-DC conversion would have been accomplished using a buck converter for the 5 V
 
 The battery protection board was to consist of a Zener diode to provide undercurrent protection, a fuse to provide overcurrent protection, and a simple circuit to provide reverse polarity protection (\textbf{F.PR.4-6}). Reverse polarity protection would additionally have been achieved by using connectors that cannot be connected in reverse (\textbf{F.PR.6}). 
 
-This SRAD system was scrapped in favor of a COTS system. The cots system provides all of the functionality of the above system at a lower cost and in a smaller form factor. As designing a power system is not the goal of this project we decided that with an available COTS solution it did not make sense to continue with the SRAD system.
+After designing this system a COTS system was found that fits our requirements. The COTS system consists of 3 lithium-ion batteries with a combined capacity of 3000mAh and a power management circuit inside a plastic case. The plastic case has a 5V USB output and a 12V output that are compatible with the Raspberry Pi and the Zedboard respectively. The rated current output of 3A is high enought to supply both of the boards at the same time and the plastic case can even be removed to reduce weight if this is deemed necessary.
+
+The SRAD system was scrapped in favor of the COTS system. The cots system provides all of the functionality of the SRAD system at a lower cost and in a smaller form factor. As designing a power system is not the goal of this project we decided that with an available COTS solution it did not make sense to continue with the SRAD system.
 
 \subsubsection{Battery}
 The power subsystem utilizes Lithium-ion batteries integrated with a power management circuit in a single package. In order to
