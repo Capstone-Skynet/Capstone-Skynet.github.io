@@ -141,63 +141,21 @@ The MRPAS is electrically powered with a battery (DC) and we have two options fo
 For flight applications, we chose the brushless DC (BLDC) motors for their extended usable life time. BLDC motors are also much more efficient than brushed motors because as they do not mechanically swap the polarity in the motor, which results in excess friction, heat, and potential sparking. 
 
 \underline{\textit{Inrunner or outrunners?}}
-BLDC motors are further broken down into two types: \textit{inrunner} and \textit{outrunner}. Inrunner motors have the rotor on the inside and the outrunner motors have the rotor on the outside.  As a result, the inrunners spins with a relatively lightweight rotor, which means inrunner motors typically spin fast but have low torque. In order to obtain useful torque from the motor, we need to design and install a separate gearbox to convert the mechanical energies\cite{invsoutrunner}. The outrunner has a more massive rotor and so the spin-up time due to the additional inertia, but we can consider this as a benefit: the rotating mass is further from the center of rotation, thus the angular momentum helps stablizing the rotor and reduce vibrations --- which is a major loss of efficiency. For a MRPAS typically mainly operating in stabalized flight and hover, this ``compromise'' is acceptable. Lastly, outrunners technologies are more modern and more serviceable than inrunner motors\cite{invsoutrunner}. For the reasons above, we choose outrunner motors.
+BLDC motors are further broken down into two types: \textit{inrunner} and \textit{outrunner}. Inrunner motors have the rotor on the inside and the outrunner motors have the rotor on the outside.  As a result, the inrunners spins with a relatively lightweight rotor, which means inrunner motors typically spin fast but have low torque (i.e. inrunner motors have high KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). In order to obtain useful torque from the motor, we need to design and install a separate gearbox to convert the mechanical energies\cite{invsoutrunner}. The outrunner has a more massive rotor and so the spin-up time due to the additional inertia, but we can consider this as a benefit: the rotating mass is further from the center of rotation, thus the angular momentum helps stablizing the rotor and reduce vibrations --- which is a major loss of efficiency. For a MRPAS typically mainly operating in stabalized flight and hover, this ``compromise'' is acceptable. Lastly, outrunners technologies are more modern and more serviceable than inrunner motors\cite{invsoutrunner}. For the reasons above, we choose outrunner motors.
 
 \paragraph{Motor Size and Speed}\label{section:motor-speed}
 
-All BLDC out-runner motors have the same height, and on product pages they are often given the code 22XX to denote their stator size. The design parameter is the radius (XX on the product code). Typically, the larger the stator (radius), the slower it spins given the same voltage. This is a linear relationship described by the motor parameter kV:
+Commercial outrunner BLDC motors generally have the following design parameters: rotor size, KV or KT constants, voltage, maximum rated power, and weight. Please refer to Appendix~\ref{appendix:droneengine} for the relationship between the aforementioned design parameters. Our design process consists of screening and ranking the best motors using the following order:
 
-$$
-\omega_{\mathrm{RPM}} = \mathrm{kV} \times \mathrm{Voltage}
-$$
+\begin{enumerate}
+    \item Voltage: we choose motor that operates between 12.0 V to 20.0 V which is enough for heavy operations.
+    \item KV constant: Since the motors' RPM-per-volt ratio (KV constant) is inversely proportional of torque-per-current ratio (KT constant), manufacturers typically only focus on the KV constant. We choose motors that has KV constants between 500 KV to 1000 KV. These constants are considered low-speed and high-torque characteristics and are typically used for large drones and endurance flights. We also choose this range so the propellers can spin slower and more efficiently, which extends the maximum flight time.
+    \item Rotor size: As mentioned in the previous section regarding inrunners vs. outrunners, larger rotors implies a lower KV and higher KT. As a result, we choose the appropriate size based on the 500 KV to 1000 KV range. Markets show that sizes denoted 3508 to 2212 are adequate.
+    \item Maximum rated power: KV and KT constands are simply linearized and simplified model for motor characteristics. The maximum power output is due to realistic non-idealities such as heat, motor resistance, and mechanical limits. Typically 500 KV to 1000 KV motors have a rating between 150 W to 400 W depending on the brand. We optimize for the most performant option allotted by our budget.
+    \item Weight: Given the rotor size have been chosen, the weight of the motors have little variances, thus we prioritize this parameter the least and we optimize for the most compact or light option allotted by our budget.
+\end{enumerate}
 
-The kV constant is inversely proportional to another motor constant, kT, which models the linear relationship between current and torque:
-
-$$
-\tau = \mathrm{kT} \times \mathrm{Current}
-$$
-
-The inverse relationship can be shown by equating electrical power into the motor and mechanical power produced by the motor:
-
-$$
-\tau\omega_{\mathrm{RPM}} = \mathrm{kV}\mathrm{kT}\times VI
-$$
-
-By constraining the electrical power, we can make trade-off between torque and rotation speed.
-Air resistance (“drag”) is proportional to speed of an object squared, therefore the power required to 
-lift increases non-linearly to the force output. As seen in the test data obtained from one manufacturer’s 
-datasheet below, when using the same propellers we see an increased thrust output resulting from increased voltage (and 
-thus current). However the efficiency, typically measured in g/W, decreases. 
-
-Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0 inch pitch and 10.0 inch 4.7 inch pitch propellers obtained from a vendor website \cite{sunnysky-2216}. 
-
-\begin{table}[H]
-    \centering
-    \caption{Sample Motor Test Data}
-    \label{table:sunnyskyx2216-table}
-
-    \begin{tabular}{lrrrrr}
-
-    \hline
-    \textbf{Propeller} & \textbf{Voltage} & \textbf{Current} & \textbf{Pull}  & \textbf{Power Consumption} & \textbf{Efficiency}\\
-    & [V] & [A] & [g] & [W] & [g/W] \\
-    \hline
-     & 10.0 & 16.4 & 940 & 164 & 5.73 \\
-    9050 & 11.0 & 19.5 & 1050 & 215 & 4.89 \\
-     & 12.0 & 21.5 & 1250 & 258 & 4.84 \\
-    \hline
-     & 10.0 & 23.5 & 1200 & 235 & 5.10 \\
-    1047 & 11.0 & 26.5 & 1350 & 372 & 3.63 \\
-     & 12.0 & 30.2 & 1520 & 363 & 4.19 \\
-    \hline
-
-    \end{tabular} 
-\end{table}
-
-Therefore, it makes sense that we choose larger motors with relatively lower kV constants. Slower motors 
-are also safer since there is less angular momentum of the blades. Motors with 800 kV to 1300 kV are 
-suitable for our applications and achieve reasonable thrust output with adequate efficiency. 2212, 2214, 
-and 2216 stator sizes are suitable in this range of kV.
+Using the above decision process, we determine that we are using T-Motor 3508 520 KV motor. For our testing rig, since it uses a smaller frame and a set of smaller propellers, we choose T-Motor Air Gear 350 (2213 920 KV) motors.
 
 \paragraph{Propeller Material}
 
@@ -210,7 +168,7 @@ propellers have micro-meter precision manufacturing, however, providing top effi
 propellers are not flexible and extremely tough. It is more dangerous for persons to be near spinning 
 carbon composite propellers due to their sharpness and toughness, and could lead to serious injuries or death.
 
-Due to budget constraint and safety concerns, we chose plastic propellers.
+For the final deliverable we choose carbon fiber propellers to maximize efficiency, flight time,and longevity for our client. But due to budget constraint and safety concerns, we chose plastic propellers for our testing rig.
 
 \paragraph{Propeller Size and Pitch}
 
@@ -241,7 +199,7 @@ given the same power: a slow-speed motor provides inversely proportional torque,
 with relatively high pitch (between 3 to 5 inches) to take advantage of the high-torque output and to
 maximize thrust output.
 
-Here is a list of desirable propeller size and pitches: 1030, 1045, 1130, 1145.
+For the deliverable drone, we are using carbon fiber propellers with sizes 1145, 1245, or 1445. For our testing rig, the accetable sizes are: 1030, 1045, 1130, and 1145.
 
 \paragraph{Speed Controllers}
 
@@ -311,7 +269,7 @@ We chose lithium polymer (Li-Po) batteries as they have the highest energy densi
 
 \begin{figure}[h]
     \centering
-    \includegraphics[scale=0.5]{img/energydensity.png}
+    \includegraphics[width=0.5\textwidth]{img/energydensity.png}
     \caption{Energy Density Graph of Various Battery Types}
     \label{fig:batterytypes}
 \end{figure}
