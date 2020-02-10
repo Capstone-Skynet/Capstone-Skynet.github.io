@@ -323,18 +323,25 @@ According to the FlySky-FS i6 datasheet\cite{flyskyi6}, the radio frequency (RF)
 
 \subsubsection{Battery}
 
-We chose lithium polymer (Li-Po) batteries as they have the highest energy density (highest 
-capacity to weight ratio), and thus are perfect for high-power, low-weight applications. 
+We chose lithium polymer (Li-Po) batteries as they have the highest energy density (highest capacity to weight ratio) similar to that of lithium-ion (Li-ion) batteries, and thus are perfect for high-power, low-weight applications. Figure~\ref{fig:batterytypes} shows a graph of energy density of types of batteries \cite{battery} --- from this graph, it is clear that Li-Po batteries are to be chosen.
 
-Li-Po batteries have mainly three design parameters: configuration, capacity, and discharge rating. 
-Configuration is how the Li-Po batteries are wired up: a single-cell Li-Po battery can provide a 
-nominal voltage of 3.7 V due to its electrochemistry. Multiple cells can be put in series and the 
-voltage adds up: 2S (2 cells in series) batteries have 7.4 V output, 3S batteries have 11.1 V output,
- and 4S batteries have 14.8 V output.
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{img/energydensity.png}
+    \caption{Energy Density Graph of Various Battery Types}
+    \label{fig:batterytypes}
+\end{figure}
 
-Battery capacity is measured in watt-hours (Wh) or milli-amp-hours (mAh), which is power multiplied by time. A 20 Wh battery can output 20 W for 1 hour. Multiple battery cells can be put in parallel and their capacity adds up. 4S2P batteries have a 14.8 V output while having double the capacity of 4S batteries.
+Li-Po batteries have mainly three design parameters: configuration, capacity,  discharge rating, and internal resistance.
 
-Lastly, the discharge rating is denoted by “C” and indicates the maximum discharge current. A 1,000 
-mAh battery with a discharge rating of 20 C can discharge a maximum of 1.0 A $\times$ 20 C = 20 A.
+\textit{Configuration} is how the Li-Po batteries are manufactured and wired together: a single cell in a Li-Po battery provide a 
+nominal voltage of 3.7 V due to its electrochemistry.
+Similar to how portable electronics and appliances require AA or AAA batteries placed in a certain order, a single cell of 3.7 V is not enough to drive anything powerful. Ergo multiple cells can be wired in series and the 
+voltage adds up: 2 cells in series, denoted by ``2S'' batteries have 7.4 V output, 3S batteries have 11.1 V output, and 4S batteries have 14.8 V output. 
+
+Battery \textit{capacity} is measured in watt-hours (Wh) or milli-amp-hours (mAh), which is unit of electric power multiplied by unit time. A 20.0 Wh battery can output 20.0 W for 1.0 hour. Multiple battery cells can be put in parallel and their capacity adds up. A pair of four-cell batteries wired in parallel, denoted by ``4S2P'' have a 14.8 V output while double the capacity of a single 4S battery of the same variant.
+
+The \textit{discharge rating} is denoted by ``C'' and indicates the ratio of he capacity and maximum discharge current safely without significantly harming the battery's life. A 1,000 
+mAh battery with a discharge rating of 20 C can discharge a maximum of 1.0 A $\times$ 20 C = 20 A. It is important to note that a high discharge rating does not imply improved performance, but the \textitt{internal resistance}. Since a higher internal resistance means that the battery can run less efficiently with power lost internally. In reality, the internal resistance is merely a value on the data-sheet and not a design parameter --- thus we will choose the battery with the most optimal internal resistance as alotted by our budget. 
 
 We will choose the design parameters for the battery after we have consolidated on the rest of the parts for the RPAS -- allowing for more system flexibility.
