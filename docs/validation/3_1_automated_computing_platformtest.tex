@@ -12,4 +12,21 @@ This test is performed automatically after system boot to confirm that the wirel
 \end{enumerate}
 
 \textbf{Verification}: 
-Upon successful completion, the base station displays a message to indicate a successful connection and a live video stream is displayed on the screen.
+Upon successful completion, the base station displays a message to indicate a successful back and forth transmission.
+
+\paragraph{\underline{T.ACP.2: Hardware Accelerator Initialization Check}}
+
+This test is performed automatically after system boot to confirm that the hardware acceleration core has booted and that the HPS can interface with it successfully.
+
+\textbf{Addresses}: NF.CP.1, F.ML.1, F.ML.2, F.ML.4
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+	\item Reference ML results are generated using a sample image during system development, with the results being stored in non-volatile memory.
+    \item On boot, the platform management board sends an identical sample frame to the hardware acceleration core.
+    \item The hardware acceleration core processes the frame and returns the ML results to the PMB.
+    \item The platform management board compares the newly generated results to the reference results, and returns test results to the base-station.
+\end{enumerate}
+
+\textbf{Verification}: 
+The test fails if no results are returned from the HW core, or if the generated results do not match the expected (reference) results.
