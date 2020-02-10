@@ -45,9 +45,7 @@ However, systems with odd-number of actuatators are inherently unstable due to t
 We choose to not pursue this configuration as the tricopter configuration provides agility with require increased control complexity as a trade off. This compromise is not ideal as we emphasize on flight stability.
 
 \textbf{Quadcopter X: }
-The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (Figure \ref{fig:quadcopter-x-t}). Two of the motors spin  
-clockwise and the other two spin counter-clockwise, effectively cancelling each other’s undesired torque. 
-Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by changing a combination of differential thrust to each motor (Figure \ref{fig:rpas_6dof}).
+The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors as seen in Figure \ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise and effectively cancelling each other’s undesired torque. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by changing a combination of differential thrust to each motor (Figure \ref{fig:rpas_6dof}).
 
 \begin{figure}[H]
     \centering
@@ -84,12 +82,7 @@ Applying the same power into each motor allows the MRPAS to hover in place. We c
 \end{figure}
 
 \textbf{Hexacopter X: }
-The hexacopter has all the stability benefits of a quadcopter. In addition, the hexacopter configuration also 
-offers redundancy. Up to 2 motors can fail and the MRPAS could still land safely. Due to the added 
-propulsion systems (50\% more than the quadcopter configuration), hexacopter can generally lift more 
-payload than quadcopters. The downside is that hexacopter configuration builds are more expensive to build, 
-operate, and maintain. Upon a crash, hexacopter MRPAS' extended size and weight can cause more injuries 
-or collateral damage to nearby equipment.
+The hexacopter has all the stability benefits of a quadcopter as well as extra redundancy. The MRPAS could still land safely even up to dual motor failures. Since the hexacopter uses two more motors than the quadcopter configuration, naturally, the RPAS of this configuration is generally bigger and can lift more payload. Of course, with the added components, it is also much more expensive to build, operate, and maintain. Furthermore, hexacopter RPAS's extended size and mass can cause more damage upon a crash.
 
 We choose to the quadcopter configuration. 
 The payload is not too heavy -- our target maximum payload weight is less than 500 g (\textbf{NF.DR.1}). The quadcopter configuration is also the most balanced in terms of the trade-off between cost and reliability. 
