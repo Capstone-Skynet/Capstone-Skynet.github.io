@@ -48,7 +48,7 @@ In addition to the YOLOv2 accelerator, two alternative hardware acceleration uni
 
 \textit{MARLANN} is an open-source IP core capable of performing 8-bit fixed point signed integer arithmetic, matrix multiplication, and max-pooling. While MARLANN has a low FPGA area overhead (approx. 5,000 LCs), its relative simplicity would necessitate a large amount of effort in developing glue logic to form a functional ML system. The MARLANN project is also not regularly maintained, leading to further concerns regarding future project maintenance/extensibility.
 
-\textit{FREE-TPU} is a free (MIT licensed) acceleration platform developed by EmbedEEP. While the platform allows for greater flexibility in model selection compared to our selected solution (allowing for more less complex models such as MobileNet-YOLO), the project is no longer maintained. In addition, as the source code is unavailable (the API is made available as a shared library), we are prohibited from making appropriate modifications to better suit our platform (ex. modifying image data structures), leading to unacceptably poor performance (less than 0.25 FPS).
+\textit{FREE-TPU} is a free (MIT licensed) acceleration platform developed by EmbedEEP. While the platform allows for greater flexibility in model selection compared to our selected solution (allowing for less complex models such as MobileNet-YOLO), the project is no longer maintained. In addition, as the source code is unavailable (the API is made available as a shared library), we are prohibited from making appropriate modifications to better suit our platform (ex. modifying image data structures), leading to unacceptably poor performance (less than 0.25 FPS).
 
 \begin{figure}[H]
 \centering
