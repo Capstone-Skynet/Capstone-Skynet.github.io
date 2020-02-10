@@ -16,7 +16,7 @@ One functionality that mobile devices lack is the support for common machine lea
 \subsubsection {Graphical User Interface}
 A web-application is used as the GUI for the base station. This allows for universal compatibility with laptops and smart mobile devices, regardless of their operating system.
 
-\subsubsection{Data Display and Function}
+\subsubsection{Functionality}
 The base station hosts a TCP/IP server, and serves two clients: the PMB and the web-application. The server will continuously query the PMB for the live video feed data and ML results in the form metadata, and send the data to the web-application for display.
 
 If an object detection scheme is implemented, the ML results will be displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}). In particular, the ML results will consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es).
