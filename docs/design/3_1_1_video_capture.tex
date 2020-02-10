@@ -25,4 +25,6 @@ One of the possibilities explored for the camera subsystem was the purchase of a
 
 Another consideration for the subsystem involved utilizing a USB webcam -- connecting it via the Raspberry Pi's USB port. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously noted, made the Rasberry Pi Camera a better solution suited to the client's needs.
 
+A possible alternative explored for camera interface was the RS-232 interface. The RS-232 interface is an easy to build serial interface. It is widely used in communication area, however, its low data transfer rate limits both the resolution and frame rate of the video footage that can be captured. The highest baud rate of the RS-232 interface is about 115200 bits per second. Which translates to frame rate of 0.05 fps for a 480p video footage (violating constraint \textbf{NF.CM.3}).
+
 For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods.  Ultimately these options required additional hardware (contributing to higher costs and system weight) and would introduce more points of failure and complexity into the finalized system, thus they were not pursued.
