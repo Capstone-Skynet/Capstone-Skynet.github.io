@@ -13,10 +13,16 @@ We considered two classes of devices which could be used as a base station: lapt
 
 One functionality that mobile devices lack is the support for common machine learning platforms (ex. TensorFlow). As the client may want to perform additional ML processing on the base station for further analysis in the future, laptops were ultimately selected as the base station's platform. Support for smart devices (to facilitate multiple viewers) may be added if time permits.
 
-\subsubsection{Display}
+\subsubsection{Functionality}
+A web-application is used as the GUI for the base station. This allows for universal compatibility with all laptops, regardless of their operating system.
 
-If an object detection scheme is implemented, the ML results will be displayed as a bounding box around the detected object(s) in the frame. In particular, the ML results will consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es). 
+The base station hosts a TCP/IP server, and serves two clients: the PMB and the web-application. The server continuously queries the PMB for live video data and ML metadata results, and sends the data to the web-application for display.
 
-The base station retrieves this information by querying a TCP/IP server hosted by the platform management board and displays the results via a web-application (\textbf{F.BS.1}).
+The ML results are displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}). In particular, the ML results consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es).
 
-Another role of the base station is to alert the end-user to any system warnings or errors. All such faults, either detected by the the computing platform or the base station itself, are displayed on the base station's screen. All faults will also be logged locally on the device to facilitate further debugging, if necessary.
+The web application also displays real-time system status messages. These messages come from the PMB or the base station itself. The status updates include information on initiation or completion of processes, changes in PMB, PLB or base station settings and system warnings and errors.
+
+The base station continuously saves the received video and metadata locally for any analysis purposes (\textbf{F.BS.6}). All faults are also be logged locally on the device to facilitate further debugging(\textbf{F.BS.5}).
+%% maybe we just log all status messages, not limited to warnings/errors.
+
+Buttons and radio buttons are situated on the web-application for user input (\textbf{NF.BS.2}). Their functions include adjusting the visual properties of the web-application and changing settings on the PMB and PLB (\textbf{F.BS.4}). The PMB and PLB contain adjustable settings for status message formatting, camera polling rate, and ML model sensitivity.
