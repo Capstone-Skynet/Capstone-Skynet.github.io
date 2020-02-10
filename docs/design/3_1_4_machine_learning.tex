@@ -2,31 +2,10 @@
 
 % 
 
-\subsubsection{Subsystem Overview}
+\subsubsection{Subsystem Overview} \label{ml_desc}
 While machine learning is the topic that provides this project's context, this project is not focused on creating a machine learning model. Rather, the intention is to create a \textit{mobile computing platform} that \textit{allows} the client to perform research regarding hardware-accelerated machine-learning models.
-
-%A mobile computing platform means we are able to perform processing in unaccessilble locations. A user can program the logic to perform one application, allow the system to perform that function autonomously and remotely, and then program the logic for a completely differnent application, without having switch its processing hardware.
-
-% A computing platform with machine learning means that it can automatically learn and improve from experiences without being explicitly programmed. This concept is accentuated when the computing platform becomes mobile; the system can autonomously serve its purpose without needing physically close monitoring.
-
-% \subsubsection{Correct Machine Learning Applications}
-% Because this is a mobile platform, the computing platform serves to take in physical data from the external world, process it, and output data that can be analyzed. Examples of this usage would include image/video recognition, as well as pattern recognition and classification from an aerial environment.
-
-% \subsubsection{Incorrect Machine Learning Applications}
-% The computing platform would not serve its purpose in applications where the data to be processed is sent by its user. The mobile computing platform should not be used in applications such as email classification, spam filtering and virtual assistants.
-
-% Also factoring in the mobility of the system, the machine learning implementation should not be used in applications should be performed on the ground, even if ML can be applied. Cases of grounded applications include medical services and speech recognition.
-
-% \subsubsection{Hardware Accelerators} %????
-% 
-
-%The machine learning implementation is not the focus of this project but it is required to demonstrate the capabilities of the mobile computing platform. 
-
-%The hardware accelerators used for machine learning can be applied in CPUs, GPUs, FPGAs and ASICs. The client would like to use FPGAs to prototype their machine learning hardware designs, and thus our implementation will be on an FPGA.
-
-The machine learning implementation accelerated by our platform will be capable of processing video captured from the camera and outputting metadata regarding objects detected in the footage. The logic capacity of the FPGA (in addition to the requisite glue logic) will define the complexity of the machine learning algorithm and how much hardware it can occupy. 
 
 As this is a mobile platform, the computing platform ultimately serves to take in physical data from the external world, process it, and output data which can be analyzed for the user's benefit. Examples of real-world situations which fit this category include disaster response, wildlife management, pedestrian detection, and demographic studies.
 
-
+To provide a versatile demonstration of the platform's capabilities, the ubiquitous YOLOv2 machine learning model is used. Directly implemented by our selected open-source hardware accelerator (as described in Section \ref{ml_accel}), YOLOv2 facilitates the rapid bounding-box detection of multiple object types ('classes') such as pedestrians, bicycles, and animals. While the use of a less computationally expensive model (such as Tiny/MobileNet YOLO) would be preferred to allow for a higher framerate, the developmental effort to integrate such models into the existing hardware acceleration model is prohibitively excessive for the purposes of this Capstone project.
 
