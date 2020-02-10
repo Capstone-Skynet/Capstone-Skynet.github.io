@@ -1,18 +1,15 @@
 
 All BLDC outrunner motors have the same height, and on product pages they are often given the code 22XX to denote their stator size. The design parameter is the radius (XX on the product code). Typically, the larger the stator (radius), the slower it spins given the same voltage. This is a linear relationship described by the motor parameter kV:
-
 $$
 \omega_{\mathrm{RPM}} = \mathrm{kV} \times \mathrm{Voltage}
 $$
 
 The kV constant is inversely proportional to another motor constant, kT, which models the linear relationship between current and torque:
-
 $$
 \tau = \mathrm{kT} \times \mathrm{Current}
 $$
 
 The inverse relationship can be shown by equating electrical power into the motor and mechanical power produced by the motor:
-
 $$
 \tau\omega_{\mathrm{RPM}} = \mathrm{kV}\mathrm{kT}\times VI
 $$

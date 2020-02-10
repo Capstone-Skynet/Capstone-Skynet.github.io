@@ -3,7 +3,7 @@
 The base station is a mobile device that connects to the computing platform on the multirotor. In particular, it performs the following tasks:
 \begin{itemize}
     \item Displays the status of the system
-    \item Displays the ML results in real-time (by overlaying the data over live video)
+    \item Displays the ML results in real-time (by overlaying the results over live video)
     \item Stores the log data and video for further analysis
     \item Remotely configures the computing platform (ex. starting object detection)
 \end{itemize}
@@ -20,9 +20,9 @@ The base station hosts a TCP/IP server, and serves two clients: the PMB and the 
 
 The ML results are displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}). In particular, the ML results consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es).
 
-The web application also displays real-time system status messages. These messages come from the PMB or the base station itself. The status updates include information on initiation or completion of processes, changes in PMB, PLB or base station settings and system warnings and errors.
+The web application also displays real-time system status messages. These messages come from the PMB or the base station itself. The status updates include information on initiation or completion of processes, changes in PMB, PLB or base station settings, and system warnings/errors.
 
-The base station continuously saves the received video and metadata locally for any analysis purposes (\textbf{F.BS.6}). All faults are also be logged locally on the device to facilitate further debugging(\textbf{F.BS.5}).
+The base station continuously saves the received video and metadata locally for any analysis purposes (\textbf{F.BS.6}). All faults are also logged locally on the device to facilitate further debugging(\textbf{F.BS.5}).
 %% maybe we just log all status messages, not limited to warnings/errors.
 
-Buttons and radio buttons are situated on the web-application for user input (\textbf{NF.BS.2}). Their functions include adjusting the visual properties of the web-application and changing settings on the PMB and PLB (\textbf{F.BS.4}). The PMB and PLB contain adjustable settings for status message formatting, camera polling rate, and ML model sensitivity.
+Buttons are situated on the web-application for user input (\textbf{NF.BS.2}). Their functions include adjusting the visual properties of the web-application and changing settings on the PMB and PLB (\textbf{F.BS.4}) such as adjusting the camera polling rate and ML model sensitivity.

@@ -11,7 +11,7 @@ The device is composed of two distinct systems, the \textit{Computing Platform} 
 
 The \textit{Platform Management Board} (a Raspberry Pi 4) is responsible for managing the majority of the aerial computations and communications. This includes managing video acquisition, conveying data to and from the PLB to facilitate hardware accelerated machine learning tasks, and transmitting video and ML results to the base station via a WiFi connection.
 
-The \textit{Programmable Logic Board} (a Digilent Zedboard), connected to the PMB via Ethernet, facilitates the hardware-acceleration functionalities of the device. It is comprised of a hard-processor (ARM Cortex A9) and an FPGA interfaced via an on-chip interconnect. The FPGA hosts the hardware acceleration unit, which is (currently) driven by the Zynq-7000 YoloV2 open-source accelerator\cite{yolov2accel}. As this device is intended to act as an experimental research platform, the client may replace this with their own hardware accelerator implementation upon delivery.
+The \textit{Programmable Logic Board} (a Digilent Zedboard), connected to the PMB via Ethernet, facilitates the hardware-acceleration functionalities of the device. It is comprised of a hard-processor (ARM Cortex A9) and an FPGA interfaced via an on-chip interconnect. The FPGA hosts the hardware acceleration unit, which is (currently) driven by the Zynq-7000 YOLOv2 open-source accelerator\cite{yolov2accel}. As this device is intended to act as an experimental research platform, the client may replace this with their own hardware accelerator implementation upon delivery.
 
 The \textit{Base Station} (a consumer laptop) connects to the multirotor via WiFi, displaying live video and ML results as transmitted by the aerial computing components. In addition to conveying the video and ML analytics, the base station also provides remote control of the computing system -- allowing the user to monitor system status and alter parameters of ongoing computations on-the-fly.
 
@@ -40,8 +40,8 @@ A step-by-step overview of data flow within the computing platform (refer to Fig
 \item The PLB, via a TCP/IP ethernet link, to perform hardware-accelerated machine learning, and
 \item The base station, via a TCP/IP WiFi link, to display to the end-user
 \end{enumerate}
-\item The ARM core on the PLB receives video packets from the PMB via the ethernet link, further processes it, and dispatches parallel hardware acceleration requests to the FPGA portion via several AXI buses
-\item The FPGA receives hardware acceleration requests (which first pass through AXI shims to facilitate synchronization), passing it to the hardware acceleration core
+\item The ARM core on the PLB receives video packets from the PMB via the ethernet link, further processes it, and dispatches  hardware acceleration requests to the FPGA portion via parallel AXI buses
+\item The FPGA receives hardware acceleration requests (which first pass through AXI shims to facilitate clock synchronization), passing it to the hardware acceleration core
 \item Upon completion, the hardware acceleration core sends data back to the ARM core, which itself transmits the resultant data back to the PMB via the Ethernet link
 \item The machine learning results are transmitted over the WiFi link to the base station
 \item The base station overlays the video feed and machine learning results, displaying them on-screen
