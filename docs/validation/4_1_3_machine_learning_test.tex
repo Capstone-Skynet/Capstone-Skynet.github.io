@@ -1,8 +1,24 @@
-\paragraph{\underline{T.ML.1: ML Results Test}}
+\paragraph{\underline{T.ML.1: ML Sample Image Test}}
+
+This test checks if the ML model accelerator accurately generates bounding boxes for images within the official sample collection provided by the YOLOv2 authors.
+
+\textbf{Addresses}: F.ML.1, F.ML.4
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Manually transfer a sample image to the PLB via a file-transfer protocol.
+    \item Directly call the ML helper function which communicates with the hardware accelerator core.
+    \item Manually verify the results for correctness.
+\end{enumerate}
+
+\textbf{Verification}: 
+Confirm visually that objects in the sample image are accurately identified and bounded.
+
+\paragraph{\underline{T.ML.2: ML Video Results Test}}
 
 This test verifies the correctness of the ML results.
 
-\textbf{Addresses}: F.HL.2, F.ML.1
+\textbf{Addresses}: F.HL.2, F.ML.1, F.ML.4
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
@@ -15,8 +31,7 @@ This test verifies the correctness of the ML results.
 Verify that the ML results match with the pre-labelled results.
 
 %
-
-\paragraph{\underline{T.ML.2: ML Latency Test}}
+\paragraph{\underline{T.ML.3: ML Latency Test}}
 
 This test checks if the latency of the machine learning model is acceptable.
 
@@ -29,4 +44,4 @@ This test checks if the latency of the machine learning model is acceptable.
 \end{enumerate}
 
 \textbf{Verification}: 
-Confirm that there are no frame gaps greater than one second.
+Confirm that there are no frame gaps greater than two seconds.

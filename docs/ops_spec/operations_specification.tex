@@ -14,22 +14,82 @@
 
 \input{../common/presections}
 
-
-
 % TODO: fill out all the sections
 % if the sections gets too long, move them to a separte .tex document
 \section{About This Document}
-This document will outline legacy instructions to the client. It will only be populated after assembly of the product begins.
 
 \subsection{Purpose}
+This document serves to outline the tasks and scenarios likely to be encountered by the client after project delivery. This includes instructions to assemble/build the device, and details of maintenance/troubleshooting procedures. 
 
 \subsection{Intended Audience}
+This document is intended for:
+\begin{itemize}
+\item \textbf{Client (and their representatives)}: to execute steps required for the operation and maintenance of the device,
+\item \textbf{Designers (the Capstone team)}: to serve as a central repository of implementation knowledge,
+\item \textbf{and Legal Personnel:} to review the installation and maintenance schemes, if necessary. Such personnel may include individuals from the Department of Electrical and Computer Engineering, Industry Canada, and Transport Canada.
+\end{itemize}
+
+This document is additionally relevant to those who will assess the maintenance and installation methodology against academic, organizational, or legal criteria.
 
 \subsection{Reading Guide}
+This document outlines the following areas of importance to the client: 
+
+\begin{itemize}
+\item \textbf{Frequently Asked Questions (FAQs)}: An outline of common questions and answers regarding key points across the entire project.
+\item \textbf{Installation Instructions}: Instructions relating to the construction of the multirotor and computing platform, in addition to how to build/install computing software.
+\item \textbf{Regular Maintenance}: An outline of the maintenance tasks to be taken on the multirotor at predetermined intervals.
+\item \textbf{Troubleshooting}: A summary of commonly encountered issues with the multirotor and computing platform (and their solutions).
+\item \textbf{Suggested Upgrades}: An outline of potential upgrades to the computing platform and multirotor assembly.
+\end{itemize}
+
+\subsection{Important Notice}
+This document is strongly dependent on the final assembly of the device and will thus be sparsely populated until the device is closer to delivery.
 
 \section{Operations, Maintenance and Upgrades}
 \subsection{FAQs}
 \subsection{Installation Instructions}
+\subsubsection{PLB SW/HW Build Instructions}
+The following section outlines the steps required to upload the ML FPGA design, deploy the HPS software environment, and communicate with the PLB through a serial connection.
+
+\underline{Required Materials}
+\begin{itemize}
+\item 1 - Linux/Unix PC with the PetaLinux SDK\cite{petalinux} installed
+\item 1 - SD card (at least 4GB in size) \& SD Card Reader
+\item 1 - Zedboard \& Power Supply
+\item 1 - Micro USB Cable
+\end{itemize}
+
+\underline{Instructions}
+\begin{enumerate}
+\item Download (or pull) the latest version of the Capstone-Skynet suite from GitHub (\url{https://github.com/Capstone-Skynet/Integration}).
+\item Navigate into the \texttt{Zedboard/yolov2/} folder. 
+\item Before continuing, ensure that the PetaLinux settings script has previously been sourced\\ ("\texttt{source /opt/pkg/petalinux/settings.sh}", if PetaLinux is installed in its default directory).
+\item Pertinent Linux distribution settings have been pre-configured, however if additional configuration is desired (such as including/removing drivers), call "\texttt{petalinux-config -c kernel}".
+\item Build the project by calling "\texttt{petalinux-build}".
+\item Prepare the project for the SD card by calling "\texttt{petalinux-package -{}-boot -{}-fsbl images/linux/zynq\_fsbl.elf -{}-fpga -{}-u-boot -{}-force}".
+\item After inserting the SD card into the reader, determine its disk identifier (\texttt{sudo fdisk -l}). In the next steps, it is assumed that the identifier is \texttt{/dev/sdb}.
+\item Open fdisk ("\texttt{sudo fdisk /dev/sdb}").
+\item Make a new partition by pressing "\texttt{n}" and make it primary by pressing "\texttt{p}".
+\item Continue following the fdisk prompts, using the default partition number/first sector, and set the last sector value to be \texttt{+1G} (creating a partition one gigabyte in size).
+\item Make the newly created partition bootable by pressing "\texttt{a}".
+\item Create another partition by pressing "\texttt{n}" and make it primary by pressing "\texttt{p}".
+\item Continue following the fdisk prompts, using the default values (the partition will consume the rest of the free space on the SD card).
+\item Press "\texttt{w}" to write the changes to the disk, then exit.
+\item Format the first (boot) partition using the FAT format ("\texttt{sudo mkfs.vfat -F 32 -n boot /dev/sdb1}").
+\item Format the second (root) partition using the EXT4 format ("\texttt{sudo mkfs.ext4 -L root /dev/sdb2}").
+\item Copy the FPGA initialization file (\texttt{BOOT.BIN}) and Linux micro-boot file (\texttt{image.ub}) to the boot partition ("\texttt{sudo cp [BOOT.BIN/image.ub] /media/user/boot/}").
+\item Copy the (compressed \texttt{rootfs.tar.gz}) Linux image into the root partition ("\texttt{sudo cp rootfs.tar.gz /media/user/root/}"). 
+\item Navigate to the root partition and extract the compressed image to the base directory ("\texttt{sudo tar xvf rootfs.tar.gz}").
+\item Eject the SD card and insert it into the Zedboard.
+\item Ensure that the Zedboard configuration jumpers are set for SD card boot (MI04/MI05 set to 3.3V, remaining to GND).
+\item Connect the Zedboard to the PC using the micro USB cable (through the JTAG port), connect the power supply, and switch the Zedboard on.
+\item Using PuTTY (or another serial program such as Minicom), open a serial connection to the Zedboard (115200 baud, 8 data bits, 1 stop bit).
+\item At the "\texttt{Zynq>>}" prompt, enter "\texttt{boot}".
+\item Once Linux boots, use the default root username/password (\texttt{root/root}).
+\end{enumerate}
+
+Once the above steps have been completed, the user can navigate the Linux OS as required. The default program to communicate with the hardware accelerator can be called by entering "\texttt{mlprog}" at the prompt.
+
 \subsection{Regular Maintenance}
 \subsection{Troubleshooting}
 \subsection{Suggested Upgrades}
