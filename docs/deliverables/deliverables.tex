@@ -6,24 +6,14 @@
 \newcommand{\docsubtitle}{\input{../common/title}}
 
 \input{../common/aliases}
+\renewcommand{\revisionnum}{1.0}
 \input{../common/urlsetup}
 \input{../common/pagesetup}
 \input{../common/titlepage}
 
 % Begin Document
 \begin{document}
-
-% Title Page
-\begin{titlepage}
-	\maketitle
-\end{titlepage}
-
-% Revision history
-\include{rev_history}
-
-% Set page and section counter
-\setcounter{page}{1}
-
+\input{../common/presections}
 % TODO: fill out all the sections
 % if the sections gets too long, move them to a separte .tex document
 \section{About This Document}

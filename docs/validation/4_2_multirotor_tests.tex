@@ -1,6 +1,6 @@
 \paragraph{\underline{T.DR.1: PID Tuning and Testing}}
 
-This test and set of procedures ensure that the flight controller unit (FCU) onboard the multirotor RPAS is capable of controlling the drone with quickly and accurately. We are using established and empirical methods for tuning the PIDs; we will not consider system modelling and root-locus analysis of the system as we cannot accurately treat the RPAS as a linear and time invariant (LTI) system due to too many non-linearities.
+This test and set of procedures ensure that the flight controller unit (FCU) onboard the multirotor RPAS is capable of controlling the drone quickly and accurately. We are using established and empirical methods for tuning the PIDs; we will not consider system modeling and root-locus analysis of the system as we cannot accurately treat the RPAS as a linear and time invariant (LTI) system due to too many non-linearities.
 
 \textbf{Addresses}: F.DR.1, F.DR.2, NF.DR.2
 
@@ -13,7 +13,7 @@ This test and set of procedures ensure that the flight controller unit (FCU) onb
     \item Safely land the RPAS on the ground and disconnect power for post-flight analysis and logging.
 \end{enumerate}
 
-\textit{If the above auto-tuning process does not yield a controllable RPAS with fast responsiveness but sufficient damping to minimize control overshoot, then move on to the following procedure. Otherwise, verify and validate test successfulness.}
+\textit{If the above auto-tuning process does not yield a controllable RPAS with fast responsiveness but sufficient damping to minimize overshoot, then move on to the following procedure.}
 
 \textbf{Procedure (Manual-Tuning)}:
 \begin{enumerate}[noitemsep]
@@ -23,7 +23,7 @@ This test and set of procedures ensure that the flight controller unit (FCU) onb
     \item Safely land the RPAS on the ground and disconnect power for post-flight analysis and logging.
 \end{enumerate}
 
-\textbf{Verification}: The PID tuning and testing is considered successful if the RPAS is easily controllable with fast response times using the radio transmitter. When the control sticks on the radio transmitter are reset to centre, the drone should level-off. Significant deviations would suggest that the system has changed (e.g. change in center-of-gravity (COG), different motors and propellers, etc.) and re-tuning is required. 
+\textbf{Verification}: The PID tuning and testing is considered successful if the RPAS is easily controllable with fast response times using the radio transmitter. When the control sticks on the radio transmitter are reset to their centre, the drone should level-off. Significant deviations would suggest that the system has changed (e.g. change in center-of-gravity (COG), different motors and propellers, etc.) and re-tuning is required. 
 
 % 
 

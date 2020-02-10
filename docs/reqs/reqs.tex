@@ -60,7 +60,7 @@ This project aims to offer an aerial/drone platform which provides both video ac
 \label{hlpic}
 \end{figure}
 
-The final product consists of a \textit{multirotor-mounted computing platform} and a \textit{mobile base station or ground station}. The former component collects, processes, and analyzes aerial video; and the latter displays the live video feed from the multirotor. The base station overlays the computing platform's analysis results over the live video feed. The FPGA performs hardware acceleration as part of the video analysis.
+The final product consists of a \textit{multirotor-mounted computing platform} and a \textit{mobile base/ground station}. The former component collects, processes, and analyzes aerial video; and the latter displays the live video feed from the multirotor, overlaying the computing platform's analysis results. The on-board FPGA performs hardware acceleration as part of the video analysis.
 
 Current products on the market are primarily aimed at consumers and ``prosumers'' --- content-producers whose main focus is aerial photography. While our project also features aerial photography, we emphasize providing real-time analytics using the captured video, in addition to supplying custom features and modifications tailored to our client.
 
@@ -81,8 +81,8 @@ The project is classified as an integration of consumer electronics with compone
 \begin{enumerate}[label=F.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The multirotor RPAS must lift-off from the ground on its own power without a wired connection.
 	\item The multirotor RPAS must remain in a self-stabilizing hover using its onboard flight controller and PID systems without any external intervention.
-	\item The multirotor RPAS must be controllable by a pilot within the visual line-of-sight (VLOS) using a paired radio transmitter (TX).
-	\item The multirotor RPAS must ascend, descend, pitch, roll, and yaw upon pilot's commands via the TX to the RPAS receiver (RX).
+	\item The multirotor RPAS must be controllable by a pilot within visual line-of-sight (VLOS) using a paired radio transmitter (TX).
+	\item The multirotor RPAS must ascend, descend, pitch, roll, and yaw upon the pilot's commands via the TX to the RPAS receiver (RX).
 	\item The multirotor RPAS must output adequate lift thrust to carry the computing platform.
 	\item The multirotor RPAS must feature lights to indicate the orientation of the RPAS and comply with safety protocols.
 	\item The multirotor RPAS must feature easy-to-remove propellers.
@@ -152,10 +152,10 @@ The project is classified as an integration of consumer electronics with compone
 	\item The multirotor RPAS must be able to carry a maximum total mass of 2.0 kg and achieve flight.
 	\item The multirotor RPAS must have PID tuned such that overshoot and damping is acceptable by the pilot.
 	\item The multirotor RPAS maximum take off mass including the payload must be less than 25.0 kg in compliance with Transport Canada TC-15263.\cite{tp15263}
-	\item The multirotor RPAS must withstand at least 5 nautical miles (knots) of crosswind during operation.
+	\item The multirotor RPAS must withstand at least 5 knots of crosswind during operation.
 	\item The multirotor RPAS must receive pilot TX control signals from 300 m away.
 	\item The multirotor RPAS onboard lights must be clearly visible from 300 m away and must clearly indicate the orientation of the RPAS.
-	\item The multirotor RPAS flight controller systems must respond to pilot controls with less than 100ms of latency.
+	\item The multirotor RPAS flight control systems must respond to pilot controls with less than 100ms of latency.
 	\item The multirotor RPAS must have a hovering flight duration of 20 minutes with 500 g of payload.
 	\item The brushless DC (BLDC) motors must have a kV constant between 500 and 1200.
 	\item The BLDC motors and propellers must output at least 8,000 N of thrust at maximum throttle.
@@ -163,11 +163,11 @@ The project is classified as an integration of consumer electronics with compone
 	\item The BLDC motors and propellers must have a combined mass of less than 100g.
 	\item The electronic speed controller (ESC) for controlling BLDC motor speeds must have maximum current output of 35 A.
 	\item The ESC must not exceed operating temperature of 60 degrees Celsius at maximum load operation.
-	\item The ESC must operate at maximum load --- at 90\% of the maximum current draw --- for 60 seconds.
-	\item The flight controller must automatically enter emergency landing protocol when the pilot radio control feed has been cut for more than 1.0 seconds with a maximum descend rate of 0.5 m/s.
+	\item The ESC must be able to operate at maximum load --- at 90\% of the maximum current draw --- for 60 seconds.
+	\item The flight controller must automatically enter emergency landing protocol when the pilot radio control feed has been cut for more than 1.0 seconds with a maximum descent rate of 0.5 m/s.
 	\item The low-battery warning system must trigger the flight controller to enter an emergency landing protocol when the battery is at or below 5\% of the total charge capacity.
 	\item The multirotor RPAS airframe mass must not exceed 600 g.
-	\item The multirotor RPAS airframe opposite motor-to-motor distance must be 450 mm for 4-engine multirotor or 650mm for 6-engine multimotor.
+	\item The multirotor RPAS airframe opposite motor-to-motor distance must be 450 mm for 4-engine multirotor or 650mm for 6-engine multirotor.
 \end{enumerate}
 
 \subsection{Computing Platform}
@@ -211,7 +211,7 @@ The project is classified as an integration of consumer electronics with compone
 \subsection{Power Requirements}
 \begin{enumerate}[label=NF.PR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The power supply subsystem must have a 5000 mAh to 6000 mAh capacity 
-	\item The power supply subsystem must have a discharge rating of at least 30 C to 40 C.
+	\item The power supply subsystem must have a discharge rating of at least 30 C.
 	\item The power supply subsystem capacity must not exceed 6700 mAh.
 	\item The power supply subsystem's batteries must retain 75\% of their initial maximum capacity after 200 charge-discharge cycles.
 \end{enumerate}
@@ -223,7 +223,7 @@ The project is classified as an integration of consumer electronics with compone
 \subsection{Cost}
 \begin{enumerate}[label=C.CT.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
     \item The total cost of the project should be below C\$1,000, with C\$650 provided by the Capstone course as a backup.
-    \item The operating cost of the integrated drone system upon completion should be practically free (non-including electricity cost, cost of time and labour, opportunity cost of the client, and cost for transportation).
+    \item The operating cost of the integrated drone system upon completion should be practically free (excluding electricity cost, cost of time and labour, opportunity cost of the client, and transportation cost).
 \end{enumerate}
 
 \subsection{Platform Extensibility}
