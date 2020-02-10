@@ -148,22 +148,23 @@ The project is classified as an integration of consumer electronics with compone
 \subsection{Multirotor RPAS}
 \begin{enumerate}[label=NF.DR.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The multirotor RPAS must be able to carry a maximum total mass of 2.0 kg and achieve flight.
+	\item The multirotor RPAS must have PID tuned such that overshoot and damping is acceptable by the pilot.
 	\item The multirotor RPAS maximum take off mass including the payload must be less than 25.0 kg in compliance with Transport Canada TC-15263.\cite{tp15263}
 	\item The multirotor RPAS must withstand at least 5 nautical miles (knots) of crosswind during operation.
 	\item The multirotor RPAS must receive pilot TX control signals from 300 m away.
 	\item The multirotor RPAS onboard lights must be clearly visible from 300 m away and must clearly indicate the orientation of the RPAS.
 	\item The multirotor RPAS flight controller systems must respond to pilot controls with less than 100ms of latency.
 	\item The multirotor RPAS must have a hovering flight duration of 20 minutes with 500 g of payload.
-	\item The brushless DC (BLDC) motors must have a kV constant between 800 and 1200.
+	\item The brushless DC (BLDC) motors must have a kV constant between 500 and 1200.
 	\item The BLDC motors and propellers must output at least 8,000 N of thrust at maximum throttle.
 	\item The BLDC motors and propellers must have an optimal efficiency of at least 50 N/W when the RPAS is hovering, a typical mode of operation.
 	\item The BLDC motors and propellers must have a combined mass of less than 100g.
-	\item The electronic speed controller (ESC) for controlling BLDC motor speeds must have maximum current output of 30 A.
+	\item The electronic speed controller (ESC) for controlling BLDC motor speeds must have maximum current output of 35 A.
 	\item The ESC must not exceed operating temperature of 60 degrees Celsius at maximum load operation.
 	\item The ESC must operate at maximum load --- at 90\% of the maximum current draw --- for 60 seconds.
 	\item The flight controller must automatically enter emergency landing protocol when the pilot radio control feed has been cut for more than 1.0 seconds with a maximum descend rate of 0.5 m/s.
 	\item The low-battery warning system must trigger the flight controller to enter an emergency landing protocol when the battery is at or below 5\% of the total charge capacity.
-	\item The multirotor RPAS airframe mass must not exceed 400 g.
+	\item The multirotor RPAS airframe mass must not exceed 600 g.
 	\item The multirotor RPAS airframe opposite motor-to-motor distance must be 450 mm for 4-engine multirotor or 650mm for 6-engine multimotor.
 \end{enumerate}
 
