@@ -21,11 +21,11 @@ The base station hosts a TCP/IP server, and serves two clients: the PMB and the 
 
 If an object detection scheme is implemented, the ML results will be displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}). In particular, the ML results will consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es).
 
-Buttons and radio buttons are situated on the web-application for user input (\textbf{NF.BS.2}). Their functions include adjusting the visual properties of the web-application and changing settings on the PMB and PLB (\textbf{F.BS.4})
+Buttons and radio buttons are situated on the web-application for user input (\textbf{NF.BS.2}). Their functions include adjusting the visual properties of the web-application and changing settings on the PMB and PLB (\textbf{F.BS.4}). 
 
 The web application will also display real-time system status messages. These messages will come from the PMB or the base station itself. The status updates will include information on initiation or completion of processes, changes in PMB, PLB or base station settings and system warnings and errors.
 
-The base station will continuously save the received video and metadata locally for any analysis purposes (\textbf{F.BS.6}). All faults will also be logged locally on the device to facilitate further debugging, if necessary (\textbf{F.BS.5}).
+The base station will continuously save the received video and metadata locally for any analysis purposes (\textbf{F.BS.6}). All faults will also be logged locally on the device to facilitate further debugging(\textbf{F.BS.5}).
 %% maybe we just log all status messages, not limited to warnings/errors.
 
 
