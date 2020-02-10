@@ -1,8 +1,37 @@
-\paragraph{\underline{T.DR.1: RPAS Maximum Takeoff Weight Test}}
+\paragraph{\underline{T.DR.1: PID Tuning and Testing}}
+
+This test and set of procedures ensure that the flight controller unit (FCU) onboard the multirotor RPAS is capable of controlling the drone with quickly and accurately. We are using established and empirical methods for tuning the PIDs; we will not consider system modelling and root-locus analysis of the system as we cannot accurately treat the RPAS as a linear and time invariant (LTI) system due to too many non-linearities.
+
+\textbf{Addresses}: F.DR.1, F.DR.2, NF.DR.2
+
+\textbf{Procedure (Auto-Tune)}:
+\begin{enumerate}[noitemsep]
+    \item Connect RPAS FCU to a computer and use the flight management software to program the FCU such that one of the radio channels triggers a program routine to automatically tune the PIDs (Auto-Tune).
+    \item Connect RPAS to battery power and engage in a hovered flight. Ensure that a radius of 10 meters around the RPAS is clear of people or objects.
+    \item Use the radio transmitter to enable the corresponding channel programmed for the auto-tune function on the FCU.
+    \item Wait for Auto-Tune to control the RPAS and measure its response. From here, the automatically calculated PID values will be applied.
+    \item Safely land the RPAS on the ground and disconnect power for post-flight analysis and logging.
+\end{enumerate}
+
+\textit{If the above auto-tuning process does not yield a controllable RPAS with fast responsiveness but sufficient damping to minimize control overshoot, then move on to the following procedure. Otherwise, verify and validate test successfulness.}
+
+\textbf{Procedure (Manual-Tuning)}:
+\begin{enumerate}[noitemsep]
+    \item Slowly and iteratively increase or decrease the P gain until the drone feels agile and responsive.
+    \item Slowly and iteratively increase or decrese the I gain until the drone is responsive with just noticeable wobble or control overshoot.
+    \item Slowly and iteratively increase or decrease the D gain until the wobble and overshoot is reasonably dampened.
+    \item Safely land the RPAS on the ground and disconnect power for post-flight analysis and logging.
+\end{enumerate}
+
+\textbf{Verification}: The PID tuning and testing is considered successful if the RPAS is easily controllable with fast response times using the radio transmitter. When the control sticks on the radio transmitter are reset to centre, the drone should level-off. Significant deviations would suggest that the system has changed (e.g. change in center-of-gravity (COG), different motors and propellers, etc.) and re-tuning is required. 
+
+% 
+
+\paragraph{\underline{T.DR.2: RPAS Maximum Takeoff Weight Test}}
 
 This test obtains the maximum thrust output, minimum thrust-to-weight ratio, and maximum power output of the RPAS prototype.
 
-\textbf{Addresses}:  NF.DR.1, NF.DR.12, NF.DR.13
+\textbf{Addresses}:  NF.DR.1, NF.DR.13, NF.DR.14
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
@@ -21,11 +50,11 @@ To ensure that the RPAS has minimum manuverability, at maximum take-off weight, 
 
 % 
 
-\paragraph{\underline{T.DR.2: RPAS Typical Takeoff Weight Test}}
+\paragraph{\underline{T.DR.3: RPAS Typical Takeoff Weight Test}}
 
 The typical takeoff weight test quantifies the flight-time of the RPAS during a typical operation with significantly less massive payload.
 
-\textbf{Addresses}: NF.DR.7, NF.DR.10
+\textbf{Addresses}: NF.DR.8, NF.DR.11
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
