@@ -38,7 +38,7 @@ A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quad
     \label{fig:rpas-config}
 \end{figure}
 
-\textbf{Tricopter:} Tricopters require fewer motors and speed controllers, implying less components and power draw required to sustain flight. The angle between each motor arm is also wider at 120 degrees and thus suffers less from camera view obstructions. 
+\textbf{Tricopter:} Tricopters require fewer motors and speed controllers, implying fewer components and less power draw required to sustain flight. The angle between each motor arm is also wider at 120 degrees and thus suffers less from camera view obstructions. 
 
 \begin{figure}[h]
     \centering
@@ -145,10 +145,10 @@ The propulsion system covers the majority of the RPAS parts list and determines 
 \underline{\textit{Brushed or brushless?}}
 The MRPAS is electrically powered by a DC battery and offers two options for motors: DC brushed motors and DC brushless motors. Brushed motors use mechanical brushes in contact with the rotor’s commutator to switch polarity to sustain a constant rotation, whereas brushless motors use electronic controllers to switch the polarity in the rotor. 
 
-For flight applications, we chose the brushless DC (BLDC) motors for their extended usable lifetime. BLDC motors are also much more efficient than brushed motors as they do not mechanically swap the polarity in the motor, resulting in excess friction, heat, and  sparking. 
+For flight applications, we chose the brushless DC (BLDC) motors for their extended usable lifetime. BLDC motors are also much more efficient than brushed motors as they do not mechanically swap the polarity in the motor, which results in excess friction, heat, and  sparking. 
 
 \underline{\textit{Inrunner or outrunners?}}
-BLDC motors are further broken down into two variants: \textit{inrunner} and \textit{outrunner}. Inrunner motors have the rotor on the inside and outrunner motors have the rotor on the outside.  Inrunners spin with a relatively lightweight rotor, implying that they typically spin fast but have low torque (i.e. inrunner motors have high KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). In order to obtain useful torque from the motor, a separate gearbox to convert the mechanical energy would be required\cite{invsoutrunner}. Outrunners have a more massive rotor and thus an increased spin-up time due to the additional inertia, but this can be considered as a benefit: the rotating mass is further from the center of rotation, thus the angular momentum helps stabilize the rotor and reduce vibrations --- typically a major loss of efficiency. For an MRPAS typically operating in stabilized flight and hover, this ``compromise'' is acceptable. Finally, outrunners are typically more serviceable than inrunners \cite{invsoutrunner}. For the reasons above, we chose outrunner motors.
+BLDC motors are further broken down into two variants: \textit{inrunner} and \textit{outrunner}. Inrunner motors have the rotor on the inside and outrunner motors have the rotor on the outside.  Inrunners spin with a relatively lightweight rotor, implying that they typically spin fast but have low torque (i.e. inrunner motors have high KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). In order to obtain useful torque from the motor, a separate gearbox to convert the mechanical energy would be required\cite{invsoutrunner}. Outrunners have a more massive rotor and thus an increased spin-up time due to the additional inertia, but this can be considered as a benefit: the rotating mass is further from the center of rotation, thus the angular momentum helps stabilize the rotor and reduce vibrations --- a major loss of efficiency. For an MRPAS typically operating in stabilized flight and hover, this ``compromise'' is acceptable. Finally, outrunners are typically more serviceable than inrunners \cite{invsoutrunner}. For the reasons above, we chose outrunner motors.
 
 \paragraph{Motor Size and Speed}\label{section:motor-speed}
 
@@ -247,7 +247,7 @@ The cheapest FCUs typically only have the bare-minimum features for flight (such
     \item CC3D FC is reliable with auto-tuning PIDs.
 \end{itemize}
 
-The next tier of FCs have more advanced features such as GPS-hold, autonomous flight, anto-land, telemetry, etc. They are designed for more advanced operations. These FCs are more expensive, costing CA\$50 to CA\$200, however these FCs have excellent after-sale support from their respective 
+The next tier of FCs have more advanced features such as GPS-hold, autonomous flight, auto-land, telemetry, etc. They are designed for more advanced operations. These FCs are more expensive, costing CA\$50 to CA\$200, however these FCs have excellent after-sale support from their respective 
 manufacturers and their documentation is better. Along 
 with frequent manufacturer firmware updates, the mid-tier FCs are more reliable. The downside is that 
 they are typically heavier and take up a much larger footprint. 
@@ -285,7 +285,7 @@ Li-Po batteries have four main design parameters: configuration, capacity, disch
 \textit{Configuration} is how the Li-Po batteries are manufactured and wired together: a single cell in a Li-Po battery provides a 
 nominal voltage of 3.7 V due to its electrochemistry.
 Similar to how portable electronics and appliances require AA or AAA batteries placed in a certain order, a single cell of 3.7 V is not enough to drive anything powerful. Ergo multiple cells can be wired in series and the 
-voltage adds up: 2 cells in series, denoted as``2S'' batteries, have 7.4 V output, 3S batteries have 11.1 V output, and 4S batteries have a 14.8 V output. 
+voltage adds up: 2 cells in series, denoted as ``2S'' batteries, have 7.4 V output, 3S batteries have 11.1 V output, and 4S batteries have a 14.8 V output. 
 
 Battery \textit{capacity} is measured in watt-hours (Wh) or milli-amp-hours (mAh), which are units of electric power multiplied by units of time. A 20.0 Wh battery can output 20.0 W for 1.0 hour. Multiple battery cells can be put in parallel and their capacity adds up. A pair of four-cell batteries wired in parallel, denoted by ``4S2P'' has a 14.8 V output while having double the capacity of a single 4S battery of the same variant.
 
