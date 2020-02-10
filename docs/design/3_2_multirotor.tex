@@ -1,10 +1,10 @@
-The bare-minimum multirotor remote-piloted aerial system (RPAS) consists of a propulsion system, flight controller, speed controllers, battery/fuel, and sensor systems.
+The bare-minimum multirotor remote-piloted aerial system (RPAS) or informally referred as ``drone'', consists of a propulsion system, flight controller, speed controllers, battery/fuel, and sensor systems.
 
 \subsubsection{Multirotor Configuration}
 
-A multirotor RPAS (MRPAS) has several common configurations, a tricopter, a quadcopter, and a hexacopter.
+A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quadcopter, and a hexacopter such as seen in figure \ref{fig:mrpas-config} below.
 
-\begin{figure}[H]
+\begin{figure}[H]\label{fig:mrpas-configs}
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
@@ -31,19 +31,18 @@ A multirotor RPAS (MRPAS) has several common configurations, a tricopter, a quad
     \label{fig:rpas_configs}
 \end{figure}
 
-\textbf{Tricopter: }The benefit of a tricopter, as represented in Figure 7, comes from its fewer required motors and speed controllers,
-which means less power draw required to sustain flight. Each arm that is supporting each motor is also wider, at 120 
-degrees. This makes the motors and arms of the MRPAS less visible from the mounted camera's point of view. 
-However, the downside of a tricopter is that there exists asymmetry of motor torque (Figure \ref{fig:tricopter-y-t}) since 
-there is an odd number of motors. An additional servo motor is required to control the tail motor which 
-complicates the control algorithms for self-stabilizing flight.
+\textbf{Tricopter: } Tricopters requires fewer motors and speed controllers, implying less components and power draw required to sustain flight. The angle between each motor arm is also wider at 120 degrees and thus reduces obstruction from camera views. 
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{img/drone_yconfigt}
     \caption{Tricopter Y-configuration}
     \label{fig:tricopter-y-t}
 \end{figure}
+
+However, systems with odd-number of actuatators are inherently unstable due to the asymmetry of the motor torque as shown in figure \ref{fig:tricopter-y-t}. Therefore, this design require an additional servo motor (consists of a DC motor and a gear box) to precisely control the tail motor angle of tilt to counter the excess torque --- similar to the tail of a helicopter.
+
+We choose to not pursue this configuration as the tricopter configuration provides agility with require increased control complexity as a trade off. This compromise is not ideal as we emphasize on flight stability.
 
 \textbf{Quadcopter X: }
 The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors (Figure \ref{fig:quadcopter-x-t}). Two of the motors spin  
