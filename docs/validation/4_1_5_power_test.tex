@@ -33,3 +33,23 @@ This test verifies the functionality of the battery protection circuit.
 
 \textbf{Verification}: 
 If sparking or overheating occurs during the test, then the test has failed.
+
+\paragraph{\underline{T.P.3: Computing Platform Battery Test}}
+
+This is a battery life test and it also verifies the stability of the supply voltage when the battery is not fully charged.
+
+\textbf{Addresses}: F.PR.1, F.PR.4
+
+\textbf{Procedure}:
+\begin{enumerate}[noitemsep]
+    \item Fully charge the battery.
+    \item Breakout the battery to connect the multimeter to its output port.
+    \item Record the voltage reading of the fully charged battery. 
+    \item Connect the PMB and PLB to the battery and power up.
+    \item Launch two testing program on both boards and let it run for 30 minutes.
+    \item Record the voltage reading and current reading every minute.
+    \item Power off the PMB and PLB and record the after-test voltage reading and battery level.
+\end{enumerate}
+
+\textbf{Verification}: 
+To ensure a minimum of 30 minutes of operation time, the after-test battery level must be at least 50\%. The voltage drop must be within 2V to ensure a stable power output to the PMB and PLB.
