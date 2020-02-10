@@ -15,20 +15,6 @@ This test checks actual power usage of the system.
 \textbf{Verification}: 
 Compare the peak power with the maximum power listed in the user manual. If the recorded peak power does not exceed the theoretical maximum power, the test passes. 
 
-\textbf{Results}:
-Raspberry Pi Current Draw:
-Idle: 300mA
-Streaming: 350mA
-Stress Test: 500mA
-
-De1-SoC (comparable to Zedboard) Current Draw:
-Idle: 250 mA
-Light Program: 400 mA
-
-Note: Current was measured at the output of the 12V battery bank.
-Result: Tests Passed
-
-
 %
 
 \paragraph{\underline{T.P.2: Battery Safety Test}}
@@ -60,7 +46,7 @@ This is a battery life test and it also verifies the stability of the supply vol
     \item Breakout the battery to connect the multimeter to its output port.
     \item Record the voltage reading of the fully charged battery. 
     \item Connect the PMB and PLB to the battery and power up.
-    \item Launch two testing program on both boards and let it run for 30 minutes.
+    \item Launch typical-use programs on both boards and let run for 30 minutes.
     \item Record the voltage reading and current reading every minute.
     \item Power off the PMB and PLB and record the after-test voltage reading and battery level.
 \end{enumerate}

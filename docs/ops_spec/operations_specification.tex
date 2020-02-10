@@ -5,6 +5,8 @@
 \newcommand{\doctitle}{Operations, Maintenance, and Upgrades Specification}
 \newcommand{\docsubtitle}{\input{../common/title}}
 \input{../common/aliases}
+\renewcommand{\revisionnum}{1.1}
+
 \input{../common/urlsetup}
 \input{../common/pagesetup}
 \input{../common/titlepage}
@@ -47,6 +49,7 @@ This document is strongly dependent on the final assembly of the device and will
 
 \section{Operations, Maintenance and Upgrades}
 \subsection{FAQs}
+\clearpage
 \subsection{Installation Instructions}
 \subsubsection{PLB SW/HW Build Instructions}
 The following section outlines the steps required to upload the ML FPGA design, deploy the HPS software environment, and communicate with the PLB through a serial connection.
@@ -78,7 +81,7 @@ The following section outlines the steps required to upload the ML FPGA design, 
 \item Format the first (boot) partition using the FAT format ("\texttt{sudo mkfs.vfat -F 32 -n boot /dev/sdb1}").
 \item Format the second (root) partition using the EXT4 format ("\texttt{sudo mkfs.ext4 -L root /dev/sdb2}").
 \item Copy the FPGA initialization file (\texttt{BOOT.BIN}) and Linux micro-boot file (\texttt{image.ub}) to the boot partition ("\texttt{sudo cp [BOOT.BIN/image.ub] /media/user/boot/}").
-\item Copy the (compressed \texttt{rootfs.tar.gz}) Linux image into the root partition ("\texttt{sudo cp rootfs.tar.gz /media/user/root/}"). 
+\item Copy the compressed Linux image (\texttt{rootfs.tar.gz}) into the root partition ("\texttt{sudo cp rootfs.tar.gz /media/user/root/}"). 
 \item Navigate to the root partition and extract the compressed image to the base directory ("\texttt{sudo tar xvf rootfs.tar.gz}").
 \item Eject the SD card and insert it into the Zedboard.
 \item Ensure that the Zedboard configuration jumpers are set for SD card boot (MI04/MI05 set to 3.3V, remaining to GND).
