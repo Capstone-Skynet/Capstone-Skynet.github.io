@@ -1,10 +1,17 @@
-The bare-minimum multirotor remote-piloted aerial system (RPAS) or informally referred as ``drone'', consists of a propulsion system, flight controller, speed controllers, battery/fuel, and sensor systems.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\textwidth]{img/testrigcad1.png}
+    \caption{Team 109 Testing Rig Prototype using RPAS Generously Provided by Yiyi Yan and UBC \textit{Unmanned Aerial Systems}}
+    \label{fig:testrigcad1}
+\end{figure}
+
+The bare-minimum multirotor remote-piloted aerial system (RPAS) or informally referred as ``drone'', consists of a propulsion system, flight controller, speed controllers, battery, and sensor systems. Our testing rig is shown  in Figure~\ref{fig:testrigcad1}
 
 \subsubsection{Multirotor Configuration}
 
-A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quadcopter, and a hexacopter such as seen in figure \ref{fig:mrpas-config} below.
+A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quadcopter, and a hexacopter such as seen in figure \ref{fig:rpas-config} below.
 
-\begin{figure}[H]\label{fig:mrpas-configs}
+\begin{figure}[b]
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
@@ -28,7 +35,7 @@ A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quad
     \end{subfigure}
     
     \caption{Multirotor RPAS Configurations}
-    \label{fig:rpas_configs}
+    \label{fig:rpas-config}
 \end{figure}
 
 \textbf{Tricopter:} Tricopters requires fewer motors and speed controllers, implying less components and power draw required to sustain flight. The angle between each motor arm is also wider at 120 degrees and thus reduces obstruction from camera views. 
@@ -40,21 +47,21 @@ A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quad
     \label{fig:tricopter-y-t}
 \end{figure}
 
-However, systems with odd-number of actuatators are inherently unstable due to the asymmetry of the motor torque as shown in figure \ref{fig:tricopter-y-t}. Therefore, this design require an additional servo motor (consists of a DC motor and a gear box) to precisely control the tail motor angle of tilt to counter the excess torque --- similar to the tail of a helicopter.
+However, systems with odd-number of actuatators are inherently unstable due to the asymmetry of the motor torque as shown in Figure~\ref{fig:tricopter-y-t}. Therefore, this design require an additional servo motor (consists of a DC motor and a gear box) to precisely control the tail motor angle of tilt to counter the excess torque --- similar to the tail of a helicopter.
 
 We choose to not pursue this configuration as the tricopter configuration provides agility with require increased control complexity as a trade off. This compromise is not ideal as we emphasize on flight stability.
 
 \textbf{Quadcopter X:}
-The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors as seen in Figure \ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise and effectively cancelling each other’s undesired torque. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by changing a combination of differential thrust to each motor (Figure \ref{fig:rpas_6dof}).
+The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter because a quadcopter configuration utilizes four motors as seen in Figure~\ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise and effectively cancelling each other’s undesired torque. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by changing a combination of differential thrust to each motor (Figure~\ref{fig:rpas_6dof}).
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{img/drone_xconfigt}
     \caption{Quadcopter X-configuration}
     \label{fig:quadcopter-x-t}
 \end{figure}
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.3\textwidth}
         \centering
@@ -93,7 +100,7 @@ RPAS air frame sizes are commonly refered by their \textit{motor-to-motor-diagon
 
 The most common frame available for sale comes in 450 mm MMDS variants. 350 mm frames are also common amongst consumer products like the DJI Phantom series\cite{dji-phantom-3-specs} as seen in Figure~\ref{fig:djiphantom}. The frame size of 350 mm will constrain our ability to mount larger hardware --- posing a signifcant risk to integrating computing platform hardware. Additionally The 350 mm size also limits the propeller maximum size. The largest quadcopter configuration has an MMDS of 650 mm to 1000 mm and allow for extremely large payload capacity such as the one shown in Figure~\ref{fig:djis1000}. However, these are more commonly used for industrial or military applications.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \begin{subfigure}[b]{0.33\textwidth}
         \centering
@@ -174,7 +181,7 @@ For the final deliverable we choose carbon fiber propellers to maximize efficien
 
 \textbf{Notation: } Propeller size and pitch is commonly denoted by RRYY where RR is the propeller diameter in inches, and YY is the propeller pitch in degrees. (9050 denotes a propeller with 9 inch diameter, and 5.0 inches of pitch; 1045 denotes a propeller with 10 inch diameter, and 4.5 inches of pitch).
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{img/proppitch}
     \caption{Propellor Diameter and Pitch Parameters}
@@ -183,7 +190,7 @@ For the final deliverable we choose carbon fiber propellers to maximize efficien
 
 To obtain maximum thrust with low speed (low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we want to choose the biggest possible propeller diameter.
 
-\begin{figure}[H]
+\begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{img/framepropsize}
     \caption{Maximum Propeller Sizes}
@@ -208,7 +215,7 @@ The electronic speed controller (ESC) controls the voltage, current, and phase s
 As shown in Table 2, the typical maximum current draw is approximately 30 A. For a 
 safety margin of 10 A, we decided to select ESCs with maximum rating of 40 A. All of the following options are appealing:
 
-\begin{table}[H]
+\begin{table}[h]
     \centering
     \caption{ESC Purchasing Options}
     \label{table:esc-table}
