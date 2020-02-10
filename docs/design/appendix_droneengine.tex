@@ -1,0 +1,54 @@
+
+All BLDC outrunner motors have the same height, and on product pages they are often given the code 22XX to denote their stator size. The design parameter is the radius (XX on the product code). Typically, the larger the stator (radius), the slower it spins given the same voltage. This is a linear relationship described by the motor parameter kV:
+
+$$
+\omega_{\mathrm{RPM}} = \mathrm{kV} \times \mathrm{Voltage}
+$$
+
+The kV constant is inversely proportional to another motor constant, kT, which models the linear relationship between current and torque:
+
+$$
+\tau = \mathrm{kT} \times \mathrm{Current}
+$$
+
+The inverse relationship can be shown by equating electrical power into the motor and mechanical power produced by the motor:
+
+$$
+\tau\omega_{\mathrm{RPM}} = \mathrm{kV}\mathrm{kT}\times VI
+$$
+
+By constraining the electrical power, we can make trade-off between torque and rotation speed.
+Air resistance (“drag”) is proportional to speed of an object squared, therefore the power required to 
+lift increases non-linearly to the force output. As seen in the test data obtained from one manufacturer’s 
+datasheet below, when using the same propellers we see an increased thrust output resulting from increased voltage (and 
+thus current). However the efficiency, typically measured in g/W, decreases. 
+
+Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0 inch pitch and 10.0 inch 4.7 inch pitch propellers obtained from a vendor website \cite{sunnysky-2216}. 
+
+\begin{table}[H]
+    \centering
+    \caption{Sample Motor Test Data}
+    \label{table:sunnyskyx2216-table}
+
+    \begin{tabular}{lrrrrr}
+
+    \hline
+    \textbf{Propeller} & \textbf{Voltage} & \textbf{Current} & \textbf{Pull}  & \textbf{Power Consumption} & \textbf{Efficiency}\\
+    & [V] & [A] & [g] & [W] & [g/W] \\
+    \hline
+     & 10.0 & 16.4 & 940 & 164 & 5.73 \\
+    9050 & 11.0 & 19.5 & 1050 & 215 & 4.89 \\
+     & 12.0 & 21.5 & 1250 & 258 & 4.84 \\
+    \hline
+     & 10.0 & 23.5 & 1200 & 235 & 5.10 \\
+    1047 & 11.0 & 26.5 & 1350 & 372 & 3.63 \\
+     & 12.0 & 30.2 & 1520 & 363 & 4.19 \\
+    \hline
+
+    \end{tabular} 
+\end{table}
+
+Therefore, it makes sense that we choose larger motors with relatively lower kV constants. Slower motors 
+are also safer since there is less angular momentum of the blades. Motors with 800 kV to 1300 kV are 
+suitable for our applications and achieve reasonable thrust output with adequate efficiency. 2212, 2214, 
+and 2216 stator sizes are suitable in this range of kV.

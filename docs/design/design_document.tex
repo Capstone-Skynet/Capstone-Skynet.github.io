@@ -6,6 +6,8 @@
 \newcommand{\docsubtitle}{\input{../common/title}}
 
 \input{../common/aliases}
+\renewcommand{\revisionnum}{1.x}
+
 \input{../common/urlsetup}
 \input{../common/pagesetup}
 \input{../common/titlepage}
@@ -74,9 +76,13 @@ It is useful to note that the \textit{Computing Platform} subsections (beginning
 \bibliography{references}
 
 % Appendix (uncomment to enable appendix)
-% \clearpage
-% \appendix
-% \section{Appendix name}\label{appendix:sample-appendix}
-% Content here
+\clearpage
+\appendix
+\section{Multirotor Design}\label{appendix:multirotor}
+% \subsection{Multirotor Configurations}
+% \input{appendix_droneconfig}
+
+\subsection{Multirotor Motor Speed and Size}\label{appendix:droneengine}
+\input{appendix_droneengine}
 
 \end{document}
