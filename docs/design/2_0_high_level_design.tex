@@ -33,14 +33,13 @@ Likewise, the RPAS must provide mounting mechanisms for the computing platform a
 
 A step-by-step overview of data flow within the computing platform (refer to Figure \ref{pcdiag}) is as follows:
 \begin{enumerate}
-\item Video is captured using the 5MP Raspberry Pi Camera, and is transmitted to the PMB via a CSI interface
-\item Video is decomposed into packets and sent to three locations:
+\item Video is captured using the on-board camera, and is transmitted to the PMB via a CSI interface
+\item Video is decomposed into individual frames and sent to two locations:
 \begin{enumerate}
-\item Non-Volatile Memory, for future analysis, 
 \item The PLB, via a TCP/IP ethernet link, to perform hardware-accelerated machine learning, and
 \item The base station, via a TCP/IP WiFi link, to display to the end-user
 \end{enumerate}
-\item The ARM core on the PLB receives video packets from the PMB via the ethernet link, further processes it, and dispatches  hardware acceleration requests to the FPGA portion via parallel AXI buses
+\item The ARM core on the PLB receives video frames from the PMB via the ethernet link, further processes it, and dispatches hardware acceleration requests to the FPGA portion via parallel AXI buses
 \item The FPGA receives hardware acceleration requests (which first pass through AXI shims to facilitate clock synchronization), passing it to the hardware acceleration core
 \item Upon completion, the hardware acceleration core sends data back to the ARM core, which itself transmits the resultant data back to the PMB via the Ethernet link
 \item The machine learning results are transmitted over the WiFi link to the base station
