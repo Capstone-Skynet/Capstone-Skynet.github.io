@@ -34,8 +34,8 @@ Examples of other boards examined for this project include the Nexys Artix 7 FPG
 \subsubsection{Data Flow}
 The overall data flow managed by the PLB is as follows:
 \begin{enumerate}
-\item The HPS (ARM core), running the ML helper program 'mlprog', fetches a $416px \times 416px$ image frame and up-to-date sensitivity thresholds from the PMB via a TCP socket hosted over Ethernet
-\item After performing additional data extraction required by the accelerator, the frames are sent from the HPS to the ML IP block on the FPGA via bi-directional AXI interfaces
+\item The HPS (ARM core), running the ML helper program \texttt{mlprog}, fetches a $416px \times 416px$ image frame and up-to-date sensitivity thresholds from the PMB via a TCP socket hosted over Ethernet
+\item After performing additional data extraction required by the accelerator, the HPS sends the image frames to the ML IP block on the FPGA via bi-directional AXI interfaces
 \item The ML IP block on the FPGA receives feature vectors (frames) to be analyzed via the AXI buses, performs the requisite processing, and sends the results to the HPS via a return AXI bus
 \item The HPS interprets the raw results to generate bounding box representations of detected items
 \item The HPS sends the generated interpretations which pass a sufficient confidence level (dictated by the provided sensitivity level) to the PMB via the socket
@@ -60,7 +60,7 @@ In addition to the YOLOv2 accelerator, two alternative hardware acceleration uni
 \end{figure}
 
 \subsubsection{ML Hardware Accelerator Interface}
-To interface with the hardware accelerator, the accelerator's companion library\cite{yolov2accel} is extensively utilized throughout the HPS helper program ('mlprog'). These library functions facilitate a majority of the required operations to set up and operate the accelerator, including initializing model weights, converting numerical representations between data types (ex. fixed to floating point), and general memory I/O. 
+To interface with the hardware accelerator, the accelerator's companion library\cite{yolov2accel} is extensively utilized throughout the HPS helper program (\texttt{mlprog}). These library functions facilitate a majority of the required operations to set up and operate the accelerator, including initializing model weights, converting numerical representations between data types (ex. fixed to floating point), and general memory I/O. 
 
 As the accelerator's libraries are intended to process \textit{single images}, several modifications to the library were made to increase performance in video applications. In particular, high level functions were decomposed into 'initialization' and 'runtime' stages, allowing for the de-duplication of computations which are persistent across frame detections (such as the unnecessary re-uploading of model weights for each frame). These improvements resulted in a speed-up of over 2$\times$ compared to the original libraries.
 

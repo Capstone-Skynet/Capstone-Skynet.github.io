@@ -25,16 +25,16 @@ The selected device to implement the platform management system is the Raspberry
 
 \subsubsection{Data Flow}
 \label{pmb_dataflow}
-The overall data flow managed by the Platform Management Board is as follows:
+The Platform Management Board manages the data flow as follows:
 \begin{enumerate}
-\item A video frame ($640px \times 480px$) is acquired through the camera CSI interface
-\item Frame manipulation/correction is performed on the frame, if required by the specific machine learning use-case. For the YOLOv2 accelerator (described in Section \ref{ml_accel}), images sent to the Zedboard are letterboxed to $416px \times 416px$ to adhere to ML IP block restrictions.
+\item The CSI interface is utilized to acquire a video frame ($640px \times 480px$) from the camera
+\item The PMB performs frame manipulation/correction if required by the specific machine learning use-case. The YOLOv2 accelerator (described in Section \ref{ml_accel}) necessitates images sent to the Zedboard to be letterboxed to $416px \times 416px$ to adhere to ML IP block restrictions.
 \item The letterboxed frame is decomposed and transmitted over Ethernet to the programmable logic board (which performs the machine learning)
 \begin{enumerate}
 \item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station -- allowing for higher "background" framerates rather than tying framerates to ML results.
 \end{enumerate}
-\item Machine learning results are received via Ethernet
-\item Full-resolution video, ML results, and system status information is transmitted via WiFi to the base station
+\item The PLB returns the machine learning results to the PMB via Ethernet
+\item The PMB's WiFi modem transmits full-resolution video, ML results, and system status information to the base station
 \item Results and video are additionally stored locally on non-volatile storage for post-flight analysis\footnote{This functionality was foregone due to COVID-19 imposed time constraints. There are no functional restrictions for this to be accomplished, however without a comprehensive interface to facilitate easy retrieval of footage (which would require significant development effort), it is easier for the client to record the web-app directly.}
 \end{enumerate}
 
