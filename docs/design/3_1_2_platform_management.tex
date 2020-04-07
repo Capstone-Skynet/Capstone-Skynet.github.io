@@ -31,7 +31,7 @@ The Platform Management Board manages the data flow as follows:
 \item The PMB performs frame manipulation/correction if required by the specific machine learning use-case. The YOLOv2 accelerator (described in Section \ref{ml_accel}) necessitates images sent to the Zedboard to be letterboxed to $416px \times 416px$ to adhere to ML IP block restrictions.
 \item The letterboxed frame is decomposed and transmitted over Ethernet to the programmable logic board (which performs the machine learning)
 \begin{enumerate}
-\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station -- allowing for higher "background" framerates rather than tying framerates to ML results.
+\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station --- allowing for higher ``background" framerate rather than tying framerate to ML results.
 \end{enumerate}
 \item The PLB returns the machine learning results to the PMB via Ethernet
 \item The PMB's WiFi modem transmits full-resolution video, ML results, and system status information to the base station
