@@ -31,7 +31,7 @@ The overall data flow managed by the Platform Management Board is as follows:
 \item Frame manipulation/correction is performed on the frame, if required by the specific machine learning use-case. For the YOLOv2 accelerator (described in Section \ref{ml_accel}), images sent to the Zedboard are letterboxed to $416px \times 416px$ to adhere to ML IP block restrictions.
 \item The letterboxed frame is decomposed and transmitted over Ethernet to the programmable logic board (which performs the machine learning)
 \begin{enumerate}
-\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station -- allowing for higher "background" framerates rather than tying framerates to ML results.
+\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station --- allowing for higher ``background" framerate rather than tying framerate to ML results.
 \end{enumerate}
 \item Machine learning results are received via Ethernet
 \item Full-resolution video, ML results, and system status information is transmitted via WiFi to the base station
