@@ -15,10 +15,10 @@ The MIPI camera serial interface (CSI) is a high-speed protocol primarily intend
 The MIPI protocol has been widely adopted for image and video transmission, and as such the camera can easily be replaced by the client in the future, if desired (fulfilling constraint \textbf{C.EX.5}).
 
 % {Camera libraries or getting the video to a 'viewable' state}
-Live video streaming between the base station and the computing platform is achieved through the implementation of a Python script to stream video to a web interface. The script used to achieve this communication utilizes the Python package 'picamera,' which provides a modular Python interface to the Raspberry Pi Camera.
+The \texttt{raspicam} C++ library is utilized to manage video acquisition from the on-board camera module. \texttt{raspicam} was selected over the native Raspberry Pi camera libraries in order to perform capture and processing in a low-level C++ environment. This allows for required low-level memory manipulation/image format conversions to be performed directly on the (more powerful) PMB, rather than the PLB.
 
 % {Explored Alternatives}
-\subsubsection{Explored Alternatives}
+\subsubsection{Explored Hardware Alternatives}
 There were many alternatives explored for each component of the video capture subsystem.
 
 One of the possibilities explored for the camera subsystem was the purchase of a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- making user replacement of the camera for future research improvements difficult (violating constraint \textbf{C.EX.5}).
