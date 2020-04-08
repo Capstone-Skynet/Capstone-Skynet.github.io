@@ -35,23 +35,43 @@ This document is additionally relevant to those who will assess the maintenance 
 
 \subsection{Reading Guide}
 This document outlines the following areas of importance to the client: 
-
 \begin{itemize}
-\item \textbf{Frequently Asked Questions (FAQs)}: An outline of common questions and answers regarding key points across the entire project.
 \item \textbf{Installation Instructions}: Instructions relating to the construction of the multirotor and computing platform, in addition to how to build/install computing software.
+\item \textbf{Computer Software Operations}: Instructions relating to the operations of the computing software.
+\item \textbf{Frequently Asked Questions (FAQs)}: An outline of common questions and answers regarding key points across the entire project.
 \item \textbf{Regular Maintenance}: An outline of the maintenance tasks to be taken on the multirotor at predetermined intervals.
 \item \textbf{Troubleshooting}: A summary of commonly encountered issues with the multirotor and computing platform (and their solutions).
 \item \textbf{Suggested Upgrades}: An outline of potential upgrades to the computing platform and multirotor assembly.
 \end{itemize}
 
-\subsection{Important Notice}
-This document is strongly dependent on the final assembly of the device and will thus be sparsely populated until the device is closer to delivery.
 
 \section{Operations, Maintenance and Upgrades}
-\subsection{FAQs}
-\clearpage
 \subsection{Installation Instructions}
+\subsubsection{Computation Platform Hardware Assembly}
+The following section outlines the steps required to assemble the computing platform hardware components.
+
+\underline{Required Materials}
+\begin{itemize}
+\item 1 - Zedboard
+\item 1 - 12V-12V Barrel Plug Power Adapter (for Zedboard)
+\item 1 - Raspberry Pi 4
+\item 1 - USB-C to USB-A Cable (for Raspberry Pi)
+\item 1 - Raspberry Pi Camera Module
+\item 1 - Battery Pack
+\item 1 - Battery Pack Charger
+\item 1 - Slim Ethernet Cable (1 ft)
+\end{itemize}
+
+\underline{Instructions}
+\begin{enumerate}
+\item Ensure that the battery pack is fully charged (as shown by its a green status LED indication).
+\item Connect the Raspberry Pi and Zedboard to the battery pack using their appropriate power cables (USB-C/USB-A and Barrel/Barrel, respectively).
+\item Connect the camera module to the MIPI port on-board the Raspberry Pi, near the headphone jack (taking care not to damage the ribbon cable).
+\item Connect the Raspberry Pi and Zedboard with the Ethernet cable.
+\end{enumerate}
+
 \subsubsection{PLB SW/HW Build Instructions}
+\label{plb_setup}
 The following section outlines the steps required to upload the ML FPGA design, deploy the HPS software environment, and communicate with the PLB through a serial connection.
 
 \underline{Required Materials}
@@ -66,36 +86,149 @@ The following section outlines the steps required to upload the ML FPGA design, 
 \begin{enumerate}
 \item Download (or pull) the latest version of the Capstone-Skynet suite from GitHub (\url{https://github.com/Capstone-Skynet/Integration}).
 \item Navigate into the \texttt{Zedboard/yolov2/} folder. 
-\item Before continuing, ensure that the PetaLinux settings script has previously been sourced\\ ("\texttt{source /opt/pkg/petalinux/settings.sh}", if PetaLinux is installed in its default directory).
-\item Pertinent Linux distribution settings have been pre-configured, however if additional configuration is desired (such as including/removing drivers), call "\texttt{petalinux-config -c kernel}".
-\item Build the project by calling "\texttt{petalinux-build}".
-\item Prepare the project for the SD card by calling "\texttt{petalinux-package -{}-boot -{}-fsbl images/linux/zynq\_fsbl.elf -{}-fpga -{}-u-boot -{}-force}".
+\item Before continuing, ensure that the PetaLinux settings script has previously been sourced\\ (\texttt{source /opt/pkg/petalinux/settings.sh}, if PetaLinux is installed in its default directory).
+\item Pertinent Linux distribution settings have been pre-configured, however if additional configuration is desired (such as including/removing drivers), call \texttt{petalinux-config -c kernel}.
+\item Build the project by calling \texttt{petalinux-build}.
+\item Prepare the project for the SD card by calling \texttt{petalinux-package -{}-boot -{}-fsbl images/linux/zynq\_fsbl.elf -{}-fpga -{}-u-boot -{}-force}.
 \item After inserting the SD card into the reader, determine its disk identifier (\texttt{sudo fdisk -l}). In the next steps, it is assumed that the identifier is \texttt{/dev/sdb}.
-\item Open fdisk ("\texttt{sudo fdisk /dev/sdb}").
-\item Make a new partition by pressing "\texttt{n}" and make it primary by pressing "\texttt{p}".
+\item Open fdisk (\texttt{sudo fdisk /dev/sdb}).
+\item Make a new partition by pressing \texttt{n} and make it primary by pressing \texttt{p}.
 \item Continue following the fdisk prompts, using the default partition number/first sector, and set the last sector value to be \texttt{+1G} (creating a partition one gigabyte in size).
-\item Make the newly created partition bootable by pressing "\texttt{a}".
-\item Create another partition by pressing "\texttt{n}" and make it primary by pressing "\texttt{p}".
+\item Make the newly created partition bootable by pressing \texttt{a}.
+\item Create another partition by pressing \texttt{n} and make it primary by pressing \texttt{p}.
 \item Continue following the fdisk prompts, using the default values (the partition will consume the rest of the free space on the SD card).
-\item Press "\texttt{w}" to write the changes to the disk, then exit.
-\item Format the first (boot) partition using the FAT format ("\texttt{sudo mkfs.vfat -F 32 -n boot /dev/sdb1}").
-\item Format the second (root) partition using the EXT4 format ("\texttt{sudo mkfs.ext4 -L root /dev/sdb2}").
-\item Copy the FPGA initialization file (\texttt{BOOT.BIN}) and Linux micro-boot file (\texttt{image.ub}) to the boot partition ("\texttt{sudo cp [BOOT.BIN/image.ub] /media/user/boot/}").
-\item Copy the compressed Linux image (\texttt{rootfs.tar.gz}) into the root partition ("\texttt{sudo cp rootfs.tar.gz /media/user/root/}"). 
-\item Navigate to the root partition and extract the compressed image to the base directory ("\texttt{sudo tar xvf rootfs.tar.gz}").
+\item Press \texttt{w} to write the changes to the disk, then exit.
+\item Format the first (boot) partition using the FAT format (\texttt{sudo mkfs.vfat -F 32 -n boot /dev/sdb1}).
+\item Format the second (root) partition using the EXT4 format (\texttt{sudo mkfs.ext4 -L root /dev/sdb2}).
+\item Copy the FPGA initialization file (\texttt{BOOT.BIN}) and Linux micro-boot file (\texttt{image.ub}) to the boot partition (\texttt{sudo cp [BOOT.BIN/image.ub] /media/user/boot/}).
+\item Copy the compressed Linux image (\texttt{rootfs.tar.gz}) into the root partition (\texttt{sudo cp rootfs.tar.gz /media/user/root/}). 
+\item Navigate to the root partition and extract the compressed image to the base directory (\texttt{sudo tar xvf rootfs.tar.gz}).
+\item Extract the weights file found in the \texttt{Zedboard\/} repository directory ( \texttt{yolo\_weights.tar.gz} ) into the home directory of the root user on the SD card.
 \item Eject the SD card and insert it into the Zedboard.
 \item Ensure that the Zedboard configuration jumpers are set for SD card boot (MI04/MI05 set to 3.3V, remaining to GND).
 \item Connect the Zedboard to the PC using the micro USB cable (through the JTAG port), connect the power supply, and switch the Zedboard on.
 \item Using PuTTY (or another serial program such as Minicom), open a serial connection to the Zedboard (115200 baud, 8 data bits, 1 stop bit).
-\item At the "\texttt{Zynq>>}" prompt, enter "\texttt{boot}".
+\item At the \texttt{Zynq>>} prompt, enter \texttt{boot}.
 \item Once Linux boots, use the default root username/password (\texttt{root/root}).
+\item Edit the /etc/network/interfaces file to set-up a standard IP configuration for the ethernet adapter. The suggested static IP is \texttt{192.168.1.10} (all scripts are pre-configured to use this).
 \end{enumerate}
 
-Once the above steps have been completed, the user can navigate the Linux OS as required. The default program to communicate with the hardware accelerator can be called by entering "\texttt{mlprog}" at the prompt.
+Once the above steps have been completed, the user can navigate the Linux OS as required. The default program to communicate with the hardware accelerator can be called by entering \texttt{mlprog} at the prompt.
+
+\subsubsection{PMB SW Build Instructions}
+The following section outlines the steps required to install the requisite PMB software onto a Raspberry Pi.
+
+\underline{Required Materials}
+\begin{itemize}
+\item 1 - Raspberry Pi 4 (or above)
+\item 1 - Micro-SD card (at least 4GB in size) \& Micro-SD Card Reader
+\item 1 - USB-C Power Supply
+\end{itemize}
+
+\underline{Instructions}
+\begin{enumerate}
+\item Download and install Raspbian onto a SD card as per standard installation procedures (\url{https://www.raspberrypi.org/documentation/installation/installing-images/})
+\item Obtain a Raspbian terminal prompt through any method of choice. One can connect a keyboard/monitor, or SSH can be used to work remotely (\url{https://www.raspberrypi.org/documentation/remote-access/ssh/}).
+\item After connecting to the internet, clone the latest version of the Capstone-Skynet suite from GitHub (\url{https://github.com/Capstone-Skynet/Integration})
+\item Navigate to the \texttt{RaspberryPi/} folder
+\item Install Python 3, OpenCV-2, and RasPiCam(\url{https://github.com/cedricve/raspicam}) through the linux command prompt. 
+\item Install the picamera and socketio python libraries through using pip3.
+\item Build the C++ helper program \texttt{mlprog} by issuing the following command: \texttt{g++ ml\_server.cpp \-o ml\_server \-I/usr/local/include \-lraspicam \-I/usr/local/include/opencv2 \-L/usr/local/lib/ \-lopencv\_core \-lopencv\_imgproc \-lopencv\_highgui \-lopencv\_ml \-lopencv\_video \-lopencv\_features2d \-lopencv\_calib3d \-lopencv\_objdetect \-lopencv\_contrib \-lopencv\_legacy \-lopencv\_ stitching}
+\item Configure the WiFi to connect to the base station network. If working with the command line, this can be done by using the \texttt{sudo raspi-config} command.
+\item Edit the /etc/network/interfaces file to set-up a standard IP configuration for the ethernet adapter. The suggested static IP for Ethernet is \texttt{192.168.1.11}  (all scripts are pre-configured to use this).
+\item (Optional) Configure the Raspberry Pi to launch the ML suite launch script \texttt{LAUNCH\_ML.sh} automatically on boot using cron (\url{https://www.raspberrypi.org/documentation/linux/usage/cron.md}).
+\end{enumerate}
+
+Once the above steps have been completed, the PMB is fully configured.
+
+\subsubsection{Base Station Configuration Instructions}
+\label{bs_inst}
+The following section outlines the steps required to configure the Base Station. 
+
+\underline{Required Materials}
+\begin{itemize}
+\item 1 - Device to be used as a server (Windows/Mac/Linux device)
+\item 1 - (Optional) Wireless Router
+\end{itemize}
+
+\underline{Instructions}
+\begin{enumerate}
+\item \textbf{If using a wireless router}, set the router up by following the manufacturer's instructions and connect the server device to it.
+\item \textbf{If not using a wireless router}, configure the server device to act as a \textit{mobile hotspot}. Consult your operating system vendor for more information.
+\item Install Node.js on the server device (\url{https://nodejs.org/en/download/}).
+\item Install the \texttt{express} and \texttt{socket.io} Node libraries (\texttt{npm install express; npm install --save socket.io}).
+\item Navigate to the \texttt{SkynetWebApp} folder and launch the Node server (\texttt{node server}). 
+\item \textbf{On the PMB}, modify the python client (\texttt{PythonClient/pythonclient.py} to reflect the server's current IP address (this can be found through use of \texttt{ifconfig/ipconfig}).
+\end{enumerate}
+
+Once the above steps have been completed, the base station is fully configured. One can now connect to the web app by entering the previously determined IP address into the web browser of any device connected to the network. On the server device, one can also navigate to \texttt{localhost} to arrive at the same page.
+
+\subsection{Flight Checklists}
+\subsubsection{Pre-Flight Checklist}
+Prior to every flight, the following checklist \textbf{must} be observed.\\
+
+\textbf{Computation System Initialization}
+\begin{enumerate}
+\item Start the web app server on the base station (\texttt{node server}) and connect to the web app using a web browser (as described in Section \ref{bs_inst}).
+\item Turn on the Raspberry Pi by plugging it into the battery pack. Ensure that the red power LED lights up.
+\item Turn on the Zedboard using the on-board power switch. Ensure that the power LED (green) and LD1-2 LED (bright blue) light up.
+\item If auto-start was not previously configured, connect to the Raspberry Pi via SSH, navigate to the \texttt{Raspberry Pi} folder, and launch the ML suite (\texttt{source LAUNCH\_ML.sh}). Inspect the console for any errors.
+\item Examine the web app. Video should be streaming to the device, and bounding box information should start to be displayed. Ensure that there are no errors in the web app's log box.
+\end{enumerate}
+
+\textbf{Ardupilot Initialization}
 
 \subsection{Regular Maintenance}
 \subsection{Troubleshooting}
+\subsubsection{Computation Platform Troubleshooting}
+\textbf{Zedboard and/or Raspberry Pi power lights do not turn on}
+\begin{enumerate}
+\item Ensure that the battery pack is fully charged.
+\item Ensure that the power cables are properly seated.
+\end{enumerate}
+
+\textbf{No image is displayed on the web app}
+\begin{enumerate}
+\item Ensure that the Computation System Initialization checklist has been fully followed.
+\item Check that the camera module ribbon cable is properly seated and the cable itself is not damaged
+\item Move multirotor platform closer to the base station to avoid connectivity issues
+\item Restart the ML suite via SSH.
+\end{enumerate}
+
+\textbf{LD1-2 LED on Zedboard does not light on boot}
+\begin{enumerate}
+\item Ensure that the SD card in the Zedboard is properly seated
+\item Ensure that Zedboard HW jumpers are properly set
+\item Re-flash the Zedboard SD card (\ref{plb_setup}).
+\end{enumerate}
+
+\textbf{Socket errors appear in console/logs}
+\begin{enumerate}
+\item Ensure that the ethernet connection between the Zedboard and the Raspberry Pi is secure and established (the LEDs on each ethernet port should glow green upon a successful link).
+\item Ensure that the Raspberry Pi is connected to the Base Station's WiFi network.
+\item Ensure that the IP addresses specified in \texttt{pythonClient.py} and \texttt{mlprog.cpp} match those of the corresponding devices.
+\end{enumerate}
+
+\subsection{FAQs}
+
 \subsection{Suggested Upgrades}
+This section outlines potential future upgrades to subsystems which will increase the quality, usability, and reliability of the computing platform multirotor. 
+
+\subsubsection{Choice of ML Model}
+As outlined in the project requirements, the chosen machine learning model is intended to be replaced by the client with their own implementation. This could be another implementation of the YOLOv2 model, a different pre-designed network, or an entirely custom network. While the current machine learning implementation (YOLOv2) is extremely versatile (being able to detect 75+ different classes), such a system may not ultimately be desirable to the client. For instance, if the client later wishes to specialize the system to \textit{only detect pedestrians}, YOLOv2 is likely unnecessarily complex, imposing onerous delays to an otherwise simple detection. If this is the case, the client may wish to adopt a simpler network such as MobileNet or TinyYolo.
+
+\subsubsection{Existing ML Model Improvements}
+If the client decides to improve on the existing machine learning hardware design rather than replace it outright there are several opportunities to improve its performance. Currently the hardware accelerator runs at 50MHz, however with some experimentation (and appropriate timing analysis), it is likely possible to raise the accelerator's clock frequency (and ultimately decrease the end-to-end ML latency). Additional parallelism improvements could also be applied to the AXI interconnect between the HPS and the accelerator, increasing the transfer speed of both the images to the accelerator and the results back to the HPS.
+
+\subsubsection{Improved WiFi Antenna}
+As detailed in the \textit{Design Document}, while the WiFi antenna on-board the Raspberry Pi 4 is sufficient to sustain video streaming at short-to-medium ranges (10-15 metres), the connection quality becomes insufficient at larger distances. During development it was determined that a dedicated USB WiFi card would alleviate these range issues (having better reception than the trace-based antenna on the Raspberry Pi), however this purchase was forgone in light of the COVID-19 pandemic. 
+
+\subsubsection{Video Encoding and Streaming}
+In the current implementation, video captured from the camera is sent to the base station frame-by-frame in JPEG format. The system was designed in such a manner to simplify the development of both the PMB and Base Station, however such a design imposes heavy bandwidth requirements onto the (already weak) WiFi connection. To further improve range and decrease bandwidth requirements, different video encodings (such as H264) could be examined, allowing the exploitation of frame-to-frame compression.
+
+\subsubsection{Result Storage and Retrieval}
+Due to the COVID-19 pandemic, the video and result retrieval mechanism was not implemented as per the requirements. While storing ML results is a trivial file I/O exercise, storing videos would require additional video encoding frameworks to be implemented (as previously described). Footage retrieval is another area of difficulty, as the end user should be able to browse and download files directly from the web-app (rather than having to retrieve files through means such as \texttt{scp}), and as such a file server would need to be configured on the PMB.  
+
 % Bibliography
 \clearpage
 \addcontentsline{toc}{section}{References}
