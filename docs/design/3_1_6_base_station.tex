@@ -18,11 +18,19 @@ A web-application is used as the GUI for the base station. This allows for unive
 
 The base station hosts a TCP/IP server, and serves two clients: the PMB and the web-application. The server continuously queries the PMB for live video data and ML metadata results, and sends the data to the web-application for display.
 
-The ML results are displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}). In particular, the ML results consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es).
+The ML results are displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}). In particular, the ML results consist of three parts: the class of the detected object(s), the coordinates of the upper-left vertex of the bounding box(es), and the height/width of the bounding box(es).
 
 The web application also displays real-time system status messages. These messages come from the PMB or the base station itself. The status updates include information on initiation or completion of processes, changes in PMB, PLB or base station settings, and system warnings/errors.
 
 The base station continuously saves the received video and metadata locally for any analysis purposes (\textbf{F.BS.6}). All faults are also logged locally on the device to facilitate further debugging (\textbf{F.BS.5}).
 %% maybe we just log all status messages, not limited to warnings/errors.
 
-Buttons are situated on the web-application for user input (\textbf{NF.BS.2}). Their functions include adjusting the visual properties of the web-application and changing settings on the PMB and PLB (\textbf{F.BS.4}) such as adjusting the camera polling rate and ML model sensitivity.
+The user may use buttons and sliders on the web-application to adjust the visual properties of the web-application or change the settings on the PMB and PLB (\textbf{F.BS.2, F.BS.4}) such as the camera polling rate and ML sensitivity.
+
+\subsubsection{Programming Libraries}
+
+There are two JavaScript libraries used in both the client-side and server-side code of the base station.
+
+The first library is \textit{socket.io}, which enables real-time, bidirectional and event-based communication between the browser and server. We use socket.io to establish a single communication protocol between the base station server and its clients. The client-side portion of the library is available in other languages such as C++ and Python with the same communication protocol, allowing for more versatility when programming the PMB to communicate with the base station. 
+
+The second library is \textit{p5.js}, a client-side JavaScript framework that provides programmers with tools to create virtual canvases more easily. We use p5.js to draw live video feed and ML bounding box data; it allows for an elegant and high-level approach to programming this part of the web application.
