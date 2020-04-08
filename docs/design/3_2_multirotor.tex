@@ -8,40 +8,6 @@
 \end{figure}
 
 
-
-
-
-
-
-
-\subsubsection{Propulsion System}\label{section:propsys}
-
-The propulsion system covers the majority of the RPAS parts list and determines the flight performance of the RPAS. 
-
-\paragraph{Motor Type}
-
-\underline{\textit{Brushed or brushless?}}
-The MRPAS is electrically powered by a DC battery and offers two options for motors: DC brushed motors and DC brushless motors. Brushed motors use mechanical brushes in contact with the rotor’s commutator to switch polarity to sustain a constant rotation, whereas brushless motors use electronic controllers to switch the polarity in the rotor. 
-
-For flight applications, we chose the brushless DC (BLDC) motors for their extended usable lifetime. BLDC motors are also much more efficient than brushed motors as they do not mechanically swap the polarity in the motor, which results in excess friction, heat, and  sparking. 
-
-\underline{\textit{Inrunner or outrunners?}}
-BLDC motors are further broken down into two variants: \textit{inrunner} and \textit{outrunner}. Inrunner motors have the rotor on the inside and outrunner motors have the rotor on the outside.  Inrunners spin with a relatively lightweight rotor, implying that they typically spin fast but have low torque (i.e. inrunner motors have high KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). In order to obtain useful torque from the motor, a separate gearbox to convert the mechanical energy would be required\cite{invsoutrunner}. Outrunners have a more massive rotor and thus an increased spin-up time due to the additional inertia, but this can be considered as a benefit: the rotating mass is further from the center of rotation, thus the angular momentum helps stabilize the rotor and reduce vibrations --- a major loss of efficiency. For an MRPAS typically operating in stabilized flight and hover, this ``compromise'' is acceptable. Finally, outrunners are typically more serviceable than inrunners \cite{invsoutrunner}. For the reasons above, we chose outrunner motors.
-
-\paragraph{Motor Size and Speed}\label{section:motor-speed}
-
-Commercial outrunner BLDC motors generally have the following design parameters: rotor size, KV/KT constants, voltage, maximum rated power, and weight. Please refer to Appendix~\ref{appendix:droneengine} for the relationship between the aforementioned design parameters. Our design process consists of screening and ranking the best motors through applying priorities as follows:
-
-\begin{enumerate}
-    \item Voltage: We chose a motor that operates between 12.0 V and 20.0 V, which is enough for heavy operations.
-    \item KV constant: Since the motors' RPM-per-volt ratio (KV constant) is inversely proportional of torque-per-current ratio (KT constant), manufacturers typically only focus on the KV constant. We chose motors that have KV constants between 500 KV and 1000 KV. These constants are considered low-speed and high-torque, and are typically used for large drones and endurance flights. We also chose this range such that the propellers can spin slower and more efficiently, extending the maximum flight time.
-    \item Rotor size: As mentioned in the previous section regarding inrunners vs. outrunners, larger rotors imply a lower KV and higher KT. As a result, we chose motors within the 500 KV to 1000 KV range. Markets show that sizes denoted 3508 to 2212 are adequate for this purpose.
-    \item Maximum rated power: KV and KT constants are a simplified model for motor characteristics. The maximum power output is derived when considering realistic non-idealities such as heat, motor resistance, and mechanical limits. Typically 500 KV to 1000 KV motors have a rating between 150 W to 400 W, depending on the brand. We optimize for the most performant option allotted by our budget.
-    \item Weight: Given that the weight of motors have little variance, we prioritize this parameter the least.
-\end{enumerate}
-
-Using the above decision process, we determine that we are using T-Motor 3508 520 KV motor. For our testing rig, since it uses a smaller frame and a set of smaller propellers, we choose T-Motor Air Gear 350 (2213 920 KV) motors.
-
 \paragraph{Propeller Material}
 
 Common RPAS propellers are constructed using either plastic or carbon composite. Plastic is cheap, abundant, 

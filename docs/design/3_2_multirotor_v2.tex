@@ -120,7 +120,7 @@ Configurations using more than 4 motors such as a hexacopter or an octocopter ar
 
 Multirotor airframe sizes are commonly designated by their \textit{motor-to-motor-diagonal-span} (MMDS), which measures the distance between the pair of motors which are the furthest apart. 
 
-We adopt a X4 560 mm MMDS carbon fibre frame from JMT, as shown in Figure~\ref{fig:jmtx4}. The frame is carbon fibre to enhance structural rigidity while keeping the system relatively lightweight. The frame features foldable arms and landing gears for portability, but we consider replacing the hinges with static parts to reduce  weight and achieve a longer flight time. The X4 560 mm frame is also wide enough to support propellers up to 14 inches in diameter. 
+We adopt a X4 560 mm MMDS carbon fibre frame from JMT, as shown in Figure~\ref{fig:jmtx4}. The frame is carbon fibre to enhance structural rigidity while keeping the system relatively lightweight. The frame features foldable arms and landing gears for portability, but we consider replacing the hinges with static parts to reduce  weight and achieve a longer flight time. The X4 560 mm frame is also wide enough to support propellers up to 14 inches in diameter. The carbon fibre material is light, strong, and rigid. Although this means that the items mounted on the frame would suffer from lack of dampening of vibrations, we implement compensating dampers for sensors separately.
 
 The 350 mm frames are also popular amongst consumer products such as the DJI Phantom series\cite{dji-phantom-3-specs} as seen in Figure~\ref{fig:djiphantom}. A frame size of 350 mm would constrain our ability to mount larger hardware --- posing a significant risk to integrating computing platform hardware. Additionally, the 350 mm size also limits the propeller maximum size. The largest quadcopter configurations have an MMDS of 1000 mm to allow for extremely large payload capacities such as the one shown in Figure~\ref{fig:djis1000}. However, these are more commonly used for industrial or military applications.
 
@@ -129,8 +129,39 @@ The 350 mm frames are also popular amongst consumer products such as the DJI Pha
 
 \subsubsection{Propulsion}
 
+The propulsion system covers the majority of the multirotor parts list and determines the flight performance of the multirotor. We refer to this subsystem as the ``Drive".
 
 \paragraph{Motor Type}
+
+\underline{\textit{Brushed or brushless?}}
+Multirotors are electrically powered by a battery --- a DC source. Two common types of DC motors are  brushed motors and brushless DC (BLDC) motors. Brushed motors commutate mechanically using brushes whereas brushless motors commutate electrically using electronic controllers that switches phases in the stator coils.
+
+We use  BLDC motors for their extended usable lifespan and efficiency. Brushed motors are not appropriate for our applications for its excessive noise, friction, spark, and heat.
+
+\underline{\textit{Inrunner or outrunners?}}
+
+BLDC motors further consists of two variants: \textit{inrunner} and \textit{outrunner}. 
+
+We choose outrunner BLDC motors for its higher torque output at lower speed  (i.e. outrunner motors have low KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). The lower speed of the rotor is beneficial for two reasons. One, a motor running at a lower speed is more efficient and produces less high frequency vibrations. Two, the attached propeller can be much larger and cut through the air at a lower speed, since drag forces acting on the blades are proportional to the velocity squared. Outrunner motors do require spin-up time as the rotor is more massive and has more inertia, but this compromise is acceptable as the main operating mode of the multirotor is hovering, which requires little agility. 
+
+The alternatives are inrunner motors. Inrunner motors have the rotor on the inside and outrunner motors have the rotor on the outside. Inrunner rotors are lighter and spin faster with a lower torque which means additional gearboxes are required to extract useful torque\cite{invsoutrunner}.
+
+\paragraph{Motor Size and Speed}\label{section:motor-speed}
+
+Commercial outrunner BLDC motors generally have the following design parameters: stator size, KV/KT constants, voltage, maximum rated power, and weight. Please refer to Appendix~\ref{appendix:droneengine} for the relationship between the aforementioned design parameters. 
+
+We choose 700 KV motors with stator size 3508.  According to drone hobbist online sources (https://quadquestions.com/blog/2017/02/22/choose-right-size-motors-drone/, https://oscarliang.com/quadcopter-motor-propeller/), the ideal KV motors to maximize performance for frame sizes larger than 450 mm should be 1200 KV or less. The argument of choosing a lower KV motor follows the point made above to balance torque output and energy loss due to air friction.
+
+Our decision process consists of screening and ranking the best motors through applying priorities as follows:
+
+\begin{enumerate}
+    \item Voltage: We chose a motor that operates between 12.0 V and 20.0 V, which is enough for heavy operations.
+    \item KV constant: Since the motors' RPM-per-volt ratio (KV constant) is inversely proportional of torque-per-current ratio (KT constant), manufacturers typically only focus on the KV constant. We chose motors that have KV constants between 500 KV and 1000 KV. These constants are considered low-speed and high-torque, and are typically used for large drones and endurance flights. We also chose this range such that the propellers can spin slower and more efficiently, extending the maximum flight time.
+    \item Rotor size: As mentioned in the previous section regarding inrunners vs. outrunners, larger rotors imply a lower KV and higher KT. As a result, we chose motors within the 500 KV to 1000 KV range. Markets show that sizes denoted 3508 to 2212 are adequate for this purpose.
+    \item Maximum rated power: KV and KT constants are a simplified model for motor characteristics. The maximum power output is derived when considering realistic non-idealities such as heat, motor resistance, and mechanical limits. Typically 500 KV to 1000 KV motors have a rating between 150 W to 400 W, depending on the brand. We optimize for the most performant option allotted by our budget.
+    \item Weight: Given that the weight of motors have little variance, we prioritize this parameter the least.
+\end{enumerate}
+
 \paragraph{Electronic Speed Controllers}
 \paragraph{Propellers}
 
