@@ -8,7 +8,7 @@
 
 A remote-piloted aerial system (RPAS) or sometimes referred to as ``drone" and ``multirotor" consists of serveral subsystems: airframe, mechanical structures, propulsion, battery, sensors, and flight computer. This section will explore these subsystems in more detail. Figure~\ref{fig:testrigcad1} is a render of the completed mutlirotor with the computing platform payload attached.
 
-\subsubsection{Mechanical}
+\subsubsection{Mechanical}\label{section:drone-mech}
 The mechanical subsystem of the multirotor is comprised of the frame that holds all the propulsion system, on-board computer and sensors, and the payload together.
 
 \paragraph{Frame Configuration}
@@ -164,11 +164,33 @@ Our decision process consists of screening and ranking the best motors through a
 
 \paragraph{Electronic Speed Controllers}
 
-Electric speed controllers (ESCs) are controllers that drives the coils in BLDC motors to switch the phase in the stator such that the rotor can spin at a desired speed. We use HobbyWing XRtoor 40.0 A  ESCs (https://imgaz.staticbg.com/images/upload/2014/12/Hobbywing\%20xRotor\%20Manual.pdf). 
+Electronic speed controllers (ESC) control the voltage, current, and phase supplied to a BLDC motor. As BLDC motors function by rotating magnetic fields using electric commutation, the ESCs must precisely control the timing and phase of the input. All ESCs function similarly and the design parameters are size/weight, power rating, power efficiency, and cost. We use HobbyWing XRtoor 40.0 A  ESCs (https://imgaz.staticbg.com/images/upload/2014/12/Hobbywing\%20xRotor\%20Manual.pdf).
 
 \paragraph{Propellers}
 
+Common RPAS propellers are constructed using either plastic or carbon fibre. For the final deliverable we utilize carbon fiber propellers to maximize efficiency, flight time, and longevity for our client. 
 
+According to Oscar Liang (https://www.dronethusiast.com/carbon-fiber-props-vs-plastic/),  carbon fibre propellers are tough and rigid and produces efficient and low-noise flight performance.  While plastic propellers are cheap, abundant, and relatively flexible, the manufacture of plastic propellers is not as precise, which leads to aerodynamic inefficiencies. Plastic propellers often require balancing, where one applies tape to the blades such that the weight on each blade is balanced. 
+
+We choose propellers with size 1250. Where 12 denotes 12 inches in diameter, and 50 denotes 5.0 inches in propeller pitch. To obtain maximum thrust and minimize speed (low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we strike a balance if we choose 11 to 13 inch propellers to be fitted onto the multirotor.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{img/proppitch}
+    \caption{Propellor Diameter and Pitch Parameters}
+    \label{fig:propeller}
+\end{figure}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[scale=0.5]{img/framepropsize}
+    \caption{Maximum Propeller Sizes}
+    \label{fig:framepropsize}
+\end{figure}
+
+As mentioned in Section \ref{section:drone-mech} the frame size is 560 mm (22 inches), which means that the motor to motor adjacent span is about 15.5 inches (by dividing by $\sqrt{2}$). It is safe to provide several inches of clearance between propellers, therefore the  compatible size of propellers are between 11 to 14 inches.
+
+Mentioned in Section \ref{section:motor-speed}, we chose low-speed motors for their efficiency. Additionally recall that, given the same power, a slow-speed motor provides inversely proportional torque, so we chose propellers with relatively high pitch (between 3 to 5 inches) to take advantage of the high-torque output in maximizing thrust output.
 
 \subsubsection{Battery and Electrical Systems}
 \paragraph{Battery Type}

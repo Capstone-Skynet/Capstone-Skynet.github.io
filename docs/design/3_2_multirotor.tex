@@ -1,56 +1,5 @@
 
 
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.4]{img/drone_yconfigt}
-    \caption{Tricopter Y-configuration}
-    \label{fig:tricopter-y-t}
-\end{figure}
-
-
-\paragraph{Propeller Material}
-
-Common RPAS propellers are constructed using either plastic or carbon composite. Plastic is cheap, abundant, 
-and relatively flexible. Due to its cheapness, however, the manufacture of plastic propellers is not as precise, leading to 
-aerodynamic inefficiencies. Plastic propellers often require balancing, where tape is applied to one of the 
-blades such that the weight is balanced---minimizing vibrations. Carbon composite propellers, such as 
-carbon fibre blades, are extremely light and much more expensive. The carbon composite 
-propellers are manufactured with micro-meter precision, providing top efficiency. Carbon composite 
-propellers are not flexible and extremely tough. It is more dangerous for persons to be near spinning 
-carbon composite propellers due to their sharpness and toughness, where breakage could lead to serious injury or death.
-
-For the final deliverable we chose carbon fiber propellers to maximize efficiency, flight time, and longevity for our client. Due to budget constraint and safety concerns however, we chose plastic propellers for use on our test rig.
-
-\paragraph{Propeller Size and Pitch}
-
-\textbf{Notation: } Propeller size and pitch is commonly denoted by RRYY where RR is the propeller diameter in inches, and YY is the propeller pitch in degrees. (9050 denotes a propeller with 9 inch diameter, and 5.0 inches of pitch; 1045 denotes a propeller with 10 inch diameter, and 4.5 inches of pitch).
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.5]{img/proppitch}
-    \caption{Propellor Diameter and Pitch Parameters}
-    \label{fig:propeller}
-\end{figure}
-
-To obtain maximum thrust with low speed (low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we want to choose the biggest possible propeller diameter.
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.5]{img/framepropsize}
-    \caption{Maximum Propeller Sizes}
-    \label{fig:framepropsize}
-\end{figure}
-
-As mentioned in Section \ref{section:air-frame}, we chose 450 mm frames, which means that the motor to motor 
-adjacent span (MMAS) is about 12.5 inches. It is safe to provide 1 inch of clearance between propellers, 
-therefore the ideal size of propellers to choose is 10 or 11 inches.
-
-Mentioned in Section \ref{section:motor-speed}, we chose low-speed motors for their efficiency. Additionally recall that, 
-given the same power, a slow-speed motor provides inversely proportional torque, so we chose propellers 
-with relatively high pitch (between 3 to 5 inches) to take advantage of the high-torque output in maximizing thrust output.
-
-For the deliverable drone, we are using carbon fiber propellers with sizes 1145, 1245, or 1445. For our testing rig, the acceptable sizes are: 1030, 1045, 1130, and 1145.
-
 \paragraph{Speed Controllers}
 
 Electronic speed controllers (ESC) control the voltage, current, and phase supplied to a BLDC motor. As BLDC motors function by rotating magnetic fields using electric commutation, the ESCs must precisely control the timing and phase of the input. All ESCs function similarly and the design parameters are size/weight, power rating, power efficiency, and cost.
