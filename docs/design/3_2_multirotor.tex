@@ -1,33 +1,5 @@
 
 
-\begin{figure}[b]
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[scale=0.4]{img/drone_yconfig}
-        \caption{Tricopter Y-Configuration}
-        \label{fig:tricopter-y}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[scale=0.4]{img/drone_xconfig}
-        \caption{Quadcopter X-Configuration}
-        \label{fig:quadcopter-x}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[scale=0.4]{img/drone_hexconfig}
-        \caption{Hexcopter X-Configuration}
-        \label{fig:hexcopter-x}
-    \end{subfigure}
-    
-    \caption{Multirotor RPAS Configurations}
-    \label{fig:rpas-config}
-\end{figure}
-
-
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.4]{img/drone_yconfigt}
@@ -35,47 +7,12 @@
     \label{fig:tricopter-y-t}
 \end{figure}
 
-\subsubsection{Air Frame}\label{section:air-frame}
 
-RPAS air frame sizes are commonly referred to by their \textit{motor-to-motor-diagonal-span} (MMDS). The MMDS measures the distance between the pair of motors which are the furthest apart. 
 
-The most common frame available for sale comes in 450 mm MMDS variants. 350 mm frames are also common amongst consumer products such as the DJI Phantom series\cite{dji-phantom-3-specs} as seen in Figure~\ref{fig:djiphantom}. A frame size of 350 mm would constrain our ability to mount larger hardware --- posing a significant risk to integrating computing platform hardware. Additionally, the 350 mm size also limits the propeller maximum size. The largest quadcopter configurations have an MMDS of 1000 mm to allow for extremely large payload capacities such as the one shown in Figure~\ref{fig:djis1000}. However, these are more commonly used for industrial or military applications.
 
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[b]{0.33\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/djiphantom4}
-        \caption{DJI Phantom 4 (350 mm)}
-        \label{fig:djiphantom}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.33\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/f450frame}
-        \caption{Generic DIY frame kit (450 mm)}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.33\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/jmt560}
-        \caption{JMT X4 Carbon Fiber Frame (560 mm)}
-        \label{fig:jmtx4}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.33\textwidth}
-        \centering
-        \includegraphics[width=\textwidth]{img/djis1000}
-        \caption{DJI Spreadwings S1000 (1000 mm)}
-        \label{fig:djis1000}
-    \end{subfigure}
-    
-    \caption{Air Frame Options with Various Size Tiers }
-\end{figure}
 
-We choose a X4 560 mm MMDS carbon fibre frame from JMT, as shown in Figure~\ref{fig:jmtx4}. The frame is carbon fibre to enhance structural rigidity while keeping the system relatively lightweight. The frame features foldable arms and landing gears for portability, but we consider replacing the hinges with static parts to reduce  weight and achieve a longer flight time. The X4 560 mm frame is also wide enough to support propellers up to 14 inches in diameter. 
 
-For our testing rig (which is also our back-up drone), we are using the \textit{Flamewheel F450} frame with 450 mm MMDS. This design has many clones and variants and is thus extremely cheap to purchase and replace on the internet. The frame has a adequate balance between portability and capability, however the 450 mm frames can only support 12 inch propellers at most.
+
 
 \subsubsection{Propulsion System}\label{section:propsys}
 
