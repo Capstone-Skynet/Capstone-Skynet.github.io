@@ -164,13 +164,13 @@ Our decision process consists of screening and ranking the best motors through a
 
 \paragraph{Electronic Speed Controllers}
 
-Electronic speed controllers (ESC) control the voltage, current, and phase supplied to a BLDC motor. As BLDC motors function by rotating magnetic fields using electric commutation, the ESCs must precisely control the timing and phase of the input. All ESCs function similarly and the design parameters are size/weight, power rating, power efficiency, and cost. We use HobbyWing XRtoor 40.0 A  ESCs (https://imgaz.staticbg.com/images/upload/2014/12/Hobbywing\%20xRotor\%20Manual.pdf).
+Electronic speed controllers (ESC) control the voltage, current, and phase supplied to a BLDC motor. As BLDC motors function by rotating magnetic fields using electric commutation, the ESCs must precisely control the timing and phase of the input. All ESCs function similarly and the design parameters are size/weight, power rating, power efficiency, and cost. We use HobbyWing XRtoor 40.0 A  ESCs (TODO: https://imgaz.staticbg.com/images/upload/2014/12/Hobbywing\%20xRotor\%20Manual.pdf).
 
 \paragraph{Propellers}
 
 Common RPAS propellers are constructed using either plastic or carbon fibre. For the final deliverable we utilize carbon fiber propellers to maximize efficiency, flight time, and longevity for our client. 
 
-According to Oscar Liang (https://www.dronethusiast.com/carbon-fiber-props-vs-plastic/),  carbon fibre propellers are tough and rigid and produces efficient and low-noise flight performance.  While plastic propellers are cheap, abundant, and relatively flexible, the manufacture of plastic propellers is not as precise, which leads to aerodynamic inefficiencies. Plastic propellers often require balancing, where one applies tape to the blades such that the weight on each blade is balanced. 
+According to Oscar Liang (TODO: https://www.dronethusiast.com/carbon-fiber-props-vs-plastic/),  carbon fibre propellers are tough and rigid and produces efficient and low-noise flight performance.  While plastic propellers are cheap, abundant, and relatively flexible, the manufacture of plastic propellers is not as precise, which leads to aerodynamic inefficiencies. Plastic propellers often require balancing, where one applies tape to the blades such that the weight on each blade is balanced. 
 
 We choose propellers with size 1250. Where 12 denotes 12 inches in diameter, and 50 denotes 5.0 inches in propeller pitch. To obtain maximum thrust and minimize speed (low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we strike a balance if we choose 11 to 13 inch propellers to be fitted onto the multirotor.
 
@@ -181,6 +181,7 @@ We choose propellers with size 1250. Where 12 denotes 12 inches in diameter, and
     \label{fig:propeller}
 \end{figure}
 
+% TODO: update this graph
 \begin{figure}[h]
     \centering
     \includegraphics[scale=0.5]{img/framepropsize}
@@ -193,11 +194,32 @@ As mentioned in Section \ref{section:drone-mech} the frame size is 560 mm (22 in
 Mentioned in Section \ref{section:motor-speed}, we chose low-speed motors for their efficiency. Additionally recall that, given the same power, a slow-speed motor provides inversely proportional torque, so we chose propellers with relatively high pitch (between 3 to 5 inches) to take advantage of the high-torque output in maximizing thrust output.
 
 \subsubsection{Battery and Electrical Systems}
-\paragraph{Battery Type}
-\paragraph{Battery Capacity}
+
+\paragraph{Battery}
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/energydensity.png}
+    \caption{Energy Density Graph of Various Battery Types}
+    \label{fig:batterytypes}
+\end{figure}
+
+We choose lithium polymer (Li-Po) batteries as they have the highest energy density (highest capacity to weight ratio), and are thus  perfect for high-power, low-weight applications. Figure~\ref{fig:batterytypes} shows a graph of the energy densities for differing types of batteries \cite{battery} --- from this graph, it is clear that Li-Po batteries are to be chosen.
+
+For a multirotor of this size, typical configurations include 3S and 4S (3 cells in series and 4 cells in series respectively) . As part of our deliverables (see List of Deliverables document), we provide a single 3S 5000 mAh battery with discharge rating of 30 C. The discharge rating indicates the maximum discharge current of the battery (https://batteryuniversity.com/learn/article/what_is_the_c_rate):
+
+$$
+I_{max}=30 \times 5000 = 150~\text{A}
+$$
+
 \paragraph{Power Distribution}
 
+The 11.0 to 12.0 V from the 3S battery (or 14.0 to 15.0V of 4S batteries) is connected to a  central PCB for power distribution. All the ESCs are to be connected in parallel to draw current from the battery. The power distribution board also has built-in voltage regulators for 5.0 V supply for digital flight hardware and other peripherals.
+
+% TODO: insert diagram for power distribution
+
 \subsubsection{Flight Computer and Sensors}
+% TODO: insert Ardell's text
 \paragraph{Flight Computer Unit}
 \paragraph{Sensors}
 \paragraph{Flight Modes}
@@ -206,3 +228,4 @@ Mentioned in Section \ref{section:motor-speed}, we chose low-speed motors for th
 \subsubsection{Communication and Control}
 \paragraph{Transmitter}
 \paragraph{Receiver}
+
