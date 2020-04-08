@@ -1,19 +1,53 @@
 \textbf{Autopilot and ground station}
 
-
 \subsection{Overview}
 
-The multirotor is going to be controlled via a commercial off the shelf flight controller unit called an autopilot. The autopilot will connect to a ground station running an open source software called APM Planner 2.0. These hardware and software packages provide the 
+In order for the multirotor to be controllable by a human being with minimal training, much of the flight systems need to be automated. We have decided for our project to use an open source autopilot called ‘Ardupilot’. The autopilot system consists of several hardware components and 2 software components which are split between the multirotor and the ground station.
+
+\underline{Multirotor hardware}\
+
+\begin{enumerate}
+
+    \item Autopilot flight computer: The autopilot flight computer is the primary hardware component of the autopilot system on the multirotor. In the Ardupilot literature this device is referred to only as the ‘Autopilot’ but to avoid confusion with the broader autopilot system we will be referring to it as the ‘Autopilot flight computer’. The specific board that we are using is the APM 2.6. This board an older model and will thus be using legacy code but will have all of the required functionality.
+  
+  \item GPS and Compass: The GPS and compass will allow the ground station to track the multirotor while it’s flying. Also enables the use of the automatic flight modes.
+ 
+ \item Telemetry module: Radio transceiver that allows for communication with the ground.
+ 
+\end{enumerate}
+
+\underline{Multirotor Software}
+
+The autopilot flight computer uses open source software that the arudpilot website refers to as ‘firmware’. Because the board is an older version it actually does not have enough physical memory to fit the latest iterations of the firmware. As such we are using a legacy version of the firmware on our autopilot flight computer.
+
+\underline{Ground station hardware}
+
+The hardware for the ground station that is relevant to the autopilot is simply a computer and a telemetry system that will allow communication between the ground station and the multirotor.
+
+\underline{Ground station software}
+
+The ground station uses open source software called APM planner 2.0. The software is downloaded onto a laptop and provides the display, means of controller, and means of interfacing with the autopilot, including uploading the firmware.
+
 \subsection{Features list}
 
 \begin{enumerate}
 
-    \item Real time monitoring of telemetry information
-    \item Real-time control of the Multirotor
-    \item Primary Flight Display (HUD)
-    \item Simple commands to the Multirotor such as hover
-    \item Waypoints that can be used to set a path for the drone to fly
-    \item Real-time battery monitoring
+    \item Real time monitoring of telemetry information: Data includes the altitude, position and orientation of the multirotor as well as real-time battery monitoring
+    
+    \item Real-time control of the Multirotor: Multirotor can be controlled either manually or by setting waypoints for it to follow or sending simple commands
+    
+    \item Primary Flight Display (HUD): Flight display is as appears below
+    
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{img/HUD.png}
+	\caption{Flight display}
+	\label{flight display}
+	\end{figure}
+
+    \item Simple commands to the Multirotor such as hover: These commands can be used in place of real-time control
+    
+    \item Waypoints that can be used to set a path for the multirotor to fly: Multirotor can fly a pre-programmed path by setting waypoints.
     
 \end{enumerate}
 
@@ -22,94 +56,17 @@ The multirotor is going to be controlled via a commercial off the shelf flight c
 \begin{enumerate}
 
     \item Stabilize: Self-levels the roll and pitch axis
+    
     \item Alt hold: Holds altitude and self-levels the roll and pitch axis
+    
     \item Loiter: Holds altitude and position using GPS
+    
     \item RTL: Returns to the takeoff position
+    
     \item Stabilize: Self-levels the roll and pitch axis
+    
     \item Auto: Executes pre-defined mission using waypoints
     
 \end{enumerate}
-
-\subsection{Configuraton}
-
-Configuring the autopilot system requires 1 hardware device and 2 software packages. The hardware is the autopilot, the physical device that will actually be mounted on the Multirotor. The software packages are the firmware, the software that will be uploaded onto the autopilot, and the ground station software.
-
-\underline{Ground station software}
-
-The ground station software is the APM Planner 2.0. The software is easily installed via an installer that can be downloaded from the Ardupilot website.
-
-\underline{Firmware}
-
-The autopilot hardware we are using is the APM 2.8 which is an older autopilot that is no longer supported. To utilize the older autopilot we need to use an older firmware package available on the Ardupilot website in the archive section. A copy of the firmware will also be provided in the deliverables of the project. Installation of the firmware is done through ground station software.
-To install the firmware.
-
-\begin{enumerate}
-
-    \item The relevant firmware will be provided as a deliverable in the project but can also be found on the archive section of the ardupilot website
-    \item Plug in the ardupilot and open mission planner
-    \item Select the relevant COM port and set the baud rate to 115200, do not press connect
-    \item Click on ‘initial setup’ and then ‘install firmware’
-    \item Click on the copter icon and then when prompted install the provided firmware.
-    \item Click on ‘Connect’
-    
-\end{enumerate}
-
-\subsection{Pre-arm safety checks}
-
-Before every flight the computer goes through a series of automatic safety checks. If any of the checks fail then multirotor will refuse to fly. The checks are as follows:
-
-\begin{enumerate}
-
-    \item That the radio has been calibrated
-    \item That the accelerometer has been calibrated
-    \item That the compass is sending data
-    \item That the compass offsets are not too big
-    \item That the compass has been calibrated
-    \item Checks the length of the compass magnetic field
-    \item Checks that the barometer is sending data
-    \item Checks that there is a GPS lock if Geofence is enabled
-    \item Checks the board voltage
-    
-\end{enumerate}
-
-\subsection{First time use guide}
-
-\underline{Arming the motors}
-
-\begin{enumerate}
-
-    \item Turn on the transmitter
-    \item Plug in the battery. The red and blue lights should flash for a few seconds as the gyros are calibrated (do not move the copter)
-    \item The pre-arm checks will run automatically and if any problems are found the RGB LED will blink yellow and the failure will be displayed on the ground station
-    \item Check that the flight mode switch is set to Stabilize, ACRO, AltHold, Loiter, or PosHold
-    \item If using a autopilot with a safety switch, press it until the light goes solid
-    \item If planning on using an autonomous mode (i.e. Loiter, RTL, Auto, etc) switch the vehicle to Loiter or PosHold and wait until the LEDs blink green indicating a good GPS lock
-    \item Arm the motors by holding the throttle down, and rudder right for 5 seconds. Do not hold the rudder right for too long (>15 seconds) or you will begin the Autotrim feature
-    \item Once armed, the LEDs will go solid and the propellers will begin to spin
-    \item Raise the throttle to take-off
-    
-\end{enumerate}
-
-\underline{Pitch and Roll Calibration}
-
-\begin{enumerate}
-
-    \item For the first flight the IMU will not be enabled. In order to enable the IMU click on the configuration icon and then the advanced parameters tab and navigate to where it says ‘Logbitmask’. Click on the dropdown menu and select ‘Default+IMU’ and then click ‘write parameters’ in order to enable the IMU. 
-    \item Stay in the configuration section and click on ardu copter config. Use the drop down menu to set CH6 opt to CH6_RATE_KP. This will allow you to change the sensitivity of the roll and pitch controls while in flight. Set the min to 0.08 and max to 0.15.
-    \item During the first flight use the CH6 knob to tune the flight controller to a reasonable sensitivity. 
-    \item After the flight, plug the flight controller back in and go back to the same menu. Click on ‘Refresh Parameters’ and see what the value that you found appropriate while flight testing was. It will appear under the P section of ‘Rate Roll.’ To set this value, set ‘CH6 Opt’ to ‘CH6_0None’ and click on ‘Write Parameters.’
-    \item Reset the ‘Logbitmask’ to ‘Default’ after you are done with configuration.
-    
-\end{enumerate}
-
-\underline{Hover thrust configuration}
-
-\begin{enumerate}
-
-    \item Click on ‘terminal’ and then click on ‘log download’. Check the box labeled ‘1’ and then click ‘download this log’. Click on ‘log browse and find the log from the test flight. Scroll down the list and find the row labeled ‘CTUN’. Select the entry in the ‘throttle in’ column and click on ‘graph this data’.
-    \item Looking at the graph, find the value of the throttle at which the copter appears to be at a stable hover.
-    \item Go back to the configuration screen at connect to the copter, then go back into ‘advanced parameters’. Look for the row labeled ‘throttle mid’ and change the value to the hover value you found in the last section. Click on ‘write parameters’.
-
-\begin{enumerate}
 
 
