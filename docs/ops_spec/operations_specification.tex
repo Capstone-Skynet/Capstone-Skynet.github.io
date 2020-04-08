@@ -5,7 +5,7 @@
 \newcommand{\doctitle}{Operations, Maintenance, and Upgrades Specification}
 \newcommand{\docsubtitle}{\input{../common/title}}
 \input{../common/aliases}
-\renewcommand{\revisionnum}{1.1}
+\renewcommand{\revisionnum}{1.2}
 
 \input{../common/urlsetup}
 \input{../common/pagesetup}
@@ -37,14 +37,14 @@ This document is additionally relevant to those who will assess the maintenance 
 This document outlines the following areas of importance to the client: 
 \begin{itemize}
 \item \textbf{Installation Instructions}: Instructions relating to the construction of the multirotor and computing platform, in addition to how to build/install computing software.
-\item \textbf{Computer Software Operations}: Instructions relating to the operations of the computing software.
-\item \textbf{Frequently Asked Questions (FAQs)}: An outline of common questions and answers regarding key points across the entire project.
+\item \textbf{Flight Checklists}: Instructions relating to the in-flight operation of the computing platform and multirotor.
 \item \textbf{Regular Maintenance}: An outline of the maintenance tasks to be taken on the multirotor at predetermined intervals.
+\item \textbf{Frequently Asked Questions (FAQs)}: An outline of common questions and answers regarding key points across the entire project.
 \item \textbf{Troubleshooting}: A summary of commonly encountered issues with the multirotor and computing platform (and their solutions).
 \item \textbf{Suggested Upgrades}: An outline of potential upgrades to the computing platform and multirotor assembly.
 \end{itemize}
 
-
+\clearpage
 \section{Operations, Maintenance and Upgrades}
 \subsection{Installation Instructions}
 \subsubsection{Computation Platform Hardware Assembly}
@@ -163,6 +163,29 @@ The following section outlines the steps required to configure the Base Station.
 
 Once the above steps have been completed, the base station is fully configured. One can now connect to the web app by entering the previously determined IP address into the web browser of any device connected to the network. On the server device, one can also navigate to \texttt{localhost} to arrive at the same page.
 
+\subsubsection{Autopilot Configuration Instructions}
+While not necessary for general operations, the client may wish to utilize the autopilot functionality present on the multicopter's on-board control board (separate from the general computational platform where video is captured and machine learning is performed). 
+
+\underline{Required Materials}
+\begin{itemize}
+\item 1 - Windows/Mac/Linux user device to upload/program flight controller firmware (Windows/Mac/Linux device)
+\item 1 - Flight Controller
+\item 1 - Micro-USB to USB-A Cable
+\end{itemize}
+
+\underline{Instructions}
+
+\begin{enumerate}
+\item Download and install APM Planner 2.0 (\url{https://ardupilot.org/planner2/}) onto the user device.
+\item Download the APM v2.8 firmware (\url{https://ardupilot.org/copter/docs/common-downloads_firmware.html}). Note that v2.8 \textit{must} be used --- the selected control board is not compatible with later versions.
+\item Plug in the control board to the user device and open APM Planner.
+\item Select the control board's relevant COM port and set the baud rate to 115200 (\textit{do not press connect}).
+\item Click on \texttt{Initial Setup}, then \texttt{Install Firmware}
+\item Click on the small 'copter' icon, then install the APM v2.8 firmware previously downloaded.
+\item Click \texttt{Connect}
+\end{enumerate}
+
+\clearpage
 \subsection{Flight Checklists}
 \subsubsection{Pre-Flight Checklist}
 Prior to every flight, the following checklist \textbf{must} be observed.\\
@@ -176,11 +199,124 @@ Prior to every flight, the following checklist \textbf{must} be observed.\\
 \item Examine the web app. Video should be streaming to the device, and bounding box information should start to be displayed. Ensure that there are no errors in the web app's log box.
 \end{enumerate}
 
-\textbf{Ardupilot Initialization}
+\textbf{Controller Initialization}
+
+\textit{Note: this checklist is performed automatically by the on-board flight controller -- no user input is required. It is included for user reference only.}
+\begin{enumerate}
+\item Is the input voltage within nominal range?
+\item Is the radio calibrated to the correct operating frequency?
+\item Is the accelerometer operational? Has it been calibrated?
+\item Is the compass operational? Has it been calibrated?
+\item Is the barometer operational?
+\item Has a GPS lock been established?
+\end{enumerate}
+
+\textbf{Motor Arming}
+\begin{enumerate}
+    \item Turn on the handheld radio transmitter.
+    \item Ensure that the multicopter is in a flat, open area.
+    \item Plug in the multicopter's battery. The red and blue lights on the controller will flash momentarily as the gyroscopes are calibrated (do not move the multicopter while this is occuring).
+    \item If any initialization failures occur, the LEDs on the controller will indicate an error (see Ardupilot website for specific details).
+    \item Arm the motors by holding the throttle to low, and push the rudder right for 5 seconds. Do not hold the rudder right for more than 15 seconds, otherwise the autotrim feature will be enabled.
+    \item Once armed, the LEDs on the controller will stop flashing and the propellors will begin to spin.
+    \item Raise the throttle to take off.
+\end{enumerate}
+
+\subsection{Flight Adjustments}
+The following guides provide calibration steps which may be taken by the user to improve in-flight performance.
+
+\subsubsection{Pitch and Roll Calibration}
+These steps can be followed if the default pitch and roll behaviour of the multicopter during flight is suboptimal.
+
+\underline{Required Materials}
+\begin{itemize}
+    \item 1 - Windows/Mac/Linux user device (with APM planner installed) to program the flight controller 
+\item 1 - Flight Controller
+\item 1 - Micro-USB to USB-A Cable
+\end{itemize}
+
+\underline{Instructions}
+\begin{enumerate}
+    
+    \item In APM planner, click on the configuration icon, then the advanced parameters tab, and navigate to the \texttt{Logbitmask} section. 
+    \item Select \texttt{Default+IMU} from the dropdown menu, then click \texttt{write parameters} in order to enable changes to pitch and roll calibration values during flight.. 
+    \item Click on \texttt{arducopter config}. Set the CH6 opt to \texttt{CH6\_RATE\_KP} using the drop down menu. Set the min to 0.08 and max to 0.15.
+    \item Fly the multicopter, adjusting the CH6 knob to adjust the pitch and roll setting of the multicopter to the user's liking. 
+    \item After the flight, plug the flight controller back in and re-open APM planner. 
+    \item Click on \texttt{Refresh Parameters} to see the optimal pitch/roll value found during flight (it will appear under the P section of \texttt{Rate Roll}. 
+    \item To set this value as default, set \texttt{CH6 Opt} to \texttt{CH6\_0None} and click on \texttt{Write Parameters}.
+    \item Reset \texttt{Logbitmask} to \texttt{Default} once you are done with configuration.
+
+\end{enumerate}
+
+\subsubsection{Hover Thrust Configuration}
+
+This test can be performed to update the hover throttle setting to an adjusted value after an initial test flight.
+
+\underline{Required Materials}
+\begin{itemize}
+    \item 1 - Windows/Mac/Linux user device (with APM planner installed) to program the flight controller 
+\item 1 - Flight Controller
+\item 1 - Micro-USB to USB-A Cable
+\end{itemize}
+
+\underline{Instructions}
+\begin{enumerate}
+    
+    \item In APM Planner, click on \texttt{terminal} and then \texttt{log download}. 
+    \item Check the box labeled \texttt{1} and then \texttt{download this log}. 
+    \item Click on \texttt{log browse and find the log from the test flight}. 
+    \item Scroll down the list and find the row labeled \texttt{CTUN}. Select the entry in the \texttt{throttle in} column and click on \texttt{graph this data}.
+    \item Looking at the graph, find the value of the throttle at which the multicopter appears to be at a stable hover.
+    \item Return to the \texttt{advanced parameters} configuration screen and change the row labeled \texttt{throttle mid} to the hover value you found in the last section. 
+    \item Click on \texttt{write parameters}/.
+
+\end{enumerate}
 
 \subsection{Regular Maintenance}
+To ensure the longevity of the computing platform multirotor, the following maintenance checks should be performed on a regular basis (optimally, prior to every flight session). Failure to rectify issues found during these checks may result in a shortened operational life or danger to the user.
+
+\begin{enumerate}
+\item Is the chassis free of mud and dirt?
+\item Are there any cracks in the chassis or landing gear? Even small cracks can cause structural failure.
+\item Are all screws tightly in place?
+\item Are the propellers tightly in place and free of cracks? Are they free-spinning? \textit{Ensure that the battery is disconnected during this check.}
+\item Are all wires securely connected and free of fraying?
+\item Is the camera clear of obstruction and dirt?
+\item Are the antennae straight and properly fitted?
+\item Are the batteries (and their chargers) free of visible damage? Are the batteries bulging?
+\end{enumerate}
+
+The on-board batteries will degrade in capacity over time, and will need to be replaced with suitable replacements over time (see \textit{Validation Specification} for potential upgrades).
+
+Apart from ensuring cleanliness and a lack of physical, no particular maintenance must be performed on the computation platform.
+
+\subsection{FAQs}
+\textbf{What are the different programs running on the computation platform?}
+
+There are four programs in total across the PLB, PMB, and base station:
+
+\texttt{mlprog} (C-based) runs on the PLB and controls low-level PLB/acceleration operations.
+
+\texttt{ml\_server} (C++-based) runs on the PMB and controls communications to the PMB and image retrieval.
+
+\texttt{pythonClient.py} (Python-based) acts as a shim to interface the web-app with the PMB.
+
+\texttt{server} (Node.js-based) acts as the central base-station server and serves the video feed/system status to the end user.
+
+\textbf{Can I test the system without flying the multicopter?}
+
+Yes, the computation platform and the multicopter control platform are independent systems. One can test the machine learning component on the ground, or even substitute pre-recorded 640x480 video into the processing stream (see \texttt{ml\_server.cpp} for more information regarding video-in capabilities).
+
+\textbf{How do I make improvements to the framerate/hardware accelerator?}
+
+While making adjustments to the machine learning accelerator is possible (given that it is HLS-based), such adjustments are outside the scope of the project. One can refer to the original accelerator GitHub page (\url{https://github.com/dhm2013724/yolov2_xilinx_fpga}) for further build/customization information.
+
+\textbf{How do I extend the operational range of the multirotor?}
+
+The prefered route to extend the operational range is to increase the battery capacity of the platform. Refer to the \textit{Validation Specification} for specific battery configuration suggestions.
+
 \subsection{Troubleshooting}
-\subsubsection{Computation Platform Troubleshooting}
 \textbf{Zedboard and/or Raspberry Pi power lights do not turn on}
 \begin{enumerate}
 \item Ensure that the battery pack is fully charged.
@@ -209,8 +345,7 @@ Prior to every flight, the following checklist \textbf{must} be observed.\\
 \item Ensure that the IP addresses specified in \texttt{pythonClient.py} and \texttt{mlprog.cpp} match those of the corresponding devices.
 \end{enumerate}
 
-\subsection{FAQs}
-
+\clearpage
 \subsection{Suggested Upgrades}
 This section outlines potential future upgrades to subsystems which will increase the quality, usability, and reliability of the computing platform multirotor. 
 
