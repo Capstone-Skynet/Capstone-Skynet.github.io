@@ -1,12 +1,14 @@
 \documentclass[10pt,letterpaper]{article}
 \input{../common/include}
 
+\usepackage[normalem]{ulem}
+
 % Custom definitions
 \newcommand{\doctitle}{Requirements Specification}
 \newcommand{\docsubtitle}{\input{../common/title}}
 
 \input{../common/aliases}
-\renewcommand{\revisionnum}{1.2}
+\renewcommand{\revisionnum}{1.3}
 
 \input{../common/urlsetup}
 \input{../common/pagesetup}
@@ -20,7 +22,7 @@
 % Begin content
 \section{About This Document}\label{section:about}
 \subsection{Purpose}\label{section:about:purpose}
-This document outlines expected metrics related to the performance, quality, longevity, environmental impact, cost, legality, and safety of the Multirotor Computing Platform project. It is intended to convey \textit{what the product does} and \textit{how well it performs}, rather than describing the actual project implementation (as described in the \textit{Design Document}).
+This document outlines expected metrics related to the performance, quality, longevity, environmental impact, cost, legality, and safety of the Multirotor Computing Platform project. It is intended to convey \textit{what the product does} and \textit{how well it performs}, rather than describing the actual project implementation (as described in the \textit{Design Specification}).
 
 \subsection{Intended Audiences}\label{section:about:audience}
 This document is intended for \textit{all project stakeholders}, including (but not limited to):
@@ -42,9 +44,11 @@ This document contains both a high-level description of the project, in addition
 \item \textbf{Constraints}; which describe restrictions regarding how the product may be implemented.
 \end{itemize}
 
-Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the \textit{Design Document} and \textit{Validation Specification}). 
+Each detailed requirement listed in this document is assigned a unique \textit{requirement identifier}, which can be cross-referenced to other project documents (mainly the \textit{Design Specification} and \textit{Validation Specification}).
 
-For specific details regarding the project's implementation, refer to the \textit{Design Document}.
+Requirements which are \sout{struck out} were removed from the project due to constraints relating to the COVID-19 pandemic.
+
+For specific details regarding the project's implementation, refer to the \textit{Design Specification}.
 
 For a description of how these requirements are tested, refer to the \textit{Validation Specification}.
 
@@ -56,7 +60,7 @@ This project aims to offer an aerial/drone platform which provides both video ac
 \begin{figure}[H]
     \centering
     \includegraphics[width=\linewidth]{intpic.png}
-\caption{High-Level System Integration with remote-piloted-aerial-system (RPAS)}
+\caption{High-Level System Integration with Remote-Piloted-Aerial-System (RPAS)}
 \label{hlpic}
 \end{figure}
 
@@ -86,10 +90,10 @@ The project is classified as an integration of consumer electronics with compone
 	\item The multirotor RPAS must output adequate lift thrust to carry the computing platform.
 	\item The multirotor RPAS must feature lights to indicate the orientation of the RPAS and comply with safety protocols.
 	\item The multirotor RPAS must feature easy-to-remove propellers.
-	\item The multirotor RPAS must feature a low-battery warning system.
+	\item \sout{The multirotor RPAS must feature a low-battery warning system.}
 	\item The multirotor RPAS must perform an autonomous emergency landing in the case of loss of contact with pilot's TX.
 	\item The multirotor RPAS must be in manufacturer compliance with Transport Canada's definition of RPAS\cite{tp15263}.
-	\item The multirotor RPAS must be registered under the Transport Canada drone registry.\cite{tcdronereg}.
+	\item \sout{The multirotor RPAS must be registered under the Transport Canada drone registry.}\cite{tcdronereg}.
 	\item The multirotor RPAS must be operable under nominal weather conditions.
 	\item The multirotor RPAS must be maintainable using non-proprietary components, fasteners, and connectors.
 	\item The multirotor RPAS must feature landing legs or landing pads to protect the onboard equipment and dampen the impact upon landing/touch-down, emergency landing, and crash-landing.
@@ -97,7 +101,7 @@ The project is classified as an integration of consumer electronics with compone
 
 \subsection{Computing Platform}
 \begin{enumerate}[label=F.CP.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-	\item The computing platform must have a physical method (ex. button) to signal a safe power-on/off sequence for onboard components.
+	\item \sout{The computing platform must have a physical method (ex. button) to signal a safe power-on/off sequence for onboard components.}
 	\item The computing platform must boot into an operational state when the power-on signal is applied, without any additional user input.
 	\item The computing platform must indicate system status via one or more indicator lights.
 	\item The computing platform must store log files (detailing historical system state) onto non-volatile memory.
@@ -115,7 +119,7 @@ The project is classified as an integration of consumer electronics with compone
 \subsection{Camera}
 \begin{enumerate}[label=F.CAM.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The camera subsystem must capture video for the machine learning implementation to process.
-	\item The camera subsystem must store video for future research/analysis.
+	\item \sout{The camera subsystem must store video for future research/analysis.}
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
@@ -192,13 +196,13 @@ The project is classified as an integration of consumer electronics with compone
 	\item The camera must support video capture at a minimum rate of 10 frames per second.
 	\item The camera must support a minimum resolution of 640x480 pixels.
 	\item The camera shall only support day/artificial light conditions.
-	\item The camera subsystem must support storing up to two hours of footage.
+	\item \sout{The camera subsystem must support storing up to two hours of footage.}
 \end{enumerate}
 
 \subsection{Machine Learning Implementation}
 \begin{enumerate}[label=NF.ML.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
 	\item The machine learning model must process video in real time, with a latency of two seconds or less.
-	\item The machine learning model must have a throughput of at least 1 frame per second.
+	\item The machine learning model must have a throughput of at least 0.5 frames per second.
 \end{enumerate}
 
 \subsection{Base Station}
@@ -255,7 +259,7 @@ The project is classified as an integration of consumer electronics with compone
 
 \subsection{Environmental Considerations}
 \begin{enumerate}[label=C.EN.\arabic*, wide=1cm, widest=3cm, leftmargin=*, font=\bfseries, noitemsep,topsep=0pt, parsep=4pt, partopsep=0pt]
-    \item A recycling plan must be included for environmentally impactful components.
+    \item \sout{A recycling plan must be included for environmentally impactful components.}
     \item All components must be RoHS compliant.
     \item The multirotor must not be flown into areas from which it could not be recovered in the event of a failure (i.e. over deep water).
 \end{enumerate}
