@@ -25,7 +25,7 @@ The web application also displays real-time system status messages. These messag
 The base station continuously saves the received video and metadata locally for any analysis purposes (\textbf{F.BS.6}). All faults are also logged locally on the device to facilitate further debugging (\textbf{F.BS.5}).
 %% maybe we just log all status messages, not limited to warnings/errors.
 
-The user may use these buttons and sliders on the web-application to adjust the visual properties of the web-application or change the settings on the PMB and PLB (\textbf{F.BS.2, F.BS.4}) such as the camera polling rate and ML sensitivity.
+Radio buttons and sliders are situated on the web-application for user input (\textbf{NF.BS.2}). The user may use these buttons and sliders on the web-application to adjust the visual properties of the web-application or change the settings on the PMB and PLB (\textbf{F.BS.2, F.BS.4}) such as the camera polling rate and ML sensitivity.
 
 \subsubsection{Programming Libraries}
 
@@ -33,4 +33,4 @@ There are two JavaScript libraries used in both the client-side and server-side 
 
 The first library is \textit{socket.io}, which enables real-time, bidirectional and event-based communication between browser and server. We use socket.io to establish a single communication protocol between the base station server and its clients. The client-side portion of the library is available in other languages such as C++ and Python with the same communication protocol, allowing for more versatility when programming the PMB to communicate with the base station. 
 
-The second library is the p5.js library, which is a client-side JavaScript platform that provides programmers with tools to create virtual canvases more easily. This library is used to handle live video feed and ML bounding box data display; it allows for an elegant and high-level approach to programming this part of the web application. 
+The second library is \textit{p5.js}, a client-side JavaScript framework that provides programmers with tools to create virtual canvases more easily. We use p5.js to draw live video feed and ML bounding box data; it allows for an elegant and high-level approach to programming this part of the web application.
