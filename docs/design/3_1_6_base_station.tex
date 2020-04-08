@@ -14,11 +14,21 @@ We considered two classes of devices which could be used as a base station: lapt
 One functionality that mobile devices lack is the support for common machine learning platforms (ex. TensorFlow). As the client may want to perform additional ML processing on the base station for further analysis in the future, laptops were ultimately selected as the base station's platform. Support for smart devices (to facilitate multiple viewers) may be added if time permits.
 
 \subsubsection{Functionality}
+
+\begin{figure}[H]
+\begin{mdframed}
+\centering
+\includegraphics[width=15cm]{img/base_station.png}
+\end{mdframed}
+\caption{Screen Shot of the Web-app Running on the Base Station}
+\label{basestationdiag}
+\end{figure}
+
 A web-application is used as the GUI for the base station. This allows for universal compatibility with all laptops, regardless of their operating system.
 
-The base station hosts a TCP/IP server, and serves two clients: the PMB and the web-application. The server continuously queries the PMB for live video data and ML metadata results, and sends the data to the web-application for display.
+The base station hosts a Socket.IO server, and serves two clients: the PMB and the web-application. The server continuously queries the PMB for live video data and ML metadata results, and sends the data to the web-application for display.
 
-The ML results are displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}). In particular, the ML results consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es).
+The ML results are displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}) and the type of the object detected is also displayed near the object (See Figure \ref{basestationdiag}). In particular, the ML results consist of two parts: the coordinates of the upper-left vertex of the bounding box(es) and the height/width of the bounding box(es).
 
 The web application also displays real-time system status messages. These messages come from the PMB or the base station itself. The status updates include information on initiation or completion of processes, changes in PMB, PLB or base station settings, and system warnings/errors.
 
