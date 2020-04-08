@@ -1,12 +1,15 @@
 \documentclass[10pt,letterpaper]{article}
 \input{../common/include}
 
+\usepackage{pgfplotstable}
+\usepackage{pgfplots}
+
 % Custom definitions
 \newcommand{\doctitle}{Validation Specification}
 \newcommand{\docsubtitle}{\input{../common/title}}
 
 \input{../common/aliases}
-\renewcommand{\revisionnum}{1.2}
+\renewcommand{\revisionnum}{1.3}
 
 \input{../common/urlsetup}
 \input{../common/pagesetup}
@@ -38,11 +41,13 @@ This document is intended for:
 This document is particularly relevant to those who wish to assess the current state of the project, in addition to those who will assess the validation methodology against academic, organizational, or legal criteria.
 
 \subsection{Reading Guide}
-This document begins with a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested, the steps taken to execute the test, and the test's success parameters. Finally, the current status of each test is summarized in Section \ref{results}. Any pertinent test results are additionally included as appendices, as appropriate.
+The first portion of this document outlines a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested, the steps taken to execute the test, and the test's success parameters. Finally, the current status of each listed test is summarized in Section \ref{results}. Any pertinent test results are additionally included as appendices, as appropriate.
+
+The second portion of this document (beginning in Section \ref{mr_sims}) describes the simulations performed to derive and validate the multirotor's physical parameters. Their ultimate inclusion within this document is intended to aid the client in weighing different operating parameters (such as payload weight and flight time) when configuring the drone for a particular use-case. It is important to note that, due to the COVID-19 pandemic, these veracity of these simulations have not been determined through physical tests.
 
 The requirements referenced in this document can be found in the \textit{Requirements Specification}.
 
-\section{Validation Overview}
+\section{Validation Methodology}
 
 \subsection{Test Organization}\label{auto}
 The validation tests employed are split into two categories: \textit{automated tests} and \textit{manual tests}:
@@ -181,13 +186,15 @@ The following notations and conventions are used throughout this document:
 	\end{tabular}
 \end{table}
 
-
+\section{Multirotor Simulations}
+\label{mr_sims}
+\input{6_multirotor_sims.tex}
 
 % Bibliography
-%\clearpage
-%\addcontentsline{toc}{section}{References}
-%\bibliographystyle{ieeetr}
-%\bibliography{references}
+\clearpage
+\addcontentsline{toc}{section}{References}
+\bibliographystyle{ieeetr}
+\bibliography{references}
 
 % Appendix (uncomment to enable appendix)
  \clearpage
