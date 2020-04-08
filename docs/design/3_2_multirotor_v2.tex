@@ -40,17 +40,6 @@ The mechanical subsystem of the multirotor is comprised of the frame that holds 
 	\label{fig:rpas-config}
 \end{figure}
 
-
-A multirotor has several common configurations such as tricopter, quadcopter, hexacopter as depicted in Figure~\ref{fig:rpas-config}. Because each frame has different layouts of motors, the forces acting on the drone is inherently different and thus provides advantages and disadvantages of their own.
-
-We use a quadcopter X4 configuration (4 motors and propellers in the shape of a letter X) for our multirotor as it is easy to control and provides abundant control system robustness. Such configuration is also the most popular amongst the UAS industry because it is balances redundancy and robustness with capacity and performance.
-
-As seen in Figure \ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise --- effectively canceling each other's unintended torque applied to the multirotor. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by applying a combination of differential thrusts to each motor (Figure \ref{fig:rpas_6dof}). An X4 configuration is inherently stable.
-
-A dual-blade helicopter, for example, requires fewest number of motors. But like a single-blade helicopter, the system in control theory sense, is naturally unstable and requires difficulty to stabilize the system. A tricopter has odd number of motors which also shares similar characteristics with a helicopter where the system requires an additional tail motor to compensate for the uneven torque. 
-
-Configurations using more than 4 motors such as a hexacopter or an octocopter are very expensive for the amount of parts they require. Drones of these configuration classes are very stable with failure redundancy. However, these drones are typically much larger (0.6m to 1.5m wide) and much heavier (up to 25 kg). As a result, they are typically used in industrial, filming, and agriculture applications with a typical unit cost of at least several thousand dollars. These configurations are not suitable for our applications.
-
 \begin{figure}[h]
 	\centering
 	\includegraphics[scale=0.4]{img/drone_xconfigt}
@@ -84,6 +73,16 @@ Configurations using more than 4 motors such as a hexacopter or an octocopter ar
 	\caption{Using differential thrust to obtain 6-DOF movement. }
 	\label{fig:rpas_6dof}
 \end{figure}
+
+A multirotor has several common configurations such as tricopter, quadcopter, hexacopter as depicted in Figure~\ref{fig:rpas-config}. Because each frame has different layouts of motors, the forces acting on the drone is inherently different and thus provides advantages and disadvantages of their own.
+
+We use a quadcopter X4 configuration (4 motors and propellers in the shape of a letter X) for our multirotor as it is easy to control and provides abundant control system robustness. Such configuration is also the most popular amongst the UAS industry because it is balances redundancy and robustness with capacity and performance.
+
+As seen in Figure \ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise --- effectively canceling each other's unintended torque applied to the multirotor. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by applying a combination of differential thrusts to each motor (Figure \ref{fig:rpas_6dof}). An X4 configuration is inherently stable.
+
+A dual-blade helicopter, for example, requires fewest number of motors. But like a single-blade helicopter, the system in control theory sense, is naturally unstable and requires difficulty to stabilize the system. A tricopter has odd number of motors which also shares similar characteristics with a helicopter where the system requires an additional tail motor to compensate for the uneven torque. 
+
+Configurations using more than 4 motors such as a hexacopter or an octocopter are very expensive for the amount of parts they require. Drones of these configuration classes are very stable with failure redundancy. However, these drones are typically much larger (0.6m to 1.5m wide) and much heavier (up to 25 kg). As a result, they are typically used in industrial, filming, and agriculture applications with a typical unit cost of at least several thousand dollars. These configurations are not suitable for our applications.
 
 \paragraph{Airframe}
 \paragraph{Customized Add-ons}

@@ -1,15 +1,4 @@
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\textwidth]{img/testrigcad1.png}
-    \caption[Team 109 Testing Rig Prototype]{Team 109 Testing Rig Prototype using RPAS Generously Provided by Yiyi Yan and UBC \textit{Unmanned Aerial Systems}}
-    \label{fig:testrigcad1}
-\end{figure}
 
-The bare-minimum multirotor remote-piloted aerial system (RPAS), informally referred to as a ``drone'', consists of a propulsion system, flight controller, speed controllers, battery, and sensor systems. The project's RPAS testing rig is shown in Figure~\ref{fig:testrigcad1}.
-
-\subsubsection{Multirotor Configuration}
-
-A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quadcopter, and a hexacopter (as seen in Figure~\ref{fig:rpas-config}).
 
 \begin{figure}[b]
     \centering
@@ -38,7 +27,6 @@ A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quad
     \label{fig:rpas-config}
 \end{figure}
 
-\textbf{Tricopter:} Tricopters require fewer motors and speed controllers, implying fewer components and less power draw required to sustain flight. The angle between each motor arm is also wider at 120 degrees and thus suffers less from camera view obstructions. 
 
 \begin{figure}[h]
     \centering
@@ -46,53 +34,6 @@ A multirotor RPAS (MRPAS) has several common configurations: a tricopter, a quad
     \caption{Tricopter Y-configuration}
     \label{fig:tricopter-y-t}
 \end{figure}
-
-However, systems with an odd-number of actuators are inherently unstable due to the asymmetry of the motor torque as shown in Figure~\ref{fig:tricopter-y-t}. Therefore, this design requires an additional servo motor (consisting of a DC motor and a gear box) to precisely control the tail motor angle of tilt to counter the excess torque --- similar to the tail of a helicopter.
-
-This configuration is not suitable for our application as it requires increased control complexity. The compromise is not worth the agility that this configuration provides, and we rather place more emphasis on flight stability.
-
-\textbf{Quadcopter X:}
-The quadcopter is the most common configuration in consumer multirotor products. The quadcopter is more stable than a tricopter as it utilizes four motors, as seen in Figure \ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise --- effectively canceling each other's undesired torque. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by applying a combination of differential thrusts to each motor (Figure \ref{fig:rpas_6dof}).
-
-\begin{figure}[h]
-    \centering
-    \includegraphics[scale=0.4]{img/drone_xconfigt}
-    \caption{Quadcopter X-configuration}
-    \label{fig:quadcopter-x-t}
-\end{figure}
-
-\begin{figure}[h]
-    \centering
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[scale=0.4]{img/drone_x_pitch}
-        \caption{Pitch forward}
-        \label{fig:x-pitch}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[scale=0.4]{img/drone_x_roll}
-        \caption{Roll left}
-        \label{fig:x-roll}
-    \end{subfigure}
-    ~
-    \begin{subfigure}[b]{0.3\textwidth}
-        \centering
-        \includegraphics[scale=0.4]{img/drone_x_yaw}
-        \caption{Yaw left}
-        \label{fig:x-yaw}
-    \end{subfigure}
-    
-    \caption{Using differential thrust to obtain 6-DOF movement. }
-    \label{fig:rpas_6dof}
-\end{figure}
-
-\textbf{Hexacopter X:}
-The hexacopter has all the stability benefits of a quadcopter as well as extra redundancy. The MRPAS could still land safely even if it experienced up to two simultaneous motor failures. Since the hexacopter uses two more motors than the quadcopter configuration, naturally, an RPAS of this configuration is generally bigger and can lift more payload weight. Of course, with the added components, it is also much more expensive to build, operate, and maintain. Furthermore, hexacopter RPAS' extended size and mass can cause more damage upon a crash.
-
-We chose to utilize the quadcopter configuration for our multirotor. 
-The payload is not too heavy -- our target maximum payload weight is less than 500 g (\textbf{NF.DR.1}). The quadcopter configuration is also the most balanced in terms of the trade-off between cost and reliability. 
 
 \subsubsection{Air Frame}\label{section:air-frame}
 
