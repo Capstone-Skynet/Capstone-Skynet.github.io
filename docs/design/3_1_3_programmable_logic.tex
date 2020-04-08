@@ -1,3 +1,4 @@
+\label{plb_sec}
 \subsubsection{Subsystem Overview}
 The PLB manages the hardware-accelerated ML application, performs additional pre/post-processing on ML data (if required by the ML application), and communicates with the platform management board.
 
@@ -33,14 +34,15 @@ Examples of other boards examined for this project include the Nexys Artix 7 FPG
 \subsubsection{Data Flow}
 The overall data flow managed by the PLB is as follows:
 \begin{enumerate}
-\item Video/ML input data is acquired by the HPS (ARM core) via the Ethernet port (from the PMB)
-\item After performing any necessary clean-up/image resizing, the video frames are sent from the HPS to the ML IP block on the FPGA via bi-directional AXI interfaces
-\item The ML IP block on the FPGA receives feature vectors (video frames) to be analyzed via the AXI buses, performs the requisite processing, and sends the results to the HPS via a return AXI bus
-\item The HPS interprets the results (ex. applying a sensitivity threshold) and sends these interpretations to the PMB (Raspberry Pi) via the Ethernet port
+\item The HPS (ARM core), running the ML helper program \texttt{mlprog}, fetches a $416px \times 416px$ image frame and up-to-date sensitivity thresholds from the PMB via a TCP socket hosted over Ethernet
+\item After performing additional data extraction required by the accelerator, the HPS sends the image frames to the ML IP block on the FPGA via bi-directional AXI interfaces
+\item The ML IP block on the FPGA receives feature vectors (frames) to be analyzed via the AXI buses, performs the requisite processing, and sends the results to the HPS via a return AXI bus
+\item The HPS interprets the raw results to generate bounding box representations of detected items
+\item The HPS sends the generated interpretations which pass a sufficient confidence level (dictated by the provided sensitivity level) to the PMB via the socket
 \end{enumerate}
 
 \subsubsection{ML Hardware Accelerator Implementation}\label{ml_accel}
-To facilitate the hardware acceleration of ML subtasks, an open-source hardware accelerator \cite{yolov2accel} developed by graduate students at Jiangnan University is utilized on the FPGA. As described in the accelerator's associated 2019 whitepaper\cite{yolov2unipaper}, the accelerator is capable of performing YOLOv2\footnote{Further described in Section \ref{ml_desc}} processing 112.9$\times$ faster and with 86$\times$ less power than a comparable software implementation on an ARM A9 core (similar to the HPS on the Zedboard). In practice, this allows for a frame-rate (throughput) of approximately 1 FPS. As the client intends to replace this module with a custom-designed solution stemming from their research, however, this YOLOv2 accelerator is only intended as a placeholder.
+To facilitate the hardware acceleration of ML subtasks, an open-source hardware accelerator \cite{yolov2accel} developed by graduate students at Jiangnan University is utilized on the FPGA. As described in the accelerator's associated 2019 whitepaper\cite{yolov2unipaper}, the accelerator is capable of performing YOLOv2\footnote{Further described in Section \ref{ml_desc}} processing 112.9$\times$ faster and with 86$\times$ less power than a comparable software implementation on an ARM A9 core (similar to the HPS on the Zedboard). In practice, this allows for a frame-rate (throughput) of approximately 0.5 FPS when operating on $416px \times 416px$ images. As the client intends to replace this module with a custom-designed solution stemming from their research, however, this YOLOv2 accelerator is only intended as a placeholder.
 
 At a high level, the YOLOv2 accelerator speeds up ML tasks through several optimization strategies. Most prominently, the YOLOv2 accelerator aggressively unrolls and pipelines implicit loops used throughout the neural network\footnote{More information about loop unrolling can be found in Xilinx's \textit{Loop Pipelining and Loop Unrolling} guide\cite{xilinx}}. Other optimizations strategies employed include the use of 16-bit fixed point representations, parameter re-arrangement, ping-pong buffering\cite{pingpong}, and communication through parallel data buses. The module itself is written in the C language, and is converted to a hardware representation during system configuration through the use of a high-level synthesis (HLS) tool. 
 
@@ -56,6 +58,11 @@ In addition to the YOLOv2 accelerator, two alternative hardware acceleration uni
 \caption{FPGA Interconnect Block Diagram}
 \label{interconnect}
 \end{figure}
+
+\subsubsection{ML Hardware Accelerator Interface}
+To interface with the hardware accelerator, the accelerator's companion library\cite{yolov2accel} is extensively utilized throughout the HPS helper program (\texttt{mlprog}). These library functions facilitate a majority of the required operations to set up and operate the accelerator, including initializing model weights, converting numerical representations between data types (ex. fixed to floating point), and general memory I/O. 
+
+As the accelerator's libraries are intended to process \textit{single images}, several modifications to the library were made to increase performance in video applications. In particular, high level functions were decomposed into 'initialization' and 'runtime' stages, allowing for the de-duplication of computations which are persistent across frame detections (such as the unnecessary re-uploading of model weights for each frame). These improvements resulted in a speed-up of over 2$\times$ compared to the original libraries.
 
 \subsubsection{On-Chip Interconnects}
 As seen in Figure \ref{interconnect}, the YOLOv2 accelerator is interfaced through 5 parallel AXI buses -- four buses to transfer weight data and features (including video frames) \textit{to the accelerator} and one bus to transfer system signals/results \textit{to the HPS}. A C++ program running on the HPS coordinates these interactions. In addition, each AXI bus passes through an AXI SmartConnect block (Xilinx IP) to facilitate cross-domain clocking. This is required as the YOLOv2 accelerator is driven at a higher clock frequency (150MHz compared to the provided 50MHz global clock) to further accelerate ML computations. The higher clock frequency used by the accelerator is generated through the use of a phase-locked loop (PLL) -- an efficient and commonly used construct in circuit design. The PLL is shown in Figure \ref{interconnect} as a \textit{Clocking Wizard} block.
