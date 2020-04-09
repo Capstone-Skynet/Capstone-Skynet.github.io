@@ -10,7 +10,7 @@ The base station is a mobile device that connects to the computing platform on t
 \subsubsection{Device Selection}
 We considered two classes of devices which could be used as a base station: laptops and smart mobile devices (such as cellphones or tablets). The common features of these two options are: they are both equipped with a screen which can be used to display the video and ML results, they both have a Wi-Fi transceiver (\textbf{F.BS.3}), and they both have non-volatile storage which can be used to store results (\textbf{F.BS.6}).
 
-To allow for the greatest cross-compatibility across potential client devices, the base station was designed to operate on a Node.js web-server framework. While this necessitates the use of a laptop computer to act as a centralized server, one may utilize additional (potentially more portable) devices to connect to the web application to view the results if desired.
+To allow for the greatest cross-compatibility across potential client devices, the base station was designed to operate on a Node.js web-server framework. While this necessitates the use of a laptop computer to act as a centralized server, one may utilize additional (potentially more portable) devices to connect to the web-app to view the results if desired.
 
 \subsubsection{Functionality}
 
@@ -27,9 +27,9 @@ The base station (a Windows/Mac/Linux laptop) hosts a Socket.IO server which sim
 
 The ML results are displayed as a bounding box around the detected object(s) in the frame (\textbf{F.BS.1}) and the type of the object detected is also displayed near the object (see Figure \ref{basestationdiag}). In particular, the ML results consist of three parts: the class of the detected object(s), the coordinates of the upper-left vertex of the bounding box(es), and the height/width of the bounding box(es).
 
-The web application also displays real-time system status messages to the user. These status updates include information on initiation or completion of processes, changes in PMB, PLB or base station settings, and system warnings/errors.
+The web-app also displays real-time system status messages to the user. These status updates include information on initiation or completion of processes, changes in PMB, PLB or base station settings, and system warnings/errors.
 
-In addition, the web application allows the user to adjust several configuration options, including:
+In addition, the web-app allows the user to adjust several configuration options, including:
 
 \begin{itemize}
 \item Enabling/disabling ML processing,
