@@ -1,12 +1,11 @@
-% TODO: replace this image with our own renders
 \begin{figure}[H]
 	\centering
-	\includegraphics[width=0.85\textwidth]{img/testrigcad1.png}
-	\caption[Team 109 Testing Rig Prototype]{Team 109 Testing Rig Prototype using RPAS Generously Provided by Yiyi Yan and UBC \textit{Unmanned Aerial Systems}}
-	\label{fig:testrigcad1}
+	\includegraphics[width=0.85\textwidth]{img/multirotor.png}
+	\caption[Team 109 Multirotor Drone]{Team 109 Multirotor Drone}
+	\label{fig:drone1}
 \end{figure}
 
-A remote-piloted aerial system (RPAS) or sometimes referred to as ``drone" and ``multirotor" consists of serveral subsystems: the airframe, mechanical structures, propulsion, battery, sensors, and flight computer. This section will explore these subsystems in more detail. Figure~\ref{fig:testrigcad1} is a render of the completed multirotor with the computing platform payload attached.
+A remote-piloted aerial system (RPAS) or sometimes referred to as ``drone" and ``multirotor" consists of serveral subsystems: the airframe, mechanical structures, propulsion, battery, sensors, and flight computer. This section will explore these subsystems in more detail. Figure~\ref{fig:drone1} is a render of the completed multirotor with the computing platform payload attached.
 
 \subsubsection{Mechanical}\label{section:drone-mech}
 The mechanical subsystem of the multirotor is comprised of the frame that holds the propulsion system, on-board computer/sensors, and the payload together.
@@ -133,16 +132,9 @@ The propulsion system covers the majority of the multirotor parts list and deter
 
 \paragraph{Motor Type}
 
-\underline{\textit{Brushed or brushless?}}
-Multirotors are electrically powered by a battery --- a DC source. Two common types of DC motors are  brushed motors and brushless DC (BLDC) motors. Brushed motors commutate mechanically using brushes whereas brushless motors commutate electrically using electronic controllers that switches phases in the stator coils.
+Multirotors are electrically powered by a battery --- a DC source. Two common types of DC motors are  brushed motors and brushless DC (BLDC) motors. Brushed motors commutate mechanically using brushes whereas brushless motors commutate electrically using electronic controllers that switches phases in the stator coils. We use BLDC motors for their extended usable lifespan and efficiency. Brushed motors are not appropriate for our applications due to their excessive noise, friction, spark, and heat.
 
-We use  BLDC motors for their extended usable lifespan and efficiency. Brushed motors are not appropriate for our applications due to their excessive noise, friction, spark, and heat.
-
-\underline{\textit{Inrunner or outrunners?}}
-
-BLDC motors further consist of two variants: \textit{inrunner} and \textit{outrunner}. 
-
-We choose outrunner BLDC motors for their higher torque output at lower speed  (i.e. outrunner motors have low KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). The lower speed of the rotor is beneficial for two reasons. One, a motor running at a lower speed is more efficient and produces fewer high frequency vibrations. Two, the attached propeller can be much larger and cut through the air at a lower speed, since drag forces acting on the blades are proportional to the velocity squared. While outrunner motors do require additional spin-up time as the rotor is more massive and has more inertia, this compromise is acceptable as the main operating mode of the multirotor is hovering, which requires little agility. 
+BLDC motors further consist of two variants: \textit{inrunner} and \textit{outrunner}. We choose outrunner BLDC motors for their higher torque output at lower speed  (i.e. outrunner motors have low KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). The lower speed of the rotor is beneficial for two reasons. One, a motor running at a lower speed is more efficient and produces fewer high frequency vibrations. Two, the attached propeller can be much larger and cut through the air at a lower speed, since drag forces acting on the blades are proportional to the velocity squared. While outrunner motors do require additional spin-up time as the rotor is more massive and has more inertia, this compromise is acceptable as the main operating mode of the multirotor is hovering, which requires little agility. 
 
 The alternatives are inrunner motors, where the rotor is placed on the inside. Inrunner rotors are lighter and spin faster with a lower torque, thus additional gearboxes are required to extract useful torque\cite{invsoutrunner}.
 
@@ -150,7 +142,7 @@ The alternatives are inrunner motors, where the rotor is placed on the inside. I
 
 Commercial outrunner BLDC motors generally have the following design parameters: stator size, KV/KT constants, voltage, maximum rated power, and weight. Please refer to Appendix~\ref{appendix:droneengine} for the relationship between the aforementioned design parameters. 
 
-We choose 700 KV motors with stator size 3508.  According to drone hobbist online sources (https://quadquestions.com/blog/2017/02/22/choose-right-size-motors-drone/, https://oscarliang.com/quadcopter-motor-propeller/), the ideal KV motors to maximize performance for frame sizes larger than 450 mm should be 1200 KV or less. The argument of choosing a lower KV motor follows the point made above to balance torque output and energy loss due to air friction.
+We choose 700 KV motors with stator size 3508.  According to drone hobbist online sources \cite{kv1, kv2}, the ideal KV motors to maximize performance for frame sizes larger than 450 mm should be 1200 KV or less. The argument of choosing a lower KV motor follows the point made above to balance torque output and energy loss due to air friction.
 
 Our decision process consists of screening and ranking the best motors through applying priorities as follows:
 
@@ -164,13 +156,20 @@ Our decision process consists of screening and ranking the best motors through a
 
 \paragraph{Electronic Speed Controllers}
 
-Electronic speed controllers (ESC) control the voltage, current, and phase supplied to a BLDC motor. As BLDC motors function by rotating magnetic fields using electric commutation, the ESCs must precisely control the timing and phase of the input. All ESCs function similarly and the design parameters are size/weight, power rating, power efficiency, and cost. We use HobbyWing XRtoor 40.0 A  ESCs (TODO: https://imgaz.staticbg.com/images/upload/2014/12/Hobbywing\%20xRotor\%20Manual.pdf).
+Electronic speed controllers (ESC) control the voltage, current, and phase supplied to a BLDC motor. As BLDC motors function by rotating magnetic fields using electric commutation, the ESCs must precisely control the timing and phase of the input. All ESCs function similarly and the design parameters are size/weight, power rating, power efficiency, and cost. We use HobbyWing XRtoor 40.0 A  ESCs and they are wired as shown in Figure \ref{fig:esc} from manufacturer's manual\cite{xrotoresc}. Note that instead of wiring to the recevier for direct control from the pilot, we connect the signal wires to the autopilot instead.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{img/esc.png}
+	\caption[Electronic speed controller]{Simplified Wiring of the Electronic Speed Controller, BLDC Motors, and the Battery}
+	\label{fig:esc}
+\end{figure}
 
 \paragraph{Propellers}
 
 Common RPAS propellers are constructed using either plastic or carbon fibre. For the final deliverable we utilize carbon fiber propellers to maximize efficiency, flight time, and longevity for our client. 
 
-According to Oscar Liang (TODO: https://www.dronethusiast.com/carbon-fiber-props-vs-plastic/),  carbon fibre propellers are tough and rigid and produces efficient and low-noise flight performance.  While plastic propellers are cheap, abundant, and relatively flexible, the manufacture of plastic propellers is not as precise, which leads to aerodynamic inefficiencies. Plastic propellers often require balancing, where one applies tape to the blades such that the weight on each blade is balanced. 
+Carbon fibre propellers are tough and rigid and produces efficient and low-noise flight performance\cite{cfvsp}.  While plastic propellers are cheap, abundant, and relatively flexible, the manufacture of plastic propellers is not as precise, which leads to aerodynamic inefficiencies. Plastic propellers often require balancing, where one applies tape to the blades such that the weight on each blade is balanced. 
 
 We choose propellers with size 1250, where 12 denotes 12 inches in diameter, and 50 denotes 5.0 inches in propeller pitch. To obtain maximum thrust and minimize speed (seeing how low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we strike a balance if we choose 11 to 13 inch propellers to be fitted onto the multirotor.
 
@@ -207,8 +206,7 @@ Mentioned in Section \ref{section:motor-speed}, we chose low-speed motors for th
 We choose lithium polymer (Li-Po) batteries as they have the highest energy density (highest capacity to weight ratio), and are thus  perfect for high-power, low-weight applications. Figure~\ref{fig:batterytypes} shows a graph of the energy densities for differing types of batteries \cite{battery} --- from this graph, it is clear that Li-Po batteries are to be chosen.
 
 
-% TODO: https://batteryuniversity.com/learn/article/what_is_the_c_rate
-For a multirotor of this size, typical configurations include 3S and 4S (3 cells in series and 4 cells in series respectively) . As part of our deliverables (see List of Deliverables document), we provide a single 3S 5000 mAh battery with discharge rating of 30 C. The discharge rating indicates the maximum discharge current of the battery:
+For a multirotor of this size, typical configurations include 3S and 4S (3 cells in series and 4 cells in series respectively) . As part of our deliverables (see List of Deliverables document), we provide a single 3S 5000 mAh battery with discharge rating of 30 C. The discharge rating indicates the maximum discharge current of the battery\cite{crate}:
 
 $$
 I_{max}=30 \times 5000 = 150~\text{A}
@@ -233,9 +231,7 @@ This subsection discuss the communication system on-board the multirotor used fo
 The communication link for the multirotor is independent from other systems to ensure modularity and compatibility in case of future upgrades.
 The link uses 2.4 GHz radio with two end points: a receiver (RX) and transmitter (TX).
 
-% TODO: http://www.radiolink.com.cn/doce/product-detail-170.html
-% TODO: http://www.radiolink.com.cn/doce/product-detail-120.html
-The transmitter is a RadioLink AT10 10-channel 2.4 GHz radio transmitter with colored display. The receiver that is installed on the multirotor is a RadioLink R9DS 9-channel receiver. Note that only 6 out of 9 channel is actually used.
+The transmitter is a RadioLink AT10 10-channel 2.4 GHz radio transmitter with colored display\cite{at10}. The receiver that is installed on the multirotor is a RadioLink R9DS 9-channel receiver\cite{r9ds}. Note that only 6 out of 9 channel is actually used.
 The first four channels corresponds with each 4 axis of the flight controls: throttle, pitch, yaw, and roll. The last two channels, by default, are configured to corresponds with flight mode and return-to-home function respectively. 
 The user has the option to add additional channels or remap the existing channels, see operations specifications (TODO: ref document) for steps on configuring the flight mode and radio channels using the autopilot software.
 
