@@ -45,8 +45,9 @@ This document outlines the following areas of importance to the client:
 \end{itemize}
 
 \clearpage
-% \section{Operations, Maintenance and Upgrades}
 \section{Installation Instructions}
+
+% TODO: also incorporate drone
 \subsection{Computation Platform Hardware Assembly}
 The following section outlines the steps required to assemble the computing platform hardware components.
 
@@ -69,6 +70,17 @@ The following section outlines the steps required to assemble the computing plat
 \item Connect the camera module to the MIPI port on-board the Raspberry Pi, near the headphone jack (taking care not to damage the ribbon cable).
 \item Connect the Raspberry Pi and Zedboard with the Ethernet cable.
 \end{enumerate}
+
+
+
+
+\subsection{Computation Platform Hardware as Payload Assembly}
+% TODO
+
+\subsection{Multirotor Assembly}
+% TODO
+
+
 
 \subsection{PLB SW/HW Build Instructions}
 \label{plb_setup}
@@ -162,10 +174,14 @@ The following section outlines the steps required to configure the Base Station.
 \item \textbf{On the PMB}, modify the python client (\texttt{PythonClient/pythonclient.py}) to reflect the server's current IP address (this can be found through use of \texttt{ifconfig/ipconfig}).
 \end{enumerate}
 
+% TODO: add item to how to get to the web app
+
 Once the above steps have been completed, the base station is fully configured. One can now connect to the web-app by entering the previously determined IP address into the web browser of any device connected to the network. On the server device, one can also navigate to \texttt{localhost} to arrive at the same page.
 
 \subsection{Autopilot Configuration Instructions}
-While not necessary for general operations, the client may wish to utilize the autopilot functionality present on the multicopter's on-board control board (separate from the general computational platform where video is captured and machine learning is performed). 
+While not necessary for general operations, the client may wish to utilize the autopilot functionality present on the multicopter's on-board control board (separate from the general computational platform where video is captured and machine learning is performed).
+
+% TODO: Split into firmware installation instruction vs using the autopilot configurator
 
 \paragraph{Required Materials}
 \begin{itemize}
@@ -186,44 +202,8 @@ While not necessary for general operations, the client may wish to utilize the a
 \item Click \texttt{Connect}
 \end{enumerate}
 
-\clearpage
-\section{Flight Checklists}
-\subsection{Pre-Flight Checklist}
-Prior to every flight, the following checklist \textbf{must} be observed.\\
 
-\textbf{Computation System Initialization}
-\begin{enumerate}
-\item Start the web app server on the base station (\texttt{node server}) and connect to the web app using a web browser (as described in Section \ref{bs_inst}).
-\item Turn on the Raspberry Pi by plugging it into the battery pack. Ensure that the red power LED lights up.
-\item Turn on the Zedboard using the on-board power switch. Ensure that the power LED (green) and LD1-2 LED (bright blue) light up.
-\item If auto-start was not previously configured, connect to the Raspberry Pi via SSH, navigate to the \texttt{Raspberry Pi} folder, and launch the ML suite (\texttt{source LAUNCH\_ML.sh}). Inspect the console for any errors.
-\item Examine the web-app. Video should be streaming to the device, and bounding box information should begin to be displayed. Ensure that there are no errors in the web-app's log box.
-\end{enumerate}
-
-\textbf{Controller Initialization}
-
-\textit{Note: this checklist is performed automatically by the on-board flight controller -- no user input is required. It is included for user reference only.}
-\begin{enumerate}
-\item Is the input voltage within nominal range?
-\item Is the radio calibrated to the correct operating frequency?
-\item Is the accelerometer operational? Has it been calibrated?
-\item Is the compass operational? Has it been calibrated?
-\item Is the barometer operational?
-\item Has a GPS lock been established?
-\end{enumerate}
-
-\textbf{Motor Arming}
-\begin{enumerate}
-    \item Turn on the handheld radio transmitter.
-    \item Ensure that the multicopter is in a flat, open area.
-    \item Plug in the multicopter's battery. The red and blue lights on the controller will flash momentarily as the gyroscopes are calibrated (do not move the multicopter while this is occuring).
-    \item If any initialization failures occur, the LEDs on the controller will indicate an error (see Ardupilot website for specific error details).
-    \item Arm the motors by holding the throttle to low, and push the rudder right for 5 seconds. Do not hold the rudder right for more than 15 seconds, otherwise the autotrim feature will be enabled.
-    \item Once armed, the LEDs on the controller will stop flashing and the propellors will begin to spin.
-    \item Raise the throttle to take off.
-\end{enumerate}
-
-\section{Flight Adjustments}
+\section{Flight Operations}
 The following guides provide calibration steps which may be taken by the user to improve in-flight performance.
 
 \subsection{Pitch and Roll Calibration}
@@ -274,7 +254,15 @@ This test can be performed to update the hover throttle setting to an adjusted v
 
 \end{enumerate}
 
+\clearpage
+\section{Flight Procedures and Checklists}
+\input{checklist}
+
 \section{Regular Maintenance}
+
+% TODO: make a maintenance schedule
+% TODO: add battery maintenance tips
+
 To ensure the longevity of the computing platform multirotor, the following maintenance checks should be performed on a regular basis (optimally, prior to every flight session). Failure to rectify issues found during these checks may result in a shortened operational life or danger to the user.
 
 \begin{enumerate}
