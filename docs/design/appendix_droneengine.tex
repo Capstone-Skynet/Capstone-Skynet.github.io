@@ -1,5 +1,4 @@
-
-All BLDC outrunner motors have the same height, and on product pages they are often given the code 22XX to denote their stator size. The design parameter is the radius (XX on the product code). Typically, the larger the stator (radius), the slower it spins given the same voltage. This is a linear relationship described by the motor parameter kV:
+BLDC outrunner motors are often given the code YYXX to denote their stator size. Typically, the larger the stator, the slower it spins given the same voltage. This is a linear relationship described by the motor parameter kV:
 $$
 \omega_{\mathrm{RPM}} = \mathrm{kV} \times \mathrm{Voltage}
 $$
@@ -20,7 +19,8 @@ lift increases non-linearly to the force output. As seen in the test data obtain
 datasheet below, when using the same propellers we see an increased thrust output resulting from increased voltage (and 
 thus current). However the efficiency, typically measured in g/W, decreases. 
 
-Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0 inch pitch and 10.0 inch 4.7 inch pitch propellers obtained from a vendor website \cite{sunnysky-2216}. 
+For example, below is a sample set of thrust output using a SunnySky X2216 1250 kV motor using 9.0 inch 5.0 inch pitch and 10.0 inch 4.7 inch pitch propellers obtained from a vendor website \cite{sunnysky-2216}. 
+We use this information to make informed decision on motors with appropriate size and KV constants.
 
 \begin{table}[H]
     \centering
@@ -44,8 +44,3 @@ Below is a sample set of thrust output using a SunnySky X2216 1250 kV motor usin
 
     \end{tabular} 
 \end{table}
-
-Therefore, it makes sense that we choose larger motors with relatively lower kV constants. Slower motors 
-are also safer since there is less angular momentum of the blades. Motors with 800 kV to 1300 kV are 
-suitable for our applications and achieve reasonable thrust output with adequate efficiency. 2212, 2214, 
-and 2216 stator sizes are suitable in this range of kV.
