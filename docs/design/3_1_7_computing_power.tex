@@ -20,7 +20,7 @@ Two power supply schemes were considered for the device: a common power supply s
 Ultimately it was determined that the advantages of using separate power supplies, in particular, avoiding motor noise, warranted the extra weight and complexity.
 
 \subsubsection{Custom vs Commercial Power Bank}
-Initially a custom designed power supply system was intended to be used. It was to consist of a lithium-polymer or lithium-ion battery and a battery management system. The battery management system (seen in Figure \ref{powerdiag}) consists of two DC-DC converters (with an approximate efficiency of 94\%), a battery protection board, and a battery monitor. 
+Initially a custom designed power supply system was intended to be used. It was to consist of a lithium-polymer or lithium-ion battery and a battery management system. Such a battery management system (seen in Figure \ref{powerdiag}) would consist of two DC-DC converters (with an approximate efficiency of 94\%), a battery protection board, and a battery monitor. 
 
 \begin{figure}[H]
 \centering
@@ -31,8 +31,6 @@ Initially a custom designed power supply system was intended to be used. It was 
 
 Using a custom designed power supply, DC-DC conversion would have been accomplished through use of a buck converter for the 5V output and a buck-boost converter for the 12V output.
 
-After designing the system, an alternative commercial power bank was found which fits the project requirements (see Figure \ref{powerbank}). This commercial power bank consists of 3 lithium-ion batteries with a combined capacity of 3000mAh in addition to a power management circuit. The power bank provides a 5V/2A USB output port and a 12V/3A output port which are compatible with the Raspberry Pi and the Zedboard respectively. The rated maximum current output from each port is sufficient to simultaneously supply both computation boards, and the battery capacity is rated to provide 3 hours and 45 minutes of operation on a single charge.
-
 \begin{figure}[H]
 \centering
 \includegraphics[width=12cm]{img/power_bank.png}
@@ -40,4 +38,6 @@ After designing the system, an alternative commercial power bank was found which
 \label{powerbank}
 \end{figure}
 
-Ultimately, we choose the commercial power bank for its lower cost and smaller form factor to fulfill the requirements.
+After designing the system, an alternative commercial power bank was found which fits the project requirements (see Figure \ref{powerbank}). This commercial power bank consists of 3 lithium-ion batteries with a combined capacity of 3000mAh in addition to a power management circuit. The power bank provides a 5V/2A USB output port and a 12V/3A output port which are compatible with the Raspberry Pi and the Zedboard respectively. The rated maximum current output from each port is sufficient to simultaneously supply both computation boards, and the battery capacity is rated to provide 3 hours and 45 minutes of operation on a single charge.
+
+Ultimately, we chose the commercial power bank for its lower cost and smaller form factor.

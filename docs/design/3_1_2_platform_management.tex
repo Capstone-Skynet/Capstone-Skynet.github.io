@@ -1,5 +1,5 @@
 \subsubsection{Subsystem Overview}
-The platform management board manages all I/O required by the computing platform: interfacing with the camera, programmable logic board (hosting the machine learning implementation), and base station. A separate system is used for the multirotor's flight control.
+The platform management board manages all I/O required by the computing platform: interfacing with the camera, programmable logic board (hosting the machine learning implementation), and Base Station. A separate system is used for the multirotor's flight control.
 
 A decomposition of the system is seen in Figure \ref{pcdiag}.
 
@@ -29,20 +29,24 @@ The Platform Management Board manages the data flow as follows:
 \begin{enumerate}
 \item The CSI interface is utilized to acquire a video frame ($640px \times 480px$) from the camera
 \item The PMB performs frame manipulation/correction if required by the specific machine learning use-case. The YOLOv2 accelerator (described in Section \ref{ml_accel}) necessitates images sent to the Zedboard to be letterboxed to $416px \times 416px$ to adhere to ML IP block restrictions.
-\item The letterboxed frame is decomposed and transmitted over Ethernet to the programmable logic board (which performs the machine learning)
+\item The manipulated frame is decomposed and transmitted over Ethernet to the programmable logic board (which performs the machine learning)
 \begin{enumerate}
-\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station --- allowing for higher ``background" framerate rather than tying framerate to ML results.
+\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station --- allowing for higher ``background" framerate (rather than tying framerate to ML results).
 \end{enumerate}
 \item The PLB returns the machine learning results to the PMB via Ethernet
-\item The PMB's WiFi modem transmits full-resolution video, ML results, and system status information to the base station
-\item Results and video are additionally stored locally on non-volatile storage for post-flight analysis\footnote{This functionality was foregone due to COVID-19 imposed time constraints. There are no functional restrictions for this to be accomplished, however without a comprehensive interface to facilitate easy retrieval of footage (which would require significant development effort), it is easier for the client to record the web-app directly.}
+\item The PMB's WiFi modem transmits full-resolution video, ML results, and system status information to the Base Station
+\item Results and video are additionally stored locally on non-volatile storage for post-flight analysis\footnote{This functionality was foregone due to COVID-19 imposed time constraints. There are no functional restrictions for this to be accomplished, however without a comprehensive interface to facilitate easy retrieval of footage from the PMB (which would require significant development effort), it is easier for the client to record the web-app directly.}
 \end{enumerate}
-
-On the PMB broad there are two programs, a C++ program and a Python client, that are running while in operation.The C++ program handles image capture and data transmission with the PLB. The Python program handles the data transmission with the base station, that is, it sends the image data and machine learning result to the base station and receives the control message from the base station. The reason behind using two separate programs is that the communication between the PMB and the base station is using Socket.IO library. Socket.IO is a communication library that uses TCP as its transport layer protocol. The PMB's operating system has a much better support for the Python version of the Socket.IO library than the C++ version Socket.IO library.
 
 All operations are managed by the ARM Cortex A72 chip running a headless version of the Raspbian operating system. 
 
-With the provided ML accelerator implementation (described in Section \ref{plb_sec}), the delay visible to the PMB between ML request issuance and reply (steps 3 and 4) is approximately two seconds. Excess speed in the motions of the multirotor and/or the detected objects will result in the detection bounding boxes \textit{trailing} the objects in the live video by approximately two seconds. To resolve this issue, the user may configure the system to operate on a ``tape-delay" basis. In this configuration, the live video is delayed by an equal amount of time as it takes for the ML results to be generated. While this provides results which are better matched to the video displayed to the user, the added video delay may be disorienting if the video feed is used for flying the multirotor. The user should not rely on the this video footage to attempt to control the multirotor.
+\subsubsection{Detailed Program Flow}
+
+To facilitate data flow, the PMB hosts two programs: a C++ program (\texttt{mlprog}) and a Python client (\texttt{pythonClient}). \texttt{mlprog} facilitates the image capture and communications with the PLB (sending images and receiving ML results). \texttt{pythonClient} handles communications with the Base Station, sending the image data/ machine learning results and retrieving any updated parameters. 
+
+Two separate programs were used on the PMB, rather than one, in order to exploit superior libraries in each language. While the PLB requires low-level libraries to be implemented on the PMB in order to convert images into a raw format (necessitating C++), it was found that the Base Station's communications were most reliably performed through use of the popular \texttt{Socket.IO} communications library. As Raspbian does not support the C++ version of \texttt{Socket.IO}, a separate Python script (\texttt{pythonClient}) was implemented to take advantage of this library.
+
+With the implemented ML accelerator (described in Section \ref{plb_sec}), the delay visible to the PMB between ML request issuance and reply (steps 3 and 4) is approximately two seconds. Excess movement in the multirotor and/or the detected objects will thus result in the detection bounding boxes \textit{trailing} the objects in the live video by approximately two seconds. To resolve this issue the user may configure the system to operate on a ``tape-delay" basis. In this configuration, the live video is delayed by an equal amount of time as it takes for the ML results to be generated. While this provides results which are better matched to the video displayed to the user, the added video delay may be disorienting if the video feed is used for flying the multirotor. If this setting is used, the user should thus not rely on the live video feed in attempting to control the multirotor.
 
 \subsubsection{Use of Multiple Computing Boards}
 The presence of on-board Wi-Fi and camera interfaces is the primary driving factor towards adopting a dual-board (PMB and PLB) solution. While a uni-board solution is possible, the development effort and cost of the computing platform would be considerably higher. Most programmable logic boards (including our chosen board, the Zedboard) require external expansion devices to interface with peripherals such as WiFi adapters/cameras. These expansion devices, which connect to the programmable logic board via a serial connection, have poorly documented drivers and are of considerable expense -- ranging from US\$25 for a basic WiFi module\cite{digiwifi} to US\$200 for a compatible camera interface card\cite{digipmod}. External expansion devices also require considerable glue logic on the programmable logic board, potentially risking non-compliance with constraint \textbf{C.EX.2}.
@@ -57,12 +61,12 @@ To interface with the PLB, video frames are sent via a bi-directional Ethernet c
 \begin{itemize}
 \item Ethernet is equally as ubiquitous on modern programmable logic boards
 \item Ethernet has higher maximum throughput on modern platforms (on the Zedboard, 1 Gbps on Ethernet vs. 400 Kbps on serial)
-\item Ethernet has more robust error control coding schemes (such as implicit forward error correction\cite{mclaughlin_warland}) compared to serial, leading to more reliable data transfer
+\item Ethernet has more robust error control coding schemes (such as implicit forward error correction\cite{mclaughlin_warland}) compared to serial connections, leading to more reliable data transfer
 \end{itemize} 
 
 The selection of Ethernet over serial precludes the use of the \textit{Zero W} variant of the Raspberry Pi, as the Zero W does not provide Ethernet support. 
 
-Utilizing gigabit Ethernet also allows for the transmission of uncompressed (raw-RGB) images to the PLB with minimal-to-no additional latency. While both platforms are capable of doing such image manipulations on-the-fly, the compression/decompression imposes additional overhead on the critical path (particularly when decompressing images on the slower PLB) which can be avoided through this approach. 
+Utilizing gigabit Ethernet also allows for the transmission of uncompressed (raw-RGB) images to the PLB with minimum-to-no additional latency. While both platforms are capable of doing such image processing on-the-fly, the compression/decompression imposes additional overhead on the critical path (particularly when decompressing images on the slower PLB) which can be avoided through this approach. 
 
 \subsubsection{Interface with Base Station}
 
