@@ -1,7 +1,5 @@
-% TODO: Talk about camera choice, MIPI interface, camera libraries. Also, talk about alternatives we explored (i.e. analog video transmission/acquisition.
-
 \subsubsection{Subsystem Overview}
-The video capture subsystem of the computing platform consists of a camera, the video transmission protocol to the processing core, and video transmission to the base station. For this subsystem, the hardware utilized includes a CMOS camera, a Raspberry Pi device, and a MIPI Camera Serial interface. 
+The video capture subsystem of the computing platform consists of a camera and the video transmission protocol to the processing core. For this subsystem, the hardware utilized includes a CMOS camera, a Raspberry Pi device, and a MIPI Camera Serial interface. 
 
 \subsubsection{Camera Choice}
 The camera used to capture video is the \textit{Raspberry Pi Camera Module}. This module supports 1080p, 720p and 480p video, captured using a fixed focus lens. The camera captures live video and sends it to the PMB, which feeds the data to both the machine learning model and the base station.
@@ -15,7 +13,7 @@ The MIPI camera serial interface (CSI) is a high-speed protocol primarily intend
 The MIPI protocol has been widely adopted for image and video transmission, and as such the camera can easily be replaced by the client in the future, if desired (fulfilling constraint \textbf{C.EX.5}).
 
 % {Camera libraries or getting the video to a 'viewable' state}
-The \texttt{raspicam} C++ library is utilized to manage video acquisition from the on-board camera module. \texttt{raspicam} was selected over the native Raspberry Pi camera libraries in order to perform capture and processing in a low-level C++ environment. This allows for required low-level memory manipulation/image format conversions to be performed directly on the (more powerful) PMB, rather than the PLB.
+The \texttt{raspicam} C++ library manages video acquisition from the camera module. The program uses \texttt{raspicam} instead of the native Raspberry Pi camera libraries in order to perform capture and processing in a low-level C++ environment. This allows for the low-level memory manipulation/image format conversions required throughout the flow to be performed directly on the (more powerful) PMB, rather than the PLB.
 
 % {Explored Alternatives}
 \subsubsection{Explored Hardware Alternatives}
@@ -23,8 +21,8 @@ There were many alternatives explored for each component of the video capture su
 
 One of the possibilities explored for the camera subsystem was the purchase of a drone package with a pre-integrated camera. The implicit requirement to disassemble and reconfigure/tap-into a hard-wired system, however, would create an unmaintainable product -- making user replacement of the camera for future research improvements difficult (violating constraint \textbf{C.EX.5}).
 
-Another consideration for the subsystem involved utilizing a USB webcam -- connecting it via the Raspberry Pi's USB port. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the 'picamera' Python package, as previously noted, made the Rasberry Pi Camera a better solution suited to the client's needs.
+Another consideration for the subsystem involved utilizing a USB webcam -- connecting it via the Raspberry Pi's USB port. The issue with this option is the inferior configurability of the webcam compared to the Raspberry Pi camera. The reconfigurability provided by the \texttt{raspicam} library, as previously noted, made the Rasberry Pi Camera a better solution suited to the client's needs.
 
 A possible alternative explored for the camera interface was RS-232. The RS-232 interface is a commonly used, easy to integrate serial interface. It is widely used in the communications area, however its low data transfer rate limits both the resolution and frame rate of the video footage that can be captured. The highest (reliable) baud rate of the RS-232 interface is approximately 115200 bits per second -- translating to a frame rate of 0.05 fps for 480p video footage (violating constraint \textbf{NF.CM.3}).
 
-For the live video feed transmission, other options explored include wireless HDMI, VGA and analog transmission methods.  Ultimately these options required additional hardware (contributing to higher costs and system weight) and would introduce more points of failure and complexity into the finalized system, thus they were not pursued.
+For the live video feed transmission, other options explored included wireless HDMI, VGA and analog transmission methods.  Ultimately these options required additional hardware (contributing to higher costs and system weight) and would introduce more points of failure and complexity into the finalized system, thus they were not pursued.
