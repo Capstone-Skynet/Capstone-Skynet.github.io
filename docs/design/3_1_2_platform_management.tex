@@ -28,10 +28,10 @@ The selected device to implement the platform management system is the Raspberry
 The Platform Management Board manages the data flow as follows:
 \begin{enumerate}
 \item The CSI interface is utilized to acquire a video frame ($640px \times 480px$) from the camera
-\item The PMB performs frame manipulation/correction if required by the specific machine learning use-case. The YOLOv2 accelerator (described in Section \ref{ml_accel}) necessitates images sent to the Zedboard to be letterboxed to $416px \times 416px$ to adhere to ML IP block restrictions.
+\item The PMB performs frame manipulation/correction if required by the specific machine learning use-case. The YOLOv2 accelerator (described in Section \ref{ml_accel}) necessitates images sent to the PLB to be letterboxed to $416px \times 416px$ to adhere to ML IP block restrictions.
 \item The manipulated frame is decomposed and transmitted over Ethernet to the programmable logic board (which performs the machine learning)
 \begin{enumerate}
-\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station --- allowing for higher ``background" framerate (rather than tying framerate to ML results).
+\item While waiting for the machine learning results, the PMB sends full-resolution ($640px \times 480px$) frames to the Base Station --- allowing for a higher ``background" framerate (rather than tying framerate to ML results)
 \end{enumerate}
 \item The PLB returns the machine learning results to the PMB via Ethernet
 \item The PMB's WiFi modem transmits full-resolution video, ML results, and system status information to the Base Station
@@ -42,7 +42,7 @@ All operations are managed by the ARM Cortex A72 chip running a headless version
 
 \subsubsection{Detailed Program Flow}
 
-To facilitate data flow, the PMB hosts two programs: a C++ program (\texttt{mlprog}) and a Python client (\texttt{pythonClient}). \texttt{mlprog} facilitates the image capture and communications with the PLB (sending images and receiving ML results). \texttt{pythonClient} handles communications with the Base Station, sending the image data/ machine learning results and retrieving any updated parameters. 
+To facilitate data flow, the PMB hosts two programs: a C++ program (\texttt{mlprog}) and a Python client (\texttt{pythonClient}). \texttt{mlprog} facilitates the image capture and communications with the PLB (sending images and receiving ML results). \texttt{pythonClient} handles communications with the Base Station, sending the image data/machine learning results and retrieving any updated parameters. 
 
 Two separate programs were used on the PMB, rather than one, in order to exploit superior libraries in each language. While the PLB requires low-level libraries to be implemented on the PMB in order to convert images into a raw format (necessitating C++), it was found that the Base Station's communications were most reliably performed through use of the popular \texttt{Socket.IO} communications library. As Raspbian does not support the C++ version of \texttt{Socket.IO}, a separate Python script (\texttt{pythonClient}) was implemented to take advantage of this library.
 
