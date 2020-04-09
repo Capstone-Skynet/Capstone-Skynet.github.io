@@ -6,13 +6,12 @@ This test is performed automatically after system boot to confirm that the wirel
 
 \textbf{Procedure}:
 \begin{enumerate}[noitemsep]
-    \item The platform management board sends a test string to the base station.
-    \item The base station echos back the string.
-    \item The platform management board verifies the result.
+    \item The platform management board boots up and connects to the base station.
+    \item The base station accepts and establishes the connection.
 \end{enumerate}
 
 \textbf{Verification}: 
-Upon successful completion, the base station displays a message to indicate a successful back and forth transmission.
+Upon successful completion, the base station displays a new connection message in its log field.
 
 \paragraph{\underline{T.ACP.2: Hardware Accelerator Initialization Check}}
 

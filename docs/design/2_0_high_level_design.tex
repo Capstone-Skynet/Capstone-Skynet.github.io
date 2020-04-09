@@ -33,8 +33,8 @@ Likewise, the RPAS must provide mounting mechanisms for the computing platform a
 
 A step-by-step overview of data flow within the computing platform (refer to Figure \ref{pcdiag}) is as follows:
 \begin{enumerate}
-\item The on-board camera captures video and transmits it to the PMB via a CSI interface
-\item The PMB decomposes the video into individual frames and sends it to two locations:
+\item The on-board camera captures image and transmits it to the PMB via a CSI interface
+\item The PMB sends the image to two locations:
 \begin{enumerate}
 \item The PLB, via a TCP/IP ethernet link, to perform hardware-accelerated machine learning, and
 \item The base station, via a TCP/IP WiFi link, to display to the end-user
