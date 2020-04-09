@@ -206,7 +206,9 @@ Mentioned in Section \ref{section:motor-speed}, we chose low-speed motors for th
 
 We choose lithium polymer (Li-Po) batteries as they have the highest energy density (highest capacity to weight ratio), and are thus  perfect for high-power, low-weight applications. Figure~\ref{fig:batterytypes} shows a graph of the energy densities for differing types of batteries \cite{battery} --- from this graph, it is clear that Li-Po batteries are to be chosen.
 
-For a multirotor of this size, typical configurations include 3S and 4S (3 cells in series and 4 cells in series respectively) . As part of our deliverables (see List of Deliverables document), we provide a single 3S 5000 mAh battery with discharge rating of 30 C. The discharge rating indicates the maximum discharge current of the battery (https://batteryuniversity.com/learn/article/what_is_the_c_rate):
+
+% TODO: https://batteryuniversity.com/learn/article/what_is_the_c_rate
+For a multirotor of this size, typical configurations include 3S and 4S (3 cells in series and 4 cells in series respectively) . As part of our deliverables (see List of Deliverables document), we provide a single 3S 5000 mAh battery with discharge rating of 30 C. The discharge rating indicates the maximum discharge current of the battery:
 
 $$
 I_{max}=30 \times 5000 = 150~\text{A}
@@ -226,6 +228,14 @@ The 11.0 to 12.0 V from the 3S battery (or 14.0 to 15.0V of 4S batteries) is con
 \paragraph{FCU Software}
 
 \subsubsection{Communication and Control}
-\paragraph{Transmitter}
-\paragraph{Receiver}
+
+This subsection discuss the communication system on-board the multirotor used for multirotor control. Note that this is not to be confused with base-station communication using the PMB and the base station web-app.
+The communication link for the multirotor is independent from other systems to ensure modularity and compatibility in case of future upgrades.
+The link uses 2.4 GHz radio with two end points: a receiver (RX) and transmitter (TX).
+
+% TODO: http://www.radiolink.com.cn/doce/product-detail-170.html
+% TODO: http://www.radiolink.com.cn/doce/product-detail-120.html
+The transmitter is a RadioLink AT10 10-channel 2.4 GHz radio transmitter with colored display. The receiver that is installed on the multirotor is a RadioLink R9DS 9-channel receiver. Note that only 6 out of 9 channel is actually used.
+The first four channels corresponds with each 4 axis of the flight controls: throttle, pitch, yaw, and roll. The last two channels, by default, are configured to corresponds with flight mode and return-to-home function respectively. 
+The user has the option to add additional channels or remap the existing channels, see operations specifications (TODO: ref document) for steps on configuring the flight mode and radio channels using the autopilot software.
 
