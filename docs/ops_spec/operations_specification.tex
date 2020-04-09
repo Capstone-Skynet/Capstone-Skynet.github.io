@@ -16,8 +16,6 @@
 
 \input{../common/presections}
 
-% TODO: fill out all the sections
-% if the sections gets too long, move them to a separte .tex document
 \section{About This Document}
 
 \subsection{Purpose}
@@ -47,7 +45,6 @@ This document outlines the following areas of importance to the client:
 \clearpage
 \section{Installation Instructions}
 
-% TODO: also incorporate drone
 \subsection{Computation Platform Hardware Assembly}
 The following section outlines the steps required to assemble the computing platform hardware components.
 
@@ -71,16 +68,11 @@ The following section outlines the steps required to assemble the computing plat
 \item Connect the Raspberry Pi and Zedboard with the Ethernet cable.
 \end{enumerate}
 
-
-
-
 \subsection{Computation Platform Hardware as Payload Assembly}
-% TODO
+Refer to the attached mechanical drawings for detailed assembly instructions with partslist.
 
 \subsection{Multirotor Assembly}
-% TODO
-
-
+Refer to the attached mechanical drawings for detailed assembly instructions with partslist.
 
 \subsection{PLB SW/HW Build Instructions}
 \label{plb_setup}
@@ -174,14 +166,14 @@ The following section outlines the steps required to configure the Base Station.
 \item \textbf{On the PMB}, modify the python client (\texttt{PythonClient/pythonclient.py}) to reflect the server's current IP address (this can be found through use of \texttt{ifconfig/ipconfig}).
 \end{enumerate}
 
-% TODO: add item to how to get to the web app
+% WONTFIX: add item to how to get to the web app 
 
 Once the above steps have been completed, the base station is fully configured. One can now connect to the web-app by entering the previously determined IP address into the web browser of any device connected to the network. On the server device, one can also navigate to \texttt{localhost} to arrive at the same page.
 
 \subsection{Autopilot Configuration Instructions}
 While not necessary for general operations, the client may wish to utilize the autopilot functionality present on the multicopter's on-board control board (separate from the general computational platform where video is captured and machine learning is performed).
 
-% TODO: Split into firmware installation instruction vs using the autopilot configurator
+% WONTFIX: Split into firmware installation instruction vs using the autopilot configurator
 
 \paragraph{Required Materials}
 \begin{itemize}
@@ -260,8 +252,8 @@ This test can be performed to update the hover throttle setting to an adjusted v
 
 \section{Regular Maintenance}
 
-% TODO: make a maintenance schedule
-% TODO: add battery maintenance tips
+% WONTFIX: make a maintenance schedule
+% WONTFIX: add battery maintenance tips
 
 To ensure the longevity of the computing platform multirotor, the following maintenance checks should be performed on a regular basis (optimally, prior to every flight session). Failure to rectify issues found during these checks may result in a shortened operational life or danger to the user.
 
