@@ -1,0 +1,141 @@
+% Checklist template from
+% https://github.com/mavcunha/checklists
+
+% creates empty checkboxes to be used as the second
+% argument to \item on checklist
+\newcommand{\checkbox}{\makebox[3ex][r]{\Large{$\square$}}}
+
+% checklist env sets up a table and format the items.
+% in case a item has steps use the \step{asdf}
+% command.
+\newenvironment{checklist}[1]{%
+  \renewcommand{\item}[2]{%
+    ##1\dotfill\makebox{\uppercase{##2}}\\
+  }
+  \newcommand{\step}[1]{%
+    \hspace*{10em}-\hspace*{\labelsep}##1\\
+  }
+  \begin{tabular}{p{0.9\linewidth}}
+     \toprule
+       \multicolumn{1}{c}{\textbf{\uppercase{#1}}}\\
+     \midrule
+}{\bottomrule\end{tabular}\vspace{1em}}
+
+
+\subsection{Procedures}
+
+\textbf{Computation System Initialization}
+\begin{enumerate}
+\item Start the web app server on the base station (\texttt{node server}) and connect to the web app using a web browser (as described in Section \ref{bs_inst}).
+\item Turn on the Raspberry Pi by plugging it into the battery pack. Ensure that the red power LED lights up.
+\item Turn on the Zedboard using the on-board power switch. Ensure that the power LED (green) and LD1-2 LED (bright blue) light up.
+\item If auto-start was not previously configured, connect to the Raspberry Pi via SSH, navigate to the \texttt{Raspberry Pi} folder, and launch the ML suite (\texttt{source LAUNCH\_ML.sh}). Inspect the console for any errors.
+\item Examine the web-app. Video should be streaming to the device, and bounding box information should begin to be displayed. Ensure that there are no errors in the web-app's log box.
+\end{enumerate}
+
+\textbf{Flight Controller Initialization}
+\textit{Note: this checklist is performed automatically by the on-board flight controller -- no user input is required. It is included for user reference only.}
+\begin{enumerate}
+\item Is the input voltage within nominal range?
+\item Is the radio calibrated to the correct operating frequency?
+\item Is the accelerometer operational? Has it been calibrated?
+\item Is the compass operational? Has it been calibrated?
+\item Is the barometer operational?
+\item Has a GPS lock been established?
+\end{enumerate}
+
+\textbf{Motor Arming}
+\begin{enumerate}
+	\item Turn on the handheld radio transmitter.
+	\item Ensure that the multicopter is in a flat, open area.
+	\item Plug in the multicopter's battery. The red and blue lights on the controller will flash momentarily as the gyroscopes are calibrated (do not move the multicopter while this is occuring).
+	\item If any initialization failures occur, the LEDs on the controller will indicate an error (see Ardupilot website for specific error details).
+	\item Arm the motors by holding the throttle to low, and push the rudder right for 5 seconds. Do not hold the rudder right for more than 15 seconds, otherwise the autotrim feature will be enabled.
+	\item Once armed, the LEDs on the controller will stop flashing and the propellors will begin to spin.
+	\item Raise the throttle to take off.
+\end{enumerate}
+
+\clearpage
+\subsection{Checklists}
+\begin{multicols}{2}
+
+\begin{checklist}{Before Multirotor Power On}
+	\item{Walk-around}{Check}
+	Ensure that multirotor is in a flat and open area, far way from bystanders with large safety margin.\\\\
+	\item{Airspace}{Check}
+	Make sure that the multirotor is not taking off within a controlled airspace.\\\\
+	\item{Weather}{check}
+	\item{Propellers}{Attached and secured}
+	\item{Radio TX}{on}
+	\item{Radio TX model}{set}
+	\item{Radio TX knobs and switches}{reset}
+\end{checklist}
+
+\begin{checklist}{Multirotor Power On}
+	\item{Battery}{Charged}Battery voltage at least 11.1 V.\\\\
+	\item{Radio TX}{on}
+	\item{GPS antenna}{extended}
+	\item{Computation platform}{on}
+	\item{Battery}{connected}
+	\item{Battery balance lead}{connected} Connected battery lead wires to the receiver battery monitoring pins for battery level telemetry on the radio TX.\\\\
+\end{checklist}
+
+\begin{checklist}{After Multirotor Power On}
+	\item{Autopilot gyroscope}{calibrated}
+	\item{Compass}{calibrated}
+	\item{GPS lock}{set} Note: this is only applicable for outdoor flights.\\\\
+	\item{Autopilot LED}{blue}
+	\item{Radio TX RSSI}{on and nominal}
+	\item{Radio battery telemetry}{on and nominal}
+\end{checklist}
+
+\begin{checklist}{Before Takeoff}
+	\item{Computation platform}{online}
+	\item{Motors}{armed}
+	\item{FCU LED}{red}
+\end{checklist}
+
+\begin{checklist}{After Takeoff}
+	\item{Flight mode}{set and check}
+	\item{Throttle trim}{set for hover at 50\%}
+	\item{Roll/pitch/yaw trim}{set}
+\end{checklist}
+
+\begin{checklist}{During flight}
+	\item{Battery level}{Nominal}
+	\item{Radio TX RSSI}{within range}
+	\item{Computation platform connection}{nominal}
+\end{checklist}
+
+\begin{checklist}{Descent}
+	\item{Flight mode}{set to stablize or RTL}
+	\item{Roll/pitch/yaw trim}{set}
+	\item{Throttle trim}{reset}
+\end{checklist}
+
+\begin{checklist}{Before Landing}
+	\item{Flight mode}{set to stablize or RTL}
+	\item{Landing area}{clear of obstacle}
+	\item{Recommended descent rate}{0.2 m/s}
+\end{checklist}
+
+\begin{checklist}{After Landing}
+	\item{Motors}{disarmed}
+	\item{FCU LED}{blue}
+\end{checklist}
+
+\begin{checklist}{Multirotor Power Off}
+	\item{Battery level}{check}
+	\item{Battery}{disconnected}
+	\item{Computation platform}{switch off}
+	\item{Propellers}{detach}
+\end{checklist}
+
+\begin{checklist}{Storage}
+	\item{Battery level}{set to 50\%} Charge or discharge the battery to around 50\% to minimize degradation while in storage.\\\\
+	\item{Propellers}{detached}
+	\item{Cables}{disconnected}
+\end{checklist}
+
+\end{multicols}
+\clearpage
