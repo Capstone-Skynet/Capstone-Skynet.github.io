@@ -50,14 +50,14 @@ The following section outlines the steps required to assemble the computing plat
 
 \paragraph{Required Materials}
 \begin{itemize}
-\item 1 - Zedboard
-\item 1 - 12V-12V Barrel Plug Power Adapter (for Zedboard)
-\item 1 - Raspberry Pi 4
-\item 1 - USB-C to USB-A Cable (for Raspberry Pi)
-\item 1 - Raspberry Pi Camera Module
-\item 1 - Battery Pack
-\item 1 - Battery Pack Charger
-\item 1 - Slim Ethernet Cable (1 ft)
+\item 1 -- Zedboard
+\item 1 -- 12 V-12 V Barrel Plug Power Adapter (for Zedboard)
+\item 1 -- Raspberry Pi 4
+\item 1 -- USB-C to USB-A Cable (for Raspberry Pi)
+\item 1 -- Raspberry Pi Camera Module
+\item 1 -- Battery Pack
+\item 1 -- Battery Pack Charger
+\item 1 -- Slim Ethernet Cable (1 ft)
 \end{itemize}
 
 \paragraph{Instructions}
@@ -80,10 +80,10 @@ The following section outlines the steps required to upload the ML FPGA design, 
 
 \paragraph{Required Materials}
 \begin{itemize}
-\item 1 - Linux/Unix PC with the PetaLinux SDK\cite{petalinux} installed
-\item 1 - SD card (at least 4GB in size) \& SD Card Reader
-\item 1 - Zedboard \& Power Supply
-\item 1 - Micro USB Cable
+\item 1 -- Linux/Unix PC with the PetaLinux SDK\cite{petalinux} installed
+\item 1 -- SD card (at least 4 GB in size) \& SD Card Reader
+\item 1 -- Zedboard \& Power Supply
+\item 1 -- Micro USB Cable
 \end{itemize}
 
 \paragraph{Instructions}
@@ -109,7 +109,7 @@ The following section outlines the steps required to upload the ML FPGA design, 
 \item Navigate to the root partition and extract the compressed image to the base directory (\texttt{sudo tar xvf rootfs.tar.gz}).
 \item Extract the weights file found in the \texttt{Zedboard\/} repository directory ( \texttt{yolo\_weights.tar.gz} ) into the home directory of the root user on the SD card.
 \item Eject the SD card and insert it into the Zedboard.
-\item Ensure that the Zedboard configuration jumpers are set for SD card boot (MI04/MI05 set to 3.3V, remaining to GND).
+\item Ensure that the Zedboard configuration jumpers are set for SD card boot (MI04/MI05 set to 3.3 V, remaining to GND).
 \item Connect the Zedboard to the PC using the micro USB cable (through the JTAG port), connect the power supply, and switch the Zedboard on.
 \item Using PuTTY (or another serial program such as Minicom), open a serial connection to the Zedboard (115200 baud, 8 data bits, 1 stop bit).
 \item At the \texttt{Zynq>>} prompt, enter \texttt{boot}.
@@ -166,7 +166,7 @@ The following section outlines the steps required to configure the Base Station.
 \item \textbf{On the PMB}, modify the python client (\texttt{PythonClient/pythonclient.py}) to reflect the server's current IP address (this can be found through use of \texttt{ifconfig/ipconfig}).
 \end{enumerate}
 
-% WONTFIX: add item to how to get to the web app 
+% WONTFIX: add item to how to get to the web-app 
 
 Once the above steps have been completed, the base station is fully configured. One can now connect to the web-app by entering the previously determined IP address into the web browser of any device connected to the network. On the server device, one can also navigate to \texttt{localhost} to arrive at the same page.
 
@@ -303,7 +303,7 @@ The prefered route to extend the operational range is to increase the battery ca
 \item Ensure that the power cables are properly seated.
 \end{enumerate}
 
-\textbf{No image is displayed on the web app}
+\textbf{No image is displayed on the web-app}
 \begin{enumerate}
 \item Ensure that the Computation System Initialization checklist has been fully followed.
 \item Check that the camera module ribbon cable is properly seated and the cable itself is not damaged.

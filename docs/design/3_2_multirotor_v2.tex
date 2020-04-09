@@ -229,7 +229,7 @@ Figure \ref{fig:pdb} depicts the layout of electrical power distribution for the
 \end{figure}
 
 \subsubsection{Flight Computer and Sensors}
-To allow for a user with minimal flight training to use the multicopter successfully, a standalone flight controller is integrated into the multicopter system to allow for the automation of a majority of flight operations. 
+To allow for a user with minimal flight training to use the multicopter successfully, a standalone flight controller unit is integrated into the multicopter system to allow for the automation of a majority of flight operations. The flight controller unit (FCU) is also often referred to as ``autopilot'' for its autonomous abilities. 
 
 \begin{figure}[H]
 	\centering
@@ -238,9 +238,8 @@ To allow for a user with minimal flight training to use the multicopter successf
 	\label{flightdisplay}
 \end{figure}
 
-
 \paragraph{Flight Computer Unit and Software}
-The flight controller included on the multirotor runs APM 2.8, a ubiquitous open-source firmware package. To program the flight cotroller APM Planner 2.0 is used, as seen in Figure \ref{flightdisplay}. The choice of flight controller and its dedicated software was necessitated by cost-limitations at purchasing time, however the differences between budget flight controllers is ultimately marginal.
+The flight controller included on the multirotor is called ArduPilotMega (APM) 2.8 using firmware of the same name. APM is a ubiquitous open-source hardware and firmware stack. APM Planner 2.0 is a ``ground station'' software package used to configure the autopilot before flight operations such as installing firmware, or during flight operations to provide real time telemetry \footnote{Telemetry requires additional hardware that is currently not supported on the multirotor}. As seen in Figure \ref{flightdisplay}, APM Planner 2.0 provides users with easy-to-use GUI for tuning multirotor settings and parameters. The choice of flight controller and its dedicated software was necessitated by cost-limitations at purchasing time, however the differences between budget flight controllers is ultimately marginal.
 
 The use of APM Planner 2.0 and APM 2.8 provides the following features:
 \begin{enumerate}
@@ -259,6 +258,8 @@ The flight control unit provides modes to automate common flight patterns, inclu
 	\item RTL: Returns to the takeoff position
 	\item Auto: Executes pre-defined mission using waypoints
 \end{enumerate}
+
+Note that autonomous flight operations such as Loiter and RTL requires GPS lock during multirotor initialization phase before take off. This means that these flight modes are not available during indoor flights or flights near magnetic field disturbances (such as near large buildings).
 
 For the full list for features, flight modes, operating  procedures, and guides, visit ArduPilot's website and community forums at \url{https://ardupilot.org/ardupilot/}. The open source ArduPilot provides are available on GitHub: \url{https://github.com/ArduPilot}.
 
