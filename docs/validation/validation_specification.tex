@@ -71,9 +71,10 @@ The following notations and conventions are used throughout this document:
 \textbf{Status}: The status of a specific test:
 \begin{itemize}
 	\item \textbf{PEND} if the specific test has never been performed,
-	\item \textbf{FAIL} if the specific test is currently failing, or
-	\item \textbf{PASS} if the specific test is currently passing
-	\item \textbf{COMPLETE} if the specific test procedure is implemented (automated tests only)
+	\item \textbf{FAIL} if the specific test is currently failing,
+	\item \textbf{PASS} if the specific test is currently passing,
+	\item \textbf{COMPLETE} if the specific test procedure is implemented (automated tests only), or
+	\item \textbf{NOTE} if there is a special scenario (outlined in the test notes).
 \end{itemize}
 
 \textbf{Effective Date}: Denotes the date at which the test was last performed (and thus, when the status was last updated). This field is not applicable for pending tests.
@@ -137,7 +138,7 @@ The following notations and conventions are used throughout this document:
 	\hline
 	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} & \textbf{Note}\\
 	\hline
-	T.G.1 & F.CP.2 & PASS & 28-MAR-20  & \\
+	T.G.1 & F.CP.2 & PASS & 30-MAR-20  & No power button was ultimately installed, but test passes\\
 	T.G.2 & F.CP.4, F.BS.5 & PASS & 6-APR-20 \\
 	T.G.3 & F.BS.3, NF.CM.1, NF.CM.2 & NOTE & 24-JAN-20 & Wi-Fi range was tested to be \textasciitilde 20m, addition of \\ & & & & new Wi-Fi antenna restricted due to COVID-19. \\
 	\hline
@@ -166,8 +167,8 @@ The following notations and conventions are used throughout this document:
 	\hline
 	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} & \textbf{Note}\\
 	\hline
-    T.DR.1 & F.DR.1, F.DR.2, NF.DR.2 & NOTE & 8-APR-20 & Not performed due to COVID-19\\
-    T.DR.2 & NF.DR.1, NF.DR.13, NF.DR.14 & NOTE   & 8-APR-20 & Not performed due to COVID-19\\
+        T.DR.1 & F.DR.1, F.DR.2, NF.DR.2 & NOTE & 8-APR-20 & Not performed due to COVID-19\\
+        T.DR.2 & NF.DR.1, NF.DR.13, NF.DR.14 & NOTE   & 8-APR-20 & Not performed due to COVID-19\\
 	T.DR.3 & NF.DR.8, NF.DR.11 & NOTE & 8-APR-20 & Not performed due to COVID-19\\
 	\hline
 	\end{tabular}
@@ -180,7 +181,7 @@ The following notations and conventions are used throughout this document:
 	\hline
 	\textbf{VR} & \textbf{DR} & \textbf{Status} & \textbf{Eff. Date} & \textbf{Note}\\
 	\hline
-    T.FS.1 & F.HL.1  & NOTE & 8-APR-20 & Not performed due to COVID-19\\
+        T.FS.1 & F.HL.1  & NOTE & 8-APR-20 & Not performed due to COVID-19\\
 	T.FS.2 & F.HL.2, F.HL.3, F.HL.4 & NOTE & 8-APR-20 & Not performed due to COVID-19\\
 	\hline
 	\end{tabular}
