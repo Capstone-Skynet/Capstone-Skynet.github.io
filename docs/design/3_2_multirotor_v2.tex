@@ -74,15 +74,15 @@ The mechanical subsystem of the multirotor is comprised of the frame that holds 
 	\label{fig:rpas_6dof}
 \end{figure}
 
-A multirotor has several common configurations such as tricopter, quadcopter, hexacopter as depicted in Figure~\ref{fig:rpas-config}. Because each frame has different layouts of motors, the forces acting on the drone is inherently different and thus provides advantages and disadvantages of their own.
+A multirotor has several common configurations such as tricopter, quadcopter, hexacopter as depicted in Figure~\ref{fig:rpas-config}. As each frame has different motor layouts, the forces acting on the multirotor are inherently different and thus each configuration provides particular advantages and disadvantages.
 
 We use a quadcopter X4 configuration (4 motors and propellers in the shape of a letter X) for our multirotor as it is easy to control and provides abundant control system robustness. Such configuration is also the most popular amongst the UAS industry because it is balances redundancy and robustness with capacity and performance.
 
-As seen in Figure \ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise --- effectively canceling each other's unintended torque applied to the multirotor. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by applying a combination of differential thrusts to each motor (Figure \ref{fig:rpas_6dof}). An X4 configuration is inherently stable.
+An example of the X4 configuration is seen in Figure \ref{fig:quadcopter-x-t}. Two of the motors spin clockwise and the other two spin counter-clockwise --- effectively canceling each other's unintended torque to the multirotor. Applying the same power into each motor allows the MRPAS to hover in place. We can perform 6 degree-of-freedom (DOF) movements by applying a combination of differential thrusts to each motor (Figure \ref{fig:rpas_6dof}). An X4 configuration is thus inherently stable.
 
-A dual-blade helicopter, for example, requires fewest number of motors. But like a single-blade helicopter, the system in control theory sense, is naturally unstable and requires difficulty to stabilize the system. A tricopter has odd number of motors which also shares similar characteristics with a helicopter where the system requires an additional tail motor to compensate for the uneven torque. 
+A dual-blade helicopter, for example, requires the fewest number of motors. Like a single-blade helicopter, the system (in control theory sense) is naturally unstable and instills difficulty to stabilize the system. A tricopter has an odd number of motors --- sharing similar characteristics with a helicopter where the system requires an additional tail motor to compensate for the uneven torque. 
 
-Configurations using more than 4 motors such as a hexacopter or an octocopter are very expensive for the amount of parts they require. Drones of these configuration classes are very stable with failure redundancy. However, these drones are typically much larger (0.6m to 1.5m wide) and much heavier (up to 25 kg). As a result, they are typically used in industrial, filming, and agriculture applications with a typical unit cost of at least several thousand dollars. These configurations are not suitable for our applications.
+Configurations using more than 4 motors (such as hexacopters or octocopters) are very expensive for the amount of parts they require, however they are very stable and contain multiple failure redundancies. These drones are typically much larger (0.6m to 1.5m wide) and much heavier (up to 25 kg). As a result, they are typically used in industrial, filming, and agricultural applications with a typical unit cost of several thousand dollars. These configurations are not suitable for our applications.
 
 \paragraph{Airframe}
 
@@ -136,15 +136,15 @@ The propulsion system covers the majority of the multirotor parts list and deter
 \underline{\textit{Brushed or brushless?}}
 Multirotors are electrically powered by a battery --- a DC source. Two common types of DC motors are  brushed motors and brushless DC (BLDC) motors. Brushed motors commutate mechanically using brushes whereas brushless motors commutate electrically using electronic controllers that switches phases in the stator coils.
 
-We use  BLDC motors for their extended usable lifespan and efficiency. Brushed motors are not appropriate for our applications for its excessive noise, friction, spark, and heat.
+We use  BLDC motors for their extended usable lifespan and efficiency. Brushed motors are not appropriate for our applications due to their excessive noise, friction, spark, and heat.
 
 \underline{\textit{Inrunner or outrunners?}}
 
-BLDC motors further consists of two variants: \textit{inrunner} and \textit{outrunner}. 
+BLDC motors further consist of two variants: \textit{inrunner} and \textit{outrunner}. 
 
-We choose outrunner BLDC motors for its higher torque output at lower speed  (i.e. outrunner motors have low KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). The lower speed of the rotor is beneficial for two reasons. One, a motor running at a lower speed is more efficient and produces less high frequency vibrations. Two, the attached propeller can be much larger and cut through the air at a lower speed, since drag forces acting on the blades are proportional to the velocity squared. Outrunner motors do require spin-up time as the rotor is more massive and has more inertia, but this compromise is acceptable as the main operating mode of the multirotor is hovering, which requires little agility. 
+We choose outrunner BLDC motors for their higher torque output at lower speed  (i.e. outrunner motors have low KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). The lower speed of the rotor is beneficial for two reasons. One, a motor running at a lower speed is more efficient and produces fewer high frequency vibrations. Two, the attached propeller can be much larger and cut through the air at a lower speed, since drag forces acting on the blades are proportional to the velocity squared. While outrunner motors do require additional spin-up time as the rotor is more massive and has more inertia, this compromise is acceptable as the main operating mode of the multirotor is hovering, which requires little agility. 
 
-The alternatives are inrunner motors. Inrunner motors have the rotor on the inside and outrunner motors have the rotor on the outside. Inrunner rotors are lighter and spin faster with a lower torque which means additional gearboxes are required to extract useful torque\cite{invsoutrunner}.
+The alternatives are inrunner motors, where the rotor is placed on the inside. Inrunner rotors are lighter and spin faster with a lower torque, thus additional gearboxes are required to extract useful torque\cite{invsoutrunner}.
 
 \paragraph{Motor Size and Speed}\label{section:motor-speed}
 
@@ -155,7 +155,7 @@ We choose 700 KV motors with stator size 3508.  According to drone hobbist onlin
 Our decision process consists of screening and ranking the best motors through applying priorities as follows:
 
 \begin{enumerate}
-    \item Voltage: We chose a motor that operates between 12.0 V and 20.0 V, which is enough for heavy operations.
+    \item Voltage: We chose a motor that operates between 12.0 V and 20.0 V, which is sufficient for heavy operations.
     \item KV constant: Since the motors' RPM-per-volt ratio (KV constant) is inversely proportional of torque-per-current ratio (KT constant), manufacturers typically only focus on the KV constant. We chose motors that have KV constants between 500 KV and 1000 KV. These constants are considered low-speed and high-torque, and are typically used for large drones and endurance flights. We also chose this range such that the propellers can spin slower and more efficiently, extending the maximum flight time.
     \item Rotor size: As mentioned in the previous section regarding inrunners vs. outrunners, larger rotors imply a lower KV and higher KT. As a result, we chose motors within the 500 KV to 1000 KV range. Markets show that sizes denoted 3508 to 2212 are adequate for this purpose.
     \item Maximum rated power: KV and KT constants are a simplified model for motor characteristics. The maximum power output is derived when considering realistic non-idealities such as heat, motor resistance, and mechanical limits. Typically 500 KV to 1000 KV motors have a rating between 150 W to 400 W, depending on the brand. We optimize for the most performant option allotted by our budget.
@@ -172,7 +172,7 @@ Common RPAS propellers are constructed using either plastic or carbon fibre. For
 
 According to Oscar Liang (TODO: https://www.dronethusiast.com/carbon-fiber-props-vs-plastic/),  carbon fibre propellers are tough and rigid and produces efficient and low-noise flight performance.  While plastic propellers are cheap, abundant, and relatively flexible, the manufacture of plastic propellers is not as precise, which leads to aerodynamic inefficiencies. Plastic propellers often require balancing, where one applies tape to the blades such that the weight on each blade is balanced. 
 
-We choose propellers with size 1250. Where 12 denotes 12 inches in diameter, and 50 denotes 5.0 inches in propeller pitch. To obtain maximum thrust and minimize speed (low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we strike a balance if we choose 11 to 13 inch propellers to be fitted onto the multirotor.
+We choose propellers with size 1250, where 12 denotes 12 inches in diameter, and 50 denotes 5.0 inches in propeller pitch. To obtain maximum thrust and minimize speed (seeing how low speed is more desirable, as mentioned in Section \ref{section:motor-speed}), we strike a balance if we choose 11 to 13 inch propellers to be fitted onto the multirotor.
 
 \begin{figure}[h]
     \centering
