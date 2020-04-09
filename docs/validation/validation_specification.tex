@@ -41,9 +41,9 @@ This document is intended for:
 This document is particularly relevant to those who wish to assess the current state of the project, in addition to those who will assess the validation methodology against academic, organizational, or legal criteria.
 
 \subsection{Reading Guide}
-The first portion of this document outlines a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested, the steps taken to execute the test, and the test's success parameters. Finally, the current status of each listed test is summarized in Section \ref{results}. Any pertinent test results are additionally included as appendices, as appropriate.
+The first portion of this document outlines a description of the validation methodology, describing differing types of tests and how they are identified. The description of tests begins in Section \ref{begintest}, with each test case listing the requirements being tested, the steps taken to execute the test, and the test's success parameters. The current status of each listed test is summarized in Section \ref{results}. Any pertinent test results are additionally included as appendices, as appropriate.
 
-The second portion of this document (beginning in Section \ref{mr_sims}) describes the simulations performed to derive and validate the multirotor's physical parameters. Their ultimate inclusion within this document is intended to aid the client in weighing different operating parameters (such as payload weight and flight time) when configuring the drone for a particular use-case. It is important to note that, due to the COVID-19 pandemic, these veracity of these simulations have not been determined through physical tests.
+The second portion of this document (beginning in Section \ref{mr_sims}) describes the simulations performed to derive and validate the multirotor's physical parameters. Their ultimate inclusion within this document is intended to aid the client in weighing different operating parameters (such as payload weight and flight time) when configuring the drone for a particular use-case. It is important to note that, due to the COVID-19 pandemic, the veracity of these simulations has not been determined through physical tests.
 
 The requirements referenced in this document can be found in the \textit{Requirements Specification}.
 
@@ -140,15 +140,15 @@ The following notations and conventions are used throughout this document:
 	\hline
 	T.G.1 & F.CP.2 & PASS & 30-MAR-20  & No power button was ultimately installed, but test passes\\
 	T.G.2 & F.CP.4, F.BS.5 & PASS & 6-APR-20 \\
-	T.G.3 & F.BS.3, NF.CM.1, NF.CM.2 & NOTE & 24-JAN-20 & Wi-Fi range was tested to be \textasciitilde 20m, addition of \\ & & & & new Wi-Fi antenna restricted due to COVID-19. \\
+	T.G.3 & F.BS.3, NF.CM.1, NF.CM.2 & NOTE & 24-JAN-20 & Wi-Fi range was tested to be \textasciitilde 20m, addition of \\ & & & & new Wi-Fi antenna restricted due to COVID-19 \\
 	\hline
 	T.CM.1 & NF.CAM.3, NF.CAM.4   & PASS   & 23-MAR-20 & \\
 	T.CM.2 & NF.CAM.1, NF.CAM.2   & PASS   & 23-MAR-20 &  \\
-	T.CM.3 & F.CAM.2, NF.CAM.6   & PASS   & 23-MAR-20 &  \\
+	T.CM.3 & F.CAM.2, NF.CAM.6   & NOTE   & 23-MAR-20 & The requirement to archive video footage was removed \\
 	T.CM.4 & NF.CAM.5   & PASS   & 23-MAR-20 & Examples included in project presentation \\
 	\hline
 	T.ML.1 & F.ML.1, F.ML.4 & PASS & 3-FEB-20 & See Appendix \ref{appendix:T.ML.1}.\\
-	T.ML.2 & F.HL.2, F.ML.1, F.ML.4 & PASS  & 1-APR-20 & FPS is currently \textasciitilde 0.5. \\
+	T.ML.2 & F.HL.2, F.ML.1, F.ML.4 & PASS  & 1-APR-20 & FPS is currently \textasciitilde 0.5 \\
     T.ML.3 & F.ML.3 & PASS  & 1-APR-20 & Latency is currently \textasciitilde 2s\\
     \hline
     T.BS.1 & F.CM.1, F.CP.1 & PASS & 25-MAR-20 & See Appendix \ref{appendix:T.BS.1} \\
