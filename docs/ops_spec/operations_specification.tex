@@ -69,10 +69,10 @@ The following section outlines the steps required to assemble the computing plat
 \end{enumerate}
 
 \subsection{Computation Platform Hardware as Payload Assembly}
-Refer to the attached mechanical drawings for detailed assembly instructions with partslist.
+Refer to the attached mechanical drawings for detailed assembly instructions with parts list.
 
 \subsection{Multirotor Assembly}
-Refer to the attached mechanical drawings for detailed assembly instructions with partslist.
+Refer to the attached mechanical drawings for detailed assembly instructions with parts list.
 
 \subsection{PLB SW/HW Build Instructions}
 \label{plb_setup}
@@ -136,7 +136,7 @@ The following section outlines the steps required to install the requisite PMB s
 \item After connecting to the internet, clone the latest version of the Capstone-Skynet suite from GitHub (\url{https://github.com/Capstone-Skynet/Integration})
 \item Navigate to the \texttt{RaspberryPi/} folder.
 \item Install Python 3, OpenCV-2, and RasPiCam (\url{https://github.com/cedricve/raspicam}) through the linux command prompt (\texttt{apt-get install}). 
-\item Install the \texttt{picamera} and \texttt{socketio} python libraries using pip3.
+\item Install the \texttt{picamera} and \texttt{socketio} python libraries using \texttt{pip3}.
 \item Build the C++ helper program \texttt{mlprog} by issuing the following command: \texttt{g++ ml\_server.cpp \-o ml\_server \-I/usr/local/include \-lraspicam \-I/usr/local/include/opencv2 \-L/usr/local/lib/ \-lopencv\_core \-lopencv\_imgproc \-lopencv\_highgui \-lopencv\_ml \-lopencv\_video \-lopencv\_features2d \-lopencv\_calib3d \-lopencv\_objdetect \-lopencv\_contrib \-lopencv\_legacy \-lopencv\_ stitching}
 \item Configure the WiFi to connect to the base station network. If working with the command line, this can be done by using the \texttt{sudo raspi-config} command.
 \item Edit the /etc/network/interfaces file to set-up a standard IP configuration for the ethernet adapter. The suggested static IP for Ethernet is \texttt{192.168.1.11}  (all scripts are pre-configured to use this).
@@ -216,7 +216,7 @@ These steps can be followed if the default pitch and roll behaviour of the multi
     \item Click on \texttt{arducopter config}. Set the CH6 opt to \texttt{CH6\_RATE\_KP} using the drop down menu. Set the min to 0.08 and max to 0.15. Disconnect the controller.
     \item Fly the multicopter, adjusting the CH6 knob to adjust the pitch and roll setting of the multicopter to the user's liking. 
     \item After the flight, plug the flight controller back in and re-open APM planner. 
-    \item Click on \texttt{Refresh Parameters} to see the optimal pitch/roll value found during flight (it will appear under the P section of \texttt{Rate Roll}. 
+    \item Click on \texttt{Refresh Parameters} to see the optimal pitch/roll value found during flight (it will appear under the P section of \texttt{Rate Roll}). 
     \item To set this value as default, set \texttt{CH6 Opt} to \texttt{CH6\_0None} and click on \texttt{Write Parameters}.
     \item Reset \texttt{Logbitmask} to \texttt{Default} once you are done with configuration.
 
@@ -237,8 +237,7 @@ This test can be performed to update the hover throttle setting to an adjusted v
 \begin{enumerate}
     \item Plug the control board into the user device and open APM Planner.
     \item In APM Planner, click on \texttt{terminal} and then \texttt{log download}. 
-    \item Check the box labeled \texttt{1} and then \texttt{download this log}. 
-    \item Click on \texttt{log browse and find the log from the test flight}. 
+    \item Check the box labeled \texttt{1} and then \texttt{download this log}. Click on \texttt{log browse} and find the log from a test flight. 
     \item Scroll down the list and find the row labeled \texttt{CTUN}. Select the entry in the \texttt{throttle in} column and click on \texttt{graph this data}.
     \item Looking at the graph, find the value of the throttle at which the multicopter appears to be at a stable hover.
     \item Return to the \texttt{advanced parameters} configuration screen and change the row labeled \texttt{throttle mid} to the hover value you found in the last section. 
@@ -275,7 +274,7 @@ Apart from ensuring cleanliness and a lack of physical damage, no particular mai
 \section{FAQs}
 \textbf{What are the different programs running on the computation platform?}
 
-There are four programs in total across the PLB, PMB, and base station:
+There are four programs in total across the PLB, PMB, and Base Station:
 
 \texttt{mlprog} (C-based) runs on the PLB and controls low-level PLB/acceleration operations.
 
@@ -283,7 +282,7 @@ There are four programs in total across the PLB, PMB, and base station:
 
 \texttt{pythonClient.py} (Python-based) acts as a shim to interface the web-app with the PMB.
 
-\texttt{server} (Node.js-based) acts as the central base-station server and serves the video feed/system status to the end user.
+\texttt{server} (Node.js-based) acts as the central Base Station server and serves the video feed/system status to the end user.
 
 \textbf{Can I test the system without flying the multicopter?}
 
@@ -291,7 +290,7 @@ Yes, the computation platform and the multicopter control platform are independe
 
 \textbf{How do I make improvements to the framerate/hardware accelerator?}
 
-While making adjustments to the machine learning accelerator is possible (given that it is HLS-based), such adjustments are outside the scope of the project. One can refer to the original accelerator GitHub page (\url{https://github.com/dhm2013724/yolov2_xilinx_fpga}) for further build/customization information.
+While making adjustments to the machine learning accelerator is possible (given that it is HLS-based), such adjustments are outside the scope of this project. One can refer to the original accelerator GitHub page (\url{https://github.com/dhm2013724/yolov2_xilinx_fpga}) for further build/customization information.
 
 \textbf{How do I extend the operational range of the multirotor?}
 
@@ -316,12 +315,12 @@ The prefered route to extend the operational range is to increase the battery ca
 \begin{enumerate}
 \item Ensure that the SD card in the Zedboard is properly seated.
 \item Ensure that Zedboard HW jumpers are properly set.
-\item Re-flash the Zedboard SD card. (\ref{plb_setup}).
+\item Re-flash the Zedboard SD card (see Section \ref{plb_setup}).
 \end{enumerate}
 
 \textbf{Socket errors appear in console/logs}
 \begin{enumerate}
-\item Ensure that the ethernet connection between the Zedboard and the Raspberry Pi is secure and established (the LEDs on each ethernet port should glow green upon a successful link).
+\item Ensure that the Ethernet connection between the Zedboard and the Raspberry Pi is secure and established (the LEDs on each Ethernet port should glow green upon a successful link).
 \item Ensure that the Raspberry Pi is connected to the Base Station's WiFi network.
 \item Ensure that the IP addresses specified in \texttt{pythonClient.py} and \texttt{mlprog.cpp} match those of the corresponding devices.
 \end{enumerate}
@@ -334,7 +333,7 @@ This section outlines potential future upgrades to subsystems which will increas
 As outlined in the project requirements, the chosen machine learning model is intended to be replaced by the client with their own implementation. This could be another implementation of the YOLOv2 model, a different pre-designed network, or an entirely custom network. While the current machine learning implementation (YOLOv2) is extremely versatile (being able to detect 75+ different classes), such a system may not ultimately be desirable to the client. For instance, if the client later wishes to specialize the system to \textit{only detect pedestrians}, YOLOv2 is likely unnecessarily complex, imposing onerous delays to an otherwise simple detection. If this is the case, the client may wish to adopt a simpler network such as MobileNet or TinyYolo.
 
 \subsection{Existing ML Model Improvements}
-If the client decides to improve on the existing machine learning hardware design rather than replace it outright there are several opportunities to improve its performance. Currently the hardware accelerator runs at 50MHz, however with some experimentation (and appropriate timing analysis), it is likely possible to raise the accelerator's clock frequency (and ultimately decrease the end-to-end ML latency). Additional parallelism improvements could also be applied to the AXI interconnect between the HPS and the accelerator, increasing the transfer speed of both the images to the accelerator and the results back to the HPS.
+If the client decides to improve on the existing machine learning hardware design rather than replace it outright there are several opportunities to improve its performance. Currently the hardware accelerator runs at 150MHz, however with some experimentation (and appropriate timing analysis), it is likely possible to raise the accelerator's clock frequency (and ultimately decrease the end-to-end ML latency). Additional parallelism improvements could also be applied to the AXI interconnect between the HPS and the accelerator, increasing the transfer speed of both the images to the accelerator and the results back to the HPS.
 
 \subsection{Improved WiFi Antenna}
 As detailed in the \textit{Design Document}, while the WiFi antenna on-board the Raspberry Pi 4 is sufficient to sustain video streaming at short-to-medium ranges (10-15 metres), the connection quality becomes insufficient at larger distances. During development it was determined that a dedicated USB WiFi card would alleviate these range issues (having better reception than the trace-based antenna on the Raspberry Pi), however this purchase was forgone in light of the COVID-19 pandemic. 
