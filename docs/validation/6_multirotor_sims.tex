@@ -6,7 +6,7 @@ It is important to stress that the figures extracted from \textit{xcopterCalc} a
 There also exists limitations regarding the selection of motor and propeller models. The simulation calculates the driving performance of the motors (i.e. their power consumption and mechanical power output) through the use of a database containing performance characteristics submitted by parts manufacturers. The motors and propellers ultimately purchased for the final implementation are not listed within this database, and thus similar (near-identical) models had to be substituted in for use within the simulation.
 
 \subsection{Design Verification}
-To verify the performance of the final part selection (as detailed in the \textit{Design Document}), two simulations were performed with differing model weights -- 1200g and 600g. The model weight denotes the weight of the system excluding the powertrain. In other words, the model weight denotes the combined weight of the drone frame, flight accessories, and computation platform (including the computation platform battery). The fixed design and environmental parameters, used across both tests, are listed in Table \ref{env_param}.
+To verify the performance of the final part selection (as detailed in the \textit{Design Document}), two simulations were performed with differing model weights---1200g and 600g. The model weight denotes the weight of the system excluding the powertrain. In other words, the model weight denotes the combined weight of the drone frame, flight accessories, and computation platform (including the computation platform battery). The fixed design and environmental parameters, used across both tests, are listed in Table \ref{env_param}.
 
 \begin{table}[H]
 \centering
@@ -213,4 +213,4 @@ In order to increase the effective range and flight duration of the multirotor, 
 \caption{Simulated Weights for Varying Battery Capacities}
 \label{flightweight}
 \end{figure}
-As seen in Figure \ref{flighttime}, as battery capacity increases there is an asymptotic increase in both hover and mixed flight time. This non-linear behaviour stems from the increased weight demands of the higher capacity batteries -- a trend also evident in Figure \ref{flightweight} wherein higher capacity batteries take up a majority of the maximum take-off weight.
+As seen in Figure \ref{flighttime}, as battery capacity increases there is an asymptotic increase in both hover and mixed flight time. This non-linear behaviour stems from the increased weight demands of the higher capacity batteries --- a trend also evident in Figure \ref{flightweight} wherein higher capacity batteries take up a majority of the maximum take-off weight.
