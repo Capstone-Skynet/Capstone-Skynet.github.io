@@ -74,7 +74,7 @@ The frame and mounts which hold the propulsion system, on-board computer/sensors
 	\label{fig:rpas_6dof}
 \end{figure}
 
-Multirotors have different configurations, such as tricopter, quadcopter, hexacopter, as depicted in Figure~\ref{fig:rpas-config}. As each frame has different motor layouts, the forces acting on the multirotor are inherently different and thus each configuration provides particular advantages and disadvantages.
+Multirotors have different configurations, such as tricopter, quadcopter, and hexacopter, as depicted in Figure~\ref{fig:rpas-config}. As each frame has different motor layouts, the forces acting on the multirotor are inherently different and thus each configuration provides particular advantages and disadvantages.
 
 We use a quadcopter X4 configuration (4 motors and propellers in the shape of a letter X) for our multirotor because it is easy to control and provides abundant control system robustness. Such configuration is also the most popular amongst the UAS industry for its balance between redundancy and robustness with capacity and performance.
 
@@ -130,10 +130,8 @@ The 350 mm frames are also popular amongst consumer products such as the DJI Pha
 \subsubsection{Propulsion}
 
 The propulsion system covers the majority of the multirotor parts list and determines the flight performance of the multirotor. We refer to this subsystem as the ``Drive".
-
 \paragraph{Motor Type}
-
-Multirotors are electrically powered by a battery --- a DC source. Two common types of DC motors are  brushed motors and brushless DC (BLDC) motors. Brushed motors commutate mechanically using brushes whereas brushless motors commutate electrically using electronic controllers that switches phases in the stator coils. We use BLDC motors for their extended usable lifespan and efficiency. Brushed motors are not appropriate for our applications due to their excessive noise, friction, spark, and heat.
+Multirotors are electrically powered by a battery --- a DC source. Two common types of DC motors are  brushed motors and brushless DC (BLDC) motors. Brushed motors commutate mechanically using brushes whereas brushless motors commutate electrically using electronic controllers that switches phases in the stator coils. We use BLDC motors for their extended usable lifespan and efficiency. Brushed motors are not appropriate for our applications due to their excessive noise, friction, sparking, and heat.
 
 BLDC motors further consist of two variants: \textit{inrunner} and \textit{outrunner}. We choose outrunner BLDC motors for their higher torque output at lower speed  (i.e. outrunner motors have low KV constants; see Appendix~\ref{appendix:droneengine} for KV relationships). The lower speed of the rotor is beneficial for two reasons. One, a motor running at a lower speed is more efficient and produces fewer high frequency vibrations. Two, the attached propeller can be much larger and cut through the air at a lower speed, since drag forces acting on the blades are proportional to the velocity squared. While outrunner motors require more spin-up time as the rotor is more massive and has more inertia, this compromise is acceptable as the main operating mode of the multirotor is hovering, which requires little agility. 
 
@@ -232,11 +230,47 @@ Figure \ref{fig:pdb} depicts the layout of electrical power distribution for the
 \end{figure}
 
 \subsubsection{Flight Computer and Sensors}
-% TODO: insert Ardell's text
-\paragraph{Flight Computer Unit}
-\paragraph{Sensors}
+To allow for a user with minimal flight training to use the multicopter successfully, a standalone flight controller is integrated into the multicopter system to allow for the automation of a majority of flight operations. 
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=15cm]{img/HUD.png}
+	\caption{APM Planner 2.0 Flight Display}
+	\label{flightdisplay}
+	\end{figure}
+
+
+\paragraph{Flight Computer Unit and Software}
+The flight controller included on the multirotor runs APM 2.8, a ubiquitous open-source firmware package. To program the flight cotroller APM Planner 2.0 is used, as seen in Figure \ref{flightdisplay}. The choice of flight controller and its dedicated software was necessitated by cost-limitations at purchasing time, however the differences between budget flight controllers is ultimately marginal.
+
+
+The use of APM Planner 2.0 and APM 2.8 provides the following features:
+
+\begin{enumerate}
+
+    \item Real-time telemetry collection: altitude, position, orientation, and battery levels
+     
+    \item Primary Flight Display (HUD) (seen in Figure \ref{flightdisplay})
+    
+    \item Flight-by-waypoint (using on-board GPS).
+\end{enumerate}
+
 \paragraph{Flight Modes}
-\paragraph{FCU Software}
+The flight control unit provides modes to automate common flight patterns, including:
+
+\begin{enumerate}
+
+    \item Stabilize: Self-levels the roll and pitch axis
+    
+    \item Alt hold: Holds altitude and self-levels the roll and pitch axis
+    
+    \item Loiter: Holds altitude and position using GPS
+    
+    \item RTL: Returns to the takeoff position
+    
+    \item Auto: Executes pre-defined mission using waypoints
+    
+\end{enumerate}
 
 \subsubsection{Communication and Control}
 
