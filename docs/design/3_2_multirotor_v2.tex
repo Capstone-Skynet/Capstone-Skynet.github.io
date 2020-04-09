@@ -124,6 +124,7 @@ We adopted an X4 560 mm MMDS carbon fibre frame from JMT, as shown in Figure~\re
 
 The 350 mm frames are also popular amongst consumer products such as the DJI Phantom series\cite{dji-phantom-3-specs} as seen in Figure~\ref{fig:djiphantom}. A frame size of 350 mm would constrain our ability to mount larger hardware --- posing a significant risk to integrating computing platform hardware. The 350 mm size also limits the propeller size. The largest quadcopter configurations have an MMDS of 1000 mm to allow for extremely large payload capacities such as the one shown in Figure~\ref{fig:djis1000}; these are more commonly used for industrial or military applications.
 
+
 % \paragraph{Customized Add-ons}
 % WONTFIX: add CAD parts
 
@@ -141,7 +142,7 @@ The alternative is inrunner motors, where the rotor is on the inside. Inrunner r
 
 Commercial outrunner BLDC motors generally have the following design parameters: stator size, KV/KT constants, voltage, maximum rated power, and weight. Please refer to Appendix~\ref{appendix:droneengine} for the relationship between the aforementioned design parameters. 
 
-The multirotor sports four 700 KV motors with stator size 3508.  According to drone hobbist online sources \cite{kv1, kv2}, the ideal KV motors to maximize performance for frame sizes larger than 450 mm should be 1200 KV or less. The argument of choosing a lower KV motor follows the point made above to balance torque output and energy loss due to air friction.
+The multirotor sports four 700 KV motors with stator size 3508.  According to drone hobbyist online sources \cite{kv1, kv2}, the ideal KV motors to maximize performance for frame sizes larger than 450 mm should be 1200 KV or less. The argument of choosing a lower KV motor follows the point made above to balance torque output and energy loss due to air friction.
 
 Our decision process consists of screening and ranking the best motors through applying priorities as follows:
 
@@ -269,4 +270,4 @@ The link uses 2.4 GHz radio with two end points: a receiver (RX) and transmitter
 
 The transmitter is a RadioLink AT10 10-channel 2.4 GHz radio transmitter with colored display\cite{at10}. The multirotor receiver is a RadioLink R9DS 9-channel receiver\cite{r9ds}. Note that we use 6 out of 9 channel for normal operations.
 The first four channels corresponds with each 4 axis of the flight controls: throttle, pitch, yaw, and roll. The last two channels, by default, corresponds with flight mode and return-to-home function respectively. 
-The user has the option to add additional channels or remap the existing channels, see operations specifications (TODO: ref document) for steps on configuring the flight mode and radio channels using the autopilot software.
+The user has the option to add additional channels or remap the existing channels, see the \textit{Operations Document} for steps on configuring the flight mode and radio channels using the autopilot software.

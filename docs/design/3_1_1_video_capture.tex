@@ -13,7 +13,7 @@ The MIPI camera serial interface (CSI) is a high-speed protocol primarily intend
 The MIPI protocol has been widely adopted for image and video transmission, and as such the camera can easily be replaced by the client in the future, if desired (fulfilling constraint \textbf{C.EX.5}).
 
 % {Camera libraries or getting the video to a 'viewable' state}
-The \texttt{raspicam} C++ library manages video acquisition from the camera module. The program uses \texttt{raspicam} instead of the native Raspberry Pi camera libraries in order to perform capture and processing in a low-level C++ environment. This allows for the low-level memory manipulation/image format conversions required throughout the flow to be performed directly on the (more powerful) PMB, rather than the PLB.
+The \texttt{raspicam} C++ library manages video acquisition from the camera module. The helper program uses \texttt{raspicam} instead of the native Raspberry Pi camera libraries in order to perform capture and processing in a low-level C++ environment. This allows for the low-level memory manipulation/image format conversions required throughout the flow to be performed directly on the (more powerful) PMB, rather than the PLB.
 
 % {Explored Alternatives}
 \subsubsection{Explored Hardware Alternatives}

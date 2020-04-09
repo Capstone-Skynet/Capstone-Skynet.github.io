@@ -39,7 +39,7 @@ A step-by-step overview of the data flow within the computing platform (seen in 
 \item The PLB, via a TCP/IP Ethernet link, to perform hardware-accelerated machine learning, and
 \item The base station, via a TCP/IP WiFi link, to display to the end-user
 \end{enumerate}
-\item The ARM core on the PLB receives the video frame from the PMB via the ethernet link, further processes it, and dispatches hardware acceleration requests to the FPGA portion via parallel AXI buses
+\item The ARM core on the PLB receives the video frame from the PMB via the Ethernet link, further processes it, and dispatches hardware acceleration requests to the FPGA portion via parallel AXI buses
 \item The FPGA portion receives the video frame (which first passes through AXI shims to facilitate clock synchronization) and processes this frame within the hardware acceleration core
 \item Upon completion, the hardware acceleration core sends machine learning results back to the ARM core, which itself transmits the data back to the PMB via the Ethernet link
 \item The machine learning results are transmitted over the WiFi link to the base station
